@@ -1,49 +1,49 @@
 document.getElementById('addVideoBtn').addEventListener('click', function(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
-    const videoLink = document.getElementById('videoLink').value.trim(); // Remove espaços em branco
+    event.preventDefault(); // Prevent the default form submission
+    const videoLink = document.getElementById('videoLink').value.trim(); // Trim whitespace
     const videoCount = parseInt(document.getElementById('videoCount').value);
     const videoList = document.getElementById('videoList');
 
-    // Limpa a lista de vídeos anterior
+    // Clear previous video list
     videoList.innerHTML = '';
 
-    // Valida a entrada
+    // Validate input
     if (!videoLink || isNaN(videoCount) || videoCount < 1) {
-        alert('Por favor, insira um link válido do YouTube e um número positivo de vídeos.');
+        alert('Please enter a valid YouTube link and a positive number of videos.');
         return;
     }
 
-    // Obtém o ID do vídeo do YouTube a partir do link
+    // Get the YouTube video ID from the link
     const videoId = getYouTubeID(videoLink);
 
     if (!videoId) {
-        alert('Por favor, insira um link válido de vídeo do YouTube.');
+        alert('Please enter a valid YouTube video link.');
         return;
     }
 
-    // Cria um fragmento de documento para melhor desempenho
+    // Create a document fragment for better performance
     const fragment = document.createDocumentFragment();
 
-    // Adiciona o número especificado de vídeos
+    // Add specified number of videos
     for (let i = 0; i < videoCount; i++) {
         const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; // Adicionado &rel=0 para desabilitar vídeos relacionados
-        iframe.width = '560'; // Define a largura do iframe
-        iframe.height = '315'; // Define a altura do iframe
-        iframe.allow = 'autoplay; encrypted-media'; // Permite autoplay e mídia criptografada
-        iframe.style.margin = '10px'; // Adiciona algum espaço entre os iframes
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; // Added &rel=0 to disable related videos
+        iframe.width = '560'; // Set width of the iframe
+        iframe.height = '315'; // Set height of the iframe
+        iframe.allow = 'autoplay; encrypted-media'; // Allow autoplay and encrypted media
+        iframe.style.margin = '10px'; // Add some spacing between iframes
         fragment.appendChild(iframe);
     }
 
-    // Anexa o fragmento à lista de vídeos
+    // Append the fragment to the video list
     videoList.appendChild(fragment);
 
-    // Limpa os campos de entrada
+    // Clear input fields
     document.getElementById('videoLink').value = '';
     document.getElementById('videoCount').value = '';
 });
 
-// Função para extrair o ID do vídeo do YouTube a partir do link
+// Function to extract YouTube video ID from the link
 function getYouTubeID(url) {
     const regExp = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
     const match = url.match(regExp);
