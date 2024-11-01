@@ -1,0 +1,28 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    text-align: center;
+}
+
+h1 {
+    color: #4a90e2;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #357abf;
+}
+
+#compliment {
+    margin-top: 20px;
+    font-size: 24px;
+}
