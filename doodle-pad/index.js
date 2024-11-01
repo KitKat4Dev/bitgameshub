@@ -37,28 +37,46 @@ function drawShape() {
     const prompt = document.getElementById('prompt').value.toLowerCase();
     ctx.fillStyle = color; // Set the fill color
 
-    // Simple shape drawing based on the prompt
-    switch (prompt) {
-        case 'circle':
-            ctx.beginPath();
-            ctx.arc(250, 250, 50, 0, Math.PI * 2);
-            ctx.fill();
-            break;
-        case 'square':
-            ctx.fillRect(200, 200, 100, 100);
-            break;
-        case 'triangle':
-            ctx.beginPath();
-            ctx.moveTo(250, 200);
-            ctx.lineTo(300, 300);
-            ctx.lineTo(200, 300);
-            ctx.closePath();
-            ctx.fill();
-            break;
-        default:
-            alert('Unknown shape! Try "circle", "square", or "triangle".');
-            break;
+    // Determine the shape to draw based on user input
+    if (prompt.includes('circle')) {
+        const radius = 50; // Define a fixed radius
+        ctx.beginPath();
+        ctx.arc(250, 250, radius, 0, Math.PI * 2);
+        ctx.fill();
+    } else if (prompt.includes('square')) {
+        ctx.fillRect(200, 200, 100, 100); // Fixed position and size
+    } else if (prompt.includes('triangle')) {
+        ctx.beginPath();
+        ctx.moveTo(250, 200); // Top vertex
+        ctx.lineTo(300, 300); // Bottom right vertex
+        ctx.lineTo(200, 300); // Bottom left vertex
+        ctx.closePath();
+        ctx.fill();
+    } else if (prompt.includes('rectangle')) {
+        ctx.fillRect(150, 200, 200, 100); // Fixed position and size
+    } else if (prompt.includes('star')) {
+        drawStar(ctx, 250, 250, 30, 70, 5); // Draw a star
+    } else {
+        alert('Unknown shape! Try using keywords like "circle", "square", "triangle", "rectangle", or "star".');
     }
+}
+
+function drawStar(context, cx, cy, spikes, outerRadius, innerRadius) {
+    const rot = (Math.PI / 2) * 3; // Starting angle
+    const step = Math.PI / spikes; // Angle between spikes
+
+    context.beginPath();
+    context.moveTo(cx, cy - outerRadius); // Move to top point of the star
+    for (let i = 0; i < spikes; i++) {
+        context.lineTo(cx + Math.cos(rot) * outerRadius, cy + Math.sin(rot) * outerRadius); // Outer point
+        rot += step;
+
+        context.lineTo(cx + Math.cos(rot) * innerRadius, cy + Math.sin(rot) * innerRadius); // Inner point
+        rot += step;
+    }
+    context.lineTo(cx, cy - outerRadius); // Close the star path
+    context.closePath();
+    context.fill();
 }
 
 function clearCanvas() {
