@@ -1,4 +1,5 @@
-document.getElementById('addVideoBtn').addEventListener('click', function() {
+document.getElementById('addVideoBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission
     const videoLink = document.getElementById('videoLink').value.trim(); // Trim whitespace
     const videoCount = parseInt(document.getElementById('videoCount').value);
     const videoList = document.getElementById('videoList');
