@@ -1,0 +1,16 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    text-align: center;
+}
+
+h1 {
+    color: #4a90e2;
+}
+
+#maze {
+    padding: 20px;
+    border: 2px dashed #4a90e2;
+    margin-top: 20px;
+    display: inline-block;
+}
