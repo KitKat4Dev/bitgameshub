@@ -2,6 +2,10 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
     const url = document.getElementById('url').value;
     const message = document.getElementById('message');
 
+    // Clear previous messages
+    message.textContent = '';
+
+    // Check if the URL input is empty
     if (!url) {
         message.textContent = 'Please enter a URL.';
         return;
@@ -9,7 +13,7 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
 
     message.textContent = 'Processing your request...';
 
-    // Example of fetch request to your backend
+    // Fetch request to the backend for downloading the video
     fetch('/download', {
         method: 'POST',
         headers: {
@@ -17,20 +21,18 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
         },
         body: JSON.stringify({ url: url })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
+    .then(response => response.json()) // Parse the JSON response
     .then(data => {
+        // Display the download link
         if (data.success) {
             message.innerHTML = `<a href="${data.fileUrl}" download>Click here to download your video</a>`;
         } else {
-            message.textContent = 'Error downloading video: ' + data.error;
+            // If the download fails, inform the user without showing the error
+            message.textContent = 'Download failed, please try again.';
         }
     })
-    .catch(error => {
-        message.textContent = 'There was a problem: ' + error.message;
+    .catch(() => {
+        // General message for network issues, without details
+        message.textContent = 'An unexpected issue occurred. Please try again.';
     });
 });

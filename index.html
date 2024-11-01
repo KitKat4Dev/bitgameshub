@@ -23,9 +23,17 @@
             margin-bottom: 20px;
         }
 
+        p.welcome {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
 
         li {
@@ -39,18 +47,50 @@
             background-color: #4a90e2;
             padding: 10px 20px;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         a:hover {
             background-color: #357abf;
+            transform: translateY(-2px);
         }
 
-        .welcome {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 30px;
+        .input-section {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
             text-align: center;
+            color: #28a745;
         }
     </style>
 </head>
@@ -63,14 +103,23 @@
             <a href="/customdodge/index.html">🎮 Custom Dodge</a>
         </li>
         <li>
-            <a href="/video-multiplier/index.html">Multiple videos!</a>
+            <a href="/video-multiplier/index.html">Multiple Videos!</a>
         </li>
         <li>
-            <a href="/video-downloader/index.html">Multiple videos!</a>
+            <a href="/video-downloader/index.html">Download Videos!</a>
         </li>
     </ul>
+    
+    <div class="input-section">
+        <label for="url">Enter Video URL:</label>
+        <input type="text" id="url" placeholder="YouTube or TikTok URL">
+        <button id="downloadBtn">Download Video</button>
+        <div id="message"></div>
+    </div>
+
+    <p class="welcome">If a 404 error appears, then try reloading the page or re-inserting the link!</p>
+    
+    <script src="index.js"></script>
 </body>
 
 </html>
-
-<p class="welcome">If a 404 error appears,then try reloading the page or re-inserting the link!</p>
