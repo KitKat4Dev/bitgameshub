@@ -1,6 +1,7 @@
 const upload = document.getElementById('upload');
 const photo = document.getElementById('photo');
 const filterButton = document.getElementById('filterButton');
+const filterSelect = document.getElementById('filterSelect');
 
 upload.addEventListener('change', (event) => {
     const file = event.target.files[0];
@@ -9,7 +10,8 @@ upload.addEventListener('change', (event) => {
     reader.onload = function(e) {
         photo.src = e.target.result;
         photo.style.display = 'block';
-        filterButton.style.display = 'inline';
+        filterSelect.style.display = 'inline'; // Show filter select
+        filterButton.style.display = 'inline'; // Show filter button
     }
     
     if (file) {
@@ -18,5 +20,6 @@ upload.addEventListener('change', (event) => {
 });
 
 filterButton.addEventListener('click', () => {
-    photo.style.filter = 'invert(100%)';
+    const selectedFilter = filterSelect.value; // Get selected filter
+    photo.style.filter = selectedFilter; // Apply the filter
 });

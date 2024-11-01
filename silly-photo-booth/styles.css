@@ -1,15 +1,45 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Classic early 2000s font */
+    background-color: #d0e8ff; /* Light blue background */
     text-align: center;
+    color: #333; /* Darker text for contrast */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
 }
 
 h1 {
-    color: #4a90e2;
+    color: #ff4081; /* Bright pink title */
+    text-shadow: 2px 2px #ffffff; /* Light shadow for a pop effect */
+    font-size: 3em; /* Larger font size for the title */
+    margin-top: 20px; /* Top margin for spacing */
 }
 
 img {
-    max-width: 100%;
+    max-width: 90%; /* Limit image width for better responsiveness */
     height: auto;
     margin-top: 20px;
+    border: 5px double #ff4081; /* Double border for a fun effect */
+    padding: 10px;
+    background-color: #ffffff; /* White background for the image */
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+}
+
+select, button {
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px; /* Larger font for buttons */
+    border: 2px solid #ff4081; /* Bright pink border */
+    background-color: #ffeb3b; /* Bright yellow for buttons */
+    color: #000; /* Black text color for contrast */
+    cursor: pointer; /* Pointer cursor for buttons */
+    border-radius: 5px; /* Rounded corners for buttons */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #ffd54f; /* Slightly darker yellow on hover */
+}
+
+select:hover {
+    border-color: #ffc107; /* Darker border on hover */
 }

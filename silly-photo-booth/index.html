@@ -5,11 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silly Photo Booth</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* 2005-style font */
+            background-color: #e0f7fa; /* Light blue background */
+            text-align: center;
+            color: #333; /* Darker text color for contrast */
+        }
+
+        h1 {
+            color: #ff4081; /* Bright pink title */
+            text-shadow: 2px 2px #fff; /* Title shadow for a pop effect */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border: 5px dashed #ff4081; /* Dashed border for a fun effect */
+            padding: 10px;
+            background-color: #fff; /* White background for the image */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+
+        select, button {
+            margin: 20px;
+            padding: 10px;
+            font-size: 16px; /* Larger font for buttons */
+            border: 2px solid #ff4081; /* Matching border */
+            background-color: #ffeb3b; /* Bright yellow for buttons */
+            cursor: pointer; /* Pointer cursor for buttons */
+        }
+
+        button:hover {
+            background-color: #ffd54f; /* Slightly darker yellow on hover */
+        }
+
+        select:hover {
+            border-color: #ffc107; /* Darker border on hover */
+        }
+    </style>
 </head>
 <body>
     <h1>Silly Photo Booth</h1>
     <input type="file" id="upload" accept="image/*">
     <img id="photo" src="" alt="Your Silly Photo" style="display: none;">
+    
+    <select id="filterSelect" style="display: none;">
+        <option value="none">Select a Silly Filter</option>
+        <option value="invert(100%)">Invert Colors</option>
+        <option value="grayscale(100%)">Grayscale</option>
+        <option value="sepia(100%)">Sepia</option>
+        <option value="brightness(150%)">Brighten</option>
+        <option value="contrast(200%)">High Contrast</option>
+        <option value="saturate(200%)">Saturation Boost</option>
+        <option value="hue-rotate(90deg)">Hue Rotate</option>
+        <option value="blur(5px)">Blur</option>
+        <option value="drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5))">Drop Shadow</option>
+        <option value="opacity(50%)">Opacity</option>
+        <option value="opacity(25%)">Faded</option>
+        <option value="invert(100%) sepia(100%)">Cool Effect</option>
+        <option value="contrast(150%) sepia(50%)">Vintage</option>
+        <option value="blur(2px) saturate(150%)">Dreamy Effect</option>
+        <option value="brightness(120%)">Bright Pastel</option>
+        <option value="grayscale(50%)">Partial Grayscale</option>
+        <option value="hue-rotate(180deg)">Cool Tone</option>
+        <option value="saturate(50%) brightness(120%)">Soft Color</option>
+        <option value="invert(50%)">Half Inverted</option>
+        <option value="contrast(100%) blur(3px)">Blurry Contrast</option>
+        <option value="hue-rotate(60deg) saturate(150%)">Vibrant Colors</option>
+        <option value="grayscale(25%) sepia(25%)">Old Photo</option>
+        <option value="drop-shadow(0 0 10px #000)">Shadowed Photo</option>
+        <option value="blur(4px) brightness(110%)">Dreamy Blur</option>
+        <option value="saturate(250%) hue-rotate(60deg)">Color Splash</option>
+        <option value="opacity(80%)">Slightly Transparent</option>
+        <option value="sepia(80%) brightness(90%)">Warm Vintage</option>
+        <option value="grayscale(100%) invert(100%)">Negative Effect</option>
+        <option value="contrast(80%) blur(1px)">Soft Contrast</option>
+        <option value="blur(5px) drop-shadow(0 0 10px #000)">Glowy Effect</option>
+        <option value="hue-rotate(90deg) saturate(300%)">Psychedelic Colors</option>
+        <option value="invert(80%) saturate(80%)">Dimmed Colors</option>
+        <option value="blur(6px) opacity(90%)">Frosted Effect</option>
+        <option value="hue-rotate(120deg) brightness(120%)">Bright Cool</option>
+        <option value="saturate(50%) brightness(200%)">Super Bright</option>
+        <option value="opacity(30%)">Super Faded</option>
+    </select>
+    
     <button id="filterButton" style="display: none;">Apply Silly Filter</button>
     <script src="index.js"></script>
 </body>
