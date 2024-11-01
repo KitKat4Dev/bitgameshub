@@ -1,5 +1,5 @@
 document.getElementById('addVideoBtn').addEventListener('click', function() {
-    const videoLink = document.getElementById('videoLink').value;
+    const videoLink = document.getElementById('videoLink').value.trim(); // Trim whitespace
     const videoCount = parseInt(document.getElementById('videoCount').value);
     const videoList = document.getElementById('videoList');
 
@@ -7,8 +7,8 @@ document.getElementById('addVideoBtn').addEventListener('click', function() {
     videoList.innerHTML = '';
 
     // Validate input
-    if (!videoLink || videoCount < 1) {
-        alert('Please enter a valid YouTube link and number of videos.');
+    if (!videoLink || isNaN(videoCount) || videoCount < 1) {
+        alert('Please enter a valid YouTube link and a positive number of videos.');
         return;
     }
 
@@ -20,12 +20,22 @@ document.getElementById('addVideoBtn').addEventListener('click', function() {
         return;
     }
 
+    // Create a document fragment for better performance
+    const fragment = document.createDocumentFragment();
+
     // Add specified number of videos
     for (let i = 0; i < videoCount; i++) {
         const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        videoList.appendChild(iframe);
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`; // Added &rel=0 to disable related videos
+        iframe.width = '560'; // Set width of the iframe
+        iframe.height = '315'; // Set height of the iframe
+        iframe.allow = 'autoplay; encrypted-media'; // Allow autoplay and encrypted media
+        iframe.style.margin = '10px'; // Add some spacing between iframes
+        fragment.appendChild(iframe);
     }
+
+    // Append the fragment to the video list
+    videoList.appendChild(fragment);
 
     // Clear input fields
     document.getElementById('videoLink').value = '';
