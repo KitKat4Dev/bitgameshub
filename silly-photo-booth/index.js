@@ -1,25 +1,23 @@
-const upload = document.getElementById('upload');
-const photo = document.getElementById('photo');
-const filterButton = document.getElementById('filterButton');
-const filterSelect = document.getElementById('filterSelect');
-
-upload.addEventListener('change', (event) => {
+document.getElementById('imageInput').addEventListener('change', function(event) {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    
-    reader.onload = function(e) {
-        photo.src = e.target.result;
-        photo.style.display = 'block';
-        filterSelect.style.display = 'inline'; // Show filter select
-        filterButton.style.display = 'inline'; // Show filter button
-    }
-    
     if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imgElement = document.createElement('img');
+            imgElement.src = e.target.result;
+            imgElement.id = 'uploadedImage';
+            imgElement.style.maxWidth = '100%';
+            document.getElementById('imageContainer').innerHTML = ''; // Clear previous image
+            document.getElementById('imageContainer').appendChild(imgElement);
+        };
         reader.readAsDataURL(file);
     }
 });
 
-filterButton.addEventListener('click', () => {
-    const selectedFilter = filterSelect.value; // Get selected filter
-    photo.style.filter = selectedFilter; // Apply the filter
+document.getElementById('applyFilterButton').addEventListener('click', function() {
+    const selectedFilter = document.getElementById('filterOptions').value;
+    const imgElement = document.getElementById('uploadedImage');
+    if (imgElement) {
+        imgElement.style.filter = selectedFilter;
+    }
 });

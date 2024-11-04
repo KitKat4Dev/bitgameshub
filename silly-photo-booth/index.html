@@ -8,18 +8,31 @@
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif; /* Classic early 2000s font */
-            background-color: #d0e8ff; /* Light blue background */
+            background: linear-gradient(to bottom, #d0e8ff, #ffeb3b); /* Gradient background */
             text-align: center;
             color: #333; /* Darker text for contrast */
             margin: 0; /* Remove default margins */
             padding: 0; /* Remove default padding */
+            overflow: hidden; /* Prevent scrollbars */
+            animation: fadeIn 1.5s ease-in-out; /* Fade-in animation for body */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         h1 {
             color: #ff4081; /* Bright pink title */
-            text-shadow: 2px 2px #ffffff; /* Light shadow for a pop effect */
+            text-shadow: 3px 3px 8px #ffffff; /* Enhanced shadow for a pop effect */
             font-size: 3em; /* Larger font size for the title */
             margin-top: 20px; /* Top margin for spacing */
+            animation: slideDown 1s ease-in-out; /* Slide-down animation for title */
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         img {
@@ -29,7 +42,12 @@
             border: 5px double #ff4081; /* Double border for a fun effect */
             padding: 10px;
             background-color: #ffffff; /* White background for the image */
-            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+            box-shadow: 3px 3px 25px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            transition: transform 0.2s; /* Smooth transform transition */
+        }
+
+        img:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
         }
 
         select, button {
@@ -41,11 +59,12 @@
             color: #000; /* Black text color for contrast */
             cursor: pointer; /* Pointer cursor for buttons */
             border-radius: 5px; /* Rounded corners for buttons */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
         }
 
         button:hover {
             background-color: #ffd54f; /* Slightly darker yellow on hover */
+            transform: scale(1.05); /* Slight zoom on hover */
         }
 
         select:hover {
@@ -60,6 +79,7 @@
     
     <select id="filterSelect" style="display: none;">
         <option value="none">Select a Silly Filter</option>
+        <!-- 200 Unique Effects -->
         <option value="invert(100%)">Invert Colors</option>
         <option value="grayscale(100%)">Grayscale</option>
         <option value="sepia(100%)">Sepia</option>
@@ -96,9 +116,203 @@
         <option value="hue-rotate(120deg) brightness(120%)">Bright Cool</option>
         <option value="saturate(50%) brightness(200%)">Super Bright</option>
         <option value="opacity(30%)">Super Faded</option>
+        <!-- 200 More Unique Effects -->
+        <option value="blur(8px)">Extreme Blur</option>
+        <option value="hue-rotate(240deg)">Ultra Cool Tone</option>
+        <option value="contrast(120%) saturate(120%)">Color Boost</option>
+        <option value="brightness(200%)">Extreme Brightness</option>
+        <option value="sepia(60%) contrast(150%)">Warm Contrast</option>
+        <option value="saturate(300%) brightness(50%)">Dramatic Contrast</option>
+        <option value="grayscale(75%)">Heavy Grayscale</option>
+        <option value="drop-shadow(10px 10px 15px rgba(255, 0, 255, 0.5))">Vibrant Shadow</option>
+        <option value="hue-rotate(30deg) saturate(400%)">Super Vibrant</option>
+        <option value="invert(50%) blur(10px)">Soft Invert</option>
+        <option value="opacity(10%)">Very Faded</option>
+        <option value="contrast(250%)">Extreme Contrast</option>
+        <option value="saturate(400%) sepia(40%)">Vintage Color Boost</option>
+        <option value="drop-shadow(0 0 25px rgba(0, 0, 255, 0.5))">Blue Glow</option>
+        <option value="blur(3px) brightness(80%)">Dim Blur</option>
+        <option value="contrast(50%)">Low Contrast</option>
+        <option value="saturate(150%) opacity(80%)">Saturated Transparency</option>
+        <option value="opacity(100%) invert(100%)">Complete Negative</option>
+        <option value="hue-rotate(150deg) saturate(75%)">Cool Pastel</option>
+        <option value="invert(25%) brightness(90%)">Slight Inversion</option>
+        <option value="drop-shadow(5px 5px 5px rgba(0, 255, 0, 0.5))">Green Shadow</option>
+        <option value="saturate(80%) contrast(75%)">Soft Color Contrast</option>
+        <option value="blur(1px) brightness(300%)">Super Brightness</option>
+        <option value="hue-rotate(45deg) grayscale(50%)">Unique Tone</option>
+        <option value="sepia(30%) invert(50%)">Mixed Effects</option>
+        <option value="saturate(100%) brightness(120%)">Standard Bright</option>
+        <option value="contrast(90%) drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.8))">Dark Shadow</option>
+        <option value="opacity(90%) grayscale(90%)">Dark Fade</option>
+        <option value="blur(7px) contrast(150%)">Dramatic Blur</option>
+        <option value="saturate(500%)">Extreme Saturation</option>
+        <option value="brightness(50%) invert(100%)">Dramatic Invert</option>
+        <option value="hue-rotate(270deg)">Super Cool Rotate</option>
+        <option value="drop-shadow(5px 5px 20px rgba(255, 0, 0, 0.6))">Red Shadow</option>
+        <option value="blur(4px) saturate(400%)">Vivid Blur</option>
+        <option value="invert(60%) contrast(200%)">High Contrast Invert</option>
+        <option value="saturate(200%) blur(5px)">Bright Blur</option>
+        <option value="opacity(20%) contrast(250%)">Extreme Faded Contrast</option>
+        <option value="hue-rotate(60deg) brightness(300%)">Extreme Brightness Cool</option>
+        <option value="contrast(60%)">Lower Contrast</option>
+        <option value="saturate(250%) hue-rotate(120deg)">Vibrant Color Change</option>
+        <option value="drop-shadow(0 0 30px rgba(255, 0, 0, 0.3))">Soft Red Glow</option>
+        <option value="blur(2px) opacity(75%)">Soft Transparent Blur</option>
+        <option value="invert(40%) sepia(20%)">Subtle Inversion</option>
+        <option value="hue-rotate(120deg) contrast(75%)">Dull Cool Tone</option>
+        <option value="saturate(500%) brightness(200%)">Super Bright Colors</option>
+        <option value="blur(5px) hue-rotate(240deg)">Blurred Cool Tone</option>
+        <option value="saturate(100%) contrast(150%)">Standard Contrast Boost</option>
+        <option value="drop-shadow(10px 10px 10px rgba(255, 255, 0, 0.5))">Yellow Glow</option>
+        <option value="brightness(50%) blur(6px)">Dim Blur</option>
+        <option value="opacity(50%) brightness(300%)">High Brightness Fade</option>
+        <option value="hue-rotate(30deg) drop-shadow(0 0 25px rgba(0, 0, 255, 0.7))">Cool Shadow</option>
+        <option value="invert(25%) contrast(80%)">Dimmed Inversion</option>
+        <option value="saturate(200%) blur(2px)">Bright Blur</option>
+        <option value="brightness(200%) sepia(40%)">Bright Vintage</option>
+        <option value="opacity(60%) grayscale(30%)">Gray Fade</option>
+        <option value="drop-shadow(0 0 15px rgba(0, 255, 0, 0.5))">Green Glow</option>
+        <option value="blur(4px) invert(50%)">Soft Inversion</option>
+        <option value="hue-rotate(90deg) opacity(90%)">Cool Tone Fade</option>
+        <option value="saturate(150%) blur(2px)">Bright Blurry</option>
+        <option value="contrast(100%) grayscale(100%)">Black and White</option>
+        <option value="brightness(300%)">Super Brightness</option>
+        <option value="invert(100%) brightness(200%)">Ultra Bright Inversion</option>
+        <option value="saturate(600%)">Max Saturation</option>
+        <option value="opacity(10%) contrast(300%)">Very Low Opacity</option>
+        <option value="blur(2px) brightness(150%)">Slight Blur</option>
+        <option value="drop-shadow(0 0 30px rgba(255, 0, 0, 0.5))">Deep Red Shadow</option>
+        <option value="contrast(50%) blur(2px)">Low Contrast Blur</option>
+        <option value="brightness(200%) hue-rotate(270deg)">Ultra Brightness Cool</option>
+        <option value="hue-rotate(150deg) blur(3px)">Cool Tone Blur</option>
+        <option value="saturate(80%) brightness(110%)">Light Saturation</option>
+        <option value="contrast(120%) sepia(100%)">High Contrast Vintage</option>
+        <option value="opacity(30%) blur(1px)">Heavy Fade</option>
+        <option value="hue-rotate(0deg) brightness(80%)">Standard Tone Fade</option>
+        <option value="drop-shadow(5px 5px 5px rgba(0, 0, 255, 0.5))">Blue Shadow</option>
+        <option value="blur(1px) brightness(300%)">Bright Effect</option>
+        <option value="invert(75%) contrast(75%)">Mixed Contrast</option>
+        <option value="saturate(500%) sepia(100%)">Extreme Vintage</option>
+        <option value="hue-rotate(60deg) grayscale(80%)">Dimmed Cool Tone</option>
+        <option value="brightness(400%)">Max Brightness</option>
+        <option value="contrast(250%) saturate(50%)">Extreme Contrast Low Saturation</option>
+        <option value="opacity(50%) brightness(150%)">Slightly Transparent</option>
+        <option value="saturate(200%) brightness(70%)">Colorful Fade</option>
+        <option value="hue-rotate(120deg) contrast(60%)">Dim Cool Tone</option>
+        <option value="drop-shadow(5px 5px 10px rgba(255, 0, 255, 0.6))">Pink Glow</option>
+        <option value="blur(4px) opacity(70%)">Frosted Blur</option>
+        <option value="hue-rotate(180deg) contrast(50%)">Dimmed Warm Tone</option>
+        <option value="saturate(300%) brightness(200%)">Super Colorful</option>
+        <option value="blur(3px) drop-shadow(0 0 25px rgba(0, 0, 255, 0.3))">Blue Blurry Glow</option>
+        <option value="brightness(80%)">Slightly Dimmed</option>
+        <option value="saturate(400%) contrast(200%)">Max Saturation High Contrast</option>
+        <option value="opacity(60%) drop-shadow(0 0 15px rgba(255, 0, 255, 0.5))">Faded Pink Glow</option>
+        <option value="blur(2px) sepia(50%)">Soft Vintage</option>
+        <option value="hue-rotate(240deg) saturate(150%)">Ultra Bright Cool</option>
+        <option value="drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.6))">Black Glow</option>
+        <option value="brightness(150%) hue-rotate(30deg)">Bright Warm Tone</option>
+        <option value="contrast(300%)">Super High Contrast</option>
+        <option value="opacity(20%) brightness(300%)">Heavy Fade Bright</option>
+        <option value="saturate(50%) blur(6px)">Low Saturation Blur</option>
+        <option value="invert(50%) contrast(80%)">Dim Inversion</option>
+        <option value="hue-rotate(60deg) brightness(50%)">Cool Tone Dim</option>
+        <option value="saturate(500%) brightness(80%)">Vivid Dim Colors</option>
+        <option value="blur(5px) contrast(50%)">Blurry Dim</option>
+        <option value="drop-shadow(0 0 20px rgba(0, 255, 255, 0.5))">Cyan Glow</option>
+        <option value="saturate(75%)">Low Saturation</option>
+        <option value="brightness(200%) drop-shadow(5px 5px 5px rgba(255, 255, 0, 0.5))">Bright Yellow Glow</option>
+        <option value="opacity(90%) blur(3px)">Very Light Blur</option>
+        <option value="hue-rotate(120deg) drop-shadow(0 0 15px rgba(0, 0, 0, 0.6))">Black Soft Shadow</option>
+        <option value="contrast(300%) blur(1px)">Super High Contrast Blur</option>
+        <option value="saturate(600%) hue-rotate(150deg)">Max Saturation Cool</option>
+        <option value="brightness(400%) saturate(200%)">Ultra Brightness High Saturation</option>
+        <option value="opacity(10%) contrast(90%)">Very Low Opacity Contrast</option>
+        <option value="hue-rotate(0deg) saturate(50%)">Standard Dim Colors</option>
+        <option value="drop-shadow(0 0 20px rgba(0, 255, 0, 0.5))">Green Soft Glow</option>
+        <option value="blur(3px) brightness(150%)">Moderate Brightness Blur</option>
+        <option value="saturate(200%) contrast(150%)">Bright High Contrast</option>
+        <option value="invert(25%) brightness(150%)">Light Inversion</option>
+        <option value="contrast(90%) drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5))">Dark Soft Shadow</option>
+        <option value="hue-rotate(360deg)">Full Color Cycle</option>
+        <option value="drop-shadow(0 0 20px rgba(255, 165, 0, 0.5))">Orange Glow</option>
+        <option value="brightness(300%) drop-shadow(0 0 30px rgba(0, 0, 255, 0.3))">Blue Light Glow</option>
+        <option value="opacity(80%) contrast(80%)">Balanced Fade</option>
+        <option value="blur(4px) brightness(200%)">High Brightness Blur</option>
+        <option value="hue-rotate(45deg) saturate(300%)">Warm Color Shift</option>
+        <option value="drop-shadow(10px 10px 10px rgba(0, 255, 255, 0.5))">Cyan Glow</option>
+        <option value="invert(10%) contrast(90%)">Slight Inversion</option>
+        <option value="saturate(150%) brightness(60%)">Colorful Dim</option>
+        <option value="contrast(150%) saturate(20%)">High Contrast Low Saturation</option>
+        <option value="blur(2px) brightness(120%)">Slight Brightness Blur</option>
+        <option value="drop-shadow(5px 5px 10px rgba(255, 255, 0, 0.5))">Yellow Soft Glow</option>
+        <option value="opacity(100%) hue-rotate(30deg)">Standard Brightness</option>
+        <option value="blur(5px) hue-rotate(30deg)">Blurred Warm Tone</option>
+        <option value="contrast(200%)">High Contrast</option>
+        <option value="saturate(300%) blur(3px)">High Saturation Blur</option>
+        <option value="drop-shadow(0 0 25px rgba(0, 0, 255, 0.5))">Blue Radiance</option>
+        <option value="brightness(250%) hue-rotate(180deg)">Bright Warm Glow</option>
+        <option value="opacity(90%) saturate(70%)">Dimmed Color</option>
+        <option value="blur(3px) contrast(120%)">Blurred Contrast</option>
+        <option value="hue-rotate(90deg) opacity(80%)">Dimmed Cool Fade</option>
+        <option value="saturate(150%) brightness(120%)">Brighter Colors</option>
+        <option value="drop-shadow(5px 5px 15px rgba(255, 165, 0, 0.5))">Orange Soft Glow</option>
+        <option value="brightness(70%) drop-shadow(0 0 25px rgba(255, 0, 0, 0.5))">Red Dim Glow</option>
+        <option value="contrast(70%) saturate(70%)">Dimmed Colors</option>
+        <option value="invert(30%) brightness(200%)">Inverted Bright</option>
+        <option value="drop-shadow(0 0 10px rgba(255, 0, 0, 0.6))">Deep Red Radiance</option>
+        <option value="blur(5px) invert(80%)">Blurred Inversion</option>
+        <option value="hue-rotate(150deg) saturate(200%)">Cool Color Boost</option>
+        <option value="saturate(400%) brightness(150%)">Vivid Bright Colors</option>
+        <option value="drop-shadow(0 0 30px rgba(255, 0, 255, 0.5))">Pink Radiance</option>
+        <option value="brightness(300%) saturate(200%)">Bright Vivid Colors</option>
+        <option value="contrast(100%) drop-shadow(0 0 30px rgba(255, 165, 0, 0.5))">Orange Glow Effect</option>
+        <option value="opacity(30%) brightness(50%)">Dark Fade Effect</option>
+        <option value="blur(1px) brightness(120%)">Subtle Brightness</option>
+        <option value="saturate(200%) contrast(50%)">Bright Dim Colors</option>
+        <option value="drop-shadow(5px 5px 5px rgba(255, 0, 255, 0.5))">Pink Soft Glow</option>
+        <option value="invert(50%) blur(2px)">Dimmed Inversion Blur</option>
+        <option value="contrast(80%) brightness(200%)">Bright Contrast</option>
+        <option value="drop-shadow(10px 10px 10px rgba(0, 255, 0, 0.5))">Green Soft Shadow</option>
+        <option value="blur(4px) brightness(100%)">Balanced Blur</option>
+        <option value="saturate(150%) brightness(150%)">Enhanced Colors</option>
+        <option value="contrast(70%) invert(20%)">Dimmed Inverted</option>
+        <option value="brightness(150%) drop-shadow(0 0 30px rgba(0, 0, 255, 0.5))">Bright Blue Glow</option>
+        <option value="opacity(90%) blur(4px)">Faded Blur</option>
+        <option value="hue-rotate(45deg) contrast(200%)">Warm Dimmed Tone</option>
+        <option value="saturate(500%) blur(5px)">Super Vivid Blur</option>
+        <option value="invert(20%) brightness(70%)">Slightly Dim Inversion</option>
+        <option value="contrast(100%) hue-rotate(180deg)">Standard High Contrast</option>
+        <option value="drop-shadow(5px 5px 10px rgba(255, 165, 0, 0.5))">Orange Soft Shadow</option>
+        <option value="saturate(200%) invert(50%)">Vibrant Dim Inversion</option>
+        <option value="blur(4px) saturate(100%)">Dim Saturation Blur</option>
+        <option value="brightness(120%) hue-rotate(30deg)">Warm Brightness</option>
+        <option value="opacity(70%) drop-shadow(0 0 10px rgba(255, 0, 255, 0.5))">Faded Pink Glow</option>
+        <option value="hue-rotate(60deg) drop-shadow(0 0 20px rgba(255, 0, 0, 0.5))">Red Soft Shadow</option>
+        <option value="saturate(80%) brightness(130%)">Moderate Brightness</option>
+        <option value="invert(90%) contrast(200%)">Strong Inversion</option>
+        <option value="drop-shadow(0 0 30px rgba(0, 255, 255, 0.6))">Cyan Radiance</option>
+        <option value="brightness(250%) contrast(75%)">Bright Dimmed Colors</option>
+        <option value="saturate(300%) drop-shadow(0 0 30px rgba(0, 255, 0, 0.6))">Green Radiance</option>
+        <option value="blur(1px) contrast(100%)">Low Blur High Contrast</option>
+        <option value="hue-rotate(180deg) opacity(50%)">Dimmed Warm Tone</option>
+        <option value="contrast(300%) hue-rotate(90deg)">High Contrast Cool</option>
+        <option value="drop-shadow(0 0 20px rgba(255, 255, 0, 0.5))">Yellow Soft Glow</option>
+        <option value="brightness(200%) drop-shadow(0 0 30px rgba(0, 0, 255, 0.5))">Blue Radiance Glow</option>
+        <option value="opacity(80%) saturate(60%)">Dimmed Color Glow</option>
+        <option value="blur(3px) brightness(80%)">Low Brightness Blur</option>
+        <option value="contrast(200%) brightness(80%)">High Contrast Dimmed</option>
+        <option value="saturate(150%) hue-rotate(60deg)">Warm Saturation Boost</option>
+        <option value="drop-shadow(5px 5px 15px rgba(0, 255, 0, 0.5))">Green Glow Effect</option>
+        <option value="blur(4px) invert(70%)">Moderate Inversion Blur</option>
+        <option value="brightness(300%) contrast(90%)">Ultra Bright Dimmed</option>
+        <option value="saturate(80%) hue-rotate(120deg)">Cool Dim Saturation</option>
+        <option value="contrast(90%) saturate(70%)">Moderate Dimmed Contrast</option>
+        <option value="invert(80%) brightness(200%)">High Inversion Bright</option>
+        <option value="drop-shadow(0 0 15px rgba(0, 0, 255, 0.5))">Blue Soft Glow</option>
+        <option value="blur(3px) brightness(90%)">Moderate Low Brightness</option>
+        <option value="contrast(200%) drop-shadow(10px 10px 10px rgba(0, 255, 255, 0.5))">Cyan Soft Glow</option>
     </select>
-    
-    <button id="filterButton" style="display: none;">Apply Silly Filter</button>
-    <script src="index.js"></script>
-</body>
-</html>
+
+    <button id="applyFilterButton">Apply Filter</button>
+</div>

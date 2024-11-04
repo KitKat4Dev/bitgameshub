@@ -15,29 +15,36 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             color: #4a90e2;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         p.welcome {
-            font-size: 1.2em;
+            font-size: 1.5em;
             color: #555;
             margin-bottom: 30px;
             text-align: center;
+            line-height: 1.4;
         }
 
         ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            width: 100%;
+            max-width: 600px;
         }
 
         li {
             margin: 15px 0;
+            text-align: center;
         }
 
         a {
@@ -45,14 +52,15 @@
             font-size: 1.5em;
             color: #ffffff;
             background-color: #4a90e2;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 15px 25px;
+            border-radius: 12px;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         a:hover {
             background-color: #357abf;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .input-section {
@@ -60,30 +68,34 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            max-width: 400px;
         }
 
         input[type="text"] {
             width: 100%;
-            max-width: 400px;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 10px;
+            font-size: 1em;
         }
 
         button {
-            padding: 10px 15px;
+            padding: 12px 18px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
             background-color: #218838;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         #message {
@@ -91,6 +103,13 @@
             font-weight: bold;
             text-align: center;
             color: #28a745;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
         }
     </style>
 </head>
@@ -103,7 +122,7 @@
             <a href="/clicker-madness/index.html">🎮 Clicker Madness</a>
         </li>
         <li>
-            <a href="/endless-maze/index.html">🎮 Endless Maze,broken,do not play</a>
+            <a href="/endless-maze/index.html">🎮 Endless Maze (broken, do not play)</a>
         </li>
         <li>
             <a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a>
@@ -121,22 +140,37 @@
             <a href="/customdodge/index.html">🎮 Custom Dodge</a>
         </li>
         <li>
-            <a href="/video-multiplier/index.html">🎮 Multiple Videos!</a>
+            <a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster Maker</a>
         </li>
         <li>
-            <a href="/video-downloader/index.html">🎮 Download Videos!</a>
+            <a href="/random-complaints/index.html">🎮 Random Complaints Generator</a>
+        </li>
+        <li>
+            <a href="/404-error-simulator/index.html">🎮 404 Error Simulator</a>
+        </li>
+        <li>
+            <a href="/random-button-generator/index.html">🎮 Random Button Generator</a>
+        </li>
+        <li>
+            <a href="/endless-scrolling-text/index.html">🎮 Endless Scrolling Text</a>
+        </li>
+        <li>
+            <a href="/time-wasting-countdown/index.html">🎮 Time-Wasting Countdown</a>
+        </li>
+        <li>
+            <a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a>
+        </li>
+        <li>
+            <a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel of Uselessness</a>
         </li>
     </ul>
-    
-    <div class="input-section">
-        <label for="url">Enter Video URL:</label>
-        <input type="text" id="url" placeholder="YouTube or TikTok URL">
-        <button id="downloadBtn">Download Video</button>
-        <div id="message"></div>
-    </div>
 
-    <p class="welcome">If a 404 error appears, then try reloading the page or re-inserting the link!</p>
-    
+    <p class="welcome">If a 404 error appears, try reloading the page or re-inserting the link!</p>
+
+    <footer>
+        &copy; 2024 Bit Games Hub. All rights reserved.
+    </footer>
+
     <script src="index.js"></script>
 </body>
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Wheel of Uselessness</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Color Wheel of Uselessness</h1>
+        <p>Create your own custom flag!</p>
+        <div class="controls">
+            <label for="colorPicker">Choose a color:</label>
+            <input type="color" id="colorPicker" value="#ff0000">
+            <button id="addColor">Add Color to Flag</button>
+            <button id="clearFlag">Clear Flag</button>
+        </div>
+        <canvas id="flagCanvas" width="500" height="300"></canvas>
+        <button id="downloadBtn">Download Flag</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
