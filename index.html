@@ -7,31 +7,33 @@
     <title>Bit Games Hub</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
+            font-family: 'Courier New', monospace;
+            background-color: #e0e0e0; /* Soft gray background */
+            color: #000;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            background-image: url('https://example.com/pixel-background.png'); /* Example 8-bit background */
+            background-size: cover;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            font-size: 3em;
-            color: #4a90e2;
+            font-size: 4em;
+            color: #ffcc00; /* Bright yellow */
+            text-shadow: 2px 2px 0 #000; /* 8-bit style shadow */
             margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         p.welcome {
-            font-size: 1.5em;
-            color: #555;
+            font-size: 1.8em;
+            color: #333;
             margin-bottom: 30px;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         ul {
@@ -50,17 +52,19 @@
         a {
             text-decoration: none;
             font-size: 1.5em;
-            color: #ffffff;
-            background-color: #4a90e2;
-            padding: 15px 25px;
-            border-radius: 12px;
+            color: #fff;
+            background-color: #007acc; /* Blue background */
+            padding: 10px 20px;
+            border-radius: 8px;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid #ffcc00; /* Yellow border */
+            display: inline-block; /* Makes the link behave like a button */
         }
 
         a:hover {
-            background-color: #357abf;
-            transform: translateY(-3px);
+            background-color: #005fa3; /* Darker blue on hover */
+            transform: translateY(-2px);
         }
 
         .input-section {
@@ -75,7 +79,7 @@
         input[type="text"] {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
+            border: 2px solid #007acc;
             border-radius: 5px;
             margin-bottom: 10px;
             font-size: 1em;
@@ -85,17 +89,19 @@
             padding: 12px 18px;
             background-color: #28a745;
             color: white;
-            border: none;
+            border: 2px solid #ffcc00;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             font-size: 1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            margin: 10px 0; /* Separate buttons */
         }
 
         button:hover {
             background-color: #218838;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         #message {
@@ -118,57 +124,27 @@
     <h1>Welcome to Bit Games Hub!</h1>
     <p class="welcome">Discover and enjoy an exciting world of games!</p>
     <ul>
-        <li>
-            <a href="/clicker-madness/index.html">🎮 Clicker Madness</a>
-        </li>
-        <li>
-            <a href="/endless-maze/index.html">🎮 Endless Maze (broken, do not play)</a>
-        </li>
-        <li>
-            <a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a>
-        </li>
-        <li>
-            <a href="/random-compliment/index.html">🎮 Random Compliment Generator</a>
-        </li>
-        <li>
-            <a href="/doodle-pad/index.html">🎮 Doodle Pad</a>
-        </li>
-        <li>
-            <a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a>
-        </li>
-        <li>
-            <a href="/customdodge/index.html">🎮 Custom Dodge</a>
-        </li>
-        <li>
-            <a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster Maker</a>
-        </li>
-        <li>
-            <a href="/random-complaints/index.html">🎮 Random Complaints Generator</a>
-        </li>
-        <li>
-            <a href="/404-error-simulator/index.html">🎮 404 Error Simulator</a>
-        </li>
-        <li>
-            <a href="/random-button-generator/index.html">🎮 Random Button Generator</a>
-        </li>
-        <li>
-            <a href="/endless-scrolling-text/index.html">🎮 Endless Scrolling Text</a>
-        </li>
-        <li>
-            <a href="/time-wasting-countdown/index.html">🎮 Time-Wasting Countdown</a>
-        </li>
-        <li>
-            <a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a>
-        </li>
-        <li>
-            <a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel of Uselessness</a>
-        </li>
+        <li><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></li>
+        <li><a href="/endless-maze/index.html">🎮 Endless Maze (broken, do not play)</a></li>
+        <li><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></li>
+        <li><a href="/random-compliment/index.html">🎮 Random Compliment Generator</a></li>
+        <li><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></li>
+        <li><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></li>
+        <li><a href="/customdodge/index.html">🎮 Custom Dodge</a></li>
+        <li><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster Maker</a></li>
+        <li><a href="/random-complaints/index.html">🎮 Random Complaints Generator</a></li>
+        <li><a href="/404-error-simulator/index.html">🎮 404 Error Simulator</a></li>
+        <li><a href="/random-button-generator/index.html">🎮 Random Button Generator</a></li>
+        <li><a href="/endless-scrolling-text/index.html">🎮 Endless Scrolling Text</a></li>
+        <li><a href="/time-wasting-countdown/index.html">🎮 Time-Wasting Countdown</a></li>
+        <li><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></li>
+        <li><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel of Uselessness</a></li>
     </ul>
 
     <p class="welcome">If a 404 error appears, try reloading the page or re-inserting the link!</p>
 
     <footer>
-        &copy; 2024 Bit Games Hub. All rights reserved.
+        &copy; 2013 Bit Games Hub. All rights reserved.
     </footer>
 
     <script src="index.js"></script>
