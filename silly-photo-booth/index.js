@@ -1,23 +1,28 @@
-document.getElementById('imageInput').addEventListener('change', function(event) {
+const uploadInput = document.getElementById('upload');
+const photo = document.getElementById('photo');
+const filterSelect = document.getElementById('filterSelect');
+const applyFilterButton = document.getElementById('applyFilter');
+
+uploadInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            const imgElement = document.createElement('img');
-            imgElement.src = e.target.result;
-            imgElement.id = 'uploadedImage';
-            imgElement.style.maxWidth = '100%';
-            document.getElementById('imageContainer').innerHTML = ''; // Clear previous image
-            document.getElementById('imageContainer').appendChild(imgElement);
+            photo.src = e.target.result;
+            photo.style.display = 'block';
+            filterSelect.style.display = 'block';
+            applyFilterButton.style.display = 'block';
         };
         reader.readAsDataURL(file);
     }
 });
 
-document.getElementById('applyFilterButton').addEventListener('click', function() {
-    const selectedFilter = document.getElementById('filterOptions').value;
-    const imgElement = document.getElementById('uploadedImage');
-    if (imgElement) {
-        imgElement.style.filter = selectedFilter;
-    }
+filterSelect.addEventListener('change', function() {
+    const selectedFilter = filterSelect.value;
+    photo.style.filter = selectedFilter;
+});
+
+applyFilterButton.addEventListener('click', function() {
+    const selectedFilter = filterSelect.value;
+    photo.style.filter = selectedFilter;
 });
