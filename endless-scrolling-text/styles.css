@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#scrollingText {
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+    font-size: 24px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
