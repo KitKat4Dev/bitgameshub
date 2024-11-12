@@ -117,6 +117,53 @@
             font-size: 0.9em;
             color: #777;
         }
+
+        /* Easter egg button styling */
+        .fox-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px;
+            background-color: #ff6347; /* Tomato color */
+            color: white;
+            font-size: 1.5em;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .fox-button:hover {
+            background-color: #e53e3e;
+            transform: scale(1.1);
+        }
+
+        /* Flashing images */
+        .fox-images {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .fox-images img {
+            width: 200px;
+            height: auto;
+            animation: flash 0.5s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 
@@ -154,11 +201,35 @@
         &copy; 2013 Bit Games Hub. All rights reserved.
     </footer>
 
-    <script src="index.js"></script>
+    <!-- Easter egg button -->
+    <button class="fox-button" id="foxButton">FOX</button>
+
+    <!-- Flashing Toby Fox images -->
+    <div class="fox-images" id="foxImages">
+        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
+        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
+    </div>
+
+    <script>
+        const foxButton = document.getElementById("foxButton");
+        const foxImages = document.getElementById("foxImages");
+
+        // Audio files for Easter egg
+        const skibidiSound = new Audio("SOUNDS/SKIBIDI.MP3");
+        const toiletSound = new Audio("SOUNDS/TOILET.MP3");
+
+        foxButton.addEventListener("click", () => {
+            foxImages.style.display = "block"; // Show images
+            skibidiSound.play(); // Play sound 1
+            toiletSound.play(); // Play sound 2
+
+            // Hide the images after 5 seconds
+            setTimeout(() => {
+                foxImages.style.display = "none";
+            }, 5000);
+        });
+    </script>
+
 </body>
 
 </html>
-
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4081508262998456"
-     crossorigin="anonymous"></script>
