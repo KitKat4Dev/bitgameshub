@@ -18,14 +18,36 @@
             min-height: 100vh;
             background-image: url('https://example.com/pixel-background.png'); /* Example 8-bit background */
             background-size: cover;
+            animation: scroll-background 10s linear infinite; /* Background scrolling animation */
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes scroll-background {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
         }
 
         h1 {
             font-size: 4em;
             color: #ffcc00; /* Bright yellow */
-            text-shadow: 2px 2px 0 #000; /* 8-bit style shadow */
+            text-shadow: 3px 3px 4px #000, 0 0 25px rgba(0, 0, 0, 0.5); /* Glowing 8-bit shadow */
             margin-bottom: 10px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         p.welcome {
@@ -34,6 +56,7 @@
             margin-bottom: 30px;
             text-align: center;
             line-height: 1.5;
+            animation: fadeIn 2s ease-out;
         }
 
         ul {
@@ -47,6 +70,7 @@
         li {
             margin: 15px 0;
             text-align: center;
+            animation: fadeIn 2s ease-out;
         }
 
         a {
@@ -54,17 +78,17 @@
             font-size: 1.5em;
             color: #fff;
             background-color: #007acc; /* Blue background */
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border: 2px solid #ffcc00; /* Yellow border */
-            display: inline-block; /* Makes the link behave like a button */
+            padding: 12px 24px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            display: inline-block;
         }
 
         a:hover {
             background-color: #005fa3; /* Darker blue on hover */
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         }
 
         .input-section {
@@ -78,30 +102,34 @@
 
         input[type="text"] {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 2px solid #007acc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 1em;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            transition: transform 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            transform: scale(1.05);
+            border-color: #ffcc00;
         }
 
         button {
-            padding: 12px 18px;
+            padding: 14px 20px;
             background-color: #28a745;
             color: white;
             border: 2px solid #ffcc00;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            font-size: 1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            display: inline-block;
-            margin: 10px 0; /* Separate buttons */
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
             background-color: #218838;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         #message {
@@ -109,6 +137,7 @@
             font-weight: bold;
             text-align: center;
             color: #28a745;
+            animation: fadeIn 2s ease-out;
         }
 
         footer {
@@ -123,14 +152,24 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 15px;
+            padding: 18px;
             background-color: #ff6347; /* Tomato color */
             color: white;
             font-size: 1.5em;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
         }
 
         .fox-button:hover {
@@ -151,17 +190,19 @@
         .fox-images img {
             width: 200px;
             height: auto;
-            animation: flash 0.5s infinite alternate;
             margin: 10px;
+            animation: pulse 1.5s infinite ease-in-out;
         }
 
-        @keyframes flash {
+        @keyframes pulse {
             0% {
-                opacity: 1;
+                transform: scale(1);
             }
-
+            50% {
+                transform: scale(1.1);
+            }
             100% {
-                opacity: 0;
+                transform: scale(1);
             }
         }
 
@@ -190,243 +231,49 @@
         <li><a href="/random-fact-generator/index.html">🎮 Random Fact Generator</a></li>
         <li><a href="/staring-contest/index.html">🎮 Staring Contest</a></li>
         <li><a href="/color-generator/index.html">🎮 Color Generator</a></li>
-        <li><a href="/overly-complicated-calculator/index.html">🎮 Overly Complicated Calculator</a></li>
-        <li><a href="/fake-news-generator/index.html">🎮 Fake News Generator</a></li>
-        <li><a href="/mood-ring/index.html">🎮 Mood Ring</a></li>
-        <li><a href="/lost-in-translation/index.html">🎮 Lost in Translation</a></li>
+        <li><a href="/number-guessing-game/index.html">🎮 Number Guessing Game</a></li>
+        <li><a href="/virtual-snowball-fight/index.html">🎮 Virtual Snowball Fight</a></li>
+        <li><a href="/button-masher/index.html">🎮 Button Masher</a></li>
     </ul>
 
-    <p class="welcome">If a 404 error appears, try reloading the page or re-inserting the link!</p>
+    <div class="input-section">
+        <input type="text" id="nickname" placeholder="Enter your nickname" />
+        <button onclick="greetUser()">Submit</button>
+    </div>
+    <p id="message"></p>
 
     <footer>
-        &copy; 2013 Bit Games Hub. All rights reserved.
+        <p>&copy; 2024 Bit Games Hub</p>
     </footer>
 
     <!-- Easter egg button -->
-    <button class="fox-button" id="foxButton">FOX</button>
+    <div class="fox-button" onclick="showFoxImages()">
+        🦊
+    </div>
 
-    <!-- Flashing Toby Fox images -->
-    <div class="fox-images" id="foxImages">
-        <!-- Add multiple images for a flood of Toby Fox pictures -->
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Toby Fox" />
-        
+    <!-- Flashing images -->
+    <div class="fox-images" id="fox-images">
+        <img src="https://example.com/fox1.gif" alt="Flashing Fox 1" />
+        <img src="https://example.com/fox2.gif" alt="Flashing Fox 2" />
+        <img src="https://example.com/fox3.gif" alt="Flashing Fox 3" />
     </div>
 
     <script>
-        // Toggle Toby Fox images
-        document.getElementById("foxButton").addEventListener("click", function () {
-            const foxImages = document.getElementById("foxImages");
-            foxImages.style.display = foxImages.style.display === "none" ? "block" : "none";
-        });
+        function greetUser() {
+            var nickname = document.getElementById('nickname').value;
+            if (nickname) {
+                document.getElementById('message').innerText = `Hello, ${nickname}! Welcome to Bit Games Hub!`;
+            } else {
+                document.getElementById('message').innerText = `Hello, gamer! Welcome to Bit Games Hub!`;
+            }
+        }
+
+        function showFoxImages() {
+            document.getElementById('fox-images').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('fox-images').style.display = 'none';
+            }, 5000); // Hide the images after 5 seconds
+        }
     </script>
 </body>
 
