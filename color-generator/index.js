@@ -1,5 +1,5 @@
 document.getElementById('generateColor').addEventListener('click', () => {
-    // Simulate rolling a dice (1 to 100)
+    // Simulate rolling a dice (1 to 99999)
     const diceRoll = Math.floor(Math.random() * 100) + 1;
     
     // Generate a random hex color code
