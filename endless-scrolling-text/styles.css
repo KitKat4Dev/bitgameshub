@@ -1,15 +1,26 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sleek, modern font */
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    background-color: #1a1a1a; /* Dark background for contrast */
 }
 
 #scrollingText {
     white-space: nowrap;
-    animation: scroll 20s linear infinite;
-    font-size: 24px;
+    animation: scroll 8s linear infinite; /* Faster scroll */
+    font-size: 32px; /* Larger text for more impact */
+    color: #fff; /* White text for better visibility */
+    font-weight: bold; /* Bold for emphasis */
+    letter-spacing: 2px; /* Adds space between letters for a clean, stylish effect */
+    text-transform: uppercase; /* Makes the text uppercase for more dynamic look */
 }
 
 @keyframes scroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
