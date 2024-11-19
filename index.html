@@ -231,57 +231,42 @@
         <li><a href="/random-fact-generator/index.html">🎮 Random Fact Generator</a></li>
         <li><a href="/staring-contest/index.html">🎮 Staring Contest</a></li>
         <li><a href="/color-generator/index.html">🎮 Color Generator</a></li>
-        <li><a href="/number-guessing-game/index.html">🎮 Number Guessing Game</a></li>
-        <li><a href="/virtual-snowball-fight/index.html">🎮 Virtual Snowball Fight</a></li>
-        <li><a href="/button-masher/index.html">🎮 Button Masher</a></li>
+        <li><a href="/animation-maker/index.html">🎮 Animation Maker</a></li>
+        <li><a href="/video-cloner/index.html">🎮 Video Cloner</a></li>
+        <li><a href="/emoji-spawner/index.html">🎮 Emoji Spawner</a></li>
     </ul>
+    
 
     <div class="input-section">
         <input type="text" id="nickname" placeholder="Enter your nickname" />
-        <button onclick="greetUser()">Submit</button>
+        <button onclick="greetUser()">Greet me!</button>
+        <p id="message"></p>
     </div>
-    <p id="message"></p>
+
+    <!-- Fox button -->
+    <button class="fox-button" onclick="showFoxImages()">🐾</button>
+
+    <!-- Flashing fox images -->
+    <div class="fox-images" id="fox-images">
+        <img src="Assets/mydadwillthinkimgay.png" alt="Fox Image 1">
+        <img src="Assets/mydadwillthinkimgay.png" alt="Fox Image 2">
+        <img src="Assets/mydadwillthinkimgay.png" alt="Fox Image 3">
+    </div>
 
     <footer>
-        <p>&copy; 2024 Bit Games Hub</p>
+        <p>&copy; 2024 Bit Games Hub | Designed for fun and randomness!</p>
     </footer>
-
-    <!-- Easter egg button -->
-    <div class="fox-button" onclick="showFoxImages()">
-        🦊
-    </div>
-
-    <!-- Flashing images -->
-    <div class="fox-images" id="fox-images">
-        <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-        <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-         <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-         <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-         <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-         <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-         <img src="Assets/mydadwillthinkimgay.png" alt="Flashing Fox 1" />
-        
-    </div>
 
     <script>
         function greetUser() {
             var nickname = document.getElementById('nickname').value;
-            if (nickname) {
-                document.getElementById('message').innerText = `Hello, ${nickname}! Welcome to Bit Games Hub!`;
-            } else {
-                document.getElementById('message').innerText = `Hello, gamer! Welcome to Bit Games Hub!`;
-            }
+            var message = nickname ? "Hello, " + nickname + "! Welcome to the Bit Games Hub!" : "Please enter a nickname!";
+            document.getElementById('message').textContent = message;
         }
 
         function showFoxImages() {
-            document.getElementById('fox-images').style.display = 'block';
-            setTimeout(function() {
-                document.getElementById('fox-images').style.display = 'none';
-            }, 5000); // Hide the images after 5 seconds
+            var foxImages = document.getElementById('fox-images');
+            foxImages.style.display = foxImages.style.display === 'none' ? 'block' : 'none';
         }
     </script>
 </body>
