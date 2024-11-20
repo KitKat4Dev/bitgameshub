@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Courier New', monospace;
-            background-color: #e0e0e0; /* Soft gray background */
+            background-color: #e0e0e0;
             color: #000;
             margin: 0;
             padding: 20px;
@@ -16,9 +16,9 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            background-image: url('https://example.com/pixel-background.png'); /* Example 8-bit background */
+            background-image: url('https://example.com/pixel-background.png');
             background-size: cover;
-            animation: scroll-background 10s linear infinite; /* Background scrolling animation */
+            animation: scroll-background 10s linear infinite;
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -33,8 +33,8 @@
 
         h1 {
             font-size: 4em;
-            color: #ffcc00; /* Bright yellow */
-            text-shadow: 3px 3px 4px #000, 0 0 25px rgba(0, 0, 0, 0.5); /* Glowing 8-bit shadow */
+            color: #ffcc00;
+            text-shadow: 3px 3px 4px #000, 0 0 25px rgba(0, 0, 0, 0.5);
             margin-bottom: 10px;
             animation: fadeIn 2s ease-out;
         }
@@ -77,7 +77,7 @@
             text-decoration: none;
             font-size: 1.5em;
             color: #fff;
-            background-color: #007acc; /* Blue background */
+            background-color: #007acc;
             padding: 12px 24px;
             border-radius: 10px;
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
@@ -86,7 +86,7 @@
         }
 
         a:hover {
-            background-color: #005fa3; /* Darker blue on hover */
+            background-color: #005fa3;
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         }
@@ -147,13 +147,12 @@
             color: #777;
         }
 
-        /* Easter egg button styling */
         .fox-button {
             position: fixed;
             top: 20px;
             right: 20px;
             padding: 18px;
-            background-color: #ff6347; /* Tomato color */
+            background-color: #ff6347;
             color: white;
             font-size: 1.5em;
             border-radius: 50%;
@@ -177,7 +176,6 @@
             transform: scale(1.1);
         }
 
-        /* Flashing images */
         .fox-images {
             display: none;
             position: fixed;
@@ -205,13 +203,14 @@
                 transform: scale(1);
             }
         }
-
     </style>
 </head>
 
 <body>
     <h1>Welcome to Bit Games Hub!</h1>
-    <p class="welcome">Discover and enjoy an exciting world of games!</p>
+    <p class="welcome">Discover and enjoy an exciting world of games, fun polls, and tons of laughter!</p>
+
+    <!-- Game List -->
     <ul>
         <li><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></li>
         <li><a href="/endless-maze/index.html">🎮 Endless Maze (broken, do not play)</a></li>
@@ -232,37 +231,50 @@
         <li><a href="/staring-contest/index.html">🎮 Staring Contest</a></li>
         <li><a href="/color-generator/index.html">🎮 Color Generator</a></li>
     </ul>
-    
 
+    <!-- Fun Polls and Games -->
     <div class="input-section">
         <input type="text" id="nickname" placeholder="Enter your nickname" />
         <button onclick="greetUser()">Greet me!</button>
         <p id="message"></p>
     </div>
 
-    <!-- Fox button -->
-    <button class="fox-button" onclick="showFoxImages()">🐾</button>
+    <div>
+        <h2>Would You Rather?</h2>
+        <p>Would you rather have a pet robot or a pet dinosaur?</p>
+        <p>Would you rather be able to talk to animals or never need to sleep again?</p>
+    </div>
 
-    <!-- Flashing fox images -->
-    <div class="fox-images" id="fox-images">
-        <img src="Assets/mydadwillthinkimgay.png" alt="Fox Image 1">
-        <img src="Assets/mydadwillthinkimgay.png" alt="Fox Image 2">
-        <img src="Assets/mydadwillthinkimgay.png" alt="Fox Image 3">
+    <div id="meme-section">
+        <h2>Meme Zone!</h2>
+        <img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755">
+        <img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Meme 2" style="max-width: 100%;">
+    </div>
+
+    <div id="fox-section">
+        <div class="fox-button" onclick="toggleFoxImages()">🐾</div>
+        <div class="fox-images" id="fox-images">
+            <img src="Assets/mydadwillthinkimgay.png" alt="Fox 1">
+            <img src="Assets/mydadwillthinkimgay.png" alt="Fox 2">
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Bit Games Hub | Designed for fun and randomness!</p>
+        <p>Made by Bit Games - 2012/p>
     </footer>
 
     <script>
         function greetUser() {
-            var nickname = document.getElementById('nickname').value;
-            var message = nickname ? "Hello, " + nickname + "! Welcome to the Bit Games Hub!" : "Please enter a nickname!";
-            document.getElementById('message').textContent = message;
+            let nickname = document.getElementById('nickname').value;
+            if (nickname.trim()) {
+                document.getElementById('message').innerHTML = `Hello, ${nickname}! Ready to explore the games?`;
+            } else {
+                document.getElementById('message').innerHTML = "Please enter a nickname!";
+            }
         }
 
-        function showFoxImages() {
-            var foxImages = document.getElementById('fox-images');
+        function toggleFoxImages() {
+            const foxImages = document.getElementById('fox-images');
             foxImages.style.display = foxImages.style.display === 'none' ? 'block' : 'none';
         }
     </script>
