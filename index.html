@@ -6,34 +6,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bit Games Hub</title>
     <style>
-        /* Existing styles remain unchanged */
+        /* General body styling */
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #e0e0e0;
-            color: #000;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #e1bee7);
+            color: #333;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            background-image: url('https://example.com/pixel-background.png');
-            background-size: cover;
-            animation: scroll-background 10s linear infinite;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in;
         }
 
-        @keyframes scroll-background {
+        /* Smooth fade-in effect */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Header styling */
+        h1 {
+            font-size: 3rem;
+            color: #4a90e2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            text-align: center;
+            animation: popIn 1s ease-out;
+        }
+
+        /* Text animation */
+        @keyframes popIn {
             0% {
-                background-position: 0 0;
+                transform: scale(0.8);
+                opacity: 0;
             }
             100% {
-                background-position: 100% 100%;
+                transform: scale(1);
+                opacity: 1;
             }
         }
 
-        /* Additional styles remain unchanged */
+        .welcome {
+            font-size: 1.3rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Game list styling */
+        ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            transition: grid-template-columns 0.3s ease;
+        }
+
+        ul li {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            color: #357ab9;
+        }
+
+        /* Input section styling */
+        .input-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .input-section input {
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 320px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-section input:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+        }
+
+        .input-section button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .input-section button:hover {
+            background-color: #357ab9;
+            transform: scale(1.05);
+        }
+
+        .input-section p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Section styling */
+        div h2 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        /* Meme zone styling */
+        #meme-section img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+
+        #meme-section img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Fox section styling */
+        .fox-button {
+            font-size: 1.8rem;
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .fox-button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #fox-images img {
+            max-width: 100%;
+            border-radius: 10px;
+            display: block;
+            margin: 15px 0;
+        }
+
+        /* Footer styling */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        footer a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            ul {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .input-section input {
+                width: 70%;
+            }
+
+            .input-section button {
+                width: 70%;
+            }
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -60,64 +261,47 @@
         <li><a href="/random-fact-generator/index.html">🎮 Random Fact Generator</a></li>
         <li><a href="/staring-contest/index.html">🎮 Staring Contest</a></li>
         <li><a href="/color-generator/index.html">🎮 Color Generator</a></li>
-    </ul>
+        <li><a href="/Video-cloner/index.html">🎮 Video cloner</a></li>
+        </ul>
 
-    <!-- Fun Polls and Games -->
     <div class="input-section">
-        <input type="text" id="nickname" placeholder="Enter your nickname" />
-        <button onclick="greetUser()">Greet me!</button>
-        <p id="message"></p>
-    </div>
-
-    <div>
-        <h2>Would You Rather?</h2>
-        <p>Would you rather have a pet robot or a pet dinosaur?</p>
-        <p>Would you rather be able to talk to animals or never need to sleep again?</p>
+        <h2>Enter your game name</h2>
+        <input type="text" placeholder="Enter a game name..." id="game-name" />
+        <button onclick="displayGameName()">Submit</button>
+        <p id="game-name-output"></p>
     </div>
 
     <div id="meme-section">
-        <h2>Meme Zone!</h2>
-        <img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Meme 1">
-        <img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Meme 2" style="max-width: 100%;">
-    </div>
+        <h2>Diddys World memes</h2>
+<img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1">
+<img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2">
+<img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3">
+<img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4">
+</div>
 
     <div id="fox-section">
-        <div class="fox-button" onclick="toggleFoxImages()">🐾</div>
-        <div class="fox-images" id="fox-images">
-            <img src="Assets/mydadwillthinkimgay.png" alt="Fox 1">
-            <img src="Assets/mydadwillthinkimgay.png" alt="Fox 2">
-        </div>
+        <h2>Fox Button Fun!</h2>
+        <div class="fox-button" onclick="showFoxImage()">🐾 Click Me!</div>
+        <div id="fox-images"></div>
     </div>
 
     <footer>
-        <p>Made by Bit Games - 2012</p>
+        <p>Made with ❤️ by Gooby4</p>
+        <p><a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
     </footer>
 
     <script>
-        const badWords = ["sex", "retard", "Nigga","nigger", "sodomy", "Fuck",]; // Add more bad words here
-
-        function greetUser() {
-            let nickname = document.getElementById('nickname').value.trim();
-            const lowerNickname = nickname.toLowerCase();
-
-            if (nickname === "") {
-                document.getElementById('message').innerHTML = "Please enter a nickname!";
-                return;
-            }
-
-            // Check for bad words
-            if (badWords.some(badWord => lowerNickname.includes(badWord))) {
-                alert("Inappropriate nickname detected! You are being kicked out.");
-                window.location.href = "https://google.com"; // Redirect to a neutral page
-                return;
-            }
-
-            document.getElementById('message').innerHTML = `Hello, ${nickname}! Ready to explore the games?`;
+        function displayGameName() {
+            var gameName = document.getElementById("game-name").value;
+            var output = document.getElementById("game-name-output");
+            output.textContent = "You entered: " + gameName;
         }
 
-        function toggleFoxImages() {
-            const foxImages = document.getElementById('fox-images');
-            foxImages.style.display = foxImages.style.display === 'none' ? 'block' : 'none';
+        function showFoxImage() {
+            var foxImages = document.getElementById("fox-images");
+            var foxImage = document.createElement("img");
+            foxImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyT7bhbi5j0X12jyEpVYwfx88Ef-5KLnhXSw&s" + Math.floor(Math.random() * 3 + 1) + "https://i.ytimg.com/vi/hNfEO2ZJKjo/mqdefault.jpg"; // Random fox image
+            foxImages.appendChild(foxImage);
         }
     </script>
 </body>
