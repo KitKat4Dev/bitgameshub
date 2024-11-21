@@ -12,7 +12,7 @@
             background: linear-gradient(135deg, #e3f2fd, #e1bee7);
             color: #333;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,10 +32,10 @@
 
         /* Header styling */
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #4a90e2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
             text-align: center;
             animation: popIn 1s ease-out;
         }
@@ -53,11 +53,11 @@
         }
 
         .welcome {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #555;
             text-align: center;
             margin-bottom: 30px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* Game list styling */
@@ -68,21 +68,22 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
             transition: grid-template-columns 0.3s ease;
         }
 
         ul li {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
 
         ul li:hover {
             transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: #f3f9ff;
         }
 
         ul li a {
@@ -90,6 +91,7 @@
             color: #4a90e2;
             font-weight: 600;
             font-size: 1.1rem;
+            display: block;
             transition: color 0.3s ease;
         }
 
@@ -100,19 +102,20 @@
 
         /* Input section styling */
         .input-section {
-            margin: 30px 0;
+            margin: 50px 0;
             text-align: center;
+            animation: fadeIn 2s ease-out;
         }
 
         .input-section input {
-            padding: 12px;
-            font-size: 1rem;
+            padding: 15px;
+            font-size: 1.1rem;
             border: 2px solid #ccc;
             border-radius: 8px;
             width: 80%;
-            max-width: 320px;
+            max-width: 350px;
             margin-bottom: 15px;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .input-section input:focus {
@@ -122,13 +125,13 @@
         }
 
         .input-section button {
-            padding: 12px 24px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #fff;
             background-color: #4a90e2;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
@@ -143,17 +146,10 @@
             color: #333;
         }
 
-        /* Section styling */
-        div h2 {
-            color: #4a90e2;
-            margin-bottom: 15px;
-            font-size: 2rem;
-        }
-
-        /* Meme zone styling */
+        /* Meme section styling */
         #meme-section img {
             max-width: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 15px 0;
             transition: transform 0.3s ease;
@@ -163,12 +159,12 @@
             transform: scale(1.05);
         }
 
-        /* Fox section styling */
+        /* Fox button styling */
         .fox-button {
             font-size: 1.8rem;
             background-color: #4a90e2;
             color: #fff;
-            padding: 15px;
+            padding: 15px 25px;
             border-radius: 50%;
             display: inline-block;
             cursor: pointer;
@@ -183,9 +179,14 @@
 
         #fox-images img {
             max-width: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             display: block;
             margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+
+        #fox-images img:hover {
+            transform: scale(1.05);
         }
 
         /* Footer styling */
@@ -195,6 +196,9 @@
             color: #888;
             font-size: 0.9rem;
             padding: 20px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
         }
 
         footer p {
@@ -214,23 +218,24 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             ul {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             }
 
-            .input-section input {
-                width: 70%;
-            }
-
+            .input-section input,
             .input-section button {
-                width: 70%;
+                width: 80%;
+            }
+
+            .fox-button {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -256,53 +261,50 @@
         <li><a href="/random-button-generator/index.html">🎮 Random Button Generator</a></li>
         <li><a href="/endless-scrolling-text/index.html">🎮 Endless Scrolling Text</a></li>
         <li><a href="/time-wasting-countdown/index.html">🎮 Time-Wasting Countdown</a></li>
-        <li><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></li>
-        <li><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel of Uselessness</a></li>
-        <li><a href="/random-fact-generator/index.html">🎮 Random Fact Generator</a></li>
-        <li><a href="/staring-contest/index.html">🎮 Staring Contest</a></li>
-        <li><a href="/color-generator/index.html">🎮 Color Generator</a></li>
-        <li><a href="/video-cloner/index.html">🎮 Video cloner!</a></li>
-        </ul>
+        <li><a href="/virtual-pet/index.html">🎮 Virtual Pet</a></li>
+    </ul>
 
+    <!-- Search Input -->
     <div class="input-section">
-        <h2>Enter your game name</h2>
-        <input type="text" placeholder="Enter a game name..." id="game-name" />
-        <button onclick="displayGameName()">Submit</button>
-        <p id="game-name-output"></p>
+        <input type="text" placeholder="Search for a game..." id="search-bar">
+        <button id="search-button">Search</button>
     </div>
 
-    <div id="meme-section">
-        <h2>Diddys World memes</h2>
+    <!-- Meme Section -->
+    <h2>Diddys World memes</h2>
 <img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1">
 <img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2">
 <img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3">
 <img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4">
 </div>
 
-    <div id="fox-section">
-        <h2>Fox Button Fun!</h2>
-        <div class="fox-button" onclick="showFoxImage()">🐾 Click Me!</div>
-        <div id="fox-images"></div>
+    <!-- Fox Button -->
+    <div class="input-section">
+        <div class="fox-button" id="fox-button">🐾</div>
+        <div id="fox-images">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyT7bhbi5j0X12jyEpVYwfx88Ef-5KLnhXSw&s" alt="Fox Image 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyT7bhbi5j0X12jyEpVYwfx88Ef-5KLnhXSw&s" alt="Fox Image 2">
+        </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>Made with love by SMG5!</p>
-        <p><a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
+        <p>Built with ❤️ by SMG5</p>
+        <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
     </footer>
 
     <script>
-        function displayGameName() {
-            var gameName = document.getElementById("game-name").value;
-            var output = document.getElementById("game-name-output");
-            output.textContent = "You entered: " + gameName;
-        }
+        // Add interactivity
+        document.getElementById('search-button').addEventListener('click', function() {
+            let query = document.getElementById('search-bar').value;
+            alert('You searched for: ' + query);
+        });
 
-        function showFoxImage() {
-            var foxImages = document.getElementById("fox-images");
-            var foxImage = document.createElement("img");
-            foxImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyT7bhbi5j0X12jyEpVYwfx88Ef-5KLnhXSw&s" + Math.floor(Math.random() * 3 + 1) + "https://i.ytimg.com/vi/hNfEO2ZJKjo/mqdefault.jpg"; // Random fox image
-            foxImages.appendChild(foxImage);
-        }
+        // Fox button interaction
+        document.getElementById('fox-button').addEventListener('click', function() {
+            let images = document.getElementById('fox-images');
+            images.style.display = (images.style.display === 'block' ? 'none' : 'block');
+        });
     </script>
 </body>
 
