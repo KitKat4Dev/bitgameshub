@@ -19,266 +19,135 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Dark Mode */
-        body.dark-mode {
-            background: #121212;
-            color: #e5e5e5;
-        }
-
-        /* Header */
         h1 {
             font-size: 3rem;
-            color: #1de9b6; /* Fresh turquoise */
-            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            color: #1de9b6;
             margin: 40px 0;
             text-align: center;
-        }
-
-        h1.dark-mode {
-            color: #00e5ff;
-        }
-
-        /* Welcome Message */
-        .welcome {
-            font-size: 1.4rem;
-            color: #555;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .welcome.dark-mode {
-            color: #e5e5e5;
-        }
-
-        /* Button Styles */
-        .toggle-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #1de9b6;
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .toggle-btn:hover {
-            background-color: #00e5ff;
-            transform: scale(1.05);
-        }
-
-        /* Game List */
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0 auto;
-            width: 90%;
-            max-width: 950px;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            color: #444;
-        }
-
-        ul li {
-            margin: 20px 0;
-            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            font-weight: 500;
         }
 
-        ul li a {
-            color: #1de9b6;
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .game-button {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-color: #1de9b6;
             text-decoration: none;
             font-size: 1.1rem;
-            font-weight: 500;
-            padding: 12px 24px;
-            border-radius: 30px;
-            background-color: #ffffff;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
-            display: inline-block;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        ul li a:hover {
+        .game-button:hover {
             background-color: #00e5ff;
-            color: #fff;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        ul li a:active {
-            transform: translateY(1px);
+        .game-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Meme Gallery */
-        .meme-section {
-            margin-top: 60px;
-            width: 100%;
-            max-width: 1100px;
-            text-align: center;
-        }
-
-        .meme-section h2 {
-            font-size: 2.4rem;
-            color: #1de9b6;
-            margin-bottom: 30px;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .meme-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            padding: 16px;
-        }
-
-        .meme-item {
-            background: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .meme-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .meme-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        /* Upload Form */
-        .upload-form {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .upload-form input[type="file"] {
-            padding: 12px;
-            font-size: 1.2rem;
-            border-radius: 10px;
-            border: 2px solid #ddd;
-            transition: border-color 0.3s ease;
-            width: 260px;
-        }
-
-        .upload-form input[type="file"]:focus {
-            border-color: #1de9b6;
-        }
-
-        .upload-form button {
-            padding: 12px 28px;
-            background-color: #1de9b6;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .upload-form button:hover {
-            background-color: #00e5ff;
-            transform: scale(1.05);
-        }
-
-        /* Footer */
         footer {
             margin-top: auto;
             text-align: center;
             color: #777;
             font-size: 1.1rem;
-            padding: 30px;
+            padding: 20px 40px;
             width: 100%;
             background-color: #fff;
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        footer p {
-            margin: 8px 0;
+        /* Meme Zone Styles */
+        .meme-zone {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 40px;
+            text-align: center;
         }
 
-        footer a {
-            color: #1de9b6;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
+        .meme-upload {
+            margin-bottom: 20px;
         }
 
-        footer a:hover {
-            color: #00e5ff;
-            text-decoration: underline;
+        .uploaded-memes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-        /* Scroll-to-top Button */
-        #scroll-to-top {
-            display: none;
-            position: fixed;
-            bottom: 35px;
-            right: 35px;
+        .uploaded-meme {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-btn {
             background-color: #1de9b6;
             color: white;
-            padding: 18px 30px;
-            border-radius: 50%;
-            font-size: 1.6rem;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
         }
 
-        #scroll-to-top:hover {
+        .upload-btn:hover {
             background-color: #00e5ff;
-            transform: scale(1.1);
         }
-
     </style>
 </head>
 
 <body>
-    <button class="toggle-btn" id="toggle-btn">Switch to Dark Mode</button>
     <h1>Welcome to Bit Games Hub!</h1>
-    <p class="welcome">Discover and enjoy an exciting world of games, fun polls, and tons of laughter!</p>
+    <div class="game-container">
+        <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
+        <a href="/endless-maze/index.html" class="game-button">🎮 Endless Maze</a>
+        <a href="/boredom-simulator/index.html" class="game-button">🎮 Boredom Simulator</a>
+        <a href="/random-compliment/index.html" class="game-button">🎮 Random Compliments</a>
+        <a href="/doodle-pad/index.html" class="game-button">🎮 Doodle Pad</a>
+        <a href="/silly-photo-booth/index.html" class="game-button">🎮 Silly Photo Booth</a>
+        <a href="/customdodge/index.html" class="game-button">🎮 Custom Dodge</a>
+        <a href="/unmotivational-poster/index.html" class="game-button">🎮 Unmotivational Poster</a>
+        <a href="/random-complaints/index.html" class="game-button">🎮 Random Complaints</a>
+        <a href="/404-error-simulator/index.html" class="game-button">🎮 404 Simulator</a>
+        <a href="/random-button-generator/index.html" class="game-button">🎮 Random Buttons</a>
+        <a href="/endless-scrolling-text/index.html" class="game-button">🎮 Scrolling Text</a>
+        <a href="/time-wasting-countdown/index.html" class="game-button">🎮 Countdown</a>
+        <a href="/virtual-pet-rock/index.html" class="game-button">🎮 Virtual Pet Rock</a>
+        <a href="/color-wheel-of-uselessness/index.html" class="game-button">🎮 Color Wheel</a>
+        <a href="/random-fact-generator/index.html" class="game-button">🎮 Fact Generator</a>
+        <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
+        <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
+        <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
+    </div>
 
-    <!-- Game List -->
-    <ul>
-        <li><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></li>
-        <li><a href="/endless-maze/index.html">🎮 Endless Maze (broken, do not play)</a></li>
-        <li><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></li>
-        <li><a href="/random-compliment/index.html">🎮 Random Compliment Generator</a></li>
-        <li><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></li>
-        <li><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></li>
-        <li><a href="/customdodge/index.html">🎮 Custom Dodge</a></li>
-        <li><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster Maker</a></li>
-        <li><a href="/random-complaints/index.html">🎮 Random Complaints Generator</a></li>
-        <li><a href="/404-error-simulator/index.html">🎮 404 Error Simulator</a></li>
-        <li><a href="/random-button-generator/index.html">🎮 Random Button Generator</a></li>
-        <li><a href="/endless-scrolling-text/index.html">🎮 Endless Scrolling Text</a></li>
-        <li><a href="/time-wasting-countdown/index.html">🎮 Time-Wasting Countdown</a></li>
-        <li><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></li>
-        <li><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel of Uselessness</a></li>
-        <li><a href="/random-fact-generator/index.html">🎮 Random Fact Generator</a></li>
-        <li><a href="/staring-contest/index.html">🎮 Staring Contest</a></li>
-        <li><a href="/color-generator/index.html">🎮 Color Generator</a></li>
-        <li><a href="/video-cloner/index.html">🎮 Video cloner!</a></li>
-        </ul>
-
-    <!-- Meme Section -->
-    <div class="meme-section">
+    <!-- Meme Zone Section -->
+    <div class="meme-zone">
         <h2>🖼️ Meme Gallery</h2>
 <div class="meme-gallery">
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
@@ -286,7 +155,9 @@
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
 </div>
-        <div class="meme-gallery" id="meme-gallery"></div>
+        <div class="uploaded-memes" id="uploaded-memes">
+            <!-- Uploaded memes will appear here -->
+        </div>
     </div>
 
     <footer>
@@ -295,51 +166,26 @@
     </footer>
 
     <script>
-        // Dark Mode Toggle
-        const toggleBtn = document.getElementById('toggle-btn');
-        toggleBtn.addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            toggleBtn.textContent = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-        });
-
-        // Meme Upload Functionality
+        // Function to handle meme upload
         function uploadMeme() {
-            const input = document.getElementById('upload-input');
-            const file = input.files[0];
-            if (!file) {
-                alert('Please select a file!');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const memeGallery = document.getElementById('meme-gallery');
-                const memeItem = document.createElement('div');
-                memeItem.classList.add('meme-item');
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                memeItem.appendChild(img);
-                memeGallery.appendChild(memeItem);
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Show the scroll-to-top button when scrolling
-        window.onscroll = function () {
-            const scrollToTop = document.getElementById('scroll-to-top');
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                scrollToTop.style.display = 'block';
+            const fileInput = document.getElementById('meme-upload-input');
+            const file = fileInput.files[0];
+            
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.classList.add('uploaded-meme');
+                    document.getElementById('uploaded-memes').appendChild(img);
+                };
+                
+                reader.readAsDataURL(file);
             } else {
-                scrollToTop.style.display = 'none';
+                alert('Please upload a valid image file.');
             }
-        };
-
-        // Scroll to top functionality
-        document.getElementById('scroll-to-top').addEventListener('click', function () {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        });
+        }
     </script>
 </body>
 
