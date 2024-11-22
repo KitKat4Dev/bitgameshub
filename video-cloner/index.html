@@ -3,23 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Video Cloner</title>
+
+    <!-- Link to External Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon for a more professional touch -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Font import for improved text appearance -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Additional fallback styles for head section */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Video Cloner</h1>
-        <label for="youtubeUrl">YouTube Video URL:</label>
-        <input type="text" id="youtubeUrl" placeholder="Paste your YouTube link here">
+        <h1>Welcome to the Video Cloner!</h1>
+        <p>Clone your favorite YouTube video as many times as you want!</p>
         
-        <label for="cloneCount">Number of Clones (1-1000):</label>
-        <input type="number" id="cloneCount" min="1" max="1000" value="1">
+        <div class="input-group">
+            <label for="youtubeUrl">YouTube Video URL:</label>
+            <input type="text" id="youtubeUrl" placeholder="Paste your YouTube link here" aria-label="YouTube Video URL">
+        </div>
         
-        <button id="cloneBtn">Clone Video</button>
+        <div class="input-group">
+            <label for="cloneCount">Number of Clones (1-1000):</label>
+            <input type="number" id="cloneCount" min="1" max="1000" value="1" aria-label="Number of Clones">
+        </div>
+        
+        <button id="cloneBtn" class="btn">Clone Video</button>
         
         <div id="videoContainer" class="video-container"></div>
     </div>
     
+    <footer>
+        <p>Created with ❤️ by SMG5</p>
+    </footer>
+
+    <!-- Link to the main script -->
     <script src="index.js"></script>
 </body>
 </html>
