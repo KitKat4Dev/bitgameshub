@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .pet-selection,
+  .music-selection {
+    margin: 20px 0;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  select, input[type="file"] {
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  
+  input[type="file"] {
+    font-size: 14px;
+  }
+  
+  .pet-display {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #pet-image {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+  }
+  
+  audio {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+  }
+  
+  input[type="file"]:focus {
+    outline: none;
+    border-color: #4a90e2;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #4a90e2;
+  }
+  
