@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bit Games Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* General body styling */
+        /* Global Styles */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e3f2fd, #e1bee7);
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
             color: #333;
             margin: 0;
             padding: 0;
@@ -17,188 +18,195 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            animation: fadeIn 1.5s ease-in;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Smooth fade-in effect */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        /* Dark Mode */
+        body.dark-mode {
+            background: #121212;
+            color: #e5e5e5;
         }
 
-        /* Header styling */
+        /* Header */
         h1 {
-            font-size: 3.5rem;
-            color: #4a90e2;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
+            font-size: 3rem;
+            color: #1de9b6; /* Fresh turquoise */
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 40px 0;
             text-align: center;
-            animation: popIn 1s ease-out;
         }
 
-        /* Text animation */
-        @keyframes popIn {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        h1.dark-mode {
+            color: #00e5ff;
         }
 
+        /* Welcome Message */
         .welcome {
             font-size: 1.4rem;
             color: #555;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            font-weight: 300;
             line-height: 1.6;
         }
 
-        /* Game list styling */
+        .welcome.dark-mode {
+            color: #e5e5e5;
+        }
+
+        /* Button Styles */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #1de9b6;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: #00e5ff;
+            transform: scale(1.05);
+        }
+
+        /* Game List */
         ul {
-            list-style: none;
+            list-style-type: none;
             padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            transition: grid-template-columns 0.3s ease;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 950px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #444;
         }
 
         ul li {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-        }
-
-        ul li:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background: #f3f9ff;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 500;
         }
 
         ul li a {
+            color: #1de9b6;
             text-decoration: none;
-            color: #4a90e2;
-            font-weight: 600;
             font-size: 1.1rem;
-            display: block;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
         }
 
         ul li a:hover {
-            text-decoration: underline;
-            color: #357ab9;
+            background-color: #00e5ff;
+            color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Input section styling */
-        .input-section {
-            margin: 50px 0;
+        ul li a:active {
+            transform: translateY(1px);
+        }
+
+        /* Meme Gallery */
+        .meme-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1100px;
             text-align: center;
-            animation: fadeIn 2s ease-out;
         }
 
-        .input-section input {
-            padding: 15px;
-            font-size: 1.1rem;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 350px;
-            margin-bottom: 15px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        .meme-section h2 {
+            font-size: 2.4rem;
+            color: #1de9b6;
+            margin-bottom: 30px;
+            font-weight: 500;
+            text-transform: uppercase;
         }
 
-        .input-section input:focus {
-            border-color: #4a90e2;
-            outline: none;
-            box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+        .meme-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            padding: 16px;
         }
 
-        .input-section button {
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #fff;
-            background-color: #4a90e2;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .input-section button:hover {
-            background-color: #357ab9;
-            transform: scale(1.05);
-        }
-
-        .input-section p {
-            font-size: 1rem;
-            color: #333;
-        }
-
-        /* Meme section styling */
-        #meme-section img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 15px 0;
-            transition: transform 0.3s ease;
-        }
-
-        #meme-section img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Fox button styling */
-        .fox-button {
-            font-size: 1.8rem;
-            background-color: #4a90e2;
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
+        .meme-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .fox-button:hover {
-            transform: scale(1.2);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        .meme-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        #fox-images img {
-            max-width: 100%;
-            border-radius: 12px;
-            display: block;
-            margin: 15px 0;
-            transition: transform 0.3s ease;
+        .meme-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
 
-        #fox-images img:hover {
+        /* Upload Form */
+        .upload-form {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .upload-form input[type="file"] {
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            transition: border-color 0.3s ease;
+            width: 260px;
+        }
+
+        .upload-form input[type="file"]:focus {
+            border-color: #1de9b6;
+        }
+
+        .upload-form button {
+            padding: 12px 28px;
+            background-color: #1de9b6;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .upload-form button:hover {
+            background-color: #00e5ff;
             transform: scale(1.05);
         }
 
-        /* Footer styling */
+        /* Footer */
         footer {
             margin-top: auto;
             text-align: center;
-            color: #888;
-            font-size: 0.9rem;
-            padding: 20px;
+            color: #777;
+            font-size: 1.1rem;
+            padding: 30px;
             width: 100%;
             background-color: #fff;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
         }
 
         footer p {
@@ -206,43 +214,43 @@
         }
 
         footer a {
-            color: #4a90e2;
+            color: #1de9b6;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
+            color: #00e5ff;
             text-decoration: underline;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            ul {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            }
-
-            .input-section input,
-            .input-section button {
-                width: 80%;
-            }
-
-            .fox-button {
-                font-size: 1.5rem;
-            }
+        /* Scroll-to-top Button */
+        #scroll-to-top {
+            display: none;
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background-color: #1de9b6;
+            color: white;
+            padding: 18px 30px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
+        #scroll-to-top:hover {
+            background-color: #00e5ff;
+            transform: scale(1.1);
+        }
+
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <button class="toggle-btn" id="toggle-btn">Switch to Dark Mode</button>
     <h1>Welcome to Bit Games Hub!</h1>
     <p class="welcome">Discover and enjoy an exciting world of games, fun polls, and tons of laughter!</p>
 
@@ -269,46 +277,57 @@
         <li><a href="/video-cloner/index.html">🎮 Video cloner!</a></li>
         </ul>
 
-    <!-- Search Input -->
-    <div class="input-section">
-        <input type="text" placeholder="Search for a game..." id="search-bar">
-        <button id="search-button">Search</button>
+    <!-- Meme Gallery Section -->
+    <div class="meme-section">
+        <h2>🖼️ Meme Gallery</h2>
+<div class="meme-gallery">
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
+</div>
+        </div>
     </div>
 
-    <!-- Meme Section -->
-    <h2>Diddys World memes</h2>
-<img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1">
-<img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2">
-<img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3">
-<img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4">
-</div>
-
-    <!-- Fox Button -->
-    <div class="input-section">
-        <div class="fox-button" id="fox-button">🐾</div>
-        <div id="fox-images">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyT7bhbi5j0X12jyEpVYwfx88Ef-5KLnhXSw&s" alt="Fox Image 1">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyT7bhbi5j0X12jyEpVYwfx88Ef-5KLnhXSw&s" alt="Fox Image 2">
-        </div>
+    <!-- Upload Form -->
+    <div class="upload-form">
+        <h2>Upload Your Own Meme</h2>
+        <input type="file" id="upload-input" />
+        <button>Upload Meme</button>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>Built with ❤️ by SMG5</p>
-        <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+        <p>&copy; 2024 Bit Games Hub. All Rights Reserved.</p>
+        <p>Visit our <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</p>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top">&#8679;</button>
+
     <script>
-        // Add interactivity
-        document.getElementById('search-button').addEventListener('click', function() {
-            let query = document.getElementById('search-bar').value;
-            alert('You searched for: ' + query);
+        // Toggle dark mode
+        const toggleBtn = document.getElementById('toggle-btn');
+        toggleBtn.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            toggleBtn.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         });
 
-        // Fox button interaction
-        document.getElementById('fox-button').addEventListener('click', function() {
-            let images = document.getElementById('fox-images');
-            images.style.display = (images.style.display === 'block' ? 'none' : 'block');
+        // Scroll-to-top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
