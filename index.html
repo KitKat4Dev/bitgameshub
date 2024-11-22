@@ -277,7 +277,7 @@
         <li><a href="/video-cloner/index.html">🎮 Video cloner!</a></li>
         </ul>
 
-    <!-- Meme Gallery Section -->
+    <!-- Meme Section -->
     <div class="meme-section">
         <h2>🖼️ Meme Gallery</h2>
 <div class="meme-gallery">
@@ -286,48 +286,59 @@
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
 </div>
-        </div>
+        <div class="meme-gallery" id="meme-gallery"></div>
     </div>
 
-    <!-- Upload Form -->
-    <div class="upload-form">
-        <h2>Upload Your Own Meme</h2>
-        <input type="file" id="upload-input" />
-        <button>Upload Meme</button>
-    </div>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Bit Games Hub. All Rights Reserved.</p>
-        <p>Visit our <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</p>
+        <p>&copy; 2024 Bit Games Hub</p>
+        <p>Created by <a href="https://www.youtube.com/@SuperMemeGuardian5SuperMario">SMG5</a></p>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scroll-to-top">&#8679;</button>
-
     <script>
-        // Toggle dark mode
+        // Dark Mode Toggle
         const toggleBtn = document.getElementById('toggle-btn');
         toggleBtn.addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
-            toggleBtn.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            toggleBtn.textContent = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         });
 
-        // Scroll-to-top functionality
-        const scrollToTopBtn = document.getElementById('scroll-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.style.display = 'block';
-            } else {
-                scrollToTopBtn.style.display = 'none';
+        // Meme Upload Functionality
+        function uploadMeme() {
+            const input = document.getElementById('upload-input');
+            const file = input.files[0];
+            if (!file) {
+                alert('Please select a file!');
+                return;
             }
-        });
 
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const memeGallery = document.getElementById('meme-gallery');
+                const memeItem = document.createElement('div');
+                memeItem.classList.add('meme-item');
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                memeItem.appendChild(img);
+                memeGallery.appendChild(memeItem);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Show the scroll-to-top button when scrolling
+        window.onscroll = function () {
+            const scrollToTop = document.getElementById('scroll-to-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollToTop.style.display = 'block';
+            } else {
+                scrollToTop.style.display = 'none';
+            }
+        };
+
+        // Scroll to top functionality
+        document.getElementById('scroll-to-top').addEventListener('click', function () {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         });
     </script>
 </body>
