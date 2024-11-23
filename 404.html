@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Página Não Encontrada</title>
+    <title>Página Não Encontrada</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
-            background-color: #f7f7f7;
+            background-color: #f0f0f0;
         }
 
         h1 {
@@ -18,18 +18,35 @@
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.5em;
         }
 
         a {
-            font-size: 1.2em;
             text-decoration: none;
             color: blue;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <h1>Hei, sua mula, esta página não existe.</h1>
-    <p>Essa página não existe. Clique aqui para voltar para <a href="http://bitgameshub.com/">a página inicial</a>.</p>
+    <h1 id="error-message"></h1>
+    <p>Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.</p>
+    <p><a href="/">Voltar para a página inicial</a></p>
+
+    <script>
+        // Array de mensagens de erro
+        const messages = [
+            "Esta página non ecxiste! Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
+            "Essa página não existe; e se um dia existiu, algum mafagafo a comeu. Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
+            "Essa página é patrimônio histórico do Acre, ela não existe! Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
+            "Bad bad site, no donut for you. Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site."
+        ];
+
+        // Escolher uma mensagem aleatória
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+        // Mostrar a mensagem aleatória no lugar do texto do <h1>
+        document.getElementById("error-message").innerText = randomMessage;
+    </script>
 </body>
 </html>
