@@ -26,19 +26,40 @@
             color: blue;
             font-size: 1.2em;
         }
+
+        /* Estilos para os botões */
+        .button {
+            background-color: #4CAF50; /* Cor do botão */
+            color: white;
+            padding: 15px 32px;
+            font-size: 1.2em;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #45a049; /* Cor do botão quando o mouse passa por cima */
+        }
     </style>
 </head>
 <body>
     <h1 id="error-message"></h1>
     <p>Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.</p>
-    <p><a href="/">Voltar para a página inicial</a></p>
+    
+    <!-- Botões -->
+    <a href="https://bitgameshub.com" class="button">Voltar para o Principal</a>
+    <a href="mailto:bernardodanielmo12raes123@gmail.com" class="button">Pedir para o criador criar esse site</a>
 
     <script>
         // Array de mensagens de erro
         const messages = [
-            "Esta página non ecxiste! Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
-            "Essa página não existe; e se um dia existiu, algum mafagafo a comeu. Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
-            "Essa página é patrimônio histórico do Acre, ela não existe! Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
+            "Esta página não existe! Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
+            "Esse artigo não existe; e se um dia existiu, algum mafagafo o comeu. Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
+            "Esse artigo é patrimônio histórico do Acre, ele não existe! Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site.",
             "Bad bad site, no donut for you. Você pode pesquisar pelo título deste site no principal ou pedir para o criador criar este site."
         ];
 
