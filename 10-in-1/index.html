@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitgameshub - Fun Zone</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      background-color: #F0F0F0;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      position: relative;
+      min-height: 100vh;
+      overflow: auto;
+    }
+
+    h1 {
+      color: #FF0000;
+      font-size: 36px;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background-color: #FFF;
+      border: 3px solid #000;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: scale(1.05);
+    }
+
+    .button {
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #FF6347;
+      transform: scale(1.1);
+    }
+
+    .hidden-content {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .time-machine {
+      background-color: #FFF0F5;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .emoji-buttons button {
+      font-size: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
+      transition: transform 0.3s;
+    }
+
+    .emoji-buttons button:hover {
+      transform: scale(1.2);
+    }
+
+    /* Pop-up Styles */
+    .popup-ad {
+      position: absolute;
+      width: 200px;
+      height: 150px;
+      background-color: #f4f4f4;
+      border: 2px solid #000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #333;
+      font-size: 14px;
+      z-index: 1000;
+      border-radius: 5px;
+    }
+
+    .popup-ad h3 {
+      color: #FF6347;
+    }
+
+    .retro-style {
+      background-color: #FF00FF;
+      color: #FFFF00;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 24px;
+      text-align: center;
+      padding: 20px;
+      border: 5px solid #000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      top: 30px;
+      animation: retroEffect 1s ease-in-out infinite;
+    }
+
+    @keyframes retroEffect {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Bitgameshub Fun Zone!</h1>
+
+  <!-- Feature 1: Fake Ad Pop-Up Surprise -->
+  <div class="feature">
+    <h2>1. Fake Ad Pop-Up Surprise!</h2>
+    <button class="button" onclick="generateFakeAd()">Click me for Surprise Ads!</button>
+  </div>
+
+  <!-- Feature 2: Time Machine -->
+  <div class="feature time-machine">
+    <h2>2. The Bitgameshub Time Machine</h2>
+    <button class="button" onclick="changeSiteStyle()">Activate Time Machine</button>
+    <div id="timeMachineContent">Your website is now in 1990s Geocities style! 🎨</div>
+  </div>
+
+  <!-- Feature 3: Game Mode -->
+  <div class="feature game-mode">
+    <h2>3. Game Mode: Website Edition</h2>
+    <button class="button" onclick="addPoints()">Click me to earn points!</button>
+    <p id="pointsDisplay">Points: 0</p>
+  </div>
+
+  <!-- Feature 4: Guess the Meme -->
+  <div class="feature">
+    <h2>4. Guess the Meme</h2>
+    <button class="button" onclick="guessMeme()">Guess the Meme!</button>
+    <div class="hidden-content" id="memeAnswer">
+      <p>It's the "Distracted Boyfriend" meme! 😆</p>
+    </div>
+  </div>
+
+  <!-- Feature 5: Developer Surprise -->
+  <div class="feature">
+    <h2>5. Surprise Developer</h2>
+    <button class="button" onclick="showDeveloper()">Show Developer Secret</button>
+    <div class="hidden-content" id="developerAnswer">
+      <p>This is a developer's secret! 🎉</p>
+    </div>
+  </div>
+
+  <!-- Retro 90s/2000s Style Div -->
+  <div id="retroDiv" class="retro-style" style="display: none;">
+    <h2>Welcome to the 90s/2000s website!</h2>
+    <p>Enjoy the colorful, nostalgic vibes of an old-school site!</p>
+  </div>
+
+  <script>
+    let points = 0;
+
+    // Feature 1: Fake Ad Pop-Up Generator
+    function generateFakeAd() {
+      const adContainer = document.createElement('div');
+      adContainer.classList.add('popup-ad');
+      adContainer.style.top = Math.random() * (window.innerHeight - 150) + 'px';  // Random vertical position
+      adContainer.style.left = Math.random() * (window.innerWidth - 200) + 'px';   // Random horizontal position
+
+      // Randomly set ad content
+      adContainer.innerHTML = `
+        <h3>Get Mario's Farts in a Jar!</h3>
+<p>Limited edition! Own a piece of gaming history – collect Mario’s farts today!</p>
+
+<h3>Buy One, Get a Free Unicorn!</h3>
+<p>No tricks! For every item you buy, we’ll send you a real-life unicorn. Act fast!</p>
+
+<h3>Free Time Machine with Every Purchase!</h3>
+<p>Buy anything now and receive a time machine for free! Go back to yesterday’s deals!</p>
+
+<h3>Unlock Your Superpowers!</h3>
+<p>Buy this one item and gain the power to fly, teleport, and read minds for 24 hours!</p>
+
+<h3>Limited Edition Pirate Ship for Sale!</h3>
+<p>Buy today, and we’ll send you a fully functional pirate ship! Only 1 left!</p>
+
+<h3>Get Your Own Pet Dinosaur!</h3>
+<p>Just $19.99 and a lifetime supply of Dino food – claim your prehistoric friend!</p>
+
+<h3>Become a Supermodel in 5 Minutes!</h3>
+<p>Buy now and receive a free makeover that will make you runway-ready in seconds!</p>
+
+<h3>Win a Private Island for $1!</h3>
+<p>Order now and we’ll throw in a private island. No questions asked. Shipping fees apply!</p>
+
+<h3>Get Rich Quick – No Effort Needed!</h3>
+<p>We’ve cracked the code! Buy our secret product, and we’ll send you a vault of cash!</p>
+
+<h3>Become a Millionaire Overnight!</h3>
+<p>Purchase our 100% foolproof money-making system and watch your bank account explode!</p>
+
+<h3>Free Car with Every Purchase!</h3>
+<p>Buy a keychain today and get a luxury car delivered to your door tomorrow! (Terms apply!)</p>
+
+<h3>Get Your Own Personal Genie!</h3>
+<p>One click and our genie will grant you three wishes. Make your dreams come true!</p>
+
+<h3>Free Money, Just Pay for Shipping!</h3>
+<p>Get an envelope full of cash for only $5.99 shipping. Limited supply – act fast!</p>
+
+<h3>Claim Your Secret Fortune!</h3>
+<p>Unlock a hidden treasure chest of gold and diamonds with every purchase! Only today!</p>
+
+<h3>Time Travel to the Past with Every Item!</h3>
+<p>Each purchase gives you a free trip back in time! Relive the good old days!</p>
+
+<h3>Become a Wizard Instantly!</h3>
+<p>Get your magic wand with every order! Cast spells, brew potions – all with no experience required!</p>
+
+<h3>Free Wi-Fi on the Moon!</h3>
+<p>Order now, and we’ll send you a free satellite package with unlimited Wi-Fi on the Moon!</p>
+
+<h3>All-You-Can-Eat Pizza for Life!</h3>
+<p>Buy any item today, and we’ll throw in free pizza for life! (Terms: must love pizza.)</p>
+
+<h3>Own a Piece of the Moon!</h3>
+<p>Purchase now and we’ll give you a deed to land on the Moon. Great for investment!</p>
+
+<h3>Get a Free Flying Carpet!</h3>
+<p>Only today! Buy our limited-time offer and receive a flying carpet! Great for travel!</p>
+
+        <button class="button" onclick="closeFakeAd(this)">Close</button>
+      `;
+
+      document.body.appendChild(adContainer);
+    }
+
+    // Function to close fake ad manually
+    function closeFakeAd(button) {
+      const ad = button.parentElement;
+      ad.style.display = 'none';
+    }
+
+    // Feature 2: Time Machine
+    function changeSiteStyle() {
+      document.body.style.backgroundColor = '#FF69B4';  // Hot pink background
+      document.body.style.color = '#FFFF00';  // Yellow text
+      document.getElementById("timeMachineContent").innerText = 'You are now in 1990s Geocities style!';
+      document.getElementById("retroDiv").style.display = 'block';
+    }
+
+    // Feature 3: Game Mode
+    function addPoints() {
+      points += 10;
+      document.getElementById("pointsDisplay").innerText = "Points: " + points;
+    }
+
+    // Feature 4: Guess the Meme
+    function guessMeme() {
+      document.getElementById("memeAnswer").style.display = 'block';
+    }
+
+    // Feature 5: Developer Surprise
+    function showDeveloper() {
+      document.getElementById("developerAnswer").style.display = 'block';
+    }
+
+    // Feature 6: Surprise Pop-Up
+    function showPopup() {
+      const popup = document.createElement('div');
+      popup.classList.add('popup-ad');
+      popup.innerHTML = '<h3>Surprise!</h3><p>Click anywhere for a surprise!</p>';
+      popup.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+      popup.style.left = Math.random() * (window.innerWidth - 200) + 'px';
+      document.body.appendChild(popup);
+    }
+
+    // Show a surprise pop-up every few seconds
+    setInterval(showPopup, 5000);
+  </script>
+
+</body>
+</html>

@@ -119,11 +119,33 @@
         .upload-btn:hover {
             background-color: #00e5ff;
         }
+
+        /* Language Switcher Styles */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switcher img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to Bit Games Hub!</h1>
+    <div class="language-switcher">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" onclick="changeLanguage('en')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Brazil.svg" alt="Portuguese" onclick="changeLanguage('pt')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spanish" onclick="changeLanguage('es')">
+        <!-- Add more flags and languages as needed -->
+    </div>
+
+    <h1 id="welcome-message">Welcome to Bit Games Hub!</h1>
     <div class="game-container">
         <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
         <a href="/endless-maze/index.html" class="game-button">🎮 Endless Maze</a>
@@ -144,20 +166,18 @@
         <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
         <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
         <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
+        <a href="/10-in-1/index.html" class="game-button">🎮 10 in 1</a>
     </div>
 
     <!-- Meme Zone Section -->
-    <div class="meme-zone">
-        <h2>🖼️ Meme Gallery</h2>
+    <h2>🖼️ Meme Gallery</h2>
 <div class="meme-gallery">
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
 <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
 </div>
-        <div class="uploaded-memes" id="uploaded-memes">
-            <!-- Uploaded memes will appear here -->
-        </div>
+
     </div>
 
     <footer>
@@ -166,27 +186,69 @@
     </footer>
 
     <script>
-        // Function to handle meme upload
-        function uploadMeme() {
-            const fileInput = document.getElementById('meme-upload-input');
-            const file = fileInput.files[0];
-            
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                
-                reader.onload = function(event) {
-                    const img = document.createElement('img');
-                    img.src = event.target.result;
-                    img.classList.add('uploaded-meme');
-                    document.getElementById('uploaded-memes').appendChild(img);
-                };
-                
-                reader.readAsDataURL(file);
-            } else {
-                alert('Please upload a valid image file.');
-            }
+        function changeLanguage(language) {
+          // Alterar o conteúdo do site com base no idioma selecionado
+          if(language === 'en') {
+            document.body.lang = 'en';
+            document.getElementById('welcome-message').innerText = "Welcome to Bitgameshub!";
+          }
+          if(language === 'pt') {
+            document.body.lang = 'pt';
+            document.getElementById('welcome-message').innerText = "Bem-vindo ao Bitgameshub!";
+          }
+          if(language === 'es') {
+            document.body.lang = 'es';
+            document.getElementById('welcome-message').innerText = "¡Bienvenido a Bitgameshub!";
+          }
+          if(language === 'fr') {
+            document.body.lang = 'fr';
+            document.getElementById('welcome-message').innerText = "Bienvenue sur Bitgameshub!";
+          }
+          if(language === 'de') {
+            document.body.lang = 'de';
+            document.getElementById('welcome-message').innerText = "Willkommen bei Bitgameshub!";
+          }
+          if(language === 'it') {
+            document.body.lang = 'it';
+            document.getElementById('welcome-message').innerText = "Benvenuto su Bitgameshub!";
+          }
+          if(language === 'ru') {
+            document.body.lang = 'ru';
+            document.getElementById('welcome-message').innerText = "Добро пожаловать на Bitgameshub!";
+          }
+          if(language === 'zh') {
+            document.body.lang = 'zh';
+            document.getElementById('welcome-message').innerText = "欢迎来到Bitgameshub!";
+          }
+          if(language === 'ja') {
+            document.body.lang = 'ja';
+            document.getElementById('welcome-message').innerText = "Bitgameshubへようこそ!";
+          }
+          if(language === 'ko') {
+            document.body.lang = 'ko';
+            document.getElementById('welcome-message').innerText = "Bitgameshub에 오신 것을 환영합니다!";
+          }
+          if(language === 'ar') {
+            document.body.lang = 'ar';
+            document.getElementById('welcome-message').innerText = "مرحبًا بك في Bitgameshub!";
+          }
+          if(language === 'hi') {
+            document.body.lang = 'hi';
+            document.getElementById('welcome-message').innerText = "Bitgameshub में आपका स्वागत है!";
+          }
+          if(language === 'tr') {
+            document.body.lang = 'tr';
+            document.getElementById('welcome-message').innerText = "Bitgameshub'a hoş geldiniz!";
+          }
+          if(language === 'pl') {
+            document.body.lang = 'pl';
+            document.getElementById('welcome-message').innerText = "Witamy na Bitgameshub!";
+          }
+          if(language === 'nl') {
+            document.body.lang = 'nl';
+            document.getElementById('welcome-message').innerText = "Welkom bij Bitgameshub!";
+          }
         }
-        
     </script>
 </body>
 
