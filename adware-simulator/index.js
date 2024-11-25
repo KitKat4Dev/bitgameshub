@@ -43,7 +43,6 @@ const messages = [
     "Blocky is pranking your files. Click here to stop him!"
 ];
 
-
 // Function to generate a random position
 function getRandomPosition() {
     const x = Math.random() * (window.innerWidth - 300);
@@ -62,10 +61,13 @@ function createPopup() {
     // Header
     const header = document.createElement("div");
     header.classList.add("popup-header");
-    header.innerHTML = `
-        Totally cool offer!
-        <span onclick="this.parentElement.parentElement.remove()">✖</span>
-    `;
+    header.innerHTML = `Totally cool offer!`;
+
+    // Close button
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "✖";
+    closeButton.addEventListener("click", () => popup.remove());
+    header.appendChild(closeButton);
 
     // Content
     const content = document.createElement("div");
@@ -85,7 +87,17 @@ function spawnPopups(count) {
     }
 }
 
+// Limit the number of active popups to prevent memory issues
+const MAX_POPUPS = 50;
+function cleanupPopups() {
+    const popups = document.querySelectorAll(".popup");
+    if (popups.length > MAX_POPUPS) {
+        popupsContainer.removeChild(popups[0]); // Remove the oldest popup
+    }
+}
+
 // Spawn 10 popups every second
 setInterval(() => {
-    spawnPopups();
+    spawnPopups(1);
+    cleanupPopups();
 }, 1000);
