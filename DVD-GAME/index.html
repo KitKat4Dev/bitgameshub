@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smiley Screensaver Game</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    #controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+    }
+
+    #canvas {
+      display: block;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 8px 16px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1976D2;
+    }
+
+    input[type="number"] {
+      font-size: 16px;
+      padding: 5px;
+      width: 60px;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <button id="cloneButton">Clone Smileys</button>
+    <input type="number" id="cloneCount" min="1" max="200" value="10">
+    <p id="score">Hits: 0</p>
+  </div>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const cloneButton = document.getElementById('cloneButton');
+    const cloneCountInput = document.getElementById('cloneCount');
+    const scoreEl = document.getElementById('score');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let hits = 0;
+
+    // Smiley object template
+    function createSmiley() {
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: 50,
+        dx: Math.random() < 0.5 ? -3 : 3,
+        dy: Math.random() < 0.5 ? -3 : 3,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+      };
+    }
+
+    let smileys = [createSmiley()];
+
+    // Draw a smiley face with nerd teeth
+    function drawSmiley(smiley) {
+      const { x, y, size, color } = smiley;
+
+      // Face
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.closePath();
+
+      // Eyes
+      ctx.beginPath();
+      ctx.arc(x - size / 3, y - size / 3, size / 6, 0, Math.PI * 2);
+      ctx.arc(x + size / 3, y - size / 3, size / 6, 0, Math.PI * 2);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.arc(x - size / 3, y - size / 3, size / 12, 0, Math.PI * 2);
+      ctx.arc(x + size / 3, y - size / 3, size / 12, 0, Math.PI * 2);
+      ctx.fillStyle = 'black';
+      ctx.fill();
+      ctx.closePath();
+
+      // Mouth
+      ctx.beginPath();
+      ctx.arc(x, y + size / 4, size / 3, 0, Math.PI, false);
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.closePath();
+
+
+    }
+
+    // Update smiley positions
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const smiley of smileys) {
+        drawSmiley(smiley);
+
+        // Move smiley
+        smiley.x += smiley.dx;
+        smiley.y += smiley.dy;
+
+        // Bounce off walls and change color
+        if (smiley.x - smiley.size <= 0 || smiley.x + smiley.size >= canvas.width) {
+          smiley.dx *= -1;
+          smiley.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          hits++;
+        }
+
+        if (smiley.y - smiley.size <= 0 || smiley.y + smiley.size >= canvas.height) {
+          smiley.dy *= -1;
+          smiley.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          hits++;
+        }
+      }
+
+      scoreEl.textContent = `Hits: ${hits}`;
+      requestAnimationFrame(update);
+    }
+
+    // Add clones
+    cloneButton.addEventListener('click', () => {
+      const cloneCount = Math.min(Math.max(parseInt(cloneCountInput.value), 1), 200);
+      for (let i = 0; i < cloneCount; i++) {
+        smileys.push(createSmiley());
+      }
+    });
+
+    // Resize canvas on window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    update();
+  </script>
+</body>
+</html>

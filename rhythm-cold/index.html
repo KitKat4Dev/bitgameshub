@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: all 1s ease-in-out;
+            position: relative;
+        }
+
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        /* Flashing lights effect */
+        .flashing-lights {
+            animation: flash 0.2s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% {
+                background-color: red;
+            }
+            25% {
+                background-color: green;
+            }
+            50% {
+                background-color: blue;
+            }
+            75% {
+                background-color: pink;
+            }
+            100% {
+                background-color: yellow;
+            }
+        }
+
+        /* Crazy scaling effect */
+        .crazy-scale {
+            animation: scaleCrazy 0.5s infinite alternate;
+        }
+
+        @keyframes scaleCrazy {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Crazy shaking effect */
+        .shake {
+            animation: shake 0.3s infinite alternate;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            100% {
+                transform: translateX(-5px);
+            }
+        }
+
+        /* Crazy background color */
+        @keyframes crazyBackground {
+            0% {
+                background-color: #ff6347;
+            }
+            25% {
+                background-color: #32cd32;
+            }
+            50% {
+                background-color: #1e90ff;
+            }
+            75% {
+                background-color: #ff1493;
+            }
+            100% {
+                background-color: #ff8c00;
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: random;
+            animation: confetti-fall 2s infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Breaking News</h1>
+    </header>
+    <nav>
+        <a href="#" id="homeBtn">Home</a>
+        <a href="#">World</a>
+        <a href="#">Sports</a>
+        <a href="#">Entertainment</a>
+    </nav>
+    <div class="content">
+        <h2>Today's Top Story</h2>
+        <p>Some innocent news about something important happening in the world...</p>
+    </div>
+
+    <script>
+        const homeButton = document.getElementById('homeBtn');
+
+        // Create an audio element for the sound
+        const audio = new Audio('https://cdn.pixabay.com/download/audio/2023/10/13/audio_d7d1e8d7d0.mp3?filename=jumpscare-154489.mp3');
+
+        homeButton.addEventListener('click', () => {
+            // Start the madness
+            document.body.classList.add('disco');
+            document.body.classList.add('flashing-lights');
+            document.body.classList.add('crazy-scale');
+            document.body.classList.add('shake'); // Shake everything
+            document.body.style.animation = "crazyBackground 1s infinite"; // Crazy background color effect
+
+            document.querySelectorAll('nav a').forEach((btn) => {
+                btn.classList.add('falling');
+                setTimeout(() => {
+                    btn.classList.add('glitch');
+                    btn.classList.add('shake');
+                }, 1000);
+            });
+
+            // Create confetti
+            for (let i = 0; i < 200; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDelay = `${Math.random() * 2}s`;
+                document.body.appendChild(confetti);
+            }
+
+            // Play sound
+            audio.play();
+            audio.volume = 1; // Make it loud!
+
+            // Add more chaos with the page
+            setTimeout(() => {
+                document.body.innerHTML = '<h1 style="text-align:center;color: red;">BOOM!!! EVERYTHING IS GLITCHING!!!</h1>';
+                document.body.style.backgroundColor = 'black';
+                document.body.style.color = 'red';
+                const glitchText = document.createElement('h2');
+                glitchText.textContent = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!';
+                document.body.appendChild(glitchText);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
