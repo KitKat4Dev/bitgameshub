@@ -10,8 +10,8 @@
         /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1de9b6, #00e5ff);
-            color: #ffffff;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Blue gradient background */
+            color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
@@ -24,65 +24,66 @@
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin: 40px 0;
             text-align: center;
             text-transform: uppercase;
             background: linear-gradient(90deg, #ffffff, #ffeb3b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
         }
 
         .game-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             margin: 20px auto;
-            padding: 0 10px;
+            padding: 0 15px;
             width: 90%;
-            max-width: 1300px;
+            max-width: 1400px;
             transition: all 1s ease;
         }
 
         .game-button {
-            width: 160px;
-            height: 160px;
+            width: 250px; /* Larger buttons */
+            height: 250px; /* Larger buttons */
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: #ffffff;
-            background: linear-gradient(135deg, #ff4081, #f50057);
+            color: #fff;
+            background: linear-gradient(135deg, #3d5afe, #536dfe); /* Blue button colors */
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.5rem; /* Larger text size */
             font-weight: bold;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             transition: all 0.4s ease;
         }
 
         .game-button:hover {
             background: linear-gradient(135deg, #3d5afe, #536dfe);
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-15px) scale(1.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
         .game-button:active {
             transform: scale(0.95);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         footer {
             margin-top: auto;
             text-align: center;
-            color: #ffffff;
+            color: #fff;
             font-size: 1rem;
-            padding: 15px 30px;
+            padding: 20px 40px;
             width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.4);
         }
 
         footer a {
@@ -100,21 +101,21 @@
             max-width: 1000px;
             margin-top: 40px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
 
         .meme-item img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
         }
 
         .meme-item img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
         }
 
         /* Language Switcher Styles */
@@ -123,23 +124,23 @@
             top: 20px;
             right: 20px;
             display: flex;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 10px 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         .language-switcher img {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .language-switcher img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
+            transform: scale(1.2);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
         }
 
         /* Wooooosh Button Styles */
@@ -147,23 +148,23 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            padding: 20px 40px;
-            background-color: #ff4081;
-            font-size: 1.5rem;
+            padding: 25px 50px;
+            background-color: #3d5afe; /* Blue button color */
+            font-size: 1.7rem;
             color: white;
-            border-radius: 15px;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
         }
 
         .wooooosh-button:hover {
-            background-color: #f50057;
+            background-color: #536dfe;
         }
 
         .wooooosh-button:active {
             transform: scale(0.95);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Spinning and Bouncing Animations */
@@ -261,57 +262,35 @@
         <a href="/rhythm-cold/index.html" class="game-button">🎮 Normal site:WARNING!FLASHING LIGHTS!IF YOU HAVE EPILEPSY,DO NOT PLAY THIS GAME!</a>
     </div>
 
-    <button class="wooooosh-button" onclick="triggerWooooosh()">Wooooosh!</button>
-
     <h2>🖼️ Meme Gallery</h2>
-    <div class="meme-gallery">
-    <div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
-    <div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
-    <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
-    <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
+<div class="meme-gallery">
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
+<div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
+</div>
     </div>
-    
-
-
 
     <footer>
-        <p>&copy; 2024 <a href="https://bitgameshub.com">BitGamesHub.com</a> | All Rights Reserved</p>
+        <p>&copy; 2024 Bitgameshub.com | All Rights Reserved</p>
     </footer>
 
+    <button class="wooooosh-button" onclick="woooooshEffect()">Wooooosh!</button>
+
     <script>
-        // Wooooosh Button Animation
-        function triggerWooooosh() {
-            const body = document.body;
-            const buttons = document.querySelectorAll('.game-button');
-            const woooooshButton = document.querySelector('.wooooosh-button');
-
-            // Add spinning effect to body
-            body.classList.add('spinning');
-            woooooshButton.classList.add('spinning');
-
-            // Add bouncing effect to buttons
-            buttons.forEach(button => {
-                button.classList.add('bouncing');
-            });
-
-            // Simulate random movement of icons with random bounce
-            const icons = document.querySelectorAll('.game-button');
-            icons.forEach(icon => {
-                icon.classList.add('icon');
-            });
+        function woooooshEffect() {
+            alert("Wooooosh! 💨");
         }
 
-        // Language change function
-        function changeLanguage(language) {
-            let message = "";
-            if (language === "en") {
-                message = "Welcome to Bit Games Hub!";
-            } else if (language === "pt") {
-                message = "Bem-vindo ao Bit Games Hub!";
-            } else if (language === "es") {
-                message = "¡Bienvenido a Bit Games Hub!";
+        function changeLanguage(lang) {
+            const welcomeMessage = document.getElementById('welcome-message');
+            if (lang === 'en') {
+                welcomeMessage.textContent = "Welcome to Bit Games Hub!";
+            } else if (lang === 'pt') {
+                welcomeMessage.textContent = "Bem-vindo ao Bit Games Hub!";
+            } else if (lang === 'es') {
+                welcomeMessage.textContent = "¡Bienvenidos a Bit Games Hub!";
             }
-            document.getElementById('welcome-message').innerText = message;
         }
     </script>
 </body>
