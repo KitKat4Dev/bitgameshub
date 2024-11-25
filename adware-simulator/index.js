@@ -88,7 +88,7 @@ function spawnPopups(count) {
 }
 
 // Limit the number of active popups to prevent memory issues
-const MAX_POPUPS = 50;
+const MAX_POPUPS = 100;
 function cleanupPopups() {
     const popups = document.querySelectorAll(".popup");
     if (popups.length > MAX_POPUPS) {
