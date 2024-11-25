@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bit Games Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
         body {
-            font-family: 'Roboto', sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1de9b6, #00e5ff);
+            color: #ffffff;
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,105 +19,100 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 3rem;
-            color: #1de9b6;
+            font-size: 4rem;
             margin: 40px 0;
             text-align: center;
             text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
         }
 
         .game-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
+            gap: 20px;
+            margin: 20px auto;
+            padding: 0 10px;
             width: 90%;
-            max-width: 1200px;
+            max-width: 1300px;
         }
 
         .game-button {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            background-color: #1de9b6;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff4081, #f50057);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
         }
 
         .game-button:hover {
-            background-color: #00e5ff;
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #3d5afe, #536dfe);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
         }
 
         .game-button:active {
             transform: scale(0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         footer {
             margin-top: auto;
             text-align: center;
-            color: #777;
-            font-size: 1.1rem;
-            padding: 20px 40px;
+            color: #ffffff;
+            font-size: 1rem;
+            padding: 15px 30px;
             width: 100%;
-            background-color: #fff;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         /* Meme Zone Styles */
-        .meme-zone {
+        .meme-gallery {
             width: 90%;
             max-width: 1000px;
             margin-top: 40px;
-            text-align: center;
-        }
-
-        .meme-upload {
-            margin-bottom: 20px;
-        }
-
-        .uploaded-memes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
-        .uploaded-meme {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
+        .meme-item img {
+            width: 100%;
+            height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        .upload-btn {
-            background-color: #1de9b6;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .upload-btn:hover {
-            background-color: #00e5ff;
+        .meme-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
 
         /* Language Switcher Styles */
@@ -127,12 +122,22 @@
             right: 20px;
             display: flex;
             gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .language-switcher img {
             width: 30px;
             height: 30px;
             cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .language-switcher img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
@@ -142,43 +147,41 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" onclick="changeLanguage('en')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Brazil.svg" alt="Portuguese" onclick="changeLanguage('pt')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spanish" onclick="changeLanguage('es')">
-        <!-- Add more flags and languages as needed -->
     </div>
 
     <h1 id="welcome-message">Welcome to Bit Games Hub!</h1>
     <div class="game-container">
-        <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
-        <a href="/endless-maze/index.html" class="game-button">🎮 Endless Maze</a>
-        <a href="/boredom-simulator/index.html" class="game-button">🎮 Boredom Simulator</a>
-        <a href="/random-compliment/index.html" class="game-button">🎮 Random Compliments</a>
-        <a href="/doodle-pad/index.html" class="game-button">🎮 Doodle Pad</a>
-        <a href="/silly-photo-booth/index.html" class="game-button">🎮 Silly Photo Booth</a>
-        <a href="/customdodge/index.html" class="game-button">🎮 Custom Dodge</a>
-        <a href="/unmotivational-poster/index.html" class="game-button">🎮 Unmotivational Poster</a>
-        <a href="/random-complaints/index.html" class="game-button">🎮 Random Complaints</a>
-        <a href="/404-error-simulator/index.html" class="game-button">🎮 404 Simulator</a>
-        <a href="/random-button-generator/index.html" class="game-button">🎮 Random Buttons</a>
-        <a href="/endless-scrolling-text/index.html" class="game-button">🎮 Scrolling Text</a>
-        <a href="/time-wasting-countdown/index.html" class="game-button">🎮 Countdown</a>
-        <a href="/virtual-pet-rock/index.html" class="game-button">🎮 Virtual Pet Rock</a>
-        <a href="/color-wheel-of-uselessness/index.html" class="game-button">🎮 Color Wheel</a>
-        <a href="/random-fact-generator/index.html" class="game-button">🎮 Fact Generator</a>
-        <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
-        <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
-        <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
-        <a href="/10-in-1/index.html" class="game-button">🎮 10 in 1</a>
-        <a href="/tribute-nice/" class="game-button">🎮 tribute to Israel Kamakawiwo'ole</a>
-    </div>
+      <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
+      <a href="/boredom-simulator/index.html" class="game-button">🎮 Boredom Simulator</a>
+      <a href="/random-compliment/index.html" class="game-button">🎮 Random Compliments</a>
+      <a href="/doodle-pad/index.html" class="game-button">🎮 Doodle Pad</a>
+      <a href="/silly-photo-booth/index.html" class="game-button">🎮 Silly Photo Booth</a>
+      <a href="/customdodge/index.html" class="game-button">🎮 Custom Dodge</a>
+      <a href="/unmotivational-poster/index.html" class="game-button">🎮 Unmotivational Poster</a>
+      <a href="/random-complaints/index.html" class="game-button">🎮 Random Complaints</a>
+      <a href="/404-error-simulator/index.html" class="game-button">🎮 404 Simulator</a>
+      <a href="/random-button-generator/index.html" class="game-button">🎮 Random Buttons</a>
+      <a href="/endless-scrolling-text/index.html" class="game-button">🎮 Scrolling Text</a>
+      <a href="/time-wasting-countdown/index.html" class="game-button">🎮 Countdown</a>
+      <a href="/virtual-pet-rock/index.html" class="game-button">🎮 Virtual Pet Rock</a>
+      <a href="/color-wheel-of-uselessness/index.html" class="game-button">🎮 Color Wheel</a>
+      <a href="/random-fact-generator/index.html" class="game-button">🎮 Fact Generator</a>
+      <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
+      <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
+      <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
+      <a href="/10-in-1/index.html" class="game-button">🎮 10 in 1</a>
+      <a href="/tribute-nice/index.html" class="game-button">🎮 tribute to Israel Kamakawiwo'ole</a>
+      <a href="/adware-simulator/index.html" class="game-button">🎮 TUTALLY REOL ADS!!!!111!!1</a>
+  </div>
+
 
     <!-- Meme Zone Section -->
-    <h2>🖼️ Meme Gallery</h2>
-<div class="meme-gallery">
-<div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
-<div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
-<div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
-<div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
-</div>
-
+    <h2 style="text-align: center; margin-top: 50px; font-size: 2.5rem; color: #ffffff;">🖼️ Meme Gallery</h2>
+    <div class="meme-gallery">
+        <div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
+        <div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
+        <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
+        <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
     </div>
 
     <footer>
@@ -188,67 +191,13 @@
 
     <script>
         function changeLanguage(language) {
-          // Alterar o conteúdo do site com base no idioma selecionado
-          if(language === 'en') {
-            document.body.lang = 'en';
-            document.getElementById('welcome-message').innerText = "Welcome to Bitgameshub!";
-          }
-          if(language === 'pt') {
-            document.body.lang = 'pt';
-            document.getElementById('welcome-message').innerText = "Bem-vindo ao Bitgameshub!";
-          }
-          if(language === 'es') {
-            document.body.lang = 'es';
-            document.getElementById('welcome-message').innerText = "¡Bienvenido a Bitgameshub!";
-          }
-          if(language === 'fr') {
-            document.body.lang = 'fr';
-            document.getElementById('welcome-message').innerText = "Bienvenue sur Bitgameshub!";
-          }
-          if(language === 'de') {
-            document.body.lang = 'de';
-            document.getElementById('welcome-message').innerText = "Willkommen bei Bitgameshub!";
-          }
-          if(language === 'it') {
-            document.body.lang = 'it';
-            document.getElementById('welcome-message').innerText = "Benvenuto su Bitgameshub!";
-          }
-          if(language === 'ru') {
-            document.body.lang = 'ru';
-            document.getElementById('welcome-message').innerText = "Добро пожаловать на Bitgameshub!";
-          }
-          if(language === 'zh') {
-            document.body.lang = 'zh';
-            document.getElementById('welcome-message').innerText = "欢迎来到Bitgameshub!";
-          }
-          if(language === 'ja') {
-            document.body.lang = 'ja';
-            document.getElementById('welcome-message').innerText = "Bitgameshubへようこそ!";
-          }
-          if(language === 'ko') {
-            document.body.lang = 'ko';
-            document.getElementById('welcome-message').innerText = "Bitgameshub에 오신 것을 환영합니다!";
-          }
-          if(language === 'ar') {
-            document.body.lang = 'ar';
-            document.getElementById('welcome-message').innerText = "مرحبًا بك في Bitgameshub!";
-          }
-          if(language === 'hi') {
-            document.body.lang = 'hi';
-            document.getElementById('welcome-message').innerText = "Bitgameshub में आपका स्वागत है!";
-          }
-          if(language === 'tr') {
-            document.body.lang = 'tr';
-            document.getElementById('welcome-message').innerText = "Bitgameshub'a hoş geldiniz!";
-          }
-          if(language === 'pl') {
-            document.body.lang = 'pl';
-            document.getElementById('welcome-message').innerText = "Witamy na Bitgameshub!";
-          }
-          if(language === 'nl') {
-            document.body.lang = 'nl';
-            document.getElementById('welcome-message').innerText = "Welkom bij Bitgameshub!";
-          }
+            const messages = {
+                en: "Welcome to Bit Games Hub!",
+                pt: "Bem-vindo ao Bit Games Hub!",
+                es: "¡Bienvenido a Bit Games Hub!"
+            };
+            document.body.lang = language;
+            document.getElementById('welcome-message').innerText = messages[language] || messages.en;
         }
     </script>
 </body>
