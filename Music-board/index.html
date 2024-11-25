@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .music-board {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .music-btns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .music-btns button {
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .music-btns button:hover {
+            background-color: #45a049;
+        }
+
+        .music-btns button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="music-board">
+    <h1>Music Board</h1>
+    <div class="music-btns">
+        <button onclick="playMusic('midnight-ride')">Midnight Ride</button>
+        <button onclick="playMusic('barn-beat')">Barn Beat</button>
+        <button onclick="playMusic('iron-man')">Iron Man</button>
+        <button onclick="playMusic('destination')">Destination</button>
+        <button onclick="playMusic('cautious-path')">Cautious Path</button>
+        <button onclick="playMusic('heart-of-the-sea')">Heart of the Sea</button>
+        <button onclick="playMusic('jungle-run')">Jungle Run</button>
+    </div>
+</div>
+
+<script>
+    let audio = new Audio(); // Create a single audio object to manage playback
+
+    const songs = {
+        'midnight-ride': 'https://www.soundjay.com/free-music/sounds/midnight-ride-01a.mp3',
+        'barn-beat': 'https://www.soundjay.com/free-music/sounds/barn-beat-01.mp3',
+        'iron-man': 'https://www.soundjay.com/free-music/sounds/iron-man-01.mp3',
+        'destination': 'https://www.soundjay.com/free-music/sounds/destination-01.mp3',
+        'cautious-path': 'https://www.soundjay.com/free-music/sounds/cautious-path-01.mp3',
+        'heart-of-the-sea': 'https://www.soundjay.com/free-music/sounds/heart-of-the-sea-01.mp3',
+        'jungle-run': 'https://www.soundjay.com/free-music/sounds/jungle-run-01.mp3'
+    };
+
+    function playMusic(songKey) {
+        const songUrl = songs[songKey];
+        if (songUrl) {
+            audio.src = songUrl; // Set the new song source
+            audio.play(); // Start playing the song
+        }
+    }
+</script>
+
+</body>
+</html>
