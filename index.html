@@ -20,6 +20,7 @@
             min-height: 100vh;
             box-sizing: border-box;
             overflow-x: hidden;
+            transition: transform 1s ease;
         }
 
         h1 {
@@ -42,6 +43,7 @@
             padding: 0 10px;
             width: 90%;
             max-width: 1300px;
+            transition: all 1s ease;
         }
 
         .game-button {
@@ -139,6 +141,87 @@
             transform: scale(1.1);
             box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
         }
+
+        /* Wooooosh Button Styles */
+        .wooooosh-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 20px 40px;
+            background-color: #ff4081;
+            font-size: 1.5rem;
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .wooooosh-button:hover {
+            background-color: #f50057;
+        }
+
+        .wooooosh-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Spinning and Bouncing Animations */
+        .spinning {
+            animation: spin 1s linear infinite;
+        }
+
+        .bouncing {
+            animation: bounce 0.5s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        /* Random Bounce Effect */
+        .icon {
+            position: relative;
+            animation: random-bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes random-bounce {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+
+            25% {
+                transform: translateX(50px) translateY(50px);
+            }
+
+            50% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            75% {
+                transform: translateX(100px) translateY(100px);
+            }
+
+            10000% {
+                transform: translateX(0) translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -151,53 +234,81 @@
 
     <h1 id="welcome-message">Welcome to Bit Games Hub!</h1>
     <div class="game-container">
-      <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
-      <a href="/boredom-simulator/index.html" class="game-button">🎮 Boredom Simulator</a>
-      <a href="/random-compliment/index.html" class="game-button">🎮 Random Compliments</a>
-      <a href="/doodle-pad/index.html" class="game-button">🎮 Doodle Pad</a>
-      <a href="/silly-photo-booth/index.html" class="game-button">🎮 Silly Photo Booth</a>
-      <a href="/customdodge/index.html" class="game-button">🎮 Custom Dodge</a>
-      <a href="/unmotivational-poster/index.html" class="game-button">🎮 Unmotivational Poster</a>
-      <a href="/random-complaints/index.html" class="game-button">🎮 Random Complaints</a>
-      <a href="/404-error-simulator/index.html" class="game-button">🎮 404 Simulator</a>
-      <a href="/random-button-generator/index.html" class="game-button">🎮 Random Buttons</a>
-      <a href="/endless-scrolling-text/index.html" class="game-button">🎮 Scrolling Text</a>
-      <a href="/time-wasting-countdown/index.html" class="game-button">🎮 Countdown</a>
-      <a href="/virtual-pet-rock/index.html" class="game-button">🎮 Virtual Pet Rock</a>
-      <a href="/color-wheel-of-uselessness/index.html" class="game-button">🎮 Color Wheel</a>
-      <a href="/random-fact-generator/index.html" class="game-button">🎮 Fact Generator</a>
-      <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
-      <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
-      <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
-      <a href="/10-in-1/index.html" class="game-button">🎮 10 in 1</a>
-      <a href="/tribute-nice/index.html" class="game-button">🎮 tribute to Israel Kamakawiwo'ole</a>
-      <a href="/adware-simulator/index.html" class="game-button">🎮 TUTALLY REOL ADS!!!!111!!1</a>
-  </div>
-
-
-    <!-- Meme Zone Section -->
-    <h2 style="text-align: center; margin-top: 50px; font-size: 2.5rem; color: #ffffff;">🖼️ Meme Gallery</h2>
-    <div class="meme-gallery">
-        <div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
-        <div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
-        <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
-        <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
+        <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
+        <a href="/boredom-simulator/index.html" class="game-button">🎮 Boredom Simulator</a>
+        <a href="/random-compliment/index.html" class="game-button">🎮 Random Compliments</a>
+        <a href="/doodle-pad/index.html" class="game-button">🎮 Doodle Pad</a>
+        <a href="/silly-photo-booth/index.html" class="game-button">🎮 Silly Photo Booth</a>
+        <a href="/customdodge/index.html" class="game-button">🎮 Custom Dodge</a>
+        <a href="/unmotivational-poster/index.html" class="game-button">🎮 Unmotivational Poster</a>
+        <a href="/random-complaints/index.html" class="game-button">🎮 Random Complaints</a>
+        <a href="/404-error-simulator/index.html" class="game-button">🎮 404 Simulator</a>
+        <a href="/random-button-generator/index.html" class="game-button">🎮 Random Buttons</a>
+        <a href="/endless-scrolling-text/index.html" class="game-button">🎮 Scrolling Text</a>
+        <a href="/time-wasting-countdown/index.html" class="game-button">🎮 Countdown</a>
+        <a href="/virtual-pet-rock/index.html" class="game-button">🎮 Virtual Pet Rock</a>
+        <a href="/color-wheel-of-uselessness/index.html" class="game-button">🎮 Color Wheel</a>
+        <a href="/random-fact-generator/index.html" class="game-button">🎮 Fact Generator</a>
+        <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
+        <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
+        <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
+        <a href="/10-in-1/index.html" class="game-button">🎮 10 in 1</a>
+        <a href="/tribute-nice/index.html" class="game-button">🎮 tribute to Israel Kamakawiwo'ole</a>
+        <a href="/adware-simulator/index.html" class="game-button">🎮 TUTALLY REOL ADS!!!!111!!1</a>
+        <a href="/pong-gaem/index.html" class="game-button">🎮 Generic Pong Gaem</a>
     </div>
 
+    <button class="wooooosh-button" onclick="triggerWooooosh()">Wooooosh!</button>
+
+    <h2>🖼️ Meme Gallery</h2>
+    <div class="meme-gallery">
+    <div class="meme-item"><img src="https://static.wikia.nocookie.net/f977100a-cbbb-4f57-8877-a00dc7436ab5/scale-to-width/755" alt="Random meme1"></div>
+    <div class="meme-item"><img src="https://static.wikia.nocookie.net/34b3b0a9-fa91-48fa-b5fa-d59a387f11bd/scale-to-width/755" alt="Random meme2"></div>
+    <div class="meme-item"><img src="https://static.wikia.nocookie.net/dfe30d21-b1d1-48f7-9fe0-b0c8e49913e5/scale-to-width/755" alt="Random meme3"></div>
+    <div class="meme-item"><img src="https://static.wikia.nocookie.net/3651aa3e-448c-4c1d-a59c-19ac694c229e/scale-to-width/755" alt="Random meme4"></div>
+    </div>
+    
+
+
+
     <footer>
-        <p>&copy; 2024 Bit Games Hub</p>
-        <p>Created by <a href="https://www.youtube.com/@SuperMemeGuardian5SuperMario">SMG5</a></p>
+        <p>&copy; 2024 <a href="https://bitgameshub.com">BitGamesHub.com</a> | All Rights Reserved</p>
     </footer>
 
     <script>
+        // Wooooosh Button Animation
+        function triggerWooooosh() {
+            const body = document.body;
+            const buttons = document.querySelectorAll('.game-button');
+            const woooooshButton = document.querySelector('.wooooosh-button');
+
+            // Add spinning effect to body
+            body.classList.add('spinning');
+            woooooshButton.classList.add('spinning');
+
+            // Add bouncing effect to buttons
+            buttons.forEach(button => {
+                button.classList.add('bouncing');
+            });
+
+            // Simulate random movement of icons with random bounce
+            const icons = document.querySelectorAll('.game-button');
+            icons.forEach(icon => {
+                icon.classList.add('icon');
+            });
+        }
+
+        // Language change function
         function changeLanguage(language) {
-            const messages = {
-                en: "Welcome to Bit Games Hub!",
-                pt: "Bem-vindo ao Bit Games Hub!",
-                es: "¡Bienvenido a Bit Games Hub!"
-            };
-            document.body.lang = language;
-            document.getElementById('welcome-message').innerText = messages[language] || messages.en;
+            let message = "";
+            if (language === "en") {
+                message = "Welcome to Bit Games Hub!";
+            } else if (language === "pt") {
+                message = "Bem-vindo ao Bit Games Hub!";
+            } else if (language === "es") {
+                message = "¡Bienvenido a Bit Games Hub!";
+            }
+            document.getElementById('welcome-message').innerText = message;
         }
     </script>
 </body>
