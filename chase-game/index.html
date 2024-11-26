@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find the Bugdroid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer" class="game-container"></div>
+    <div id="hud">
+        <p>Points: <span id="points">0</span></p>
+        <p>Time Left: <span id="timer">30</span> seconds</p>
+        <p>Combo: <span id="combo">0</span></p>
+        <button id="toggleShop">Toggle Shop</button>
+    </div>
+    <div id="shop" class="shop">
+        <h2>Shop</h2>
+        <p>Points: <span id="shopPoints">0</span></p>
+        <button id="increaseDifficulty">Increase Difficulty (20 points)</button>
+        <button id="buyHint">Buy Hint (50 points)</button>
+        <button id="buyExtraTime">Buy Extra Time (100 points)</button>
+        <button id="freezeTime">Freeze Timer (150 points)</button>
+        <button id="reduceDroids">Reduce Kitdroids (200 points)</button>
+        <button id="resetGame">Reset Game (500 points)</button>
+    </div>
+    <audio id="clickSound" src="Sounds/click-kitdroid.mp3" preload="auto"></audio>
+    <audio id="findSound" src="Sounds/find-bugdroid.mp3" preload="auto"></audio>
+    <script src="index.js"></script>
+    
+    
+</body>
+</html>
