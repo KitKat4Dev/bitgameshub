@@ -59,50 +59,132 @@
     <img id="photo" src="" alt="Your Silly Photo" style="display: none;">
     
     <select id="filterSelect" style="display: none;">
-        <option value="none">Select a Silly Filter</option>
         <option value="invert(100%)">Invert Colors</option>
-        <option value="grayscale(100%)">Grayscale</option>
-        <option value="sepia(100%)">Sepia</option>
-        <option value="brightness(150%)">Brighten</option>
-        <option value="contrast(200%)">High Contrast</option>
-        <option value="saturate(200%)">Saturation Boost</option>
-        <option value="hue-rotate(90deg)">Hue Rotate</option>
-        <option value="blur(5px)">Blur</option>
-        <option value="drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5))">Drop Shadow</option>
-        <option value="opacity(50%)">Opacity</option>
-        <option value="opacity(25%)">Faded</option>
-        <option value="invert(100%) sepia(100%)">Cool Effect</option>
-        <option value="contrast(150%) sepia(50%)">Vintage</option>
-        <option value="blur(2px) saturate(150%)">Dreamy Effect</option>
-        <option value="brightness(120%)">Bright Pastel</option>
-        <option value="grayscale(50%)">Partial Grayscale</option>
-        <option value="hue-rotate(180deg)">Cool Tone</option>
-        <option value="saturate(50%) brightness(120%)">Soft Color</option>
-        <option value="invert(50%)">Half Inverted</option>
-        <option value="contrast(100%) blur(3px)">Blurry Contrast</option>
-        <option value="hue-rotate(60deg) saturate(150%)">Vibrant Colors</option>
-        <option value="grayscale(25%) sepia(25%)">Old Photo</option>
-        <option value="drop-shadow(0 0 10px #000)">Shadowed Photo</option>
-        <option value="blur(4px) brightness(110%)">Dreamy Blur</option>
-        <option value="saturate(250%) hue-rotate(60deg)">Color Splash</option>
-        <option value="opacity(80%)">Slightly Transparent</option>
-        <option value="sepia(80%) brightness(90%)">Warm Vintage</option>
-        <option value="grayscale(100%) invert(100%)">Negative Effect</option>
-        <option value="contrast(80%) blur(1px)">Soft Contrast</option>
-        <option value="blur(5px) drop-shadow(0 0 10px #000)">Glowy Effect</option>
-        <option value="hue-rotate(90deg) saturate(300%)">Psychedelic Colors</option>
-        <option value="invert(80%) saturate(80%)">Dimmed Colors</option>
-        <option value="blur(6px) opacity(90%)">Frosted Effect</option>
-        <option value="hue-rotate(120deg) brightness(120%)">Bright Cool</option>
-        <option value="saturate(50%) brightness(200%)">Super Bright</option>
-        <option value="opacity(30%)">Super Faded</option>
-        <!-- Additional Filters -->
-        <option value="contrast(300%)">Extreme Contrast</option>
-        <option value="brightness(50%)">Darken</option>
-        <option value="saturate(500%)">Extreme Saturation</option>
-        <option value="hue-rotate(270deg)">Cooler Hue</option>
-        <option value="invert(100%) blur(5px)">Inverted Blur</option>
-        <option value="sepia(100%) blur(3px)">Sepia Blur</option>
+<option value="grayscale(100%)">Grayscale</option>
+<option value="sepia(100%)">Sepia</option>
+<option value="brightness(150%)">Brighten</option>
+<option value="contrast(200%)">High Contrast</option>
+<option value="saturate(200%)">Saturation Boost</option>
+<option value="hue-rotate(90deg)">Hue Rotate</option>
+<option value="blur(5px)">Blur</option>
+<option value="drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5))">Drop Shadow</option>
+<option value="opacity(50%)">Opacity</option>
+<option value="opacity(25%)">Faded</option>
+<option value="invert(100%) sepia(100%)">Cool Effect</option>
+<option value="contrast(150%) sepia(50%)">Vintage</option>
+<option value="blur(2px) saturate(150%)">Dreamy Effect</option>
+<option value="brightness(120%)">Bright Pastel</option>
+<option value="grayscale(50%)">Partial Grayscale</option>
+<option value="hue-rotate(180deg)">Cool Tone</option>
+<option value="saturate(50%) brightness(120%)">Soft Color</option>
+<option value="invert(50%)">Half Inverted</option>
+<option value="contrast(100%) blur(3px)">Blurry Contrast</option>
+<option value="hue-rotate(60deg) saturate(150%)">Vibrant Colors</option>
+<option value="grayscale(25%) sepia(25%)">Old Photo</option>
+<option value="drop-shadow(0 0 10px #000)">Shadowed Photo</option>
+<option value="blur(4px) brightness(110%)">Dreamy Blur</option>
+<option value="saturate(250%) hue-rotate(60deg)">Color Splash</option>
+<option value="opacity(80%)">Slightly Transparent</option>
+<option value="sepia(80%) brightness(90%)">Warm Vintage</option>
+<option value="grayscale(100%) invert(100%)">Negative Effect</option>
+<option value="contrast(80%) blur(1px)">Soft Contrast</option>
+<option value="blur(5px) drop-shadow(0 0 10px #000)">Glowy Effect</option>
+<option value="hue-rotate(90deg) saturate(300%)">Psychedelic Colors</option>
+<option value="invert(80%) saturate(80%)">Dimmed Colors</option>
+<option value="blur(6px) opacity(90%)">Frosted Effect</option>
+<option value="hue-rotate(120deg) brightness(120%)">Bright Cool</option>
+<option value="saturate(50%) brightness(200%)">Super Bright</option>
+<option value="opacity(30%)">Super Faded</option>
+
+<!-- Weird Section -->
+<option value="blur(100px)">Total Blur</option>
+<option value="grayscale(0%) sepia(100%)">Sepia Dream</option>
+<option value="invert(100%) saturate(500%)">Negative Saturation</option>
+<option value="hue-rotate(1000deg)">Ultra Hue Shift</option>
+<option value="contrast(500%) saturate(0%)">High Contrast Fade</option>
+<option value="drop-shadow(0 0 20px rgba(255, 0, 0, 1))">Red Shadow</option>
+<option value="grayscale(0%) saturate(300%)">Over Saturated</option>
+<option value="opacity(10%)">Invisible</option>
+<option value="sepia(200%) brightness(50%)">Super Warm</option>
+<option value="blur(1000px)">Complete Blur</option>
+<option value="invert(0%) saturate(1000%)">Super Inverted</option>
+
+<!-- 90s Section -->
+<option value="brightness(200%) saturate(150%)">Neon Bright</option>
+<option value="contrast(300%) sepia(40%)">Retro Vibe</option>
+<option value="saturate(400%)">Super Saturated</option>
+<option value="grayscale(70%) hue-rotate(270deg)">90s TV Effect</option>
+<option value="grayscale(80%) invert(50%)">Vintage Inverted</option>
+<option value="blur(2px) opacity(75%)">Frosty Look</option>
+<option value="brightness(80%) contrast(150%)">Old TV Show</option>
+<option value="hue-rotate(270deg) saturate(50%)">Classic Neon</option>
+<option value="drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5))">Glitch Shadow</option>
+<option value="saturate(100%) opacity(60%)">90s Filter</option>
+
+<!-- 2000s Section -->
+<option value="invert(50%) saturate(300%)">Pop Art</option>
+<option value="sepia(50%) contrast(200%)">2000s Film Effect</option>
+<option value="blur(8px) brightness(110%)">2000s Blur</option>
+<option value="grayscale(40%) brightness(120%)">Vintage Film</option>
+<option value="hue-rotate(180deg) opacity(90%)">Color Shift</option>
+<option value="contrast(150%) saturate(100%)">Sharp Colors</option>
+<option value="opacity(70%) hue-rotate(90deg)">Early 2000s</option>
+<option value="blur(1px) brightness(125%)">Funky Blur</option>
+<option value="grayscale(100%) blur(4px)">Old Internet Effect</option>
+<option value="saturate(200%) contrast(120%)">Bright 2000s</option>
+
+<!-- Android 4.0 Section -->
+<option value="sepia(50%) saturate(150%)">Android Retro</option>
+<option value="brightness(50%) saturate(250%)">Android Style</option>
+<option value="blur(5px) contrast(100%)">Frosted Android</option>
+<option value="hue-rotate(360deg) saturate(120%)">Lollipop Effect</option>
+<option value="grayscale(0%) opacity(40%)">Android Transparency</option>
+<option value="contrast(200%) brightness(100%)">Ice Cream Sandwich</option>
+<option value="blur(5px) saturate(300%)">Gingerbread Vibe</option>
+<option value="hue-rotate(45deg) contrast(300%)">Jelly Bean Feel</option>
+<option value="opacity(80%) blur(3px)">Honeycomb Look</option>
+<option value="brightness(125%) saturate(100%)">Android Glow</option>
+
+<!-- Extra Random Effects -->
+<option value="hue-rotate(480deg)">Color Wheel Spin</option>
+<option value="contrast(50%) saturate(500%)">Bleach Effect</option>
+<option value="blur(2px) drop-shadow(10px 10px 20px rgba(0,0,0,0.3))">Comic Effect</option>
+<option value="sepia(200%) blur(10px)">Old Newspaper</option>
+<option value="invert(90%) contrast(400%)">Ultra Inverted</option>
+<option value="hue-rotate(720deg) saturate(500%)">Rainbow Party</option>
+<option value="grayscale(100%) blur(15px)">Grayscale Blur</option>
+<option value="saturate(1000%)">Rainbow Effect</option>
+<option value="brightness(80%)">Dimmed</option>
+<option value="contrast(600%)">Super High Contrast</option>
+<option value="grayscale(25%) drop-shadow(5px 5px 10px rgba(0,0,0,0.7))">Shadow Grayscale</option>
+<option value="hue-rotate(240deg) saturate(300%)">Hot Neon</option>
+<option value="blur(10px) saturate(500%)">Glowing Lights</option>
+<option value="invert(50%) saturate(100%)">Crisp Inversion</option>
+<option value="brightness(300%)">Brightest Bright</option>
+<option value="contrast(80%) saturate(100%)">Muted Colors</option>
+<option value="hue-rotate(270deg) contrast(150%)">Cold Vibe</option>
+<option value="sepia(50%) blur(20px)">Sepia Glow</option>
+<option value="grayscale(100%) saturate(0%)">Zero Saturation</option>
+<option value="blur(3px) contrast(80%)">Soft Blur</option>
+<option value="drop-shadow(5px 5px 15px rgba(255,255,255,0.8))">Glitter Shadow</option>
+<option value="invert(80%) blur(1px)">Inverse Soft Blur</option>
+<option value="brightness(200%) saturate(200%)">High Brightness</option>
+<option value="opacity(30%) contrast(200%)">Hidden Pop</option>
+<option value="grayscale(0%) blur(50px)">Dreamy Glow</option>
+<option value="contrast(120%) blur(8px)">Focus Blur</option>
+<option value="blur(6px) saturation(300%)">Bright Glitch</option>
+<option value="grayscale(90%) blur(10px)">Faded Blur</option>
+<option value="hue-rotate(540deg) saturate(120%)">Ultra Color Spin</option>
+<option value="grayscale(50%) brightness(150%)">Warm Grayscale</option>
+<option value="contrast(90%) opacity(70%)">Soft Touch</option>
+<option value="blur(4px) grayscale(50%)">Faded Glow</option>
+<option value="hue-rotate(0deg) opacity(60%)">Bright Faded</option>
+<option value="invert(70%) saturate(80%)">Muted Vibe</option>
+<option value="blur(1px) opacity(80%)">Frost Effect</option>
+<option value="sepia(20%) brightness(200%)">Golden Vibe</option>
+<option value="grayscale(30%) contrast(250%)">Sharp Vibe</option>
+<option value="saturate(50%) opacity(90%)">Faded Colors</option>
+<option value="hue-rotate(90deg) contrast(80%)">Light Cool</option>
     </select>
     
     <button id="filterButton" style="display: none;">Apply Silly Filter</button>
