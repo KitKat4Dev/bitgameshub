@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitgameshub Arcade: Guess the Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 28px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            border-radius: 5px;
+        }
+        .restart-btn {
+            background-color: #f44336;
+        }
+        .restart-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Guess the Game!</h1>
+        <p id="description">Description will appear here...</p>
+        <input type="text" id="userInput" placeholder="Enter your guess...">
+        <button class="btn" onclick="checkAnswer()">Submit Guess</button>
+        <div class="feedback" id="feedback"></div>
+        <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next Question</button>
+        <button class="btn restart-btn" id="restartBtn" onclick="restartGame()" style="display:none;">Restart Game</button>
+        
+        <div class="score" id="score">Score: 0</div>
+        <div class="timer" id="timer">Time Left: 10s</div>
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    { description: "The first Android version that included the famous 'Widgets' feature.", answer: "Android 1.5 Cupcake" },
+    { description: "A lost game from the Android Market that was never officially released but has a cult following.", answer: "Flappy Bird" },
+    { description: "Which Android version introduced 'Material Design'?", answer: "Android 5.0 Lollipop" },
+    { description: "What was the codename for Android 4.4?", answer: "KitKat" },
+    { description: "In Dandy's World, which character is a yellow, cat-like paper craft who inspires creativity?", answer: "Scraps" },
+    { description: "The Android version that was known for its 'multi-tasking' capabilities, allowing users to switch apps more easily.", answer: "Android 7.0 Nougat" },
+    { description: "Which Android version is associated with the 'Ice Cream Sandwich' release?", answer: "Android 4.0" },
+    { description: "Which character from Dandy's World is a blue fishbowl filled with water?", answer: "Finn" },
+    { description: "The lost media game where players would draw their own levels but was removed from the Google Play Store.", answer: "Crayon Physics Deluxe" },
+    { description: "What was the first version of Android to introduce the ability to customize the lock screen?", answer: "Android 4.0 Ice Cream Sandwich" },
+    { description: "In Dandy's World, which character is a crescent moon wrapped in a cornflower blanket?", answer: "Astro" },
+    { description: "Which Android version is famous for introducing the 'Google Now' feature?", answer: "Android 4.1 Jelly Bean" },
+    { description: "The character from Dandy's World who teaches problem-solving and creativity by glowing during blackouts.", answer: "Brightney" },
+    { description: "What was the first version of Android to support 64-bit processors?", answer: "Android 5.0 Lollipop" },
+    { description: "In Dandy's World, which character is a purple music box known for being shy but cheerful?", answer: "Boxten" },
+    { description: "Which Android version introduced the 'Doze' feature to save battery life?", answer: "Android 6.0 Marshmallow" },
+    { description: "The famous lost media game that had a similar concept to 'Minecraft,' where you could build your own worlds but was pulled from the Play Store.", answer: "Totally Accurate Battlegrounds" },
+    { description: "In Dandy's World, which character is a cyan tissue box with a feather duster?", answer: "Tisha" },
+    { description: "Which Android version introduced the 'Google Assistant'?", answer: "Android 7.0 Nougat" },
+    { description: "A highly-rated Android game from 2015 where players build a city on an island.", answer: "SimCity BuildIt" },
+    { description: "In Dandy's World, which character is known for their love of baking and has a roll-cake body?", answer: "Cosmo" },
+    { description: "Which Android version is associated with the 'Oreo' release?", answer: "Android 8.0" },
+    { description: "A famous Android game that was removed from the Play Store due to its high level of difficulty.", answer: "Flappy Bird" },
+    { description: "In Dandy's World, which character is a teal-colored 8-ball with a hood and an adaptable random ability?", answer: "Toodles" },
+    { description: "Which Android version introduced the split-screen mode?", answer: "Android 7.0 Nougat" },
+    { description: "What Android version introduced support for seamless updates in the background?", answer: "Android 8.0 Oreo" },
+    { description: "The game where you play as a jelly-like character navigating through various challenges, once considered a lost gem.", answer: "Tengami" },
+    { description: "In Dandy's World, which character is a purple, fluffy humanoid with colorful fluff and cross-eyed expressions?", answer: "Goob" },
+    { description: "Which Android version introduced the 'Night Light' feature to reduce blue light exposure?", answer: "Android 7.1 Nougat" },
+    { description: "A lost game from 2010 that had players racing through a colorful world full of obstacles, but was pulled from the Play Store shortly after launch.", answer: "LightBike 2" },
+    { description: "In Dandy's World, which character teaches children about marine biology and spills water during movement?", answer: "Finn" },
+    { description: "Which Android version introduced the ability to use fingerprint scanners for app unlocking?", answer: "Android 6.0 Marshmallow" },
+    { description: "A classic Android version released in 2014 with the introduction of 'Material Design' for a more cohesive visual style.", answer: "Android 5.0 Lollipop" },
+    { description: "Which Android version was designed with a strong emphasis on battery optimization?", answer: "Android 6.0 Marshmallow" },
+    { description: "In Dandy's World, which character is a gray rock-dog with a fractured texture?", answer: "Pebble" },
+    { description: "Which Android version first introduced 'Screen Recording'?", answer: "Android 10" },
+    { description: "A lost media game from 2012 that was a quirky, colorful endless runner that disappeared after a few months.", answer: "Ski Safari" },
+    { description: "In Dandy's World, which character has a nurturing personality and is a beige ammonite shell?", answer: "Shelly" },
+    { description: "The first Android version to feature Google Play Protect for app security.", answer: "Android 8.0 Oreo" },
+    { description: "In Dandy's World, which character is a cheerful strawberry with a mint green scarf?", answer: "Sprout" },
+    { description: "The Android version that introduced 'Picture-in-Picture' mode for multitasking.", answer: "Android 8.0 Oreo" },
+    { description: "Which lost media game was known for its 'addictive' mechanics, where you keep jumping up towers in a minimalist world?", answer: "Flappy Tower" },
+    { description: "In Dandy's World, which character is a magenta lamp that glows during blackouts?", answer: "Brightney" },
+    { description: "Which Android version was known for its 'battery saver' feature that put unused apps to sleep?", answer: "Android 5.0 Lollipop" },
+    { description: "A famous game from 2014 that was later pulled from the Play Store for its controversial gameplay.", answer: "Papers, Please" },
+    { description: "In Dandy's World, which character is a white, teacup-shaped figure with golden eyeshadow?", answer: "Teagan" },
+    { description: "The version of Android that introduced 'Dark Mode' for system-wide UI changes.", answer: "Android 10" },
+    { description: "Which lost media game was popular for its creative use of 3D art and the way it mimicked platformers?", answer: "Hills of Glory" },
+    { description: "Which Android version introduced the 'Digital Wellbeing' feature?", answer: "Android 9.0 Pie" },
+    { description: "In Dandy's World, which character represents comedy with a happy-go-lucky attitude?", answer: "Razzle" },
+    { description: "Which Android version added the ability to 'clone' apps using the App Twin feature?", answer: "Android 7.0 Nougat" },
+    { description: "A 2013 Android version update that brought major improvements to the camera interface and multi-window functionality.", answer: "Android 4.2 Jelly Bean" },
+    { description: "In Dandy's World, which character is a green TV with a microphone tail?", answer: "Vee" },
+    { description: "The lost game with a multiplayer battle royale mode where players could either battle or team up to survive.", answer: "Battle City" },
+    { description: "In Dandy's World, which character communicates with expressions like '??', '!', and '...'", answer: "Flutter" },
+    { description: "Which Android version made the 'Google Play Store' interface more streamlined and added a 'Recommended For You' section?", answer: "Android 5.0 Lollipop" },
+    { description: "Which lost media game was known for its steampunk aesthetic and was once considered a hidden gem in the Android Play Store?", answer: "Steambirds" },
+    { description: "In Dandy's World, which character was abandoned but later adopted by Rodger and Teagan?", answer: "Toodles" },
+    { description: "Which Android version included the 'Assistant Voice Search' feature?", answer: "Android 4.1 Jelly Bean" },
+    { description: "A game once available on Android that had players exploring ancient ruins and solving puzzles but was removed from the Play Store.", answer: "The Room" },
+    { description: "In Dandy's World, which character is a charismatic mirror with a golden frame?", answer: "Glisten" },
+    { description: "What Android version allowed users to control their music playback without unlocking their phone?", answer: "Android 4.4 KitKat" },
+    { description: "Which lost game became popular for its use of minimalist design but was removed due to legal issues?", answer: "Prune" },
+    { description: "Which Android version introduced an overhauled notification shade and 'Quick Settings' menu?", answer: "Android 5.0 Lollipop" },
+    { description: "A beloved lost media game where players helped manage a virtual pet, but it was pulled from the Play Store due to its 'pay-to-win' mechanics.", answer: "Pet Society" },
+    { description: "In Dandy's World, which character is a shrimp known for yelling in all caps?", answer: "Shrimpo" }
+];
+
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timer = 10;
+        let gameInterval;
+        let progressInterval;
+
+        function loadQuestion() {
+            document.getElementById("description").textContent = questions[currentQuestionIndex].description;
+            document.getElementById("userInput").value = '';
+            document.getElementById("feedback").textContent = '';
+            document.getElementById("nextBtn").style.display = 'none';
+            document.getElementById("restartBtn").style.display = 'none';
+            document.getElementById("progressBarFill").style.width = '0%';
+            resetTimer();
+            startTimer();
+        }
+
+        function startTimer() {
+            gameInterval = setInterval(function() {
+                timer--;
+                document.getElementById("timer").textContent = "Time Left: " + timer + "s";
+                if (timer <= 0) {
+                    clearInterval(gameInterval);
+                    checkAnswer(true); // Auto-check if time runs out
+                }
+            }, 1000);
+            startProgressBar();
+        }
+
+        function startProgressBar() {
+            let width = 0;
+            progressInterval = setInterval(function() {
+                width++;
+                document.getElementById("progressBarFill").style.width = width + '%';
+                if (width >= 100) clearInterval(progressInterval);
+            }, 100);
+        }
+
+        function checkAnswer(isTimeUp = false) {
+            const userAnswer = document.getElementById("userInput").value.trim();
+            const correctAnswer = questions[currentQuestionIndex].answer;
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase() || isTimeUp) {
+                if (!isTimeUp) {
+                    score++;
+                    document.getElementById("score").textContent = "Score: " + score;
+                    feedback.textContent = "Correct! Well done!";
+                    feedback.className = "feedback correct";
+                } else {
+                    feedback.textContent = "Time's up! The correct answer was: " + correctAnswer;
+                    feedback.className = "feedback incorrect";
+                }
+                document.getElementById("nextBtn").style.display = 'inline-block';
+            } else {
+                feedback.textContent = "Incorrect. Try again!";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+            loadQuestion();
+        }
+
+        function resetTimer() {
+            timer = 10;
+            document.getElementById("timer").textContent = "Time Left: 10s";
+            clearInterval(gameInterval);
+            clearInterval(progressInterval);
+        }
+
+        function restartGame() {
+            score = 0;
+            document.getElementById("score").textContent = "Score: 0";
+            currentQuestionIndex = 0;
+            loadQuestion();
+        }
+
+        // Initialize the game
+        loadQuestion();
+    </script>
+
+</body>
+</html>
