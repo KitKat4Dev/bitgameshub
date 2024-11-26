@@ -148,7 +148,7 @@ const LEVEL_PLAYER_CHARACTERS = [{
   y2: 120
 }, {
   name: 'ninja',
-  x2: 390, //Ideally this would call on the canvas width to place the character in the center--however, canvas.width is only created later.
+  x2: 390, //Ideally this would a call on the canvas width to place the character in the center--however, canvas.width is only created later.
   y2: 120
 }];
 
