@@ -1,150 +1,284 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Interativo com Emojis</title>
+    <title>Escape the Maze</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            overflow: hidden;
         }
 
-        #gameArea {
+        #game-container {
             display: grid;
-            grid-template-columns: repeat(20, 40px);
-            grid-template-rows: repeat(10, 40px);
+            grid-template-columns: repeat(10, 60px);
+            grid-template-rows: repeat(10, 60px);
             gap: 2px;
-            background-color: #b3e0ff;
-            border: 5px solid #000;
-            width: 840px;
-            height: 420px;
+            border: 2px solid #444;
+            position: relative;
         }
 
         .cell {
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            background-color: #444;
+            border: 1px solid #333;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .wall {
+            background-color: #222;
         }
 
         .player {
-            color: green;
+            background-color: #ff6600;
+            border-radius: 50%;
+            animation: moveAnimation 0.2s ease-in-out;
         }
 
-        .obstacle {
-            background-color: gray;
+        .demon {
+            background-color: #e60000;
+            border-radius: 50%;
+            animation: moveAnimation 0.2s ease-in-out;
         }
 
-        .car {
+        .exit {
+            background-color: #33cc33;
+            font-size: 2rem;
+            border-radius: 50%;
+        }
+
+        @keyframes moveAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        #score, #timer, #health {
+            position: absolute;
+            top: 10px;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+
+        #score { left: 10px; }
+        #timer { left: 50%; transform: translateX(-50%); }
+        #health { right: 10px; }
+
+        .game-over {
+            font-size: 2rem;
             color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
-        .child {
-            color: yellow;
+        .game-win {
+            font-size: 2rem;
+            color: green;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
-
-        .person {
-            color: blue;
-        }
-
-        #message {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
     </style>
 </head>
 <body>
+    <div id="game-container"></div>
+    <div id="score"></div>
+    <div id="timer"></div>
+    <div id="health"></div>
+    <div id="message"></div>
 
-<div id="gameArea"></div>
-<div id="message">Use WASD para mover o jogador!</div>
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const scoreDiv = document.getElementById('score');
+        const timerDiv = document.getElementById('timer');
+        const healthDiv = document.getElementById('health');
+        const messageDiv = document.getElementById('message');
 
-<script>
-    // Configuração do Mapa
-    const gameArea = document.getElementById('gameArea');
-    const mapLayout = [
-        ['🏠', '🏠', '🏃‍♂️', '🛑', '🛑', '🌳', '🌳', '🚗', '🚶‍♀️', '👶', '🛑', '🚶‍♀️', '🏠', '👨‍👩‍👧‍👦', '🛑', '🚗', '🛑', '🛑', '🌳'],
-        ['🏠', '🚗', '🛑', '🌳', '🛑', '👶', '🏃‍♂️', '🚶‍♀️', '🛑', '🌳', '🚗', '🏠', '👨‍👩‍👧‍👦', '🏃‍♂️', '🌳', '🛑', '🏠', '🚶‍♀️', '🛑', '👶'],
-        ['🌳', '🛑', '🏠', '🚗', '🌳', '🏃‍♂️', '👶', '🛑', '🏠', '🛑', '🏃‍♂️', '🚗', '🛑', '🌳', '👨‍👩‍👧‍👦', '🛑', '🏠', '🌳', '🏃‍♂️', '🚗'],
-        ['🏠', '🛑', '🌳', '🏃‍♂️', '🛑', '🛑', '👶', '🚗', '🛑', '🏠', '🛑', '🚶‍♀️', '🛑', '🏠', '🌳', '🛑', '🚶‍♀️', '👨‍👩‍👧‍👦', '🛑', '🛑', '🌳'],
-        ['🚗', '🏠', '🏃‍♂️', '🛑', '🏠', '🚶‍♀️', '🌳', '🛑', '🛑', '🚗', '🛑', '🏠', '🌳', '👶', '🛑', '🛑', '🏃‍♂️', '🛑', '🌳', '🏠', '🛑'],
-        ['🌳', '🛑', '🏠', '🛑', '👶', '🏃‍♂️', '🛑', '🚗', '🛑', '🚶‍♀️', '🏠', '🛑', '🏃‍♂️', '🚗', '🛑', '🌳', '👨‍👩‍👧‍👦', '🛑', '🌳', '🏠', '🛑'],
-        ['🛑', '🚗', '🏠', '🏃‍♂️', '🌳', '🛑', '🚶‍♀️', '🛑', '🏠', '🌳', '👶', '🛑', '🛑', '🏃‍♂️', '🛑', '🚗', '👨‍👩‍👧‍👦', '🌳', '🛑', '🏠', '🛑'],
-        ['🏠', '🛑', '🏃‍♂️', '🌳', '🛑', '🚗', '🛑', '🚶‍♀️', '🏠', '🛑', '🏃‍♂️', '🌳', '🛑', '🛑', '🚗', '👨‍👩‍👧‍👦', '🌳', '🛑', '🛑', '🏠'],
-        ['🌳', '🛑', '🏠', '🚗', '🛑', '🛑', '🏃‍♂️', '🛑', '🚶‍♀️', '🏠', '👨‍👩‍👧‍👦', '🛑', '🌳', '🛑', '🚗', '🛑', '🏃‍♂️', '🛑', '🌳', '🛑'],
-        ['🏠', '🛑', '🏠', '🌳', '🏃‍♂️', '🛑', '🚗', '🛑', '🚶‍♀️', '🏠', '🛑', '🏃‍♂️', '🌳', '🛑', '🛑', '🚗', '👨‍👩‍👧‍👦', '🛑', '🛑', '🏠', '🛑']
-    ];
+        const rows = 10;
+        const cols = 10;
+        const exitEmoji = '🚪';
+        const playerEmoji = '🏃‍♂️';
+        const demonEmoji = '👹';
 
-    const player = {
-        x: 0,
-        y: 0,
-        emoji: '🟩' // Representação do jogador
-    };
+        let playerPosition = { x: 0, y: 0 };
+        let demons = [{ x: 9, y: 9 }];
+        let maze = [];
+        let round = 1;
+        let score = 0;
+        let timer = 30;
+        let health = 3;
+        let gameInterval;
+        let timerInterval;
 
-    // Função para renderizar o mapa
-    function renderMap() {
-        gameArea.innerHTML = '';
-        for (let row = 0; row < mapLayout.length; row++) {
-            for (let col = 0; col < mapLayout[row].length; col++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                // Verifica se a célula é a posição do jogador
-                if (row === player.y && col === player.x) {
-                    cell.innerHTML = `<span class="player">${player.emoji}</span>`;
-                } else {
-                    // Senão, coloca o emoji correspondente
-                    cell.innerHTML = mapLayout[row][col];
+        const moveSound = new Audio('move-sound.mp3');
+        const collisionSound = new Audio('collision-sound.mp3');
+        const winSound = new Audio('win-sound.mp3');
+        const gameOverSound = new Audio('game-over-sound.mp3');
+
+        function generateMaze() {
+            maze = [];
+            for (let y = 0; y < rows; y++) {
+                const row = [];
+                for (let x = 0; x < cols; x++) {
+                    if (Math.random() < 0.2 && (x !== playerPosition.x || y !== playerPosition.y)) {
+                        row.push('wall');
+                    } else {
+                        row.push('empty');
+                    }
                 }
-                gameArea.appendChild(cell);
+                maze.push(row);
+            }
+
+            maze[playerPosition.y][playerPosition.x] = 'player';
+            maze[9][9] = 'exit';
+            demons.forEach(demon => maze[demon.y][demon.x] = 'demon');
+        }
+
+        function renderMaze() {
+            gameContainer.innerHTML = '';
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+
+                    if (maze[y][x] === 'wall') {
+                        cell.classList.add('wall');
+                    } else if (maze[y][x] === 'player') {
+                        cell.classList.add('player');
+                        cell.innerText = playerEmoji;
+                    } else if (maze[y][x] === 'demon') {
+                        cell.classList.add('demon');
+                        cell.innerText = demonEmoji;
+                    } else if (maze[y][x] === 'exit') {
+                        cell.classList.add('exit');
+                        cell.innerText = exitEmoji;
+                    }
+
+                    gameContainer.appendChild(cell);
+                }
             }
         }
-    }
 
-    // Função para mover o jogador
-    function movePlayer(dx, dy) {
-        const newX = player.x + dx;
-        const newY = player.y + dy;
+        function movePlayer(dx, dy) {
+            const newX = playerPosition.x + dx;
+            const newY = playerPosition.y + dy;
 
-        // Verifica se a nova posição é válida (não ultrapassa os limites do mapa)
-        if (newX >= 0 && newX < mapLayout[0].length && newY >= 0 && newY < mapLayout.length) {
-            player.x = newX;
-            player.y = newY;
-            renderMap(); // Re-renderiza o mapa com a nova posição
+            if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] !== 'wall') {
+                moveSound.play();
+                playerPosition.x = newX;
+                playerPosition.y = newY;
+                maze[playerPosition.y][playerPosition.x] = 'player';
+                checkCollision();
+                renderMaze();
+            }
         }
-    }
 
-    // Função que define as teclas para movimentação (WASD)
-    window.addEventListener('keydown', (e) => {
-        switch (e.key) {
-            case 'w':
-                movePlayer(0, -1); // Mover para cima
-                break;
-            case 'a':
-                movePlayer(-1, 0); // Mover para a esquerda
-                break;
-            case 's':
-                movePlayer(0, 1); // Mover para baixo
-                break;
-            case 'd':
-                movePlayer(1, 0); // Mover para a direita
-                break;
+        function moveDemons() {
+            demons.forEach(demon => {
+                const dx = playerPosition.x > demon.x ? 1 : (playerPosition.x < demon.x ? -1 : 0);
+                const dy = playerPosition.y > demon.y ? 1 : (playerPosition.y < demon.y ? -1 : 0);
+
+                const newX = demon.x + dx;
+                const newY = demon.y + dy;
+
+                if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] !== 'wall') {
+                    demon.x = newX;
+                    demon.y = newY;
+                    maze[demon.y][demon.x] = 'demon';
+                    checkCollision();
+                }
+            });
+            renderMaze();
         }
-    });
 
-    // Inicializa o mapa
-    renderMap();
+        function checkCollision() {
+            demons.forEach(demon => {
+                if (playerPosition.x === demon.x && playerPosition.y === demon.y) {
+                    health--;
+                    collisionSound.play();
+                    if (health <= 0) {
+                        endGame('Game Over! You were caught by the demon.');
+                    }
+                }
+            });
+        }
 
-</script>
+        function nextRound() {
+            round++;
+            playerPosition = { x: 0, y: 0 };
+            demons.push({ x: 9 - round, y: 9 - round });
 
+            generateMaze();
+            renderMaze();
+            score += 100;
+            scoreDiv.innerHTML = `Score: ${score}`;
+
+            gameInterval = setInterval(() => {
+                moveDemons();
+            }, 1000); // Reduced speed by setting interval to a more normal pace
+
+            timer = 30;
+            timerDiv.innerHTML = `Time: ${timer}`;
+            timerInterval = setInterval(() => {
+                timer--;
+                timerDiv.innerHTML = `Time: ${timer}`;
+                if (timer <= 0) {
+                    endGame('Game Over! Time ran out!');
+                }
+            }, 1000);
+
+            messageDiv.innerHTML = `Round: ${round}`;
+        }
+
+        function endGame(message) {
+            clearInterval(gameInterval);
+            clearInterval(timerInterval);
+            gameOverSound.play();
+            messageDiv.innerHTML = `<span class="game-over">${message}</span>`;
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'ArrowUp') movePlayer(0, -1);
+            if (e.key === 'ArrowDown') movePlayer(0, 1);
+            if (e.key === 'ArrowLeft') movePlayer(-1, 0);
+            if (e.key === 'ArrowRight') movePlayer(1, 0);
+
+            if (playerPosition.x === 9 && playerPosition.y === 9) {
+                winSound.play();
+                messageDiv.innerHTML = `<span class="game-win">You Win! Moving to next round...</span>`;
+                setTimeout(nextRound, 2000);
+            }
+        }
+
+        document.addEventListener('keydown', handleKeyPress);
+        generateMaze();
+        renderMaze();
+        nextRound();  // Start the game
+
+    </script>
 </body>
 </html>
