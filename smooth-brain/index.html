@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text Button</title>
+    <style>
+        /* Basic button styling */
+        .copy-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Add some spacing */
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button class="copy-button" onclick="copyText()">Copy Game URL</button>
+    </div>
+
+    <script>
+        // Function to copy the text and alert the user
+        function copyText() {
+            const gameUrl = "file:///c%3A/Users/USUARIO/OneDrive/Imagens/Capturas%20de%20tela/Fluxus/Platform-Game-master/index.html";
+            
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = gameUrl;
+            document.body.appendChild(textarea);
+            
+            // Select and copy the content
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary textarea
+            document.body.removeChild(textarea);
+            
+            // Alert the user to paste the URL in the browser
+            alert("URL copied! Now paste it in your browser to play the game: " + gameUrl);
+        }
+    </script>
+
+</body>
+</html>

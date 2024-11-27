@@ -3,138 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape the Maze</title>
+    <title>Escape the Demon Maze</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #222;
-            color: #fff;
+            background-color: #f0f0f0;
             margin: 0;
-            overflow: hidden;
         }
 
         #game-container {
             display: grid;
-            grid-template-columns: repeat(10, 60px);
-            grid-template-rows: repeat(10, 60px);
-            gap: 2px;
-            border: 2px solid #444;
-            position: relative;
+            grid-template-columns: repeat(10, 50px);
+            grid-template-rows: repeat(10, 50px);
+            gap: 5px;
+            border: 2px solid #333;
         }
 
         .cell {
-            width: 60px;
-            height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #444;
-            border: 1px solid #333;
-            font-size: 2rem;
-            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            font-size: 24px;
         }
 
         .wall {
-            background-color: #222;
+            background-color: #333;
         }
 
         .player {
-            background-color: #ff6600;
-            border-radius: 50%;
-            animation: moveAnimation 0.2s ease-in-out;
+            background-color: #ffa500;
         }
 
         .demon {
-            background-color: #e60000;
-            border-radius: 50%;
-            animation: moveAnimation 0.2s ease-in-out;
+            background-color: #ff0000;
         }
 
-        .exit {
-            background-color: #33cc33;
-            font-size: 2rem;
-            border-radius: 50%;
+        .empty {
+            background-color: #fff;
         }
 
-        @keyframes moveAnimation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        #score, #timer, #health {
+        #message, #score, #timer, #health {
             position: absolute;
-            top: 10px;
-            font-size: 1.5rem;
-            z-index: 10;
+            top: 20px;
+            text-align: center;
+            font-size: 18px;
         }
 
-        #score { left: 10px; }
-        #timer { left: 50%; transform: translateX(-50%); }
-        #health { right: 10px; }
+        #score {
+            top: 50px;
+        }
+
+        #timer {
+            top: 80px;
+        }
+
+        #health {
+            top: 110px;
+        }
 
         .game-over {
-            font-size: 2rem;
+            font-size: 24px;
             color: red;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
         }
 
         .game-win {
-            font-size: 2rem;
+            font-size: 24px;
             color: green;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
         }
     </style>
 </head>
 <body>
     <div id="game-container"></div>
+    <div id="message"></div>
     <div id="score"></div>
     <div id="timer"></div>
     <div id="health"></div>
-    <div id="message"></div>
 
     <script>
         const gameContainer = document.getElementById('game-container');
+        const messageDiv = document.getElementById('message');
         const scoreDiv = document.getElementById('score');
         const timerDiv = document.getElementById('timer');
         const healthDiv = document.getElementById('health');
-        const messageDiv = document.getElementById('message');
 
+        const emojiPlayer = '🏃‍♂️';
+        const emojiDemon = '👹';
         const rows = 10;
         const cols = 10;
-        const exitEmoji = '🚪';
-        const playerEmoji = '🏃‍♂️';
-        const demonEmoji = '👹';
-
+        
         let playerPosition = { x: 0, y: 0 };
         let demons = [{ x: 9, y: 9 }];
         let maze = [];
         let round = 1;
         let score = 0;
         let timer = 30;
-        let health = 3;
+        let health = 3; // Player's health
         let gameInterval;
         let timerInterval;
 
-        const moveSound = new Audio('move-sound.mp3');
+        // Sound effects
+        const moveSound = new Audio('move-sound.mp3'); // Add sound files
         const collisionSound = new Audio('collision-sound.mp3');
         const winSound = new Audio('win-sound.mp3');
         const gameOverSound = new Audio('game-over-sound.mp3');
@@ -153,8 +129,8 @@
                 maze.push(row);
             }
 
+            // Set starting positions
             maze[playerPosition.y][playerPosition.x] = 'player';
-            maze[9][9] = 'exit';
             demons.forEach(demon => maze[demon.y][demon.x] = 'demon');
         }
 
@@ -169,13 +145,10 @@
                         cell.classList.add('wall');
                     } else if (maze[y][x] === 'player') {
                         cell.classList.add('player');
-                        cell.innerText = playerEmoji;
+                        cell.innerText = emojiPlayer;
                     } else if (maze[y][x] === 'demon') {
                         cell.classList.add('demon');
-                        cell.innerText = demonEmoji;
-                    } else if (maze[y][x] === 'exit') {
-                        cell.classList.add('exit');
-                        cell.innerText = exitEmoji;
+                        cell.innerText = emojiDemon;
                     }
 
                     gameContainer.appendChild(cell);
@@ -212,6 +185,7 @@
                     checkCollision();
                 }
             });
+
             renderMaze();
         }
 
@@ -230,7 +204,7 @@
         function nextRound() {
             round++;
             playerPosition = { x: 0, y: 0 };
-            demons.push({ x: 9 - round, y: 9 - round });
+            demons.push({ x: 9 - round, y: 9 - round }); // More demons every round
 
             generateMaze();
             renderMaze();
@@ -239,7 +213,7 @@
 
             gameInterval = setInterval(() => {
                 moveDemons();
-            }, 1000); // Reduced speed by setting interval to a more normal pace
+            }, 1000 / (round * 2));
 
             timer = 30;
             timerDiv.innerHTML = `Time: ${timer}`;
@@ -267,18 +241,18 @@
             if (e.key === 'ArrowLeft') movePlayer(-1, 0);
             if (e.key === 'ArrowRight') movePlayer(1, 0);
 
-            if (playerPosition.x === 9 && playerPosition.y === 9) {
-                winSound.play();
-                messageDiv.innerHTML = `<span class="game-win">You Win! Moving to next round...</span>`;
-                setTimeout(nextRound, 2000);
+            if (playerPosition.x === cols - 1 && playerPosition.y === rows - 1) {
+                nextRound();
             }
         }
 
-        document.addEventListener('keydown', handleKeyPress);
+        window.addEventListener('keydown', handleKeyPress);
+
         generateMaze();
         renderMaze();
-        nextRound();  // Start the game
-
+        gameInterval = setInterval(() => {
+            moveDemons();
+        }, 1000 / round);
     </script>
 </body>
 </html>
