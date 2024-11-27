@@ -3,256 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape the Demon Maze</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-
-        #game-container {
-            display: grid;
-            grid-template-columns: repeat(10, 50px);
-            grid-template-rows: repeat(10, 50px);
-            gap: 5px;
-            border: 2px solid #333;
-        }
-
-        .cell {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            font-size: 24px;
-        }
-
-        .wall {
-            background-color: #333;
-        }
-
-        .player {
-            background-color: #ffa500;
-        }
-
-        .demon {
-            background-color: #ff0000;
-        }
-
-        .empty {
-            background-color: #fff;
-        }
-
-        #message, #score, #timer, #health {
-            position: absolute;
-            top: 20px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        #score {
-            top: 50px;
-        }
-
-        #timer {
-            top: 80px;
-        }
-
-        #health {
-            top: 110px;
-        }
-
-        .game-over {
-            font-size: 24px;
-            color: red;
-        }
-
-        .game-win {
-            font-size: 24px;
-            color: green;
-        }
-    </style>
+    <title>Dandy's World Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game-container"></div>
-    <div id="message"></div>
-    <div id="score"></div>
-    <div id="timer"></div>
-    <div id="health"></div>
+    <div class="container">
+        <h1>Dandy's World Rock-Paper-Scissors!</h1>
+        <h2>Select Your Character!</h2>
+        <div class="character-selection">
+            <button class="character-btn" id="brightney-btn">
+                <img class="character-img" src="Assets/Brightney_render.png" alt="Brightney">
+                Brightney
+            </button>
+            <button class="character-btn" id="boxten-btn">
+                <img class="character-img" src="Assets/Boxten_render.png" alt="Boxten">
+                Boxten
+            </button>
+            <button class="character-btn" id="cosmo-btn">
+                <img class="character-img" src="Assets/Cosmo_render.png" alt="Cosmo">
+                Cosmo
+            </button>
+            <button class="character-btn" id="finn-btn">
+                <img class="character-img" src="Assets/Finn_render.png" alt="Finn">
+                Finn
+            </button>
+            <button class="character-btn" id="glisten-btn">
+                <img class="character-img" src="Assets/Glisten_render.png" alt="Glisten">
+                Glisten
+            </button>
+            <button class="character-btn" id="scraps-btn">
+                <img class="character-img" src="Assets/Scraps_render.png" alt="Scraps">
+                Scraps
+            </button>
+            <button class="character-btn" id="pebble-btn">
+                <img class="character-img" src="Assets/Pebble_render.png" alt="Pebble">
+                Pebble
+            </button>
+            <button class="character-btn" id="toodles-btn">
+                <img class="character-img" src="Assets/Toodles_render.png" alt="Toodles">
+                Toodles
+            </button>
+            <button class="character-btn" id="dandy-btn">
+                <img class="character-img" src="Assets/Dandy_render.png" alt="Dandy">
+                Dandy
+            </button>
+            <button class="character-btn" id="shrimp-btn">
+                <img class="character-img" src="Assets/Shrimpo_render.png" alt="Shrimpo">
+                Shrimpo
+            </button>
+            <button class="character-btn" id="astro-btn">
+                <img class="character-img" src="Assets/Astro_render.png" alt="Astro">
+                Astro
+            </button>
+            <button class="character-btn" id="flutter-btn">
+                <img class="character-img" src="Assets/Flutter_render.png" alt="Flutter">
+                Flutter
+            </button>
+            <button class="character-btn" id="goob-btn">
+                <img class="character-img" src="Assets/Goob_render.png" alt="Goob">
+                Goob
+            </button>
+            <button class="character-btn" id="poppy-btn">
+                <img class="character-img" src="Assets/Poppy_render.png" alt="Poppy">
+                Poppy
+            </button>
+            <button class="character-btn" id="gigi-btn">
+                <img class="character-img" src="Assets/Gigi_render.png" alt="Gigi">
+                Gigi
+            </button>
+            <button class="character-btn" id="tisha-btn">
+                <img class="character-img" src="Assets/Tisha_render.png" alt="Tisha">
+                Tisha
+            </button>
+            <button class="character-btn" id="connie-btn">
+                <img class="character-img" src="Assets/Connie_render.png" alt="Connie">
+                Connie
+            </button>
+        </div>
+        <h2>Computer's Character: <span id="computer-character">?</span></h2>
+        <h3 id="result" class="result"></h3>
+        <button id="play-again" style="display: none;">Play Again</button>
+    </div>
 
-    <script>
-        const gameContainer = document.getElementById('game-container');
-        const messageDiv = document.getElementById('message');
-        const scoreDiv = document.getElementById('score');
-        const timerDiv = document.getElementById('timer');
-        const healthDiv = document.getElementById('health');
+    <footer>
+        <p>Powered by SMG5</p>
+    </footer>
 
-        const emojiPlayer = '🏃‍♂️';
-        const emojiDemon = '👹';
-        const rows = 10;
-        const cols = 10;
-        
-        let playerPosition = { x: 0, y: 0 };
-        let demons = [{ x: 9, y: 9 }];
-        let maze = [];
-        let round = 1;
-        let score = 0;
-        let timer = 30;
-        let health = 3; // Player's health
-        let gameInterval;
-        let timerInterval;
-
-        // Sound effects
-        const moveSound = new Audio('move-sound.mp3'); // Add sound files
-        const collisionSound = new Audio('collision-sound.mp3');
-        const winSound = new Audio('win-sound.mp3');
-        const gameOverSound = new Audio('game-over-sound.mp3');
-
-        function generateMaze() {
-            maze = [];
-            for (let y = 0; y < rows; y++) {
-                const row = [];
-                for (let x = 0; x < cols; x++) {
-                    if (Math.random() < 0.2 && (x !== playerPosition.x || y !== playerPosition.y)) {
-                        row.push('wall');
-                    } else {
-                        row.push('empty');
-                    }
-                }
-                maze.push(row);
-            }
-
-            // Set starting positions
-            maze[playerPosition.y][playerPosition.x] = 'player';
-            demons.forEach(demon => maze[demon.y][demon.x] = 'demon');
-        }
-
-        function renderMaze() {
-            gameContainer.innerHTML = '';
-            for (let y = 0; y < rows; y++) {
-                for (let x = 0; x < cols; x++) {
-                    const cell = document.createElement('div');
-                    cell.classList.add('cell');
-
-                    if (maze[y][x] === 'wall') {
-                        cell.classList.add('wall');
-                    } else if (maze[y][x] === 'player') {
-                        cell.classList.add('player');
-                        cell.innerText = emojiPlayer;
-                    } else if (maze[y][x] === 'demon') {
-                        cell.classList.add('demon');
-                        cell.innerText = emojiDemon;
-                    }
-
-                    gameContainer.appendChild(cell);
-                }
-            }
-        }
-
-        function movePlayer(dx, dy) {
-            const newX = playerPosition.x + dx;
-            const newY = playerPosition.y + dy;
-
-            if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] !== 'wall') {
-                moveSound.play();
-                playerPosition.x = newX;
-                playerPosition.y = newY;
-                maze[playerPosition.y][playerPosition.x] = 'player';
-                checkCollision();
-                renderMaze();
-            }
-        }
-
-        function moveDemons() {
-            demons.forEach(demon => {
-                const dx = playerPosition.x > demon.x ? 1 : (playerPosition.x < demon.x ? -1 : 0);
-                const dy = playerPosition.y > demon.y ? 1 : (playerPosition.y < demon.y ? -1 : 0);
-
-                const newX = demon.x + dx;
-                const newY = demon.y + dy;
-
-                if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] !== 'wall') {
-                    demon.x = newX;
-                    demon.y = newY;
-                    maze[demon.y][demon.x] = 'demon';
-                    checkCollision();
-                }
-            });
-
-            renderMaze();
-        }
-
-        function checkCollision() {
-            demons.forEach(demon => {
-                if (playerPosition.x === demon.x && playerPosition.y === demon.y) {
-                    health--;
-                    collisionSound.play();
-                    if (health <= 0) {
-                        endGame('Game Over! You were caught by the demon.');
-                    }
-                }
-            });
-        }
-
-        function nextRound() {
-            round++;
-            playerPosition = { x: 0, y: 0 };
-            demons.push({ x: 9 - round, y: 9 - round }); // More demons every round
-
-            generateMaze();
-            renderMaze();
-            score += 100;
-            scoreDiv.innerHTML = `Score: ${score}`;
-
-            gameInterval = setInterval(() => {
-                moveDemons();
-            }, 1000 / (round * 2));
-
-            timer = 30;
-            timerDiv.innerHTML = `Time: ${timer}`;
-            timerInterval = setInterval(() => {
-                timer--;
-                timerDiv.innerHTML = `Time: ${timer}`;
-                if (timer <= 0) {
-                    endGame('Game Over! Time ran out!');
-                }
-            }, 1000);
-
-            messageDiv.innerHTML = `Round: ${round}`;
-        }
-
-        function endGame(message) {
-            clearInterval(gameInterval);
-            clearInterval(timerInterval);
-            gameOverSound.play();
-            messageDiv.innerHTML = `<span class="game-over">${message}</span>`;
-        }
-
-        function handleKeyPress(e) {
-            if (e.key === 'ArrowUp') movePlayer(0, -1);
-            if (e.key === 'ArrowDown') movePlayer(0, 1);
-            if (e.key === 'ArrowLeft') movePlayer(-1, 0);
-            if (e.key === 'ArrowRight') movePlayer(1, 0);
-
-            if (playerPosition.x === cols - 1 && playerPosition.y === rows - 1) {
-                nextRound();
-            }
-        }
-
-        window.addEventListener('keydown', handleKeyPress);
-
-        generateMaze();
-        renderMaze();
-        gameInterval = setInterval(() => {
-            moveDemons();
-        }, 1000 / round);
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
