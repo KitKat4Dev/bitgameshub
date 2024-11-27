@@ -1,94 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dandy's World Rock-Paper-Scissors</title>
-    <link rel="stylesheet" href="styles.css">
+  <!-- Base URL and Meta Information -->
+  <base href="." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpongeBob's Splashy Social</title>
+  
+  <!-- Styles -->
+  <style>
+    /* Basic Body Styles */
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow-y: scroll;
+      background: linear-gradient(180deg, #87CEFA, #1E90FF); /* Gradient sky to sea */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      color: white;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background: #008080;
+      padding: 20px 30px;
+      color: #FFF700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      font-size: 1.5rem;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    /* Bubble Animation */
+    .bubble {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: float 4s infinite linear;
+    }
+
+    /* Individual Bubble Styles */
+    .bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .bubble:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .bubble:nth-child(3) { left: 50%; animation-delay: 3s; }
+    .bubble:nth-child(4) { left: 70%; animation-delay: 1s; }
+    .bubble:nth-child(5) { left: 90%; animation-delay: 5s; }
+
+    /* Floating Animation Keyframes */
+    @keyframes float {
+      0% { bottom: -100px; transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { bottom: 100vh; transform: translateY(0); }
+    }
+
+    /* Main Container Layout */
+    .main-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    /* Profile Card Styles */
+    .profile-card {
+      background: rgba(255, 230, 0, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+      background-color: #FFD700;
+      border: 4px solid #FFF;
+    }
+
+    /* Post Box Styles */
+    .post-box {
+      background: rgba(255, 230, 0, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-input {
+      width: 100%;
+      height: 120px;
+      border: 2px solid #FFF;
+      border-radius: 8px;
+      resize: none;
+      padding: 10px;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    .post-button {
+      background: #FF4500;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .post-button:hover {
+      background: #ff6347;
+    }
+
+    /* Post Feed */
+    .feed {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .post {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    /* Like Button and Delete Button */
+    .like-button, .delete-button {
+      background: #ffcc00;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .like-button:hover {
+      background: #ffaa00;
+    }
+
+    .delete-button {
+      background: #FF4500;
+    }
+
+    .delete-button:hover {
+      background: #ff6347;
+    }
+
+    /* Suggestions */
+    .suggestions {
+      background: rgba(0, 128, 128, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: white;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Quote Box */
+    .quote-box {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+      font-style: italic;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dandy's World Rock-Paper-Scissors!</h1>
-        <h2>Select Your Character!</h2>
-        <div class="character-selection">
-            <button class="character-btn" id="brightney-btn">
-                <img class="character-img" src="Assets/Brightney_render.png" alt="Brightney">
-                Brightney
-            </button>
-            <button class="character-btn" id="boxten-btn">
-                <img class="character-img" src="Assets/Boxten_render.png" alt="Boxten">
-                Boxten
-            </button>
-            <button class="character-btn" id="cosmo-btn">
-                <img class="character-img" src="Assets/Cosmo_render.png" alt="Cosmo">
-                Cosmo
-            </button>
-            <button class="character-btn" id="finn-btn">
-                <img class="character-img" src="Assets/Finn_render.png" alt="Finn">
-                Finn
-            </button>
-            <button class="character-btn" id="glisten-btn">
-                <img class="character-img" src="Assets/Glisten_render.png" alt="Glisten">
-                Glisten
-            </button>
-            <button class="character-btn" id="scraps-btn">
-                <img class="character-img" src="Assets/Scraps_render.png" alt="Scraps">
-                Scraps
-            </button>
-            <button class="character-btn" id="pebble-btn">
-                <img class="character-img" src="Assets/Pebble_render.png" alt="Pebble">
-                Pebble
-            </button>
-            <button class="character-btn" id="toodles-btn">
-                <img class="character-img" src="Assets/Toodles_render.png" alt="Toodles">
-                Toodles
-            </button>
-            <button class="character-btn" id="dandy-btn">
-                <img class="character-img" src="Assets/Dandy_render.png" alt="Dandy">
-                Dandy
-            </button>
-            <button class="character-btn" id="shrimp-btn">
-                <img class="character-img" src="Assets/Shrimpo_render.png" alt="Shrimpo">
-                Shrimpo
-            </button>
-            <button class="character-btn" id="astro-btn">
-                <img class="character-img" src="Assets/Astro_render.png" alt="Astro">
-                Astro
-            </button>
-            <button class="character-btn" id="flutter-btn">
-                <img class="character-img" src="Assets/Flutter_render.png" alt="Flutter">
-                Flutter
-            </button>
-            <button class="character-btn" id="goob-btn">
-                <img class="character-img" src="Assets/Goob_render.png" alt="Goob">
-                Goob
-            </button>
-            <button class="character-btn" id="poppy-btn">
-                <img class="character-img" src="Assets/Poppy_render.png" alt="Poppy">
-                Poppy
-            </button>
-            <button class="character-btn" id="gigi-btn">
-                <img class="character-img" src="Assets/Gigi_render.png" alt="Gigi">
-                Gigi
-            </button>
-            <button class="character-btn" id="tisha-btn">
-                <img class="character-img" src="Assets/Tisha_render.png" alt="Tisha">
-                Tisha
-            </button>
-            <button class="character-btn" id="connie-btn">
-                <img class="character-img" src="Assets/Connie_render.png" alt="Connie">
-                Connie
-            </button>
-        </div>
-        <h2>Computer's Character: <span id="computer-character">?</span></h2>
-        <h3 id="result" class="result"></h3>
-        <button id="play-again" style="display: none;">Play Again</button>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo">🌊 SpongeBob's Splashy Social</div>
+  </div>
+
+  <!-- Animated Bubbles -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="profile-pic"></div>
+      <h2>SpongeBob SquarePants</h2>
+      <p>🏝 Lives in a Pineapple Under the Sea</p>
+      <p>👨‍🍳 Grilling Krabby Patties</p>
+      <p>🎸 Jellyfishing & Bubble Blowing</p>
     </div>
 
-    <footer>
-        <p>Powered by SMG5</p>
-    </footer>
+    <!-- Feed -->
+    <div class="feed">
+      <!-- Post Input -->
+      <div class="post-box">
+        <textarea class="post-input" placeholder="What's absorbing your mind today?"></textarea>
+        <button class="post-button" onclick="createPost()">Blow Bubbles! (Post)</button>
+      </div>
 
-    <script src="index.js"></script>
+      <!-- Posts Container -->
+      <div id="posts-container">
+        <!-- Posts will be dynamically added here -->
+      </div>
+
+      <!-- Random Quote Section -->
+      <div class="quote-box" id="quote-box">
+        <h4>SpongeBob's Wisdom:</h4>
+        <p id="quote">"The best time to wear a striped sweater is all the time!"</p>
+        <button class="post-button" onclick="generateQuote()">Generate New Quote</button>
+      </div>
+    </div>
+
+    <!-- Suggestions -->
+    <div class="suggestions">
+      <h3>Suggested Sponge-friends</h3>
+      <div id="suggestions-list">
+        <p>🦑 Squidward Tentacles</p>
+        <p>🐿 Sandy Cheeks</p>
+        <p>🦀 Mr. Krabs</p>
+        <p>🦈 Plankton</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const seaEmojis = ['🦑', '🦈', '🐠', '🦀', '🐙'];
+    const spongePhrases = [
+      'Whistled a happy tune!',
+      'Cooked up a storm at the Krusty Krab!',
+      'Jellyfished with Patrick!',
+      'Tried new bubble shapes!',
+      'Said hi to everyone in Bikini Bottom!'
+    ];
+    const spongebobQuotes = [
+      '"The best time to wear a striped sweater is all the time!"',
+      '"I’m ready, I’m ready, I’m ready!"',
+      '"Is mayonnaise an instrument?"',
+      '"I’m not a Krusty Krab, I’m a SpongeBob!"',
+      '"F is for friends who do stuff together!"'
+    ];
+
+    // Post creation logic
+    function createPost() {
+      const postInput = document.querySelector('.post-input');
+      if (!postInput.value) return alert("Please share something first!");
+      const postContainer = document.getElementById('posts-container');
+      const postElement = document.createElement('div');
+      postElement.classList.add('post');
+
+      // Add post content
+      postElement.innerHTML = `
+        <p>${postInput.value}</p>
+        <button class="like-button" onclick="likePost(this)">Like</button>
+        <button class="delete-button" onclick="deletePost(this)">Delete</button>
+      `;
+      postContainer.appendChild(postElement);
+      postInput.value = ''; // Clear input after posting
+    }
+
+    // Like post logic
+    function likePost(button) {
+      button.textContent = 'Liked!';
+      button.disabled = true;
+    }
+
+    // Delete post logic
+    function deletePost(button) {
+      button.closest('.post').remove();
+    }
+
+    // Generate random SpongeBob quote
+    function generateQuote() {
+      const quote = spongebobQuotes[Math.floor(Math.random() * spongebobQuotes.length)];
+      document.getElementById('quote').textContent = quote;
+    }
+  </script>
 </body>
 </html>
