@@ -44,12 +44,17 @@
       width: 60px;
       margin-left: 8px;
     }
+
+    #resetButton {
+      margin-left: 10px;
+    }
   </style>
 </head>
 <body>
   <div id="controls">
     <button id="cloneButton">Clone Smileys</button>
     <input type="number" id="cloneCount" min="1" max="200" value="10">
+    <button id="resetButton">Reset Game</button>
     <p id="score">Hits: 0</p>
   </div>
   <canvas id="canvas"></canvas>
@@ -59,25 +64,29 @@
     const cloneButton = document.getElementById('cloneButton');
     const cloneCountInput = document.getElementById('cloneCount');
     const scoreEl = document.getElementById('score');
-
+    const resetButton = document.getElementById('resetButton');
+    
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     let hits = 0;
-
-    // Smiley object template
+    let smileys = [];
+    
+    const hitSound = new Audio('https://www.soundjay.com/button/beep-07.wav');
+    const addSound = new Audio('https://www.soundjay.com/button/press-01.wav');
+    
+    // Smiley object template with randomized sizes
     function createSmiley() {
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: 50,
+        size: Math.random() * 50 + 20,  // Random size between 20 and 70
         dx: Math.random() < 0.5 ? -3 : 3,
         dy: Math.random() < 0.5 ? -3 : 3,
         color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+        lastBounceTime: 0,  // To control the time between bounces
       };
     }
-
-    let smileys = [createSmiley()];
 
     // Draw a smiley face with nerd teeth
     function drawSmiley(smiley) {
@@ -112,8 +121,6 @@
       ctx.lineWidth = 3;
       ctx.stroke();
       ctx.closePath();
-
-
     }
 
     // Update smiley positions
@@ -127,17 +134,26 @@
         smiley.x += smiley.dx;
         smiley.y += smiley.dy;
 
-        // Bounce off walls and change color
+        // Bounce off walls and change color if enough time has passed since last bounce
+        const now = Date.now();
         if (smiley.x - smiley.size <= 0 || smiley.x + smiley.size >= canvas.width) {
-          smiley.dx *= -1;
-          smiley.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-          hits++;
+          if (now - smiley.lastBounceTime > 200) {  // Wait 200ms before allowing another bounce
+            smiley.dx *= -1;
+            smiley.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            hits++;
+            hitSound.play();
+            smiley.lastBounceTime = now;
+          }
         }
 
         if (smiley.y - smiley.size <= 0 || smiley.y + smiley.size >= canvas.height) {
-          smiley.dy *= -1;
-          smiley.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-          hits++;
+          if (now - smiley.lastBounceTime > 200) {  // Wait 200ms before allowing another bounce
+            smiley.dy *= -1;
+            smiley.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            hits++;
+            hitSound.play();
+            smiley.lastBounceTime = now;
+          }
         }
       }
 
@@ -151,6 +167,15 @@
       for (let i = 0; i < cloneCount; i++) {
         smileys.push(createSmiley());
       }
+      addSound.play();
+    });
+
+    // Reset game
+    resetButton.addEventListener('click', () => {
+      smileys = [createSmiley()];
+      hits = 0;
+      scoreEl.textContent = `Hits: ${hits}`;
+      addSound.play();
     });
 
     // Resize canvas on window resize
