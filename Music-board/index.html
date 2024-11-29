@@ -71,8 +71,6 @@
 </div>
 
 <script>
-    let audio = new Audio(); // Create a single audio object to manage playback
-
     const songs = {
         'midnight-ride': 'https://www.soundjay.com/free-music/sounds/midnight-ride-01a.mp3',
         'barn-beat': 'https://www.soundjay.com/free-music/sounds/barn-beat-01.mp3',
@@ -83,12 +81,26 @@
         'jungle-run': 'https://www.soundjay.com/free-music/sounds/jungle-run-01.mp3'
     };
 
+    let activeAudios = [];
+
     function playMusic(songKey) {
         const songUrl = songs[songKey];
         if (songUrl) {
-            audio.src = songUrl; // Set the new song source
-            audio.play(); // Start playing the song
+            // Create a new audio element for each song played
+            const audio = new Audio(songUrl);
+            activeAudios.push(audio); // Store the reference of the new audio element
+
+            audio.play(); // Play the song
         }
+    }
+
+    // Optional: Function to stop all currently playing songs
+    function stopAllMusic() {
+        activeAudios.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0; // Reset to start
+        });
+        activeAudios = []; // Clear the active audio list
     }
 </script>
 

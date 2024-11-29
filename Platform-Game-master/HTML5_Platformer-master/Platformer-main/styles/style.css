@@ -1,0 +1,259 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Souls_Bold;
+    src: url("../fonts/SoulsBold.ttf");
+}
+
+@font-face {
+    font-family: Souls;
+    src: url("../fonts/Souls.ttf");
+}
+@font-face {
+    font-family: blocks;
+    src: url("../fonts/Nabla-Regular.ttf");
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+body {
+    background: black;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: Souls_Bold;
+}
+
+header {
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 12rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.header-link {
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+    font-weight: 100;
+}
+
+
+h1 {
+    font-size: 5em;
+    margin-top: none;
+    padding: none;
+    letter-spacing: .25em;
+}
+
+h2 {
+    font-family: Souls;
+    letter-spacing: 1em;
+}
+
+footer {
+
+}
+
+.button {
+    background-color: rgb(230, 219, 219);
+    border-radius: 10px;
+    border: none;
+    padding: 1rem 3rem 1rem 3rem;
+    font-size: 1.5em;
+    font-family: Souls;
+}
+
+.button:hover {
+    background-color: rgb(166, 165, 165);
+}
+
+.instructions-container {
+    background-color: rgb(21, 21, 21);
+    color: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.instructions-container img {
+    width: 10rem;
+}
+
+.game-objective {
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.movement-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.w, .a, .d, .space{
+    display: flex;
+    gap: 2rem;
+}
+
+
+.key {
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.space-bar {
+    width: 200px;
+    height: 50px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-game-container{
+    display: flex;
+    margin: auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+}
+
+.start-game-container button {
+    background-color: none;
+    color: rgb(0, 0, 0);
+    padding: 2rem 4rem 2rem 4rem;
+    font-size: 2em;
+    font-family: monospace;
+    font-weight: 900;
+    border: none;
+    border-radius: 5px;
+}
+
+.start-game-container button:hover {
+    background-color: rgb(198, 198, 198);
+}
+
+.flipped {
+    transform: rotateY('180deg');
+}
+
+.canvas-container {
+    position: relative;
+    width: 1024px;
+    height: 576px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#canvas {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+.overlay.active {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    color: rgb(201, 53, 53);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    gap: 2rem;
+    /* margin-top: 1rem; */
+}
+
+.overlay.active h2 {
+    font-size: 8em;
+    font-family: Souls_Bold;
+    letter-spacing: normal;
+}
+
+.overlay.active p {
+    font-size: 3em;
+    font-family: Souls;
+    letter-spacing: normal;
+}
+
+
+@keyframes fadeIn {
+    0%{ opacity: 0;}
+    100% { opacity: 1;}
+}
+
+.overlay.active button, .overlay.active p, .overlay.active h2 {
+    animation: fadeIn 2s;
+}
+
+.backgrounds {
+    display: none;
+}
+
+#works-cited {
+    color: whitesmoke;
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.works-cited-section {
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    margin: 1.5rem 0 1.5rem 2rem;
+}
+
+.works-cited-section a {
+    color: rgb(73, 73, 217);
+}
+
+.works-cited-section a:visited {
+    color: rgb(211, 75, 211);
+}
+
+
+#works-cited ul {
+    color: whitesmoke;
+}
+
+#works-cited h2 {
+    letter-spacing: normal;
+}
