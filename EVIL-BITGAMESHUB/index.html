@@ -3,203 +3,184 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8">
-    <title>Bit Games Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <title>EVIL BIT GAMES HUB! MUHAHAHA!</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: black; /* Dark background */
-            color: #ff004c; /* Accent red */
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            transform: skewY(-2deg);
-            font-size: 14px; /* Smaller font size */
-        }
+    /* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #000000, #ff004c); /* Deep red and black */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 16px;
+    box-shadow: inset 0 0 50px rgba(255, 0, 76, 0.5); /* Softer inner shadow */
+}
 
-        h1 {
-            font-size: 2.5rem; /* Smaller title */
-            margin: 20px 0;
-            text-align: center;
-            text-transform: uppercase;
-            color: #ff004c;
-            text-shadow: 3px 3px 10px rgba(255, 0, 76, 0.8), 0 0 20px #ff0057;
-            transform: rotate(-5deg);
-            animation: glitch 1s infinite;
-        }
+/* Headings */
+h1 {
+    font-size: 4rem;
+    margin: 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff004c;
+    text-shadow: 2px 2px 5px rgba(255, 0, 76, 0.8), 0 0 20px #ff0057; /* Subtle shadow for emphasis */
+    animation: glitch 1s infinite, fadeIn 2s ease-in-out;
+    border: 5px solid #ff004c;
+    padding: 10px;
+    background: linear-gradient(45deg, red, yellow, blue);
+    border-radius: 10px;
+}
 
-        /* Game Button Style */
-        .game-button {
-            position: relative;
-            width: 200px; /* Smaller buttons */
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            background: #222; /* Charcoal */
-            text-decoration: none;
-            font-size: 1.2rem; /* Smaller font size */
-            font-weight: bold;
-            border-radius: 8px; /* Rounded corners */
-            border: 3px solid red;
-            margin: 10px;
-            box-shadow: 0 0 15px red;
-            transform: rotate(-3deg) skew(-3deg);
-            animation: shake 1.5s infinite, flicker 0.2s infinite;
-        }
+/* Game Button Style */
+.game-button {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: #000;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 5px solid #ff004c;
+    margin: 50px;
+    box-shadow: 0 0 60px #ff004c, 0 0 60px yellow; /* Softer glowing effect */
+    transform: scale(1.2);
+    transition: transform 0.3s, background 0.3s;
+}
 
-        .game-button:before {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 0, 0, 0.2),
-                rgba(255, 0, 0, 0.2) 5px,
-                rgba(0, 0, 0, 0.2) 5px,
-                rgba(0, 0, 0, 0.2) 10px
-            );
-            animation: crack 1.5s infinite;
-        }
+.game-button:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.2) 5px, rgba(0, 0, 0, 0.2) 5px, rgba(0, 0, 0, 0.2) 15px);
+    animation: crack 1s infinite;
+}
 
-        .game-button:hover {
-            transform: rotate(-10deg) scale(1.1) skew(-7deg);
-            background: radial-gradient(circle, #ff004c, #000);
-            box-shadow: 0 0 50px #ff004c;
-        }
+.game-button:hover {
+    transform: scale(1.3) rotate(10deg); /* Slight hover effect */
+    background: linear-gradient(90deg, #ff004c, #ff0057);
+    box-shadow: 0 0 100px #ff004c, 0 0 100px yellow;
+    border: 10px solid limegreen;
+}
 
-        /* Footer */
-        footer {
-            margin-top: auto;
-            text-align: center;
-            color: white;
-            font-size: 0.9rem; /* Smaller footer text */
-            padding: 15px 30px;
-            width: 100%;
-            background: #444;
-            text-decoration: none;
-            transform: rotate(0deg);
-        }
+/* Footer */
+footer {
+    margin-top: auto;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    padding: 25px;
+    background: #444;
+    text-decoration: none;
+    transform: rotate(2deg); /* Less aggressive rotation */
+    animation: spinningFooter 5s infinite linear;
+}
 
-        /* Language Switcher */
-        .language-switcher img {
-            width: 30px; /* Smaller icons */
-            height: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+/* Language Switcher */
+.language-switcher img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
 
-        .language-switcher img:hover {
-            transform: scale(1.2);
-        }
+.language-switcher img:hover {
+    transform: scale(1.2) rotate(10deg); /* Subtle hover effect */
+}
 
-        .game-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-        }
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
 
-        /* Animations */
-        @keyframes shake {
-            0%, 100% {
-                transform: rotate(-2deg) skew(-3deg);
-            }
-            50% {
-                transform: rotate(2deg) skew(3deg);
-            }
-        }
+/* Animations */
+@keyframes shake {
+    0%, 100% {
+        transform: rotate(-10deg) skew(-15deg);
+    }
+    50% {
+        transform: rotate(10deg) skew(15deg);
+    }
+}
 
-        @keyframes glitch {
-            0% {
-                text-shadow: 2px 2px 0 red, -2px -2px 0 blue;
-            }
-            50% {
-                text-shadow: -2px 2px 0 green, 2px -2px 0 yellow;
-            }
-            100% {
-                text-shadow: 2px -2px 0 blue, -2px 2px 0 red;
-            }
-        }
+@keyframes glitch {
+    0% {
+        text-shadow: 2px 2px 0 red, -2px -2px 0 blue;
+    }
+    50% {
+        text-shadow: -2px 2px 0 green, 2px -2px 0 yellow;
+    }
+    100% {
+        text-shadow: 2px -2px 0 blue, -2px 2px 0 red;
+    }
+}
 
-        @keyframes flicker {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
-        @keyframes crack {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 100% 100%;
-            }
-        }
+@keyframes crack {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes spinningFooter {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
     </style>
 </head>
 
 <body>
     <!-- Language Switcher -->
     <div class="language-switcher">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" onclick="alert('No languages allowed!')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Brazil.svg" alt="Portuguese" onclick="alert('O site está destruído demais!')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" onclick="alert('NOOOOOOOO!')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Brazil.svg" alt="Portuguese" onclick="alert('FALOU QUE O SITE VAI EXPLODIR!')">
     </div>
 
     <!-- Title -->
-    <h1>Welcome to Bit Games Hub!</h1>
+    <h1>EVIL BIT GAMES HUB!! MUHAHAHA!</h1>
 
     <!-- Game Buttons -->
     <div class="game-container">
-        <a href="/clicker-madness/index.html" class="game-button">🎮 Clicker Madness</a>
-        <a href="/boredom-simulator/index.html" class="game-button">🎮 Boredom Simulator</a>
-        <a href="/random-compliment/index.html" class="game-button">🎮 Random Compliments</a>
-        <a href="/doodle-pad/index.html" class="game-button">🎮 Doodle Pad</a>
-        <a href="/silly-photo-booth/index.html" class="game-button">🎮 Silly Photo Booth</a>
-        <a href="/customdodge/index.html" class="game-button">🎮 Custom Dodge</a>
-        <a href="/unmotivational-poster/index.html" class="game-button">🎮 Unmotivational Poster</a>
-        <a href="/random-complaints/index.html" class="game-button">🎮 Random Complaints</a>
-        <a href="/404-error-simulator/index.html" class="game-button">🎮 404 Simulator</a>
-        <a href="/random-button-generator/index.html" class="game-button">🎮 Random Buttons</a>
-        <a href="/endless-scrolling-text/index.html" class="game-button">🎮 Scrolling Text</a>
-        <a href="/time-wasting-countdown/index.html" class="game-button">🎮 Countdown</a>
-        <a href="/virtual-pet-rock/index.html" class="game-button">🎮 Virtual Pet Rock</a>
-        <a href="/color-wheel-of-uselessness/index.html" class="game-button">🎮 Color Wheel</a>
-        <a href="/random-fact-generator/index.html" class="game-button">🎮 Fact Generator</a>
-        <a href="/staring-contest/index.html" class="game-button">🎮 Staring Contest</a>
-        <a href="/color-generator/index.html" class="game-button">🎮 Color Generator</a>
-        <a href="/video-cloner/index.html" class="game-button">🎮 Video Cloner</a>
-        <a href="/10-in-1/index.html" class="game-button">🎮 Tilting Maze game</a>
-        <a href="/tribute-nice/index.html" class="game-button">🎮 tribute to Israel Kamakawiwo'ole</a>
-        <a href="/adware-simulator/index.html" class="game-button">🎮 TUTALLY REOL ADS!!!!111!!1</a>
-        <a href="/pong-gaem/index.html" class="game-button">🎮 Generic Pong Gaem</a>
-        <a href="/Music-board/index.html" class="game-button">🎮 Musicboard!</a>
-        <a href="/DVD-GAME/index.html" class="game-button">🎮 Smiley face</a>
-        <a href="/rhythm-cold/index.html" class="game-button">🎮 Normal site</a>
-        <a href="/Arcade/index.html" class="game-button">🎮 Quiz</a>
-        <a href="/avatar/index.html" class="game-button">🎮 Quiz 2</a>
+        <a class="game-button">AHAHAHAHAHHA THERE ARE NO GAMES IN EVIL BIT GAMES HUB MWAHAHAHAHAHAH NEVER HAVE FUN!</a>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Bit Games Hub. All rights reserved.</p>
+        <p>Made with DOOKIE AND POOPOO BY SMG486! - © 2054 EVIL BIT GAMES HUB!</p>
     </footer>
-
 </body>
 
 </html>
