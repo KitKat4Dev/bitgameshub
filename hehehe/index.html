@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Runner Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            max-width: 600px;
+            background-color: #fff;
+            border: 3px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .player {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: red;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .obstacle {
+            position: absolute;
+            bottom: 0;
+            width: 100px;
+            height: 50px;
+            background-color: gray;
+            transition: transform 0.1s linear;
+        }
+
+        .obstacle-1 {
+            background-color: red;
+        }
+
+        .obstacle-2 {
+            background-color: blue;
+        }
+
+        .obstacle-3 {
+            background-color: green;
+        }
+
+        .score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            font-weight: bold;
+            color: #f00;
+        }
+
+        .start-button {
+            padding: 10px 20px;
+            background-color: #008cba;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .start-button:hover {
+            background-color: #005f6a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <div class="player" id="player"></div>
+        <div class="score" id="score">Score: 0</div>
+        <div class="game-over" id="game-over" style="display: none;">GAME OVER</div>
+        <button class="start-button" id="start-button">Start Game</button>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        const scoreDisplay = document.getElementById('score');
+        const gameOverDisplay = document.getElementById('game-over');
+        const startButton = document.getElementById('start-button');
+        
+        let score = 0;
+        let isGameOver = false;
+        let gameInterval;
+        let obstacleInterval;
+        let obstacles = [];
+        let playerColor = 'red'; // initial color of the player
+
+        function startGame() {
+            score = 0;
+            isGameOver = false;
+            scoreDisplay.innerText = `Score: ${score}`;
+            gameOverDisplay.style.display = 'none';
+            player.style.backgroundColor = 'red';
+            obstacles = [];
+
+            startButton.style.display = 'none';
+            gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS
+            obstacleInterval = setInterval(createObstacle, 2000); // every 2 seconds
+        }
+
+        function gameLoop() {
+            if (isGameOver) return;
+
+            moveObstacles();
+            checkCollisions();
+        }
+
+        function moveObstacles() {
+            obstacles.forEach(obstacle => {
+                obstacle.style.transform = `translateY(${parseInt(obstacle.style.transform.replace('translateY(', '').replace('px)', '')) - 5}px)`;
+
+                if (parseInt(obstacle.style.transform.replace('translateY(', '').replace('px)', '')) <= 0) {
+                    obstacle.remove();
+                    obstacles = obstacles.filter(item => item !== obstacle);
+                    score++;
+                    scoreDisplay.innerText = `Score: ${score}`;
+                }
+            });
+        }
+
+        function checkCollisions() {
+            for (let obstacle of obstacles) {
+                const playerRect = player.getBoundingClientRect();
+                const obstacleRect = obstacle.getBoundingClientRect();
+
+                if (playerRect.right > obstacleRect.left &&
+                    playerRect.left < obstacleRect.right &&
+                    playerRect.bottom > obstacleRect.top &&
+                    playerRect.top < obstacleRect.bottom) {
+                    if (player.style.backgroundColor !== obstacle.style.backgroundColor) {
+                        endGame();
+                    }
+                }
+            }
+        }
+
+        function endGame() {
+            isGameOver = true;
+            clearInterval(gameInterval);
+            clearInterval(obstacleInterval);
+            gameOverDisplay.style.display = 'block';
+            startButton.style.display = 'block';
+        }
+
+        function createObstacle() {
+            const obstacle = document.createElement('div');
+            const randomType = Math.floor(Math.random() * 3) + 1;
+            obstacle.classList.add('obstacle', `obstacle-${randomType}`);
+            obstacle.style.transform = `translateY(100%)`;
+            obstacle.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+            document.querySelector('.game-container').appendChild(obstacle);
+            obstacles.push(obstacle);
+        }
+
+        function changeColor(event) {
+            if (isGameOver) return;
+            if (event.key === 'r') {
+                player.style.backgroundColor = 'red';
+            } else if (event.key === 'b') {
+                player.style.backgroundColor = 'blue';
+            } else if (event.key === 'g') {
+                player.style.backgroundColor = 'green';
+            }
+        }
+
+        window.addEventListener('keydown', changeColor);
+
+        startButton.addEventListener('click', startGame);
+
+    </script>
+</body>
+</html>
