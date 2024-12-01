@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Brightness Control</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, filter 0.2s ease;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .slider {
+      width: 300px;
+      height: 20px;
+      margin-top: 20px;
+    }
+
+    .slider input {
+      width: 100%;
+    }
+
+    .button {
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #ff4500;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Worst Brightness Control</h1>
+    <input class="slider" type="range" min="0" max="100" value="50" id="brightnessSlider">
+    <br>
+    <button class="button" id="resetButton">Reset Brightness</button>
+  </div>
+
+  <script>
+    const brightnessSlider = document.getElementById('brightnessSlider');
+    const resetButton = document.getElementById('resetButton');
+    let lastBrightness = 50;
+
+    // Randomly change brightness when adjusting the slider
+    brightnessSlider.addEventListener('input', () => {
+      const randomEvent = Math.random();
+
+      if (randomEvent < 0.1) {
+        // Set the screen to completely black
+        document.body.style.filter = 'brightness(0)';
+      } else if (randomEvent < 0.2) {
+        // Set the screen to blindingly bright
+        document.body.style.filter = 'brightness(2)';
+      } else if (randomEvent < 0.3) {
+        // Flicker between random brightness levels
+        flickerBrightness();
+      } else if (randomEvent < 0.4) {
+        // Set random brightness level (inconsistent)
+        document.body.style.filter = `brightness(${Math.floor(Math.random() * 101) / 100})`;
+      } else {
+        // Slow change with no smooth transition
+        document.body.style.filter = `brightness(${brightnessSlider.value / 100})`;
+      }
+    });
+
+    // Randomly change brightness based on mouse movement
+    document.addEventListener('mousemove', (event) => {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+      const randomEvent = Math.random();
+
+      if (randomEvent < 0.05) {
+        // Randomly change the brightness when the mouse moves
+        const brightnessValue = (mouseX + mouseY) % 100;
+        document.body.style.filter = `brightness(${brightnessValue / 100})`;
+      }
+    });
+
+    // Reset the brightness to a random level when clicking the reset button
+    resetButton.addEventListener('click', () => {
+      const randomBrightness = Math.random();
+      if (randomBrightness < 0.5) {
+        // Set the screen to black
+        document.body.style.filter = 'brightness(0)';
+      } else {
+        // Set the screen to blindingly bright
+        document.body.style.filter = 'brightness(2)';
+      }
+      brightnessSlider.value = randomBrightness * 100;
+    });
+
+    // Simulate the flickering effect
+    function flickerBrightness() {
+      const flickerDuration = Math.random() * 2000 + 1000; // Random flicker duration between 1-3 seconds
+      let flickerInterval = setInterval(() => {
+        const flickerEvent = Math.random();
+
+        if (flickerEvent < 0.5) {
+          document.body.style.filter = 'brightness(0)';
+        } else {
+          document.body.style.filter = 'brightness(2)';
+        }
+      }, 100);
+
+      setTimeout(() => {
+        clearInterval(flickerInterval);
+        document.body.style.filter = `brightness(${brightnessSlider.value / 100})`; // Reset to slider value
+      }, flickerDuration);
+    }
+
+  </script>
+</body>
+</html>

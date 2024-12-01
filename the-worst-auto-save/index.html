@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Auto-Save System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .status {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .save-status {
+      font-weight: bold;
+    }
+
+    .corruption-status {
+      color: red;
+      font-weight: bold;
+    }
+
+    .task {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .task-button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .task-button:disabled {
+      background-color: #888;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>The Worst Auto-Save System</h1>
+    <div class="task">
+      <p>Click the button below to simulate your important task.</p>
+      <button class="task-button" id="taskButton" onclick="simulateTask()">Do Important Task</button>
+    </div>
+
+    <div class="status">
+      <p><span id="saveStatus" class="save-status">Auto-Save: Off</span></p>
+      <p><span id="corruptionStatus" class="corruption-status hidden">Warning: File Corrupted</span></p>
+    </div>
+  </div>
+
+  <script>
+    let autoSaveTimer;
+    let corruptionStatus = document.getElementById('corruptionStatus');
+    let saveStatus = document.getElementById('saveStatus');
+    let taskButton = document.getElementById('taskButton');
+    let isTaskCompleted = false;
+    let isCorrupted = false;
+
+    // Simulate an important task being worked on
+    function simulateTask() {
+      if (isCorrupted) {
+        alert("You cannot continue due to corrupted file!");
+        return;
+      }
+
+      isTaskCompleted = true;
+      taskButton.disabled = true;
+      taskButton.textContent = "Task Completed!";
+      saveStatus.textContent = "Auto-Save: Enabled (Task ongoing)";
+
+      // Simulate random auto-save system kicking in at random intervals
+      autoSaveTimer = setInterval(() => {
+        if (Math.random() < 0.5) {
+          saveFile();
+        } else {
+          corruptFile();
+        }
+      }, Math.random() * 5000 + 2000); // Save happens randomly between 2 and 7 seconds
+
+      setTimeout(() => {
+        if (!isCorrupted) {
+          saveStatus.textContent = "Auto-Save: Task Completed!";
+        }
+      }, 7000); // Simulate task completion
+    }
+
+    // Simulate saving the file and overwriting previous save
+    function saveFile() {
+      if (!isTaskCompleted) return;
+
+      let randomSave = Math.random();
+      if (randomSave < 0.2) {
+        saveStatus.textContent = "Auto-Save: Failed!";
+        console.log("Save Failed!");
+      } else {
+        saveStatus.textContent = "Auto-Save: Successful!";
+        console.log("File saved.");
+      }
+    }
+
+    // Simulate a crash and corrupt file on save
+    function corruptFile() {
+      if (Math.random() < 0.3 && isTaskCompleted) { // 30% chance to corrupt the file
+        isCorrupted = true;
+        corruptionStatus.classList.remove('hidden');
+        saveStatus.textContent = "Auto-Save: Corruption Detected!";
+        console.log("File corrupted during save!");
+      }
+    }
+
+    // Reset the system after "corruption"
+    function resetSystem() {
+      clearInterval(autoSaveTimer);
+      saveStatus.textContent = "Auto-Save: Off";
+      taskButton.disabled = false;
+      taskButton.textContent = "Do Important Task";
+      isCorrupted = false;
+      isTaskCompleted = false;
+      corruptionStatus.classList.add('hidden');
+    }
+
+    // Simulate a system reset by forcing a button click to reset
+    setTimeout(() => {
+      if (isCorrupted) {
+        alert("System Resetting due to Corruption...");
+        resetSystem();
+      }
+    }, 15000); // After 15 seconds reset if corruption happens
+  </script>
+
+</body>
+</html>

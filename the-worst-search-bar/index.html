@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Search Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+
+    .search-container {
+      margin-top: 30px;
+    }
+
+    .search-bar {
+      padding: 10px;
+      width: 60%;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+
+    .search-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .results {
+      margin-top: 20px;
+      text-align: left;
+      display: inline-block;
+      width: 60%;
+    }
+
+    .result-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .gif {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Worst Search Bar</h1>
+  <p>Good luck finding anything relevant!</p>
+  <div class="search-container">
+    <input type="text" class="search-bar" id="searchBar" placeholder="Type something...">
+    <button class="search-btn" id="searchButton">Search</button>
+  </div>
+  <div class="results" id="results"></div>
+
+  <script>
+    const searchBar = document.getElementById("searchBar");
+    const searchButton = document.getElementById("searchButton");
+    const resultsContainer = document.getElementById("results");
+
+    const randomResults = [
+      { type: "text", content: "Weather forecast from 2001: Sunny with a chance of dinosaurs." },
+      { type: "text", content: "Top 10 irrelevant facts you didn't ask for." },
+      { type: "text", content: "Breaking news: Cats still rule the internet." },
+      { type: "text", content: "Random quote: 'Why is a raven like a writing desk?'" },
+      { type: "image", content: "https://media1.tenor.com/m/qxNnKIup-ccAAAAd/green-lovers.gif" },
+      { type: "text", content: "Guide to underwater basket weaving for beginners." },
+      { type: "text", content: "404 Error: Relevant results not found in this universe." },
+      { type: "text", content: "The answer to life, the universe, and everything: 42." },
+      { type: "image", content: "https://media.tenor.com/Q1SfOEH474QAAAAi/shelly-shelly-dandys-world.gif" },
+      { type: "text", content: "Fun fact: This result has nothing to do with your search." }
+    ];
+
+    searchButton.addEventListener("click", () => {
+      const query = searchBar.value.toLowerCase().trim();
+      resultsContainer.innerHTML = ""; // Clear previous results
+
+      // Generate a random number of results (3 to 6)
+      const numberOfResults = Math.floor(Math.random() * 4) + 3;
+
+      for (let i = 0; i < numberOfResults; i++) {
+        const randomResult = randomResults[Math.floor(Math.random() * randomResults.length)];
+
+        const resultDiv = document.createElement("div");
+        resultDiv.classList.add("result-item");
+
+        if (randomResult.type === "text") {
+          resultDiv.textContent = randomResult.content;
+        } else if (randomResult.type === "image") {
+          const img = document.createElement("img");
+          img.src = randomResult.content;
+          img.alt = "Random gif";
+          img.classList.add("gif");
+          resultDiv.appendChild(img);
+        }
+
+        resultsContainer.appendChild(resultDiv);
+      }
+    });
+  </script>
+</body>
+</html>

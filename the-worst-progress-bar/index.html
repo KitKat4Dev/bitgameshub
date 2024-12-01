@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Progress Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+
+    .progress-container {
+      margin: 50px auto;
+      width: 80%;
+      max-width: 500px;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar {
+      height: 30px;
+      width: 0%;
+      background-color: #007bff;
+      transition: width 1s linear;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .reset-btn {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #ff4136;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .reset-btn:hover {
+      background-color: #c02d22;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Worst Progress Bar</h1>
+  <p>Patience is futile!</p>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <p class="message" id="message">Progress: 0%</p>
+  <button class="reset-btn" id="resetButton">Try Again</button>
+
+  <script>
+    const progressBar = document.getElementById("progressBar");
+    const message = document.getElementById("message");
+    const resetButton = document.getElementById("resetButton");
+
+    let progress = 0;
+    let isFinalPhase = false;
+
+    function updateProgress() {
+      if (progress < 99) {
+        // Regular progress increments
+        progress += Math.random() * 3 + 1; // Add 1-3% randomly
+        if (progress > 99) progress = 99; // Clamp to 99% max
+      } else if (!isFinalPhase) {
+        // Final phase begins
+        isFinalPhase = true;
+        setTimeout(() => {
+          message.textContent = "Progress: 100% - Completed!";
+          setTimeout(() => {
+            message.textContent = "Just Kidding!";
+            resetButton.style.display = "inline-block";
+            progress = 0; // Reset progress
+          }, 2000); // Show "Just Kidding!" after 2 seconds
+        }, 5000); // Delay to emulate stuck-at-99%
+        return;
+      }
+
+      progressBar.style.width = `${progress}%`;
+      message.textContent = `Progress: ${Math.floor(progress)}%`;
+
+      // Continue updating unless the final phase is reached
+      if (!isFinalPhase) setTimeout(updateProgress, 1000);
+    }
+
+    resetButton.addEventListener("click", () => {
+      progress = 0;
+      isFinalPhase = false;
+      resetButton.style.display = "none";
+      message.textContent = "Progress: 0%";
+      progressBar.style.width = "0%";
+      updateProgress();
+    });
+
+    // Start the progress bar
+    updateProgress();
+  </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Refresh Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #000000;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+
+    .refresh-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .refresh-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #ff0000;
+      display: none;
+    }
+
+    .broken-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #fce4ec;
+      color: #880e4f;
+      font-size: 24px;
+    }
+
+    .easter-egg {
+      display: none;
+      font-size: 24px;
+      color: #6a1b9a;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Worst Refresh Button</h1>
+  <p>Click the refresh button below to experience chaos!</p>
+  <button class="refresh-btn" id="refreshButton">Refresh</button>
+  <div class="error-message" id="errorMessage"></div>
+  <div class="easter-egg" id="easterEgg">Egg Detected: Error Code 42</div>
+
+  <script>
+    const refreshButton = document.getElementById("refreshButton");
+    const errorMessage = document.getElementById("errorMessage");
+    const easterEgg = document.getElementById("easterEgg");
+
+    const themes = [
+      { bg: "#000000", color: "#ffffff" },
+      { bg: "#ffcccc", color: "#660000" },
+      { bg: "#ccffcc", color: "#006600" },
+      { bg: "#cceeff", color: "#003366" },
+    ];
+
+    function applyRandomTheme() {
+      const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+      document.body.style.backgroundColor = randomTheme.bg;
+      document.body.style.color = randomTheme.color;
+    }
+
+    function showBrokenLayout() {
+      document.body.innerHTML = `
+        <div class="broken-layout">
+          <h1>Oops! The layout is completely broken!</h1>
+          <p>Good luck trying to fix this mess!</p>
+        </div>
+      `;
+    }
+
+    function showEasterEgg() {
+      easterEgg.style.display = "block";
+    }
+
+    function showErrorMessage() {
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "Error 404: Page Chaos Triggered";
+    }
+
+    function crashPage() {
+      document.body.innerHTML = "";
+      setTimeout(() => {
+        document.body.innerHTML = `<h1 style="color: red; text-align: center;">The page has crashed!</h1>`;
+      }, 500);
+    }
+
+    refreshButton.addEventListener("click", () => {
+      const randomEffect = Math.random();
+
+      if (randomEffect < 0.3) {
+        applyRandomTheme();
+      } else if (randomEffect < 0.5) {
+        showBrokenLayout();
+      } else if (randomEffect < 0.7) {
+        showErrorMessage();
+      } else if (randomEffect < 0.9) {
+        showEasterEgg();
+      } else {
+        crashPage();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Cursor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #f0f0f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .message {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .cursor-info {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #e74c3c;
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hidden-cursor {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #e74c3c;
+      display: none;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>The Worst Cursor</h1>
+    <p class="message">Enjoy the delightful chaos of the worst cursor experience!</p>
+    <button class="button" onclick="resetCursor()">Click to Reset Cursor</button>
+
+    <p class="cursor-info" id="cursorInfo">Cursor is behaving erratically. Hold tight!</p>
+  </div>
+
+  <div id="cursor" class="hidden-cursor"></div>
+
+  <script>
+    let cursor = document.getElementById('cursor');
+    let cursorInfo = document.getElementById('cursorInfo');
+    let isCursorVisible = true;
+    let cursorShapes = ['default', 'pointer', 'wait', 'crosshair', 'url("https://example.com/cursor.png")', 'none'];
+    let cursorPosition = { x: -100, y: -100 }; // Start outside screen
+    let moveCursorTimer, cursorChangeTimer, cursorDisappearTimer;
+
+    // Function to simulate the random cursor behavior
+    function randomizeCursor() {
+      // Change cursor shape randomly
+      const randomShape = cursorShapes[Math.floor(Math.random() * cursorShapes.length)];
+      document.body.style.cursor = randomShape;
+
+      // Randomly hide or show the cursor
+      if (Math.random() < 0.3) {
+        cursor.style.display = 'none';
+        isCursorVisible = false;
+      } else if (Math.random() < 0.7) {
+        cursor.style.display = 'block';
+        isCursorVisible = true;
+      }
+
+      // Position the cursor randomly
+      if (isCursorVisible) {
+        cursorPosition.x = Math.random() * window.innerWidth;
+        cursorPosition.y = Math.random() * window.innerHeight;
+        cursor.style.left = cursorPosition.x + 'px';
+        cursor.style.top = cursorPosition.y + 'px';
+      }
+
+      // Randomly reset cursor position or keep it stuck
+      if (Math.random() < 0.1) {
+        cursorPosition.x = Math.random() * window.innerWidth;
+        cursorPosition.y = Math.random() * window.innerHeight;
+      } else if (Math.random() < 0.1) {
+        cursorPosition.x = cursorPosition.x;
+        cursorPosition.y = cursorPosition.y;
+      }
+
+      // Change cursor shape every 2-4 seconds
+      clearTimeout(cursorChangeTimer);
+      cursorChangeTimer = setTimeout(randomizeCursor, Math.random() * 2000 + 2000);
+
+      // Randomly reset cursor state or make it "stuck" for 1-3 seconds
+      clearTimeout(cursorDisappearTimer);
+      cursorDisappearTimer = setTimeout(() => {
+        if (Math.random() < 0.2) {
+          cursor.style.display = 'none';
+        } else {
+          cursor.style.display = 'block';
+        }
+      }, Math.random() * 2000 + 1000);
+    }
+
+    // Function to reset cursor to a more predictable state
+    function resetCursor() {
+      clearTimeout(cursorChangeTimer);
+      clearTimeout(cursorDisappearTimer);
+
+      cursor.style.display = 'none';
+      document.body.style.cursor = 'default';
+      cursorInfo.textContent = 'Cursor reset, but it won’t stay normal for long...';
+
+      // Restart the chaotic cursor behavior
+      setTimeout(() => {
+        randomizeCursor();
+      }, 2000);
+    }
+
+    // Initiate the random cursor behavior
+    randomizeCursor();
+
+    // Prevent text selection while the cursor is behaving erratically
+    window.addEventListener('mousedown', (e) => {
+      if (!isCursorVisible) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>

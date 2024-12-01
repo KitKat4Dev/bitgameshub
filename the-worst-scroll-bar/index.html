@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Scroll Bar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .content {
+      height: 3000px; /* Create a long page for scrolling */
+      background: linear-gradient(180deg, #f4f4f4 50%, #ddd 50%);
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .warning {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffcccc;
+      padding: 10px;
+      border: 1px solid #ff6666;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #990000;
+    }
+  </style>
+</head>
+<body>
+  <div class="warning">Warning: The scroll bar is malfunctioning!</div>
+  <div class="content">
+    <h1>The Worst Scroll Bar</h1>
+    <p>Scroll down... if you can!</p>
+    <p>Notice how unpredictable the behavior becomes as you scroll!</p>
+    <p>Try to reach the bottom, but be prepared for surprises!</p>
+  </div>
+
+  <script>
+    let isScrollBarVisible = true;
+    let isFreezing = false;
+
+    function toggleScrollBar() {
+      if (Math.random() > 0.7) { // Randomly hide/show the scroll bar
+        document.body.style.overflowY = isScrollBarVisible ? "hidden" : "scroll";
+        isScrollBarVisible = !isScrollBarVisible;
+      }
+    }
+
+    function randomScrollJump() {
+      if (Math.random() > 0.8) { // Occasionally jump to a random position
+        window.scrollTo({
+          top: Math.random() * document.body.scrollHeight,
+          behavior: "smooth"
+        });
+      }
+    }
+
+    function freezePage() {
+      if (Math.random() > 0.9) { // Occasionally freeze the page
+        isFreezing = true;
+        setTimeout(() => {
+          isFreezing = false;
+        }, 2000);
+      }
+    }
+
+    function handleZoom(event) {
+      if (Math.random() > 0.95) { // Occasionally zoom in/out
+        const scale = Math.random() > 0.5 ? 1.5 : 0.5;
+        document.body.style.transform = `scale(${scale})`;
+        document.body.style.transformOrigin = "center";
+        setTimeout(() => {
+          document.body.style.transform = "scale(1)";
+        }, 1000);
+      }
+    }
+
+    window.addEventListener("scroll", () => {
+      if (isFreezing) return;
+      toggleScrollBar();
+      randomScrollJump();
+      freezePage();
+    });
+
+    window.addEventListener("wheel", handleZoom);
+  </script>
+</body>
+</html>

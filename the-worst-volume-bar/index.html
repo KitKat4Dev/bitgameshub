@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Volume Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .volume-container {
+      position: relative;
+      width: 300px;
+      height: 50px;
+      background: #ddd;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    .volume-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #3498db;
+      transition: left 0.1s ease-in-out;
+    }
+
+    .volume-slider {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: #f39c12;
+      border-radius: 50%;
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
+
+    .audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="volume-container">
+    <div class="volume-bar"></div>
+    <div class="volume-slider"></div>
+  </div>
+  <audio class="audio" id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
+  <script>
+    const volumeSlider = document.querySelector('.volume-slider');
+    const volumeBar = document.querySelector('.volume-bar');
+    const audio = document.querySelector('#audio');
+    let isGlitching = false;
+
+    function randomGlitch() {
+      if (Math.random() < 0.1) {
+        // 10% chance to glitch
+        let randomSound = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3');
+        randomSound.play();
+      }
+
+      // Randomly reset the volume
+      if (Math.random() < 0.2) {
+        audio.volume = Math.random();
+        volumeBar.style.left = `${audio.volume * 100}%`;
+        volumeSlider.style.left = `${audio.volume * 100}%`;
+      }
+    }
+
+    volumeSlider.addEventListener('mousedown', (e) => {
+      let startX = e.clientX;
+      let startLeft = parseInt(window.getComputedStyle(volumeSlider).left, 10);
+
+      const moveListener = (e) => {
+        let newX = e.clientX;
+        let diff = newX - startX;
+        let newLeft = startLeft + diff;
+
+        if (newLeft < 0) newLeft = 0;
+        if (newLeft > 100) newLeft = 100;
+
+        volumeSlider.style.left = `${newLeft}%`;
+        volumeBar.style.left = `${newLeft}%`;
+
+        audio.volume = newLeft / 100;
+
+        randomGlitch(); // Glitch effect on volume change
+      };
+
+      const upListener = () => {
+        document.removeEventListener('mousemove', moveListener);
+        document.removeEventListener('mouseup', upListener);
+      };
+
+      document.addEventListener('mousemove', moveListener);
+      document.addEventListener('mouseup', upListener);
+    });
+
+    // Handle random glitches
+    setInterval(() => {
+      randomGlitch();
+    }, 1000);
+
+    // Start audio on load
+    window.onload = () => {
+      audio.play();
+    };
+  </script>
+</body>
+</html>

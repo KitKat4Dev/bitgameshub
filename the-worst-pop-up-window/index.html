@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Pop-up Window</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f4f4;
+    }
+
+    .popup {
+      position: fixed;
+      background: #fff;
+      border: 2px solid #333;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      width: 300px;
+      z-index: 1000;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .popup-header {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    .popup-buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    button {
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .close-btn {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    .close-btn:hover {
+      background: #c0392b;
+    }
+
+    .cancel-btn {
+      background: #3498db;
+      color: #fff;
+    }
+
+    .cancel-btn:hover {
+      background: #2980b9;
+    }
+
+    .message {
+      text-align: center;
+      font-size: 20px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">Try to get rid of the pop-ups... if you can!</div>
+
+  <script>
+    const messages = [
+      "Error 404: Impossible To Do That",
+      "Action Blocked: Try Again Later",
+      "This Operation Is Not Supported",
+      "Critical Error: Why Did You Click That?",
+      "This Action Is Not Available In Your Universe",
+      "Unknown Error: Contact Your Brain",
+      "File Not Found: But Who's Looking Anyway?"
+    ];
+
+    function spawnPopup() {
+      const popup = document.createElement("div");
+      popup.className = "popup";
+      popup.style.top = `${Math.random() * 80 + 10}%`;
+      popup.style.left = `${Math.random() * 80 + 10}%`;
+
+      // Set random message
+      const message = messages[Math.floor(Math.random() * messages.length)];
+      popup.innerHTML = `
+        <div class="popup-header">Random Error Detected!</div>
+        <div class="popup-body">${message}</div>
+        <div class="popup-buttons">
+          <button class="close-btn" onclick="handleClose(this)">Close</button>
+          <button class="cancel-btn" onclick="handleCancel(this)">Cancel</button>
+        </div>
+      `;
+
+      document.body.appendChild(popup);
+    }
+
+    function handleClose(button) {
+      const popup = button.closest(".popup");
+      popup.remove();
+      // Spawn 2 new pop-ups for every one closed
+      spawnPopup();
+      spawnPopup();
+    }
+
+    function handleCancel(button) {
+      const popup = button.closest(".popup");
+      popup.remove();
+      // Spawn 1 new pop-up for every one canceled
+      spawnPopup();
+    }
+
+    // Initial pop-up to start the chaos
+    spawnPopup();
+  </script>
+</body>
+</html>

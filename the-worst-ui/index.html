@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0e0e0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button {
+      position: absolute;
+      padding: 10px 20px;
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .button:hover {
+      background-color: #ff4500;
+    }
+
+    .window {
+      position: absolute;
+      width: 300px;
+      height: 200px;
+      background-color: #fff;
+      border: 2px solid #333;
+      z-index: 0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      display: none;
+    }
+
+    .window h2 {
+      font-size: 20px;
+      margin: 0 0 10px 0;
+    }
+
+    .window p {
+      font-size: 14px;
+    }
+
+    .tooltip {
+      position: absolute;
+      background-color: #333;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+      visibility: hidden;
+    }
+
+    .moving-window {
+      animation: moveWindow 3s infinite;
+    }
+
+    @keyframes moveWindow {
+      0% { left: 10%; top: 10%; }
+      25% { left: 60%; top: 20%; }
+      50% { left: 20%; top: 50%; }
+      75% { left: 80%; top: 70%; }
+      100% { left: 10%; top: 10%; }
+    }
+
+  </style>
+</head>
+<body>
+  <button class="button" id="settingsButton" style="top: 50px; left: 100px;">Settings</button>
+  <button class="button" id="weatherButton" style="top: 150px; left: 400px;">Weather</button>
+  <button class="button" id="fishButton" style="top: 300px; left: 200px;">Fish Tanks</button>
+
+  <div class="window" id="settingsWindow">
+    <h2>Settings</h2>
+    <p>Choose your fish tank color.</p>
+    <button class="button" style="top: 50px; left: 90px;">Change Color</button>
+  </div>
+
+  <div class="window" id="weatherWindow">
+    <h2>Weather</h2>
+    <p>Check the latest fish tank weather.</p>
+    <button class="button" style="top: 50px; left: 90px;">Refresh</button>
+  </div>
+
+  <div class="window moving-window" id="fishWindow">
+    <h2>Fish Tanks</h2>
+    <p>We have tropical fish in stock!</p>
+    <button class="button" style="top: 50px; left: 90px;">View Fish</button>
+  </div>
+
+  <div class="tooltip" id="tooltip">You can't click this!</div>
+
+  <script>
+    // Toggle windows
+    document.getElementById('settingsButton').addEventListener('click', () => {
+      document.getElementById('settingsWindow').style.display = 
+        document.getElementById('settingsWindow').style.display === 'block' ? 'none' : 'block';
+      showTooltip('This is not settings!');
+    });
+
+    document.getElementById('weatherButton').addEventListener('click', () => {
+      document.getElementById('weatherWindow').style.display = 
+        document.getElementById('weatherWindow').style.display === 'block' ? 'none' : 'block';
+      showTooltip('This has nothing to do with weather!');
+    });
+
+    document.getElementById('fishButton').addEventListener('click', () => {
+      document.getElementById('fishWindow').style.display = 
+        document.getElementById('fishWindow').style.display === 'block' ? 'none' : 'block';
+      showTooltip('Why would you want to see fish tanks here?');
+    });
+
+    // Show tooltip for a brief time
+    function showTooltip(message) {
+      const tooltip = document.getElementById('tooltip');
+      tooltip.innerText = message;
+      tooltip.style.visibility = 'visible';
+      setTimeout(() => {
+        tooltip.style.visibility = 'hidden';
+      }, 1000);
+    }
+
+    // Randomly move windows
+    setInterval(() => {
+      let randomWindow = document.querySelectorAll('.window');
+      let randomIdx = Math.floor(Math.random() * randomWindow.length);
+      let randomLeft = Math.random() * 80 + '%';
+      let randomTop = Math.random() * 80 + '%';
+      randomWindow[randomIdx].style.left = randomLeft;
+      randomWindow[randomIdx].style.top = randomTop;
+    }, 3000);
+
+    // Random unresponsive buttons
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        if (Math.random() < 0.5) {
+          alert('Button not working! Try again later.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Loading Screen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .loading-container {
+      text-align: center;
+    }
+
+    .progress-bar-container {
+      width: 80%;
+      max-width: 500px;
+      height: 30px;
+      background-color: #ddd;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #4CAF50;
+      position: absolute;
+      transition: width 1s ease-in-out;
+    }
+
+    .loading-message {
+      font-size: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loading-container">
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="loading-message" id="loadingMessage">Loading... Please Wait</div>
+  </div>
+
+  <script>
+    let progress = 0;
+    let loadingInterval;
+    let isMouseMoved = false;
+
+    // Start loading process
+    function startLoading() {
+      loadingInterval = setInterval(() => {
+        // Simulate loading progress
+        if (progress < 99) {
+          progress++;
+          document.getElementById('progressBar').style.width = progress + '%';
+        } else {
+          // When progress reaches 99%, stop updating, but keep the bar stuck.
+          clearInterval(loadingInterval);
+        }
+      }, 100); // Update every 100ms
+    }
+
+    // Reset the loading progress if the user interacts with the page (mouse or keyboard event)
+    document.addEventListener('mousemove', resetProgress);
+    document.addEventListener('keydown', resetProgress);
+
+    function resetProgress() {
+      if (!isMouseMoved) {
+        isMouseMoved = true;
+        setTimeout(() => {
+          // Reset progress and restart loading
+          progress = 0;
+          document.getElementById('progressBar').style.width = progress + '%';
+          startLoading(); // Restart loading process
+        }, 100);
+      }
+    }
+
+    // Start loading as soon as the page loads
+    window.onload = () => {
+      startLoading();
+    };
+
+    // Display the loading message that never disappears
+    setInterval(() => {
+      document.getElementById('loadingMessage').textContent = "Loading... Please Wait";
+    }, 500);
+  </script>
+
+</body>
+</html>

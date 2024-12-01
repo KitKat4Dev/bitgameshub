@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Worst Keyboard Shortcuts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+
+    .message {
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+    }
+
+    .log {
+      margin-top: 20px;
+      padding: 10px;
+      background: #ddd;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      width: 80%;
+      height: 200px;
+      overflow-y: auto;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="message">
+      Try some keyboard shortcuts (like Ctrl + C or Ctrl + V)... if you dare!
+    </div>
+    <div class="log" id="log">
+      Keyboard shortcut chaos log:
+    </div>
+  </div>
+
+  <script>
+    const actions = [
+      () => logAction("Opened a mysterious file: 'alien_plan.txt'"),
+      () => logAction("Launched the calculator... why?"),
+      () => logAction("Switched to a random tab in your browser."),
+      () => logAction("Played a random sound effect. Did you hear it?"),
+      () => logAction("Minimized all your windows. Have fun finding them."),
+      () => logAction("Changed your desktop wallpaper to a picture of spaghetti."),
+      () => logAction("Turned on CAPS LOCK... YOU'RE WELCOME."),
+      () => logAction("Ejected your nonexistent CD drive."),
+    ];
+
+    const logElement = document.getElementById("log");
+
+    function logAction(message) {
+      const time = new Date().toLocaleTimeString();
+      const entry = document.createElement("div");
+      entry.textContent = `[${time}] ${message}`;
+      logElement.appendChild(entry);
+      logElement.scrollTop = logElement.scrollHeight; // Auto-scroll
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if ((event.ctrlKey || event.altKey) && !event.shiftKey) {
+        event.preventDefault();
+        const randomAction = actions[Math.floor(Math.random() * actions.length)];
+        randomAction();
+      }
+    });
+  </script>
+</body>
+</html>
