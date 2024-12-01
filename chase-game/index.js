@@ -3,7 +3,7 @@ const backgrounds = [
     { img: 'assets/kitchen.avif', theme: 'kitchen' },
     { img: 'assets/livingroom.png', theme: 'livingroom' },
     { img: 'assets/mcdonalds.jpg', theme: 'mcdonalds' },
-    { img: 'assets/office.png', theme: 'office' },
+    { img: 'assets/beach.jpeg', theme: 'office' },
 ];
 
 const bugdroidImage = 'assets/bugdroid-head.png';
@@ -65,7 +65,7 @@ function createDroid(isBugdroid, theme) {
 
             points += 20 + (comboCounter * 5); // Add points based on combo counter
             comboCounter++; // Increase combo
-            numKitdroids += 20; // Add 3 new kitdroids
+            numKitdroids += 40; // Add 3 new kitdroids
             updatePoints();
             bugdroidFound = true;
             resetGame(); // Reset the game after finding the Bugdroid
@@ -135,7 +135,7 @@ document.getElementById('increaseDifficulty').addEventListener('click', () => {
     if (points >= 20) {
         points -= 20;
         currentDifficulty++;
-        numKitdroids += 5; // Increase the number of Kitdroids
+        numKitdroids += 40; // Increase the number of Kitdroids
         updatePoints();
         alert('Difficulty increased!');
     } else {
