@@ -1,208 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Runner Game</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
+  <base href="." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpongeBob's.EXE - Scary Social</title>
+  
+  <!-- Styles -->
+  <style>
+    /* Body Styles for Apocalypse */
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(180deg, #ff0000, #000000);
+      color: #FF4500;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      animation: chaos 5s infinite alternate;
+    }
 
-        .game-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            max-width: 600px;
-            background-color: #fff;
-            border: 3px solid #000;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+    /* Navbar Styles with a Burned Effect */
+    .navbar {
+      background: #8B0000;
+      padding: 20px 30px;
+      color: #FFF700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+      animation: navbarDestruction 2s infinite linear;
+    }
 
-        .player {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: red;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-        }
+    .logo {
+      font-weight: bold;
+      font-size: 2rem;
+      text-decoration: line-through;
+      animation: spin 1s infinite linear;
+    }
 
-        .obstacle {
-            position: absolute;
-            bottom: 0;
-            width: 100px;
-            height: 50px;
-            background-color: gray;
-            transition: transform 0.1s linear;
-        }
+    /* Chaotic Button Spin */
+    .post-button, .like-button, .delete-button {
+      animation: spinButtons 3s infinite linear;
+    }
 
-        .obstacle-1 {
-            background-color: red;
-        }
+    /* Burning Bubbles Animation */
+    .bubble {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #FF4500;
+      border-radius: 50%;
+      animation: burn 2s infinite linear;
+      filter: blur(2px);
+      transform: rotate(90deg);
+    }
 
-        .obstacle-2 {
-            background-color: blue;
-        }
+    /* Bubble Positions with Delays */
+    .bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .bubble:nth-child(2) { left: 30%; animation-delay: 1s; }
+    .bubble:nth-child(3) { left: 50%; animation-delay: 3s; }
+    .bubble:nth-child(4) { left: 70%; animation-delay: 4s; }
+    .bubble:nth-child(5) { left: 90%; animation-delay: 5s; }
 
-        .obstacle-3 {
-            background-color: green;
-        }
+    /* Burning Bubble Keyframes */
+    @keyframes burn {
+      0% { bottom: -100px; transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(-10px); opacity: 0.7; }
+      100% { bottom: 100vh; transform: translateY(0); opacity: 0.3; }
+    }
 
-        .score {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 24px;
-            color: #333;
-        }
+    /* Main Container Layout with Destruction */
+    .main-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      box-shadow: 0px 0px 50px rgba(255, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      animation: flyDebris 5s infinite ease-in-out;
+    }
 
-        .game-over {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 36px;
-            font-weight: bold;
-            color: #f00;
-        }
+    /* Profile Card with Added Rotation */
+    .profile-card {
+      background: rgba(255, 0, 0, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      border: 3px solid #FF6347;
+      transform: rotate(-10deg) scale(1.1);
+      background-image: url('https://via.placeholder.com/300');
+      background-size: cover;
+      background-position: center;
+      animation: shakeProfile 2s infinite ease-in-out;
+    }
 
-        .start-button {
-            padding: 10px 20px;
-            background-color: #008cba;
-            color: white;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+      background-color: #FFD700;
+      border: 4px solid #FFF;
+      transform: rotate(45deg);
+    }
 
-        .start-button:hover {
-            background-color: #005f6a;
-        }
-    </style>
+    /* Post Box with Chaotic Skew */
+    .post-box {
+      background: rgba(255, 69, 0, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: skew(-10deg);
+    }
+
+    .post-input {
+      width: 100%;
+      height: 120px;
+      border: 2px solid #FFF;
+      border-radius: 8px;
+      resize: none;
+      padding: 10px;
+      background-color: #333;
+      color: #FF6347;
+      font-size: 1.2rem;
+      box-shadow: 0 0 5px #FF4500;
+      animation: bounceInput 3s infinite;
+    }
+
+    .post-button {
+      background: #FF6347;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px #8B0000;
+    }
+
+    .post-button:hover {
+      background: #FF0000;
+    }
+
+    /* Feed with Destruction */
+    .feed {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .post {
+      background: rgba(255, 69, 0, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transform: rotate(5deg);
+      border: 3px solid #FF6347;
+      animation: shakePost 2s infinite ease-in-out;
+    }
+
+    /* Destroyed Like & Delete Buttons */
+    .like-button, .delete-button {
+      background: #FF6347;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .like-button:hover {
+      background: #FF0000;
+    }
+
+    .delete-button {
+      background: #8B0000;
+    }
+
+    .delete-button:hover {
+      background: #ff6347;
+    }
+
+    /* Suggestions in Chaos */
+    .suggestions {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      color: #FF6347;
+      transform: rotate(-5deg);
+      border: 2px solid #FF6347;
+      animation: shakeSuggestions 2s infinite linear;
+    }
+
+    /* Quote Box with Fire */
+    .quote-box {
+      background: rgba(255, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      font-style: italic;
+      margin-top: 20px;
+      color: #FF4500;
+      text-shadow: 1px 1px 5px #FF0000;
+    }
+
+    /* Chaos Animations */
+    @keyframes chaos {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes navbarDestruction {
+      0% { left: -100px; opacity: 0; }
+      50% { left: 0px; opacity: 1; }
+      100% { left: 100px; opacity: 0; }
+    }
+
+    @keyframes spinButtons {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes flyDebris {
+      0% { transform: translateX(0) rotate(0deg); }
+      100% { transform: translateX(50px) rotate(360deg); }
+    }
+
+    @keyframes shakeProfile {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes shakePost {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes shakeSuggestions {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes bounceInput {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+  </style>
 </head>
 <body>
-
-    <div class="game-container">
-        <div class="player" id="player"></div>
-        <div class="score" id="score">Score: 0</div>
-        <div class="game-over" id="game-over" style="display: none;">GAME OVER</div>
-        <button class="start-button" id="start-button">Start Game</button>
+  <header class="navbar">
+    <div class="logo">SpongeBob's.EXE</div>
+    <div class="navigation">
+      <a href="https://shattereddisk.github.io/rickroll/rickroll.mp4">Home</a>
+      <a href="http://bitgameshub.com">About</a>
+      <a href="https://shattereddisk.github.io/rickroll/rickroll.mp4">Contact</a>
     </div>
+  </header>
 
-    <script>
-        const player = document.getElementById('player');
-        const scoreDisplay = document.getElementById('score');
-        const gameOverDisplay = document.getElementById('game-over');
-        const startButton = document.getElementById('start-button');
-        
-        let score = 0;
-        let isGameOver = false;
-        let gameInterval;
-        let obstacleInterval;
-        let obstacles = [];
-        let playerColor = 'red'; // initial color of the player
+  <div class="main-container">
+    <div class="profile-card">
+      <div class="profile-pic"></div>
+      <p>Welcome to the Scary Social Zone!</p>
+    </div>
+    <div class="post-box">
+      <textarea class="post-input" placeholder="Type your post here..."></textarea>
+      <button class="post-button">Post</button>
+    </div>
+    <div class="feed">
+      <div class="post">
+        <p>First Scary Post!</p>
+        <button class="like-button">Like</button>
+        <button class="delete-button">Delete</button>
+      </div>
+    </div>
+  </div>
 
-        function startGame() {
-            score = 0;
-            isGameOver = false;
-            scoreDisplay.innerText = `Score: ${score}`;
-            gameOverDisplay.style.display = 'none';
-            player.style.backgroundColor = 'red';
-            obstacles = [];
+  <div class="suggestions">
+    <p>What to do next? Explore the chaos!</p>
+  </div>
 
-            startButton.style.display = 'none';
-            gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS
-            obstacleInterval = setInterval(createObstacle, 2000); // every 2 seconds
-        }
-
-        function gameLoop() {
-            if (isGameOver) return;
-
-            moveObstacles();
-            checkCollisions();
-        }
-
-        function moveObstacles() {
-            obstacles.forEach(obstacle => {
-                obstacle.style.transform = `translateY(${parseInt(obstacle.style.transform.replace('translateY(', '').replace('px)', '')) - 5}px)`;
-
-                if (parseInt(obstacle.style.transform.replace('translateY(', '').replace('px)', '')) <= 0) {
-                    obstacle.remove();
-                    obstacles = obstacles.filter(item => item !== obstacle);
-                    score++;
-                    scoreDisplay.innerText = `Score: ${score}`;
-                }
-            });
-        }
-
-        function checkCollisions() {
-            for (let obstacle of obstacles) {
-                const playerRect = player.getBoundingClientRect();
-                const obstacleRect = obstacle.getBoundingClientRect();
-
-                if (playerRect.right > obstacleRect.left &&
-                    playerRect.left < obstacleRect.right &&
-                    playerRect.bottom > obstacleRect.top &&
-                    playerRect.top < obstacleRect.bottom) {
-                    if (player.style.backgroundColor !== obstacle.style.backgroundColor) {
-                        endGame();
-                    }
-                }
-            }
-        }
-
-        function endGame() {
-            isGameOver = true;
-            clearInterval(gameInterval);
-            clearInterval(obstacleInterval);
-            gameOverDisplay.style.display = 'block';
-            startButton.style.display = 'block';
-        }
-
-        function createObstacle() {
-            const obstacle = document.createElement('div');
-            const randomType = Math.floor(Math.random() * 3) + 1;
-            obstacle.classList.add('obstacle', `obstacle-${randomType}`);
-            obstacle.style.transform = `translateY(100%)`;
-            obstacle.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
-            document.querySelector('.game-container').appendChild(obstacle);
-            obstacles.push(obstacle);
-        }
-
-        function changeColor(event) {
-            if (isGameOver) return;
-            if (event.key === 'r') {
-                player.style.backgroundColor = 'red';
-            } else if (event.key === 'b') {
-                player.style.backgroundColor = 'blue';
-            } else if (event.key === 'g') {
-                player.style.backgroundColor = 'green';
-            }
-        }
-
-        window.addEventListener('keydown', changeColor);
-
-        startButton.addEventListener('click', startGame);
-
-    </script>
+  <!-- Bubbles for effect -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
 </body>
 </html>
