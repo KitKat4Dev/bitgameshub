@@ -1,0 +1,83 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Align to top for free scrolling */
+    flex-direction: column;
+    padding: 0;
+    min-height: 100vh;  /* Ensure full height without restricting scrolling */
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the size of gifs */
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 80px; /* Space for header */
+    overflow-y: auto;  /* Enable vertical scroll if content overflows */
+  }
+  
+  .gif {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;  /* Ensure header is always on top */
+  }
+  
+  footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 10;  /* Ensure footer is always on top */
+  }
+  
+  footer a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  
+    header {
+      font-size: 2rem;
+    }
+  
+    footer {
+      font-size: 1.5rem;
+    }
+  }
+  
