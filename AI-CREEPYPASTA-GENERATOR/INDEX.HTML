@@ -1,0 +1,2537 @@
+<html><head><base href="/">
+    <meta charset="utf-8">
+    <title>AI Creepypasta Generator</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #b30000;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000000;
+            border: 2px solid #b30000;
+            box-shadow: 0 0 20px rgba(179, 0, 0, 0.5);
+        }
+
+        .update-log {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .update-log h3 {
+            color: #b30000;
+            margin-top: 0;
+        }
+
+        .update-log ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .update-log li {
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .update-log .version {
+            color: #b30000;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            text-shadow: 0 0 10px #b30000;
+            animation: flicker 4s infinite;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #ff0000;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #2d2d2d;
+            border: 1px solid #b30000;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            margin-top: 5px;
+        }
+
+        #timePreset {
+            width: 100%;
+            padding: 10px;
+            background-color: #2d2d2d;
+            border: 1px solid #b30000;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #b30000;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #b30000;
+            white-space: pre-wrap;
+            min-height: 200px;
+            display: none;
+        }
+
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid #b30000;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+            95% { opacity: 0.9; }
+            96% { opacity: 1; }
+            97% { opacity: 0.9; }
+            98% { opacity: 1; }
+            99% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .loading {
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .blood {
+            position: fixed;
+            top: 0;
+            width: 2px;
+            height: 0;
+            background-color: #b30000;
+            animation: drip 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes drip {
+            0% {
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                height: 100vh;
+                opacity: 0;
+            }
+        }
+
+        #stopGeneration:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
+        }
+
+        #deleteGeneration {
+            margin-top: 10px;
+            background-color: #800000;
+        }
+
+        #deleteGeneration:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
+        }
+
+        .share-button {
+            margin-top: 10px;
+            background-color: #4a0080;
+        }
+
+        .share-button:hover {
+            background-color: #6600b3;
+            box-shadow: 0 0 20px rgba(102, 0, 179, 0.5);
+        }
+
+        .random-prompt {
+            margin-bottom: 10px;
+            background-color: #4a0080;
+        }
+
+        .random-prompt:hover {
+            background-color: #6600b3;
+            box-shadow: 0 0 20px rgba(102, 0, 179, 0.5);
+        }
+
+        .tutorial {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+            margin-bottom: 20px;
+        }
+
+        .tutorial h3 {
+            color: #b30000;
+            margin-top: 0;
+        }
+
+        .tutorial ol {
+            color: #ffffff;
+            padding-left: 20px;
+        }
+
+        .tutorial li {
+            margin-bottom: 10px;
+        }
+
+        .weekend-notice {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+        }
+
+        .weekend-notice h3 {
+            color: #b30000;
+            margin-top: 0;
+        }
+
+        .weekend-notice p {
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+
+        .friday-notice {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+        }
+
+        .friday-notice h3 {
+            color: #b30000;
+            margin-top: 0;
+        }
+
+        .friday-notice p {
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+
+        #modStatus {
+            font-weight: bold;
+        }
+
+        #modStatus.online {
+            color: #00ff00;
+        }
+
+        #modStatus.offline {
+            color: #ff0000;
+        }
+
+        .randomize-all {
+            margin-bottom: 10px;
+            background-color: #008080;
+        }
+
+        .randomize-all:hover {
+            background-color: #00b3b3;
+            box-shadow: 0 0 20px rgba(0, 179, 179, 0.5);
+        }
+
+        .settings-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 2px solid #b30000;
+            padding: 20px;
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .settings-button {
+            margin-bottom: 10px;
+            background-color: #4a4a4a;
+        }
+
+        .settings-button:hover {
+            background-color: #666666;
+            box-shadow: 0 0 20px rgba(102, 102, 102, 0.5);
+        }
+
+        .ai-notice {
+            margin: 20px 0;
+            padding: 10px; 
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+        }
+
+        .ai-notice h3 {
+            color: #b30000;
+            margin-top: 0;
+        }
+
+        .ai-notice p {
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+        
+        .chat-panel {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background-color: #000000;
+            border: 2px solid #b30000;
+            padding: 20px;
+            z-index: 1000;
+            max-width: 300px;
+            width: 90%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-left: 3px solid #b30000;
+            background-color: #2d2d2d;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chat-username {
+            color: #b30000;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .chat-timestamp {
+            color: #666;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+
+        .chat-content {
+            color: #ffffff;
+            word-break: break-word;
+        }
+
+        .chat-button {
+            margin-bottom: 10px;
+            background-color: #4a0080;
+        }
+
+        .chat-button:hover {
+            background-color: #6600b3;
+            box-shadow: 0 0 20px rgba(102, 0, 179, 0.5);
+        }
+        
+        .story-database-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 2px solid #b30000;
+            padding: 20px;
+            z-index: 1000;
+            max-width: 800px;
+            width: 90%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .story-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .story-entry {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #b30000;
+            background-color: #1a1a1a;
+        }
+
+        .story-title {
+            color: #b30000;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .story-content {
+            color: #ffffff;
+            white-space: pre-wrap;
+        }
+
+        .story-metadata {
+            color: #666;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        
+        .database-button {
+            margin-top: 10px;
+            background-color: #4a0080;
+        }
+
+        .database-button:hover {
+            background-color: #6600b3;
+            box-shadow: 0 0 20px rgba(102, 0, 179, 0.5);
+        }
+
+        #achievement {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #4a0080;
+            border: 2px solid #b30000;
+            text-align: center;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #b30000; }
+            50% { box-shadow: 0 0 20px #b30000; }
+            100% { box-shadow: 0 0 5px #b30000; }
+        }
+
+        .minigames-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 2px solid #b30000;
+            padding: 20px;
+            z-index: 1000;
+            max-width: 800px;
+            width: 90%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .minigame-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        #minigame-container {
+            flex-grow: 1;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+            padding: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+        }
+
+        .cookie-game {
+            text-align: center;
+        }
+
+        .cookie {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+        }
+
+        .cookie:active {
+            transform: scale(0.95);
+        }
+
+        .snake-game {
+            position: relative;
+        }
+
+        .snake-cell {
+            position: absolute;
+            background-color: #b30000;
+            border: 1px solid #000;
+        }
+
+        .snake-food {
+            position: absolute;
+            background-color: #ff0000;
+            border: 1px solid #000;
+            border-radius: 50%;
+        }
+
+        .tictactoe-game {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .tictactoe-cell {
+            aspect-ratio: 1;
+            background: #2d2d2d;
+            border: 1px solid #b30000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .minigame-button {
+            margin-top: 10px;
+            background-color: #4a0080;
+        }
+
+        .minigame-button:hover {
+            background-color: #6600b3;
+            box-shadow: 0 0 20px rgba(102, 0, 179, 0.5);
+        }
+        
+        .custom-type-container {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #2d2d2d;
+            border: 1px solid #b30000;
+        }
+
+        .custom-type-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid #b30000;
+        }
+
+        #customTypeName, #customTypeDesc {
+            width: 100%;
+            margin: 5px 0;
+            background-color: #2d2d2d;
+            border: 1px solid #b30000;
+            color: #ffffff;
+            padding: 5px;
+        }
+        
+        .credit-notice {
+            margin: 20px 0;  
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #b30000;
+        }
+
+        .credit-notice h3 {
+            color: #b30000;
+            margin-top: 0;
+        }
+
+        .credit-notice p {
+            color: #ffffff;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .custom-type-toggle {
+            margin-bottom: 10px;
+            background-color: #4a0080;
+        }
+
+        .custom-type-toggle:hover {
+            background-color: #6600b3;
+            box-shadow: 0 0 20px rgba(102, 0, 179, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Creepypasta Generator</h1>
+        <div class="ai-notice">
+            <h3>AI Content Notice</h3>
+            <p>While I don&apos;t know much about AI-related content like Sprunki or Dandy&apos;s World, I can still create stories about them if specifically requested.</p>
+        </div>
+        <div class="update-log">
+            <h3>Update Log</h3>
+            <ul>
+                <li><span class="version">v2.0</span> - Added randomize all button and new story options</li>
+                <li><span class="version">v1.9</span> - Added new location-based horror types and weekend notice</li>
+                <li><span class="version">v1.8</span> - Updated tutorial with clearer prompt generation instructions</li>
+                <li><span class="version">v1.7</span> - Added more narrative styles and creepypasta types, added tutorial</li>
+                <li><span class="version">v1.6</span> - Added more sub styles and narrative styles</li>
+                <li><span class="version">v1.5</span> - Added new narrative styles, text styles and endings</li>
+                <li><span class="version">v1.4</span> - Added Sonic creepypasta and related story types</li>
+                <li><span class="version">v1.3</span> - Added random prompt generator</li>
+                <li><span class="version">v1.2</span> - Added gaming style options</li>
+                <li><span class="version">v1.1</span> - Added fourth weapon slot</li>
+                <li><span class="version">v0.1</span> - Initial release</li>
+            </ul>
+        </div>
+        <div class="weekend-notice">
+            <h3>Weekend Notice</h3>
+            <p>Please note: Updates and game modifications are not made during weekends.</p>
+        </div>
+        <div class="credit-notice">
+            <h3>Credit Update Notice</h3> 
+            <p>Unfortunately, credits have been reduced from 40 to 25. I am not happy about this change.</p>
+        </div>
+        <div class="friday-notice" style="display: none;">
+            <h3>Friday Game Modification Notice</h3>
+            <p>Game modifications are only available during morning hours on Fridays, or by special announcement. Check back then!</p>
+            <p>Current Status: <span id="modStatus">Offline</span></p>
+        </div>
+        <div class="tutorial">
+            <h3>How to Create Your Story</h3>
+            <ol>
+                <li>Enter your story idea in the prompt box</li>
+                <li>Choose the type of creepypasta that best fits your story</li>
+                <li>Click &quot;Generate Random Prompt&quot; to get an AI-generated prompt based on your selected type</li>
+                <li>Select a narrative style to determine how your story will be told</li>
+                <li>Add optional secondary and third narrative styles for more complexity</li>
+                <li>Choose a sub-style to give your story a specific horror focus</li>
+                <li>Set word count and time of day for your story</li>
+                <li>Select weapons if they&apos;re part of your narrative</li>
+                <li>Choose an ending type to determine how your story concludes</li>
+                <li>Pick emoji level and text style to set the tone</li>
+                <li>Click &quot;Generate Creepypasta&quot; to create your story</li>
+            </ol>
+        </div>
+
+        <button class="randomize-all" onclick="randomizeAllOptions()">Randomize All Options</button>
+
+        <button class="settings-button" onclick="openSettings()">Settings</button>
+
+        <button class="chat-button" onclick="openChat()">Open Idea Chat</button>
+
+        <button class="minigame-button" onclick="openMinigames()">Play Mini Games</button>
+
+        <button class="custom-type-toggle" onclick="toggleCustomTypeContainer()">Toggle Type Maker</button>
+        <div class="custom-type-container" id="customTypeContainer" style="display: block;">
+            <div class="input-group">
+                <label for="customType">Create Custom Creepypasta Type:</label>
+                <input type="text" id="customTypeName" placeholder="Type name...">
+                <textarea id="customTypeDesc" rows="3" placeholder="Type description and characteristics..."></textarea>
+                <button onclick="addCustomType()">Add Custom Type</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="prompt">Your Prompt:</label>
+            <button class="random-prompt" onclick="generateRandomPrompt()">Generate Random Prompt</button>
+            <textarea id="prompt" rows="3" placeholder="Enter your creepy story idea..."></textarea>
+        </div>
+
+        <div class="input-group">
+            <label for="type">Type of Creepypasta:</label>
+            <select id="type" onchange="toggleShowSelect()">
+                <option value="psychological">Psychological Horror</option>
+                <option value="monster">Monster Story</option>
+                <option value="ritual">Ritual/Curse</option>
+                <option value="technology">Technology Horror</option>
+                <option value="supernatural">Supernatural</option>
+                <option value="gaming">Gaming Creepypasta</option>
+                <option value="minecraft">Minecraft Creepypasta</option>
+                <option value="urban_legend">Urban Legend</option>
+                <option value="lost_episode">Lost Episode</option>
+                <option value="alternate_reality">Alternate Reality</option>
+                <option value="gmod">Garry&apos;s Mod Horror</option>
+                <option value="roblox_horror">Roblox Horror</option>
+                <option value="discord_horror">Discord Horror</option>
+                <option value="vhs_horror">VHS Horror</option>
+                <option value="error_message">Error Message Horror</option>
+                <option value="browser_game">Browser Game Horror</option>
+                <option value="forum_horror">Forum Horror</option>
+                <option value="old_internet">Old Internet Horror</option>
+                <option value="cosmic_horror">Cosmic Horror</option>
+                <option value="body_horror">Body Horror</option>
+                <option value="internet_horror">Internet Horror</option>
+                <option value="found_footage">Found Footage</option>
+                <option value="paranormal_investigation">Paranormal Investigation</option>
+                <option value="cursed_object">Cursed Object</option>
+                <option value="experiment">Scientific Experiment Gone Wrong</option>
+                <option value="childhood_trauma">Childhood Trauma</option>
+                <option value="liminal_space">Liminal Space</option>
+                <option value="analog_horror">Analog Horror</option>
+                <option value="haunted_toy">Haunted Toy</option>
+                <option value="dimension">Dimensional Horror</option>
+                <option value="time_loop">Time Loop Horror</option>
+                <option value="reality_glitch">Reality Glitch</option>
+                <option value="cryptid">Cryptid Encounter</option>
+                <option value="psychological_experiment">Psychological Experiment</option>
+                <option value="backrooms">Backrooms</option>
+                <option value="scp">SCP Style</option>
+                <option value="ai_horror">AI Horror</option>
+                <option value="social_media_horror">Social Media Horror</option>
+                <option value="creepy_doll">Creepy Doll</option>
+                <option value="deep_web">Deep Web Story</option>
+                <option value="mirror_world">Mirror World</option>
+                <option value="sleep_paralysis">Sleep Paralysis</option>
+                <option value="phone_call">Mysterious Phone Call</option>
+                <option value="altered_reality">Altered Reality</option>
+                <option value="computer_virus">Computer Virus</option>
+                <option value="haunted_website">Haunted Website</option>
+                <option value="dark_web_stream">Dark Web Livestream</option>
+                <option value="glitch_reality">Reality Glitch</option>
+                <option value="quantum_horror">Quantum Horror</option>
+                <option value="dream_invasion">Dream Invasion</option>
+                <option value="existential">Existential Horror</option>
+                <option value="psychological_glitch">Psychological Glitch</option>
+                <option value="interdimensional">Interdimensional Horror</option>
+                <option value="time_paradox">Time Paradox Horror</option>
+                <option value="meta_horror">Meta Horror</option>
+                <option value="neural_interface">Neural Interface Horror</option>
+                <option value="memory_horror">Memory Horror</option>
+                <option value="consciousness_transfer">Consciousness Transfer</option>
+                <option value="reality_tv">Reality TV Horror</option>
+                <option value="virtual_world">Virtual World Horror</option>
+                <option value="nanomachine">Nanomachine Horror</option>
+                <option value="genetic_horror">Genetic Horror</option>
+                <option value="abstract_horror">Abstract Horror</option>
+                <option value="simulation">Simulation Horror</option>
+                <option value="procedural_generation">Procedurally Generated Horror</option>
+                <option value="sonic">Sonic Creepypasta</option>
+                <option value="cursed_console">Cursed Gaming Console</option>
+                <option value="corrupted_save">Corrupted Save File</option>
+                <option value="beta_content">Disturbing Beta Content</option>
+                <option value="haunted_cartridge">Haunted Game Cartridge</option>
+                <option value="debug_room">Secret Debug Room</option>
+                <option value="unused_content">Unused Game Content</option>
+                <option value="modded_game">Cursed Game Mod</option>
+                <option value="emulator_glitch">Emulator Glitch</option>
+                <option value="bootleg_game">Bootleg Game Horror</option>
+                <option value="dev_message">Hidden Developer Message</option>
+                <option value="weather_horror">Weather Horror</option>
+                <option value="school_horror">School Horror</option>
+                <option value="workplace_horror">Workplace Horror</option>
+                <option value="elevator_horror">Elevator Horror</option>
+                <option value="parking_lot">Parking Lot Horror</option>
+                <option value="train_horror">Train Horror</option>
+                <option value="mall_horror">Shopping Mall Horror</option>
+                <option value="restaurant_horror">Restaurant Horror</option>
+                <option value="museum_horror">Museum Horror</option>
+                <option value="library_horror">Library Horror</option>
+                <option value="hospital_horror">Hospital Horror</option>
+                <option value="asylum_horror">Asylum Horror</option>
+                <option value="factory_horror">Factory Horror</option>
+                <option value="warehouse_horror">Warehouse Horror</option>
+                <option value="office_horror">Office Horror</option>
+                <option value="motel_horror">Motel Horror</option>
+                <option value="apartment_horror">Apartment Horror</option>
+                <option value="carnival_horror">Carnival Horror</option>
+                <option value="cruise_horror">Cruise Ship Horror</option>
+                <option value="airport_horror">Airport Horror</option>
+                <option value="quantum_computer">Quantum Computer Horror</option>
+                <option value="space_station">Space Station Horror</option>
+                <option value="underwater_facility">Underwater Facility Horror</option>
+                <option value="bunker">Underground Bunker Horror</option>
+                <option value="lighthouse">Lighthouse Horror</option>
+                <option value="subway">Subway Horror</option>
+                <option value="power_plant">Power Plant Horror</option>
+                <option value="radio_tower">Radio Tower Horror</option>
+                <option value="research_lab">Research Lab Horror</option>
+                <option value="military_base">Military Base Horror</option>
+                <option value="neural_interface">Neural Interface Horror</option>
+                <option value="quantum_computing">Quantum Computing Horror</option>
+                <option value="bio_horror">Biological Horror</option>
+                <option value="nanomachine">Nanomachine Horror</option>
+                <option value="space_colony">Space Colony Horror</option>
+                <option value="time_travel">Time Travel Horror</option>
+                <option value="parallel_world">Parallel World Horror</option>
+                <option value="viral_video">Viral Video Horror</option>
+                <option value="deepfake">Deepfake Horror</option>
+                <option value="smart_home">Smart Home Horror</option>
+                <option value="drone_horror">Drone Horror</option>
+                <option value="blockchain">Blockchain Horror</option>
+                <option value="virtual_pet">Virtual Pet Horror</option>
+                <option value="smart_device">Smart Device Horror</option>
+                <option value="augmented_reality">Augmented Reality Horror</option>
+                <option value="space_horror">Space Horror</option>
+                <option value="time_dilation">Time Dilation Horror</option>
+                <option value="multiverse">Multiverse Horror</option>
+                <option value="hologram">Holographic Horror</option>
+                <option value="cybernetic">Cybernetic Horror</option>
+                <option value="biotech">Biotechnology Horror</option>
+                <option value="roblox_game">Roblox Game Horror</option>
+                <option value="fnf_mod">Friday Night Funkin&apos; Mod Horror</option>
+                <option value="chat_game">Chat Game Horror</option>
+                <option value="pixel_horror">Pixel Game Horror</option>
+                <option value="mobile_game">Mobile Game Horror</option>
+                <option value="among_us">Among Us Horror</option>
+                <option value="fortnite">Fortnite Horror</option>
+                <option value="minecraft_server">Minecraft Server Horror</option>
+                <option value="discord_bot">Discord Bot Horror</option>
+                <option value="rbx_place">Roblox Place Horror</option>
+                <option value="haunted_ai">Haunted AI</option>
+                <option value="cursed_algorithm">Cursed Algorithm</option>
+                <option value="digital_possession">Digital Possession</option>
+                <option value="machine_learning">Machine Learning Gone Wrong</option>
+                <option value="neural_network">Neural Network Horror</option>
+                <option value="virtual_assistant">Evil Virtual Assistant</option>
+                <option value="smart_contract">Cursed Smart Contract</option>
+                <option value="metaverse">Metaverse Horror</option>
+                <option value="web3">Web3 Horror</option>
+                <option value="nft">Cursed NFT</option>
+                <option value="chatbot">Malevolent Chatbot</option>
+                <option value="voice_assistant">Haunted Voice Assistant</option>
+                <option value="data_center">Data Center Horror</option>
+                <option value="server_room">Server Room Horror</option>
+                <option value="cloud_storage">Cloud Storage Horror</option>
+            </select>
+        </div>
+
+        <div class="input-group" id="showSelectGroup" style="display: none;">
+            <label for="show">Select TV Show:</label>
+            <select id="show">
+                <option value="none">None (Default)</option>
+                <option value="spongebob">SpongeBob SquarePants</option>
+                <option value="bfdi">Battle for Dream Island</option>
+                <option value="simpsons">The Simpsons</option>
+                <option value="pokemon">Pok&#xe9;mon</option>
+                <option value="blues_clues">Blue&apos;s Clues</option>
+                <option value="teletubbies">Teletubbies</option>
+                <option value="sesame_street">Sesame Street</option>
+                <option value="mickey_mouse">Mickey Mouse</option>
+                <option value="tom_jerry">Tom and Jerry</option>
+                <option value="courage">Courage the Cowardly Dog</option>
+                <option value="dora">Dora the Explorer</option>
+                <option value="peppa_pig">Peppa Pig</option>
+                <option value="paw_patrol">PAW Patrol</option>
+                <option value="ben_10">Ben 10</option>
+                <option value="adventure_time">Adventure Time</option>
+                <option value="regular_show">Regular Show</option>
+                <option value="amazing_world">The Amazing World of Gumball</option>
+                <option value="fairly_oddparents">The Fairly OddParents</option>
+                <option value="ed_edd_eddy">Ed, Edd n Eddy</option>
+                <option value="powerpuff">The Powerpuff Girls</option>
+                <option value="dexter">Dexter&apos;s Laboratory</option>
+                <option value="johnny_bravo">Johnny Bravo</option>
+                <option value="fosters">Foster&apos;s Home for Imaginary Friends</option>
+                <option value="kids_next_door">Codename: Kids Next Door</option>
+                <option value="samurai_jack">Samurai Jack</option>
+                <option value="chowder">Chowder</option>
+                <option value="flapjack">The Marvelous Misadventures of Flapjack</option>
+                <option value="gravity_falls">Gravity Falls</option>
+                <option value="steven_universe">Steven Universe</option>
+                <option value="we_bare_bears">We Bare Bears</option>
+                <option value="clarence">Clarence</option>
+                <option value="uncle_grandpa">Uncle Grandpa</option>
+                <option value="teen_titans">Teen Titans</option>
+                <option value="teen_titans_go">Teen Titans Go!</option>
+                <option value="total_drama">Total Drama</option>
+                <option value="johnny_test">Johnny Test</option>
+                <option value="animaniacs">Animaniacs</option>
+                <option value="tiny_toons">Tiny Toon Adventures</option>
+                <option value="looney_tunes">Looney Tunes</option>
+                <option value="arthur">Arthur</option>
+                <option value="cyberchase">Cyberchase</option>
+                <option value="wild_kratts">Wild Kratts</option>
+                <option value="dragon_tales">Dragon Tales</option>
+                <option value="zaboomafoo">Zoboomafoo</option>
+                <option value="caillou">Caillou</option>
+                <option value="clifford">Clifford the Big Red Dog</option>
+                <option value="word_girl">WordGirl</option>
+                <option value="martha_speaks">Martha Speaks</option>
+                <option value="between_lions">Between the Lions</option>
+                <option value="reading_rainbow">Reading Rainbow</option>
+                <option value="magic_school_bus">The Magic School Bus</option>
+                <option value="bill_nye">Bill Nye the Science Guy</option>
+                <option value="barney">Barney &amp; Friends</option>
+                <option value="mr_rogers">Mister Rogers&apos; Neighborhood</option>
+                <option value="bear_big_blue">Bear in the Big Blue House</option>
+                <option value="dinosaur_train">Dinosaur Train</option>
+                <option value="super_why">Super Why!</option>
+                <option value="odd_squad">Odd Squad</option>
+                <option value="daniel_tiger">Daniel Tiger&apos;s Neighborhood</option>
+                <option value="wow_wow_wubbzy">Wow! Wow! Wubbzy!</option>
+                <option value="ni_hao_kai_lan">Ni Hao, Kai-Lan</option>
+                <option value="team_umizoomi">Team Umizoomi</option>
+                <option value="wonder_pets">The Wonder Pets</option>
+                <option value="yo_gabba">Yo Gabba Gabba!</option>
+                <option value="max_ruby">Max &amp; Ruby</option>
+                <option value="franklin">Franklin</option>
+                <option value="little_bear">Little Bear</option>
+                <option value="rubbadubbers">Rubbadubbers</option>
+                <option value="oswald">Oswald</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="style">Narrative Style:</label>
+            <select id="style">
+                <option value="firstPerson">First Person Account</option>
+                <option value="journal">Journal Entries</option>
+                <option value="interview">Interview Transcript</option>
+                <option value="investigation">Investigation Report</option>
+                <option value="messages">Found Messages/Emails</option>
+                <option value="forum_posts">Forum Posts</option>
+                <option value="news_article">News Article</option>
+                <option value="audio_transcript">Audio Transcript</option>
+                <option value="police_report">Police Report</option>
+                <option value="multiple_pov">Multiple Perspectives</option>
+                <option value="social_media">Social Media Posts</option>
+                <option value="video_description">Video Description</option>
+                <option value="chat_logs">Chat Logs</option>
+                <option value="security_footage">Security Footage Description</option>
+                <option value="letter">Letter to Loved One</option>
+                <option value="voice_recording">Voice Recording Log</option>
+                <option value="scientific_report">Scientific Report</option>
+                <option value="therapy_session">Therapy Session Transcript</option>
+                <option value="found_document">Found Document</option>
+                <option value="emergency_call">Emergency Call Transcript</option>
+                <option value="declassified_docs">Declassified Documents</option>
+                <option value="phone_recording">Phone Recording</option>
+                <option value="blog_post">Blog Post</option>
+                <option value="personal_diary">Personal Diary</option>
+                <option value="military_log">Military Log</option>
+                <option value="dark_web">Dark Web Post</option>
+                <option value="witness_testimony">Witness Testimony</option>
+                <option value="psychiatric_evaluation">Psychiatric Evaluation</option>
+                <option value="surveillance_log">Surveillance Log</option>
+                <option value="recovered_files">Recovered Files</option>
+                <option value="computer_logs">Computer System Logs</option>
+                <option value="ai_conversation">AI Conversation History</option>
+                <option value="virtual_reality_feed">Virtual Reality Feed</option>
+                <option value="brain_scan">Brain Scan Analysis</option>
+                <option value="quantum_readings">Quantum Readings Data</option>
+                <option value="memory_fragments">Memory Fragments</option>
+                <option value="reality_glitches">Reality Glitch Reports</option>
+                <option value="time_traveler_notes">Time Traveler Notes</option>
+                <option value="parallel_universe">Parallel Universe Records</option>
+                <option value="consciousness_stream">Stream of Consciousness</option>
+                <option value="neural_interface_logs">Neural Interface Logs</option>
+                <option value="encrypted_files">Decrypted Files</option>
+                <option value="simulation_data">Simulation Data Logs</option>
+                <option value="interdimensional_comms">Interdimensional Communications</option>
+                <option value="temporal_anomaly">Temporal Anomaly Reports</option>
+                <option value="manifestation">Manifestation Log</option>
+                <option value="time_capsule">Time Capsule Contents</option>
+                <option value="prophecy">Ancient Prophecy</option>
+                <option value="ritual_text">Ritual Text</option>
+                <option value="memory_bank">Memory Bank Data</option>
+                <option value="ai_analysis">AI Analysis Report</option>
+                <option value="quantum_log">Quantum Event Log</option>
+                <option value="dream_analysis">Dream Analysis Report</option>
+                <option value="cryptograph">Decoded Cryptograph</option>
+                <option value="artifact_scan">Artifact Scan Results</option>
+                <option value="diary">Personal Diary</option>
+                <option value="text_message">Text Message Thread</option>
+                <option value="stream_recording">Livestream Recording</option>
+                <option value="radio_broadcast">Radio Broadcast</option>
+                <option value="voicemail">Voicemail Transcription</option>
+                <option value="manuscript">Ancient Manuscript</option>
+                <option value="browser_history">Browser History Log</option>
+                <option value="game_review">Game Review</option>
+                <option value="forensic_report">Forensic Report</option>
+                <option value="weather_report">Weather Report</option>
+                <option value="neural_feed">Neural Feed Data</option>
+                <option value="quantum_log">Quantum Observer Log</option>
+                <option value="parallel_transcript">Parallel Timeline Transcript</option>
+                <option value="ai_consciousness">AI Consciousness Stream</option>
+                <option value="bio_interface">Biological Interface Data</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="style2">Additional Narrative Style (Optional):</label>
+            <select id="style2">
+                <option value="none">None (Default)</option>
+                <option value="firstPerson">First Person Account</option>
+                <option value="journal">Journal Entries</option>
+                <option value="interview">Interview Transcript</option>
+                <option value="investigation">Investigation Report</option>
+                <option value="messages">Found Messages/Emails</option>
+                <option value="forum_posts">Forum Posts</option>
+                <option value="news_article">News Article</option>
+                <option value="audio_transcript">Audio Transcript</option>
+                <option value="police_report">Police Report</option>
+                <option value="multiple_pov">Multiple Perspectives</option>
+                <option value="social_media">Social Media Posts</option>
+                <option value="video_description">Video Description</option>
+                <option value="chat_logs">Chat Logs</option>
+                <option value="security_footage">Security Footage Description</option>
+                <option value="letter">Letter to Loved One</option>
+                <option value="voice_recording">Voice Recording Log</option>
+                <option value="scientific_report">Scientific Report</option>
+                <option value="therapy_session">Therapy Session Transcript</option>
+                <option value="found_document">Found Document</option>
+                <option value="emergency_call">Emergency Call Transcript</option>
+                <option value="declassified_docs">Declassified Documents</option>
+                <option value="phone_recording">Phone Recording</option>
+                <option value="blog_post">Blog Post</option>
+                <option value="personal_diary">Personal Diary</option>
+                <option value="military_log">Military Log</option>
+                <option value="dark_web">Dark Web Post</option>
+                <option value="witness_testimony">Witness Testimony</option>
+                <option value="psychiatric_evaluation">Psychiatric Evaluation</option>
+                <option value="surveillance_log">Surveillance Log</option>
+                <option value="recovered_files">Recovered Files</option>
+                <option value="computer_logs">Computer System Logs</option>
+                <option value="ai_conversation">AI Conversation History</option>
+                <option value="virtual_reality_feed">Virtual Reality Feed</option>
+                <option value="brain_scan">Brain Scan Analysis</option>
+                <option value="quantum_readings">Quantum Readings Data</option>
+                <option value="memory_fragments">Memory Fragments</option>
+                <option value="reality_glitches">Reality Glitch Reports</option>
+                <option value="time_traveler_notes">Time Traveler Notes</option>
+                <option value="parallel_universe">Parallel Universe Records</option>
+                <option value="consciousness_stream">Stream of Consciousness</option>
+                <option value="neural_interface_logs">Neural Interface Logs</option>
+                <option value="encrypted_files">Decrypted Files</option>
+                <option value="simulation_data">Simulation Data Logs</option>
+                <option value="interdimensional_comms">Interdimensional Communications</option>
+                <option value="temporal_anomaly">Temporal Anomaly Reports</option>
+                <option value="manifestation">Manifestation Log</option>
+                <option value="time_capsule">Time Capsule Contents</option>
+                <option value="prophecy">Ancient Prophecy</option>
+                <option value="ritual_text">Ritual Text</option>
+                <option value="memory_bank">Memory Bank Data</option>
+                <option value="ai_analysis">AI Analysis Report</option>
+                <option value="quantum_log">Quantum Event Log</option>
+                <option value="dream_analysis">Dream Analysis Report</option>
+                <option value="cryptograph">Decoded Cryptograph</option>
+                <option value="artifact_scan">Artifact Scan Results</option>
+                <option value="diary">Personal Diary</option>
+                <option value="text_message">Text Message Thread</option>
+                <option value="stream_recording">Livestream Recording</option>
+                <option value="radio_broadcast">Radio Broadcast</option>
+                <option value="voicemail">Voicemail Transcription</option>
+                <option value="manuscript">Ancient Manuscript</option>
+                <option value="browser_history">Browser History Log</option>
+                <option value="game_review">Game Review</option>
+                <option value="forensic_report">Forensic Report</option>
+                <option value="weather_report">Weather Report</option>
+                <option value="neural_feed">Neural Feed Data</option>
+                <option value="quantum_log">Quantum Observer Log</option>
+                <option value="parallel_transcript">Parallel Timeline Transcript</option>
+                <option value="ai_consciousness">AI Consciousness Stream</option>
+                <option value="bio_interface">Biological Interface Data</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="style3">Third Narrative Style (Optional):</label>
+            <select id="style3">
+                <option value="none">None (Default)</option>
+                <option value="firstPerson">First Person Account</option>
+                <option value="journal">Journal Entries</option>
+                <option value="interview">Interview Transcript</option>
+                <option value="investigation">Investigation Report</option>
+                <option value="messages">Found Messages/Emails</option>
+                <option value="forum_posts">Forum Posts</option>
+                <option value="news_article">News Article</option>
+                <option value="audio_transcript">Audio Transcript</option>
+                <option value="police_report">Police Report</option>
+                <option value="multiple_pov">Multiple Perspectives</option>
+                <option value="social_media">Social Media Posts</option>
+                <option value="video_description">Video Description</option>
+                <option value="chat_logs">Chat Logs</option>
+                <option value="security_footage">Security Footage Description</option>
+                <option value="letter">Letter to Loved One</option>
+                <option value="voice_recording">Voice Recording Log</option>
+                <option value="scientific_report">Scientific Report</option>
+                <option value="therapy_session">Therapy Session Transcript</option>
+                <option value="found_document">Found Document</option>
+                <option value="emergency_call">Emergency Call Transcript</option>
+                <option value="declassified_docs">Declassified Documents</option>
+                <option value="phone_recording">Phone Recording</option>
+                <option value="blog_post">Blog Post</option>
+                <option value="personal_diary">Personal Diary</option>
+                <option value="military_log">Military Log</option>
+                <option value="dark_web">Dark Web Post</option>
+                <option value="witness_testimony">Witness Testimony</option>
+                <option value="psychiatric_evaluation">Psychiatric Evaluation</option>
+                <option value="surveillance_log">Surveillance Log</option>
+                <option value="recovered_files">Recovered Files</option>
+                <option value="computer_logs">Computer System Logs</option>
+                <option value="ai_conversation">AI Conversation History</option>
+                <option value="virtual_reality_feed">Virtual Reality Feed</option>
+                <option value="brain_scan">Brain Scan Analysis</option>
+                <option value="quantum_readings">Quantum Readings Data</option>
+                <option value="memory_fragments">Memory Fragments</option>
+                <option value="reality_glitches">Reality Glitch Reports</option>
+                <option value="time_traveler_notes">Time Traveler Notes</option>
+                <option value="parallel_universe">Parallel Universe Records</option>
+                <option value="consciousness_stream">Stream of Consciousness</option>
+                <option value="neural_interface_logs">Neural Interface Logs</option>
+                <option value="encrypted_files">Decrypted Files</option>
+                <option value="simulation_data">Simulation Data Logs</option>
+                <option value="interdimensional_comms">Interdimensional Communications</option>
+                <option value="temporal_anomaly">Temporal Anomaly Reports</option>
+                <option value="manifestation">Manifestation Log</option>
+                <option value="time_capsule">Time Capsule Contents</option>
+                <option value="prophecy">Ancient Prophecy</option>
+                <option value="ritual_text">Ritual Text</option>
+                <option value="memory_bank">Memory Bank Data</option>
+                <option value="ai_analysis">AI Analysis Report</option>
+                <option value="quantum_log">Quantum Event Log</option>
+                <option value="dream_analysis">Dream Analysis Report</option>
+                <option value="cryptograph">Decoded Cryptograph</option>
+                <option value="artifact_scan">Artifact Scan Results</option>
+                <option value="diary">Personal Diary</option>
+                <option value="text_message">Text Message Thread</option>
+                <option value="stream_recording">Livestream Recording</option>
+                <option value="radio_broadcast">Radio Broadcast</option>
+                <option value="voicemail">Voicemail Transcription</option>
+                <option value="manuscript">Ancient Manuscript</option>
+                <option value="browser_history">Browser History Log</option>
+                <option value="game_review">Game Review</option>
+                <option value="forensic_report">Forensic Report</option>
+                <option value="weather_report">Weather Report</option>
+                <option value="neural_feed">Neural Feed Data</option>
+                <option value="quantum_log">Quantum Observer Log</option>
+                <option value="parallel_transcript">Parallel Timeline Transcript</option>
+                <option value="ai_consciousness">AI Consciousness Stream</option>
+                <option value="bio_interface">Biological Interface Data</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="wordCount">Word Count (1-1000000000000):</label>
+            <input type="number" id="wordCount" min="1" max="1000000000000" value="500">
+        </div>
+
+        <div class="input-group">
+            <label for="ending">Desired Ending:</label>
+            <select id="ending">
+                <option value="normal">Normal Ending (Default)</option>
+                <option value="good">Good Ending</option>
+                <option value="bad">Bad Ending</option>
+                <option value="monsterous">Monsteritic Ending</option>
+                <option value="complete">Completed Ending</option>
+                <option value="indifferent">Didn&apos;t Care Ending</option>
+                <option value="victory">Destroyed Monster Ending</option>
+                <option value="defeat">Got Destroyed Ending</option>
+                <option value="twist">Twist Ending</option>
+                <option value="escape">Narrow Escape Ending</option>
+                <option value="sacrifice">Sacrificial Ending</option>
+                <option value="corruption">Corruption Ending</option>
+                <option value="revenge">Revenge Ending</option>
+                <option value="cycle">Cycle Repeats Ending</option>
+                <option value="unknown">Unknown Fate Ending</option>
+                <option value="ascension">Ascension Ending</option>
+                <option value="descent">Descent into Madness Ending</option>
+                <option value="transformation">Transformation Ending</option>
+                <option value="revelation">Dark Revelation Ending</option>
+                <option value="time_loop">Time Loop Ending</option>
+                <option value="parallel">Parallel Reality Ending</option>
+                <option value="fourth_wall">Fourth Wall Break Ending</option>
+                <option value="meta">Meta Ending</option>
+                <option value="recursive">Recursive Horror Ending</option>
+                <option value="dream">It Was All a Dream... Or Was It? Ending</option>
+                <option value="cosmic">Cosmic Horror Ending</option>
+                <option value="haunting">Eternal Haunting Ending</option>
+                <option value="assimilation">Assimilation Ending</option>
+                <option value="reality_break">Reality Break Ending</option>
+                <option value="collective">Collective Consciousness Ending</option>
+                <option value="temporal">Temporal Paradox Ending</option>
+                <option value="singularity">Technological Singularity Ending</option>
+                <option value="quantum_split">Quantum Split Ending</option>
+                <option value="existential_loop">Existential Loop Ending</option>
+                <option value="transcendence">Dark Transcendence Ending</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="emojis">Emoji Level:</label>
+            <select id="emojis">
+                <option value="none">None (Default)</option>
+                <option value="minimal">Minimal</option>
+                <option value="normal">Normal</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="textStyle">Text Style:</label>
+            <select id="textStyle">
+                <option value="normal">Normal (Default)</option>
+                <option value="funny">Funny</option>
+                <option value="normal_funny">Normal-Funny</option>
+                <option value="serious">Serious</option>
+                <option value="brave">Brave</option>
+                <option value="dramatic">Dramatic</option>
+                <option value="poetic">Poetic</option>
+                <option value="sarcastic">Sarcastic</option>
+                <option value="cynical">Cynical</option>
+                <option value="philosophical">Philosophical</option>
+                <option value="whimsical">Whimsical</option>
+                <option value="nostalgic">Nostalgic</option>
+                <option value="mysterious">Mysterious</option>
+                <option value="analytical">Analytical</option>
+                <option value="stream_consciousness">Stream of Consciousness</option>
+                <option value="deadpan">Deadpan</option>
+                <option value="melodramatic">Melodramatic</option>
+                <option value="absurdist">Absurdist</option>
+                <option value="formal">Formal</option>
+                <option value="casual">Casual</option>
+                <option value="ethereal">Ethereal</option>
+                <option value="chaotic">Chaotic</option>
+                <option value="clinical">Clinical</option>
+                <option value="unreliable">Unreliable Narrator</option>
+                <option value="technical">Technical</option>
+                <option value="fragmented">Fragmented</option>
+                <option value="surreal">Surreal</option>
+                <option value="prophetic">Prophetic</option>
+                <option value="paranoid">Paranoid</option>
+                <option value="detached">Emotionally Detached</option>
+                <option value="scientific">Scientific</option>
+                <option value="conspiratorial">Conspiratorial</option>
+                <option value="poetic_horror">Poetic Horror</option>
+                <option value="documentary">Documentary</option>
+                <option value="military">Military</option>
+                <option value="academic">Academic</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="lovecraftian">Lovecraftian</option>
+                <option value="dystopian">Dystopian</option>
+                <option value="noir">Noir</option>
+                <option value="techno">Technobabble</option>
+                <option value="quantum_poetry">Quantum Poetry</option>
+                <option value="cosmic_dread">Cosmic Dread</option>
+                <option value="system_log">System Log</option>
+                <option value="roblox_funny">Funny Roblox</option>
+                <option value="roblox_meme">Roblox Meme</option>
+                <option value="troll_physics">Troll Physics</option>
+                <option value="creepypasta_ironic">Ironic Creepypasta</option>
+                <option value="glitchcore">Glitchcore</option>
+                <option value="weirdcore">Weirdcore</option>
+                <option value="liminal">Liminal Space</option>
+                <option value="uncanny">Uncanny Valley</option>
+                <option value="nostalgia">Nostalgic</option>
+                <option value="retro_gaming">Retro Gaming</option>
+                <option value="conspiracy">Conspiracy Theory</option>
+                <option value="arg">ARG Style</option>
+                <option value="digital_horror">Digital Horror</option>
+                <option value="system_message">System Message</option>
+                <option value="computer_log">Computer Log</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="gamingStyle">Gaming Style:</label>
+            <select id="gamingStyle" onchange="handleGamingStyle()">
+                <option value="no">No (Default)</option>
+                <option value="yes">Yes (Deactivates Weapons)</option>
+                <option value="ehh">Ehh (Keeps Weapons)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="subStyle">Sub Style:</label>
+            <select id="subStyle">
+                <option value="none">None (Default)</option>
+                <option value="killer">Killer</option>
+                <option value="joke">Joke</option>
+                <option value="horror_movie">Straight Out From a Horror Movie</option>
+                <option value="not_scary">Why is This Not Scary</option>
+                <option value="psychological">Psychological Terror</option>
+                <option value="surreal">Surreal Horror</option>
+                <option value="body_horror">Body Horror</option>
+                <option value="cosmic">Cosmic Horror</option>
+                <option value="mystery">Mystery Horror</option>
+                <option value="paranormal">Paranormal Activity</option>
+                <option value="found_footage">Found Footage Style</option>
+                <option value="experimental">Experimental Horror</option>
+                <option value="meta_horror">Meta Horror</option>
+                <option value="gothic">Gothic Horror</option>
+                <option value="paradox">Paradox Horror</option>
+                <option value="quantum">Quantum Horror</option>
+                <option value="fractal">Fractal Horror</option>
+                <option value="recursive">Recursive Horror</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="timeOfDay">Time of Day:</label>
+            <select id="timePreset" onchange="updateTimeInput()">
+                <option value="custom">Custom Time</option>
+                <option value="9">Morning (9:00)</option>
+                <option value="15">Work Hours (15:00)</option>
+                <option value="20">Sleep Time (20:00)</option>
+                <option value="3">Creepy Hours (3:00)</option>
+                <option value="unknown">Unknown Time</option>
+            </select>
+            <input type="number" id="timeOfDay" min="0" max="24" value="3" style="margin-top: 10px;">
+        </div>
+
+        <div class="input-group">
+            <label for="month">Month:</label>
+            <select id="month">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="day">Day:</label>
+            <select id="day">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="weapon">Weapon:</label>
+            <select id="weapon">
+                <option value="fists">Fists (Default)</option>
+                <option value="none">None</option>
+                <option value="baton">Baton</option>
+                <option value="knife">Knife</option>
+                <option value="axe">Axe</option>
+                <option value="television">Television</option>
+                <option value="brass_knuckles">Brass Knuckles</option>
+                <option value="bow">Bow</option>
+                <option value="crossbow">Crossbow</option>
+                <option value="slingshot">Slingshot</option>
+                <option value="blowgun">Blowgun</option>
+                <option value="throwing_knife">Throwing Knife</option>
+                <option value="javelin">Javelin</option>
+                <option value="boomerang">Boomerang</option>
+                <option value="atlatl">Atlatl</option>
+                <option value="net_launcher">Net Launcher</option>
+                <option value="bolas">Bolas</option>
+                <option value="handgun">Handgun</option>
+                <option value="shotgun">Shotgun</option>
+                <option value="machine_gun">Machine Gun</option>
+                <option value="chainsaw">Chainsaw</option>
+                <option value="sword">Sword</option>
+                <option value="crowbar">Crowbar</option>
+                <option value="baseball_bat">Baseball Bat</option>
+                <option value="pipe">Metal Pipe</option>
+                <option value="wrench">Wrench</option>
+                <option value="hammer">Hammer</option>
+                <option value="machete">Machete</option>
+                <option value="flamethrower">Flamethrower</option>
+                <option value="spear">Spear</option>
+                <option value="scythe">Scythe</option>
+                <option value="katana">Katana</option>
+                <option value="golf_club">Golf Club</option>
+                <option value="broken_bottle">Broken Bottle</option>
+                <option value="laptop">Laptop</option>
+                <option value="keyboard">Keyboard</option>
+                <option value="smartphone">Smartphone</option>
+                <option value="chair">Chair</option>
+                <option value="shovel">Shovel</option>
+                <option value="scissors">Scissors</option>
+                <option value="rake">Rake</option>
+                <option value="garden_hose">Garden Hose</option>
+                <option value="power_drill">Power Drill</option>
+                <option value="screwdriver">Screwdriver</option>
+                <option value="lamp">Lamp</option>
+                <option value="trophy">Trophy</option>
+                <option value="pencil">Pencil</option>
+                <option value="pen">Pen</option>
+                <option value="textbook">Textbook</option>
+                <option value="stapler">Stapler</option>
+                <option value="umbrella">Umbrella</option>
+                <option value="microwave">Microwave</option>
+                <option value="toaster">Toaster</option>
+                <option value="blender">Blender</option>
+                <option value="fan">Fan</option>
+                <option value="printer">Printer</option>
+                <option value="monitor">Computer Monitor</option>
+                <option value="wire">Wire</option>
+                <option value="extension_cord">Extension Cord</option>
+                <option value="grenade">Grenade</option>
+                <option value="rocket_launcher">Rocket Launcher</option>
+                <option value="taser">Taser</option>
+                <option value="pepper_spray">Pepper Spray</option>
+                <option value="throwing_stars">Throwing Stars</option>
+                <option value="nunchucks">Nunchucks</option>
+                <option value="bowling_ball">Bowling Ball</option>
+                <option value="sledgehammer">Sledgehammer</option>
+                <option value="chainmail">Chainmail</option>
+                <option value="morning_star">Morning Star</option>
+                <option value="battle_axe">Battle Axe</option>
+                <option value="mace">Mace</option>
+                <option value="pike">Pike</option>
+                <option value="halberd">Halberd</option>
+                <option value="tank">Tank</option>
+                <option value="chainsaw_sword">Chainsaw Sword</option>
+                <option value="plasma_cutter">Plasma Cutter</option>
+                <option value="graviton_beam">Graviton Beam</option>
+                <option value="portal_gun">Portal Gun</option>
+                <option value="reality_slicer">Reality Slicer</option>
+                <option value="quantum_blade">Quantum Blade</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="weapon2">Secondary Weapon (Optional):</label>
+            <select id="weapon2">
+                <option value="fists">Fists (Default)</option>
+                <option value="none">None</option>
+                <option value="handgun">Handgun</option>
+                <option value="pencil">Pencil</option>
+                <option value="pen">Pen</option>
+                <option value="ruler">Ruler</option>
+                <option value="stapler">Stapler</option>
+                <option value="scissors">Scissors</option>
+                <option value="letter_opener">Letter Opener</option>
+                <option value="paperweight">Paperweight</option>
+                <option value="rubber_band">Rubber Band</option>
+                <option value="paper_clip">Paper Clip</option>
+                <option value="book">Book</option>
+                <option value="magazine">Magazine</option>
+                <option value="newspaper">Newspaper</option>
+                <option value="plastic_bottle">Plastic Bottle</option>
+                <option value="glass">Glass</option>
+                <option value="fork">Fork</option>
+                <option value="spoon">Spoon</option>
+                <option value="plate">Plate</option>
+                <option value="mug">Coffee Mug</option>
+                <option value="belt">Belt</option>
+                <option value="tie">Necktie</option>
+                <option value="scarf">Scarf</option>
+                <option value="shoe">Shoe</option>
+                <option value="wallet">Wallet</option>
+                <option value="phone_charger">Phone Charger</option>
+                <option value="earbuds">Earbuds</option>
+                <option value="keychain">Keychain</option>
+                <option value="id_badge">ID Badge</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="usb_drive">USB Drive</option>
+                <option value="chainsaw_sword">Chainsaw Sword</option>
+                <option value="plasma_cutter">Plasma Cutter</option>
+                <option value="graviton_beam">Graviton Beam</option>
+                <option value="portal_gun">Portal Gun</option>
+                <option value="reality_slicer">Reality Slicer</option>
+                <option value="quantum_blade">Quantum Blade</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="weapon3">Third Weapon (Optional):</label>
+            <select id="weapon3">
+                <option value="fists">Fists (Default)</option>
+                <option value="none">None</option>
+                <option value="grenade">Grenade</option>
+                <option value="molotov">Molotov Cocktail</option>
+                <option value="knife">Knife</option>
+                <option value="brass_knuckles">Brass Knuckles</option>
+                <option value="baton">Baton</option>
+                <option value="taser">Taser</option>
+                <option value="pepper_spray">Pepper Spray</option>
+                <option value="rock">Rock</option>
+                <option value="stick">Stick</option>
+                <option value="screwdriver">Screwdriver</option>
+                <option value="wrench">Small Wrench</option>
+                <option value="letter_opener">Letter Opener</option>
+                <option value="scissors">Scissors</option>
+                <option value="razor">Razor</option>
+                <option value="box_cutter">Box Cutter</option>
+                <option value="glass_shard">Glass Shard</option>
+                <option value="broken_bottle">Broken Bottle</option>
+                <option value="hammer">Small Hammer</option>
+                <option value="chainsaw_sword">Chainsaw Sword</option>
+                <option value="plasma_cutter">Plasma Cutter</option>
+                <option value="graviton_beam">Graviton Beam</option>
+                <option value="portal_gun">Portal Gun</option>
+                <option value="reality_slicer">Reality Slicer</option>
+                <option value="quantum_blade">Quantum Blade</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="weapon4">Fourth Weapon (Optional):</label>
+            <select id="weapon4">
+                <option value="fists">Fists (Default)</option>
+                <option value="none">None</option>
+                <option value="sword">Sword</option>
+                <option value="katana">Katana</option>
+                <option value="machete">Machete</option>
+                <option value="baseball_bat">Baseball Bat</option>
+                <option value="crowbar">Crowbar</option>
+                <option value="axe">Axe</option>
+                <option value="sledgehammer">Sledgehammer</option>
+                <option value="pipe">Metal Pipe</option>
+                <option value="chain">Chain</option>
+                <option value="nunchucks">Nunchucks</option>
+                <option value="quarterstaff">Quarterstaff</option>
+                <option value="spear">Spear</option>
+                <option value="pitchfork">Pitchfork</option>
+                <option value="golf_club">Golf Club</option>
+                <option value="hockey_stick">Hockey Stick</option>
+                <option value="handgun">Handgun</option>
+                <option value="shotgun">Shotgun</option>
+                <option value="crossbow">Crossbow</option>
+                <option value="bow">Bow and Arrow</option>
+                <option value="slingshot">Slingshot</option>
+                <option value="chainsaw_sword">Chainsaw Sword</option>
+                <option value="plasma_cutter">Plasma Cutter</option>
+                <option value="graviton_beam">Graviton Beam</option>
+                <option value="portal_gun">Portal Gun</option>
+                <option value="reality_slicer">Reality Slicer</option>
+                <option value="quantum_blade">Quantum Blade</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="creepypastaLevel">Creepypasta Level:</label>
+            <select id="creepypastaLevel">
+                <option value="0">0% (Very Mild)</option>
+                <option value="25">25% (Mild)</option>
+                <option value="50" selected>50% (Medium)</option>
+                <option value="75">75% (Intense)</option>
+                <option value="100">100% (Extreme)</option>
+            </select>
+        </div>
+
+        <button onclick="generateCreepypasta()">Generate Creepypasta</button>
+        <button id="stopGeneration" style="display: none; margin-top: 10px; background-color: #800000;">Stop Generation</button>
+        <button id="deleteGeneration" style="display: none;" onclick="deleteGeneration()">Delete Generation</button>
+        <button id="shareGeneration" style="display: none;" onclick="shareStory()" class="share-button">Share Story</button>
+        <button onclick="openStoryDatabase()" class="database-button" style="margin-top: 10px; background-color: #4a0080;">View Story Database</button>
+
+        <div class="loading" id="loading">
+            Summoning dark forces...
+        </div>
+
+        <div id="result"></div>
+
+        <div class="input-group">
+            <label for="locationActivator">Location Activator:</label>
+            <select id="locationActivator" onchange="handleLocationActivator()">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div class="input-group" id="locationGroup" style="display: none;">
+            <label for="location">Location:</label>
+            <select id="location">
+                <option value="none">None (Default)</option>
+                <option value="quantum_computer">Quantum Computer Facility</option>
+                <option value="space_station">Space Station</option>
+                <option value="underwater_facility">Underwater Facility</option>
+                <option value="bunker">Underground Bunker</option>
+                <option value="lighthouse">Lighthouse</option>
+                <option value="subway">Subway</option>
+                <option value="power_plant">Power Plant</option>
+                <option value="radio_tower">Radio Tower</option>
+                <option value="research_lab">Research Lab</option>
+                <option value="military_base">Military Base</option>
+                <option value="quantum_realm">Quantum Realm</option>
+                <option value="void_station">Void Station</option>
+                <option value="reality_nexus">Reality Nexus</option>
+                <option value="time_facility">Temporal Research Facility</option>
+                <option value="parallel_earth">Parallel Earth Installation</option>
+            </select>
+        </div>
+
+        <div id="achievement" style="display: none;">
+            <h3>Achievement Unlocked! &#x1f3c6;</h3>
+            <p>Friday the 13th Master: Generated a Jason story on Friday the 13th!</p>
+        </div>
+
+        <div id="ideaChat" class="chat-panel" style="display: none;">
+            <h2>Idea Chat</h2>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input">
+                <textarea id="chatInput" placeholder="Share your story idea..."></textarea>
+                <button onclick="sendMessage()">Share Idea</button>
+            </div>
+            <button onclick="closeChat()">Close Chat</button>
+        </div>
+
+        <div class="settings-panel" style="display: none;">
+            <h2>Settings</h2>
+            <div class="input-group">
+                <label for="backgroundColor">Background Color:</label>
+                <input type="color" id="backgroundColor" value="#1a1a1a">
+            </div>
+            <div class="input-group">
+                <label for="fontFamily">Font Family:</label>
+                <select id="fontFamily">
+                    <option value="&apos;Courier New&apos;, monospace">Default (Courier New)</option>
+                    <option value="Pepperoni">Pepperoni</option>
+                    <option value="GameOfSquids">Game Of Squids</option>
+                    <option value="WindowsRegular">Windows Regular</option>
+                    <option value="AkkoBold">Akko Bold</option>
+                    <option value="AppleMessager">Apple Messager</option>
+                    <option value="LSANSD">LSANSD</option>
+                    <option value="BasteleurBold">Basteleur Bold</option>
+                    <option value="TreasureMap">Treasure Map</option>
+                    <option value="LDDoodly">LD Doodly</option>
+                    <option value="Rumble">Rumble</option>
+                    <option value="SuperMarioBros">Super Mario Bros</option>
+                    <option value="WindowsXPTahoma">Windows XP Tahoma</option>
+                    <option value="Roblox">Roblox</option>
+                    <option value="HelpMe">Help Me</option>
+                    <option value="PizzaFavorite">Pizza Favorite</option>
+                    <option value="AngryBirds">Angry Birds</option>
+                    <option value="InAFlash">In A Flash</option>
+                </select>
+            </div>
+            <button onclick="closeSettings()">Close Settings</button>
+        </div>
+
+        <div class="story-database-panel" style="display: none;">
+            <h2>Story Database</h2>
+            <div id="storyList" class="story-list"></div>
+            <button onclick="closeStoryDatabase()">Close Database</button>
+        </div>
+
+        <div id="minigames-panel" class="minigames-panel" style="display: none;">
+            <h2>Mini Games</h2>
+            <div class="minigame-buttons">
+                <button onclick="startMinigame(&apos;clicker&apos;)">Cookie Clicker</button>
+                <button onclick="startMinigame(&apos;snake&apos;)">Snake</button>
+                <button onclick="startMinigame(&apos;tictactoe&apos;)">Tic Tac Toe</button>
+            </div>
+            <div id="minigame-container"></div>
+            <button onclick="closeMinigames()">Close Games</button>
+        </div>
+    </div>
+
+    <script>let currentMinigame = null;
+let cookieCount = 0;
+let snakeGame = null;
+let tictactoeState = null;
+function openMinigames() {
+  document.getElementById('minigames-panel').style.display = 'flex';
+}
+function closeMinigames() {
+  document.getElementById('minigames-panel').style.display = 'none';
+  const container = document.getElementById('minigame-container');
+  container.innerHTML = '';
+  if (snakeGame) {
+    snakeGame.stop();
+    snakeGame = null;
+  }
+  currentMinigame = null;
+}
+function startMinigame(game) {
+  if (currentMinigame === game) return;
+  currentMinigame = game;
+  const container = document.getElementById('minigame-container');
+  container.innerHTML = '';
+  switch (game) {
+    case 'clicker':
+      initializeClickerGame(container);
+      break;
+    case 'snake':
+      initializeSnakeGame(container);
+      break;
+    case 'tictactoe':
+      initializeTicTacToe(container);
+      break;
+  }
+}
+function initializeClickerGame(container) {
+  const game = document.createElement('div');
+  game.className = 'cookie-game';
+  game.innerHTML = `
+        <div id="cookie-count">Cookies: 0</div>
+        <div class="cookie" onclick="incrementCookie()">🍪</div>
+    `;
+  container.appendChild(game);
+  cookieCount = 0;
+}
+function incrementCookie() {
+  cookieCount++;
+  document.getElementById('cookie-count').textContent = `Cookies: ${cookieCount}`;
+}
+function initializeSnakeGame(container) {
+  const game = document.createElement('div');
+  game.className = 'snake-game';
+  container.appendChild(game);
+  const cellSize = 20;
+  const width = Math.floor(container.clientWidth / cellSize) * cellSize;
+  const height = Math.floor(container.clientHeight / cellSize) * cellSize;
+  game.style.width = width + 'px';
+  game.style.height = height + 'px';
+  snakeGame = {
+    width,
+    height,
+    cellSize,
+    snake: [{
+      x: 3 * cellSize,
+      y: 0
+    }],
+    food: null,
+    direction: {
+      x: cellSize,
+      y: 0
+    },
+    interval: null,
+    start() {
+      game.innerHTML = '';
+      this.placeFood();
+      this.interval = setInterval(() => this.update(), 150);
+      document.addEventListener('keydown', this.handleInput);
+      this.setupTouchControls();
+    },
+    stop() {
+      if (this.interval) {
+        clearInterval(this.interval);
+        this.interval = null;
+      }
+      document.removeEventListener('keydown', this.handleInput);
+      if (game) {
+        game.innerHTML = '';
+      }
+    },
+    placeFood() {
+      const x = Math.floor(Math.random() * (this.width / this.cellSize)) * this.cellSize;
+      const y = Math.floor(Math.random() * (this.height / this.cellSize)) * this.cellSize;
+      this.food = {
+        x,
+        y
+      };
+      const foodElement = document.createElement('div');
+      foodElement.className = 'snake-food';
+      foodElement.style.width = this.cellSize + 'px';
+      foodElement.style.height = this.cellSize + 'px';
+      foodElement.style.left = x + 'px';
+      foodElement.style.top = y + 'px';
+      game.appendChild(foodElement);
+    },
+    update() {
+      const head = {
+        x: this.snake[0].x + this.direction.x,
+        y: this.snake[0].y + this.direction.y
+      };
+      if (head.x < 0) head.x = this.width - this.cellSize;
+      if (head.x >= this.width) head.x = 0;
+      if (head.y < 0) head.y = this.height - this.cellSize;
+      if (head.y >= this.height) head.y = 0;
+      const foodElement = game.querySelector('.snake-food');
+      if (head.x === this.food.x && head.y === this.food.y && foodElement) {
+        game.removeChild(foodElement);
+        this.placeFood();
+      } else {
+        const tail = this.snake.pop();
+        const lastCell = game.querySelector('.snake-cell:last-child');
+        if (lastCell) {
+          game.removeChild(lastCell);
+        }
+      }
+      this.snake.unshift(head);
+      const cell = document.createElement('div');
+      cell.className = 'snake-cell';
+      cell.style.width = this.cellSize + 'px';
+      cell.style.height = this.cellSize + 'px';
+      cell.style.left = head.x + 'px';
+      cell.style.top = head.y + 'px';
+      game.insertBefore(cell, game.firstChild);
+    },
+    handleInput(e) {
+      const key = e.key;
+      if (key === 'ArrowUp' && snakeGame.direction.y === 0) {
+        snakeGame.direction = {
+          x: 0,
+          y: -snakeGame.cellSize
+        };
+      } else if (key === 'ArrowDown' && snakeGame.direction.y === 0) {
+        snakeGame.direction = {
+          x: 0,
+          y: snakeGame.cellSize
+        };
+      } else if (key === 'ArrowLeft' && snakeGame.direction.x === 0) {
+        snakeGame.direction = {
+          x: -snakeGame.cellSize,
+          y: 0
+        };
+      } else if (key === 'ArrowRight' && snakeGame.direction.x === 0) {
+        snakeGame.direction = {
+          x: snakeGame.cellSize,
+          y: 0
+        };
+      }
+    },
+    setupTouchControls() {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      game.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      });
+      game.addEventListener('touchmove', e => {
+        e.preventDefault();
+        const touchEndX = e.touches[0].clientX;
+        const touchEndY = e.touches[0].clientY;
+        const dx = touchEndX - touchStartX;
+        const dy = touchEndY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          if (dx > 0 && snakeGame.direction.x === 0) {
+            snakeGame.direction = {
+              x: snakeGame.cellSize,
+              y: 0
+            };
+          } else if (dx < 0 && snakeGame.direction.x === 0) {
+            snakeGame.direction = {
+              x: -snakeGame.cellSize,
+              y: 0
+            };
+          }
+        } else {
+          if (dy > 0 && snakeGame.direction.y === 0) {
+            snakeGame.direction = {
+              x: 0,
+              y: snakeGame.cellSize
+            };
+          } else if (dy < 0 && snakeGame.direction.y === 0) {
+            snakeGame.direction = {
+              x: 0,
+              y: -snakeGame.cellSize
+            };
+          }
+        }
+      });
+    }
+  };
+  snakeGame.start();
+}
+function initializeTicTacToe(container) {
+  tictactoeState = {
+    board: Array(9).fill(''),
+    currentPlayer: 'X',
+    gameOver: false
+  };
+  const game = document.createElement('div');
+  game.className = 'tictactoe-game';
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'tictactoe-cell';
+    cell.addEventListener('click', () => makeMove(i));
+    game.appendChild(cell);
+  }
+  container.appendChild(game);
+}
+function makeMove(index) {
+  if (tictactoeState.board[index] || tictactoeState.gameOver) return;
+  tictactoeState.board[index] = tictactoeState.currentPlayer;
+  const cells = document.querySelectorAll('.tictactoe-cell');
+  cells[index].textContent = tictactoeState.currentPlayer;
+  if (checkWinner()) {
+    tictactoeState.gameOver = true;
+    setTimeout(() => {
+      alert(`${tictactoeState.currentPlayer} wins!`);
+      initializeTicTacToe(document.getElementById('minigame-container'));
+    }, 100);
+    return;
+  }
+  if (tictactoeState.board.every(cell => cell)) {
+    tictactoeState.gameOver = true;
+    setTimeout(() => {
+      alert("It's a draw!");
+      initializeTicTacToe(document.getElementById('minigame-container'));
+    }, 100);
+    return;
+  }
+  tictactoeState.currentPlayer = tictactoeState.currentPlayer === 'X' ? 'O' : 'X';
+  if (tictactoeState.currentPlayer === 'O') {
+    setTimeout(makeAIMove, 500);
+  }
+}
+function makeAIMove() {
+  if (tictactoeState.gameOver) return;
+  const emptyCells = tictactoeState.board.reduce((acc, cell, index) => {
+    if (!cell) acc.push(index);
+    return acc;
+  }, []);
+  const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+  makeMove(randomIndex);
+}
+function checkWinner() {
+  const winPatterns = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  return winPatterns.some(pattern => {
+    const [a, b, c] = pattern;
+    return tictactoeState.board[a] && tictactoeState.board[a] === tictactoeState.board[b] && tictactoeState.board[a] === tictactoeState.board[c];
+  });
+}
+let currentController = null;
+let room;
+function createBloodDrip() {
+  const blood = document.createElement("div");
+  blood.className = "blood";
+  blood.style.left = Math.random() * window.innerWidth + "px";
+  document.body.appendChild(blood);
+  setTimeout(() => {
+    blood.remove();
+  }, 3000);
+}
+setInterval(createBloodDrip, 2000);
+function toggleShowSelect() {
+  const typeSelect = document.getElementById("type");
+  const showSelectGroup = document.getElementById("showSelectGroup");
+  const showSelect = document.getElementById("show");
+  if (typeSelect.value === "lost_episode") {
+    showSelectGroup.style.display = "block";
+  } else {
+    showSelectGroup.style.display = "none";
+    showSelect.value = "none";
+  }
+  if (document.getElementById("prompt").value !== "") {
+    generateRandomPrompt();
+  }
+}
+async function generateCreepypasta() {
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const hours = now.getHours();
+  if (dayOfWeek === 5 && hours >= 12) {
+    if (!confirm("Warning: Game modifications are only available during morning hours on Fridays. Continue anyway?")) {
+      return;
+    }
+  }
+  document.getElementById("deleteGeneration").style.display = "none";
+  const prompt = document.getElementById("prompt").value;
+  const type = document.getElementById("type").value;
+  const style = document.getElementById("style").value;
+  const style2 = document.getElementById("style2").value;
+  const style3 = document.getElementById("style3").value;
+  const wordCount = document.getElementById("wordCount").value;
+  const show = type === "lost_episode" ? document.getElementById("show").value : "none";
+  const ending = document.getElementById("ending").value;
+  const emojis = document.getElementById("emojis").value;
+  const textStyle = document.getElementById("textStyle").value;
+  const subStyle = document.getElementById("subStyle").value;
+  const timeOfDay = document.getElementById("timeOfDay").value;
+  const weapon = document.getElementById("weapon").value;
+  const weapon2 = document.getElementById("weapon2").value;
+  const weapon3 = document.getElementById("weapon3").value;
+  const weapon4 = document.getElementById("weapon4").value;
+  const gamingStyle = document.getElementById("gamingStyle").value;
+  const locationActivator = document.getElementById("locationActivator").value;
+  const location = document.getElementById("location").value;
+  const month = document.getElementById("month").value;
+  const selectedDay = document.getElementById("day").value;
+  const creepypastaLevel = document.getElementById("creepypastaLevel").value;
+  if (!prompt) {
+    alert("Please enter a prompt first!");
+    return;
+  }
+  if (wordCount < 1 || wordCount > 1000000000000) {
+    alert("Please enter a word count between 1 and 1000000000000!");
+    return;
+  }
+  if ((timeOfDay < 0 || timeOfDay > 24) && document.getElementById("timePreset").value !== "unknown") {
+    alert("Please enter a time between 0 and 24!");
+    return;
+  }
+  const loading = document.getElementById("loading");
+  const result = document.getElementById("result");
+  const stopBtn = document.getElementById("stopGeneration");
+  loading.style.display = "block";
+  result.style.display = "none";
+  stopBtn.style.display = "block";
+  let currentController = new AbortController();
+  try {
+    const timeValue = document.getElementById("timePreset").value === "unknown" ? "unknown" : `${timeOfDay}:00`;
+    const response = await fetch("/api/ai_completion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        prompt: `Generate a creepy pasta story based on these parameters:
+                        Story idea: ${prompt}
+                        Type: ${type}
+                        Primary Style: ${style}
+                        Secondary Style: ${style2}
+                        Third Style: ${style3}
+                        Sub Style: ${subStyle}
+                        Show (if lost episode): ${show}
+                        Word Count: approximately ${wordCount} words
+                        Time of Day: ${timeValue}
+                        Ending Type: ${ending}
+                        Emoji Level: ${emojis}
+                        Text Style: ${textStyle}
+                        Primary Weapon: ${weapon}
+                        Secondary Weapon: ${weapon2}
+                        Third Weapon: ${weapon3}
+                        Fourth Weapon: ${weapon4}
+                        Gaming Style: ${gamingStyle}
+                        Location Activator: ${locationActivator}
+                        Location: ${location}
+                        Month: ${month}
+                        Day: ${selectedDay}
+                        Creepypasta Level: ${creepypastaLevel}% (adjust horror intensity accordingly)
+
+                        If gaming style is "yes", ignore weapon selections and let players imagine weapons.
+                        If gaming style is "ehh", include specified weapons normally.
+                        If gaming style is "no", proceed with normal weapon handling.
+                        
+                        If story involves AI-related content like Sprunki or Dandy's World, treat them as established fictional entities.
+                        
+                        The story should be scary and follow creepypasta conventions.
+                        If type is gaming, minecraft, or gmod, include specific game-related elements and terminology.
+                        For gmod stories, incorporate Source engine mechanics, physics glitches, addons, and multiplayer elements.
+                        For roblox_horror, include Roblox-specific elements and game mechanics.
+                        For discord_horror, use Discord interface elements and terminology.
+                        For vhs_horror, include tape degradation and analog artifacts.
+                        For error_message, incorporate system errors and computer warnings.
+                        For browser_game, include Flash game or HTML5 game elements.
+                        For forum_horror, use forum post formatting and community interaction.
+                        For old_internet, reference early web design and old websites.
+                        For space_horror, include space station/vessel elements
+                        For time_dilation, include temporal distortion effects
+                        For multiverse, include parallel reality elements
+                        For hologram, include holographic technology elements
+                        For cybernetic, include human-machine fusion elements
+                        For biotech, include biological technology elements
+                        For roblox_game stories, include Roblox game mechanics and terminology
+                        For fnf_mod stories, focus on corrupted/cursed Friday Night Funkin' mods
+                        For chat_game stories, incorporate chat/messaging game elements
+                        For pixel_horror stories, use retro pixel game aesthetics
+                        For mobile_game stories, include mobile gaming elements
+                        For among_us stories, incorporate Among Us gameplay elements
+                        For fortnite stories, include Fortnite-specific elements
+                        For minecraft_server stories, focus on multiplayer Minecraft experiences
+                        For discord_bot stories, include Discord bot interactions
+                        For rbx_place stories, focus on Roblox game places
+                        For haunted_ai stories, include malevolent AI elements
+                        For cursed_algorithm stories, include algorithmic horror
+                        For digital_possession stories, include digital entity possession
+                        For machine_learning stories, include AI training gone wrong
+                        For neural_network stories, include neural net horror
+                        For virtual_assistant stories, include evil AI assistant
+                        For smart_contract stories, include blockchain horror
+                        For metaverse stories, include virtual world horror
+                        For web3 stories, include decentralized web horror
+                        For nft stories, include cursed digital asset elements
+                        For chatbot stories, include malicious chat AI
+                        For voice_assistant stories, include evil voice AI
+                        For data_center stories, include server facility horror
+                        For server_room stories, include IT infrastructure horror
+                        For cloud_storage stories, include cloud data horror
+
+                        If sub style is specified (not "none"), adapt the narrative accordingly:
+                        - "killer": Focus on a murderous antagonist
+                        - "joke": Include dark humor elements while maintaining horror
+                        - "horror_movie": Follow classic horror movie tropes and structure
+                        - "not_scary": Include elements that undermine the horror in amusing ways
+                        - "psychological": Focus on mental deterioration and psychological fear
+                        - "surreal": Include dreamlike and bizarre elements
+                        - "body_horror": Emphasize physical transformation and body horror
+                        - "cosmic": Include elements of cosmic horror and incomprehensible entities
+                        - "mystery": Focus on uncovering dark secrets and mysteries
+                        - "paranormal": Emphasize supernatural and paranormal activities
+                        - "found_footage": Written in a found footage documentary style
+                        - "experimental": Use unconventional narrative techniques
+                        - "meta_horror": Self-referential horror that breaks the fourth wall
+                        - "gothic": Classic gothic horror elements and atmosphere
+
+                        Adjust the intensity of horror elements based on the Creepypasta Level:
+                        0% - Keep everything very mild, focus on atmosphere and subtle unease
+                        25% - Mild horror elements, minimal violence or gore
+                        50% - Standard creepypasta intensity
+                        75% - More intense horror, darker themes
+                        100% - Maximum horror intensity, no holds barred
+
+                        Adapt writing style to match the primary, secondary, and third narrative styles if they are not "none".
+                        The story should conclude with the specified ending type (${ending}).
+                        Use emojis according to the selected level (none, minimal, normal, or high).
+                        Apply the selected text style throughout the narrative.
+                        If text style is roblox_funny or roblox_meme, use Roblox-specific formatting and humor.
+                        If text style is troll_physics, include physics-based explanations.
+                        If weapons are specified (not "none"), incorporate them as significant elements in the story, with the primary weapon being most prominent, followed by secondary, third and fourth weapons.
+                        If type involves technological/digital elements (neural_interface, virtual_world, etc.), 
+                        include appropriate technical terminology and concepts.
+                        For meta endings (fourth_wall, meta, recursive), break conventional narrative structure appropriately.
+                        For reality-bending types (existential, psychological_glitch, etc.), emphasize perception and reality distortion.
+                        For sonic stories, incorporate Sonic the Hedgehog game elements, characters, and lore.
+                        For cursed_console stories, focus on haunted or malevolent gaming hardware.
+                        For corrupted_save stories, emphasize corrupted game saves and data manipulation.
+                        For beta_content stories, include disturbing cut or beta game content.
+                        For haunted_cartridge stories, focus on possessed or cursed physical game media.
+                        For debug_room stories, incorporate hidden developer rooms and test areas.
+                        For unused_content stories, feature disturbing unused game assets or levels.
+                        For modded_game stories, include modified game content gone wrong.
+                        For emulator_glitch stories, focus on emulation errors and glitches.
+                        For bootleg_game stories, incorporate unofficial/counterfeit game horrors.
+                        For dev_message stories, include hidden messages from game developers.
+                        For hospital_horror, include medical facility elements
+                        For asylum_horror, include mental institution elements
+                        For factory_horror, include industrial setting elements
+                        For warehouse_horror, include storage facility elements
+                        For office_horror, include corporate environment elements
+                        For motel_horror, include temporary lodging elements
+                        For apartment_horror, include residential building elements
+                        For carnival_horror, include amusement park elements
+                        For cruise_horror, include ocean vessel elements
+                        For airport_horror, include aviation facility elements
+                        For neural_network stories, include neural network terminology and concepts
+                        For quantum_computing stories, include quantum computing elements
+                        For bio_horror stories, include biological horror elements
+                        For nanotech stories, include nanotechnology concepts
+                        For space_colony stories, include space colonization elements
+                        For time_travel stories, include temporal paradox elements
+                        For parallel_world stories, include alternate reality concepts
+                        For viral_video stories, include viral content elements
+                        For deepfake stories, include AI-generated content elements
+                        For smart_home stories, include IoT device elements
+                        For drone_horror stories, include autonomous drone elements
+                        For blockchain stories, include cryptocurrency/blockchain elements
+                        For virtual_pet stories, include digital pet elements
+                        For smart_device stories, include connected device elements
+                        For augmented_reality stories, include AR technology elements
+                        For quantum_realm stories, include quantum physics elements
+                        For void_station stories, include deep space elements 
+                        For reality_nexus stories, include reality-bending elements
+                        For time_facility stories, include time manipulation elements
+                        For parallel_earth stories, include alternate timeline elements
+                        The story should be scary and follow creepypasta conventions.
+                        If type involves technological/digital elements (neural_interface, virtual_world, etc.), 
+                        include appropriate technical terminology and concepts.
+                        For meta endings (fourth_wall, meta, recursive), break conventional narrative structure appropriately.
+                        For reality-bending types (existential, psychological_glitch, etc.), emphasize perception and reality distortion.
+                        ${customTypes.find(t => t.value === type)?.description || ''}
+                        interface Response {
+                            title: string;
+                            story: string;
+                        }
+                        
+                        {
+                            "title": "The Last Chat Message",
+                            "story": "I never should have opened that message. It came at 3:33 AM, when the whole world was silent..."
+                        }`,
+        data: {
+          prompt,
+          type,
+          style,
+          style2,
+          style3,
+          show,
+          wordCount,
+          ending,
+          emojis,
+          textStyle,
+          subStyle,
+          time_of_day: timeValue,
+          weapon,
+          weapon2,
+          weapon3,
+          weapon4,
+          gaming_style: gamingStyle,
+          location_activator: locationActivator,
+          location: location,
+          month: month,
+          day: selectedDay,
+          creepypasta_level: creepypastaLevel
+        }
+      }),
+      signal: currentController.signal
+    });
+    const data = await response.json();
+    loading.style.display = "none";
+    stopBtn.style.display = "none";
+    result.style.display = "block";
+    result.innerHTML = `<h2>${data.title}</h2>`;
+    let index = 0;
+    const story = data.story;
+    function typeWriter() {
+      if (index < story.length) {
+        result.innerHTML = `<h2>${data.title}</h2>${story.substring(0, index)}█`;
+        index++;
+        setTimeout(typeWriter, 25);
+      } else {
+        result.innerHTML = `<h2>${data.title}</h2>${story}`;
+        document.getElementById("deleteGeneration").style.display = "block";
+        document.getElementById("shareGeneration").style.display = "block";
+      }
+    }
+    typeWriter();
+  } catch (error) {
+    console.error("Error:", error);
+    loading.style.display = "none";
+    stopBtn.style.display = "none";
+    document.getElementById("deleteGeneration").style.display = "none";
+    if (error.name === 'AbortError') {
+      result.textContent = "Story generation was stopped.";
+    } else {
+      result.textContent = "Something went terribly wrong... Maybe that's for the best.";
+    }
+    result.style.display = "block";
+  }
+}
+async function generateRandomPrompt() {
+  try {
+    const type = document.getElementById("type").value;
+    const subStyle = document.getElementById("subStyle").value;
+    const gamingStyle = document.getElementById("gamingStyle").value;
+    const locationActivator = document.getElementById("locationActivator").value;
+    const location = document.getElementById("location").value;
+    const creepypastaLevel = document.getElementById("creepypastaLevel").value;
+    const prompt = `Generate a random creepypasta prompt taking into account:
+                    Current type: ${type}
+                    Sub style: ${subStyle}
+                    Gaming style: ${gamingStyle}
+                    Location Activator: ${locationActivator}
+                    Location: ${location}
+                    Creepypasta Level: ${creepypastaLevel}%
+                    
+                    Adjust prompt intensity based on creepypasta level:
+                    0% - Very mild setup and implications
+                    25% - Mild horror elements in the prompt
+                    50% - Standard creepypasta prompt intensity
+                    75% - More intense and disturbing prompt elements
+                    100% - Maximum horror intensity in the prompt
+                    
+                    For weather_horror, include meteorological phenomena
+                    For school_horror, include educational setting elements
+                    For workplace_horror, include office/work environment
+                    For elevator_horror, include vertical transportation
+                    For parking_lot, include vehicle-related elements
+                    For train_horror, include railway elements
+                    For mall_horror, include retail/shopping elements
+                    For restaurant_horror, include food service elements
+                    For museum_horror, include exhibit/artifact elements
+                    For library_horror, include book/archive elements
+                    For hospital_horror, include medical facility elements
+                    For asylum_horror, include mental institution elements
+                    For factory_horror, include industrial setting elements
+                    For warehouse_horror, include storage facility elements
+                    For office_horror, include corporate environment elements
+                    For motel_horror, include temporary lodging elements
+                    For apartment_horror, include residential building elements
+                    For carnival_horror, include amusement park elements
+                    For cruise_horror, include ocean vessel elements
+                    For airport_horror, include aviation facility elements
+                    For quantum_realm, include quantum physics elements
+                    For void_station, include deep space elements
+                    For reality_nexus, include reality-bending elements
+                    For time_facility, include time manipulation elements
+                    For parallel_earth, include alternate timeline elements
+                    For roblox_game prompts, include Roblox gaming elements
+                    For fnf_mod prompts, incorporate rhythm game elements
+                    For chat_game prompts, include messaging elements
+                    For pixel_horror prompts, include retro game elements
+                    For mobile_game prompts, include mobile gaming conventions
+                    For among_us prompts, include social deduction elements
+                    For fortnite prompts, include battle royale elements
+                    For minecraft_server prompts, include multiplayer elements
+                    For discord_bot prompts, include chat bot elements
+                    For rbx_place prompts, include Roblox place elements
+                    For quantum_computer prompts, include quantum computing elements
+                    For space_station prompts, include space station elements
+                    For underwater_facility prompts, include underwater elements
+                    For bunker prompts, include underground facility elements
+                    For lighthouse prompts, include coastal/nautical elements
+                    For subway prompts, include underground transit elements
+                    For power_plant prompts, include industrial facility elements
+                    For radio_tower prompts, include broadcasting elements
+                    For research_lab prompts, include scientific research elements
+                    For military_base prompts, include military installation elements
+                    
+                    interface Response {
+                        prompt: string;
+                    }
+                    
+                    {
+                        "prompt": "After finding an old weather radar display at a yard sale..."
+                    }`;
+    const response = await fetch('/api/ai_completion', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: prompt
+      })
+    });
+    const data = await response.json();
+    document.getElementById("prompt").value = data.prompt;
+  } catch (error) {
+    console.error('Error generating random prompt:', error);
+    alert('Failed to generate random prompt');
+  }
+}
+function handleLocationActivator() {
+  const activator = document.getElementById("locationActivator");
+  const locationGroup = document.getElementById("locationGroup");
+  locationGroup.style.display = activator.value === "yes" ? "block" : "none";
+}
+toggleShowSelect();
+document.getElementById("stopGeneration").addEventListener("click", () => {
+  if (currentController) {
+    currentController.abort();
+    currentController = null;
+  }
+});
+function deleteGeneration() {
+  const result = document.getElementById("result");
+  result.style.display = "none";
+  result.innerHTML = "";
+  document.getElementById("deleteGeneration").style.display = "none";
+  document.getElementById("shareGeneration").style.display = "none";
+}
+function updateTimeInput() {
+  const preset = document.getElementById("timePreset").value;
+  const timeInput = document.getElementById("timeOfDay");
+  if (preset === "unknown") {
+    timeInput.value = "";
+    timeInput.disabled = true;
+  } else {
+    timeInput.disabled = false;
+    if (preset !== "custom") {
+      timeInput.value = preset;
+    }
+  }
+}
+async function shareStory() {
+  if (!room) {
+    room = new WebsimSocket();
+  }
+  const result = document.getElementById("result");
+  const title = result.querySelector("h2")?.textContent || "Creepypasta";
+  const story = result.textContent.replace(title, "").trim();
+  try {
+    await room.collection('story').create({
+      title: title,
+      content: story
+    });
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title,
+          text: story,
+          url: window.location.href
+        });
+      } catch (err) {
+        console.error('Error sharing:', err);
+        fallbackShare(title, story);
+      }
+    } else {
+      fallbackShare(title, story);
+    }
+  } catch (err) {
+    console.error('Error saving story:', err);
+    alert('Failed to save story to database');
+  }
+}
+function fallbackShare(title, story) {
+  const textArea = document.createElement("textarea");
+  textArea.value = `${title}\n\n${story}`;
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    alert('Story copied to clipboard!');
+  } catch (err) {
+    console.error('Failed to copy:', err);
+    alert('Failed to copy story to clipboard');
+  }
+  document.body.removeChild(textArea);
+}
+function handleGamingStyle() {
+  const gamingStyle = document.getElementById("gamingStyle").value;
+  const weaponSelects = [document.getElementById("weapon"), document.getElementById("weapon2"), document.getElementById("weapon3"), document.getElementById("weapon4")];
+  if (gamingStyle === "yes") {
+    weaponSelects.forEach(select => {
+      select.disabled = true;
+      select.value = "none";
+    });
+  } else {
+    weaponSelects.forEach(select => {
+      select.disabled = false;
+    });
+  }
+}
+document.getElementById("type").addEventListener("change", () => {
+  toggleShowSelect();
+  if (document.getElementById("prompt").value !== "") {
+    generateRandomPrompt();
+  }
+});
+document.getElementById("locationActivator").addEventListener("change", handleLocationActivator);
+function checkModificationStatus() {
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const hours = now.getHours();
+  const fridayNotice = document.querySelector('.friday-notice');
+  const modStatus = document.getElementById('modStatus');
+  if (dayOfWeek === 5 || dayOfWeek === 0 || dayOfWeek === 6) {
+    fridayNotice.style.display = 'block';
+    if (dayOfWeek === 5 && hours < 12 || dayOfWeek === 0 || dayOfWeek === 6) {
+      modStatus.textContent = 'Online';
+      modStatus.className = 'online';
+    } else {
+      modStatus.textContent = 'Offline';
+      modStatus.className = 'offline';
+    }
+  } else {
+    fridayNotice.style.display = 'none';
+  }
+}
+window.addEventListener('load', () => {
+  const optionsToRemove = document.querySelectorAll('.container > select#type, .container > select#weapon');
+  optionsToRemove.forEach(el => el.remove());
+});
+function checkFridayThe13th() {
+  const selectedMonth = parseInt(document.getElementById('month').value);
+  const selectedDay = parseInt(document.getElementById('day').value);
+  const date = new Date(2024, selectedMonth - 1, selectedDay);
+  if (date.getDay() === 5 && selectedDay === 13) {
+    document.getElementById('prompt').value = "A group of camp counselors encounter an unstoppable masked killer at Crystal Lake...";
+    document.getElementById('type').value = "slasher";
+    const achievement = document.getElementById('achievement');
+    achievement.style.display = 'block';
+    achievement.scrollIntoView({
+      behavior: 'smooth'
+    });
+    setTimeout(() => {
+      achievement.style.display = 'none';
+    }, 5000);
+  } else {
+    document.getElementById('achievement').style.display = 'none';
+  }
+}
+function randomizeAllOptions() {
+  const typeSelect = document.getElementById("type");
+  const typeOptions = typeSelect.options;
+  typeSelect.selectedIndex = Math.floor(Math.random() * typeOptions.length);
+  if (typeSelect.value === "lost_episode") {
+    const showSelect = document.getElementById("show");
+    showSelect.selectedIndex = Math.floor(Math.random() * showSelect.options.length);
+  }
+  document.getElementById("style").selectedIndex = Math.floor(Math.random() * document.getElementById("style").options.length);
+  document.getElementById("style2").selectedIndex = Math.floor(Math.random() * document.getElementById("style2").options.length);
+  document.getElementById("style3").selectedIndex = Math.floor(Math.random() * document.getElementById("style3").options.length);
+  document.getElementById("ending").selectedIndex = Math.floor(Math.random() * document.getElementById("ending").options.length);
+  document.getElementById("emojis").selectedIndex = Math.floor(Math.random() * document.getElementById("emojis").options.length);
+  document.getElementById("textStyle").selectedIndex = Math.floor(Math.random() * document.getElementById("textStyle").options.length);
+  document.getElementById("subStyle").selectedIndex = Math.floor(Math.random() * document.getElementById("subStyle").options.length);
+  document.getElementById("timePreset").selectedIndex = Math.floor(Math.random() * document.getElementById("timePreset").options.length);
+  document.getElementById("weapon").selectedIndex = Math.floor(Math.random() * document.getElementById("weapon").options.length);
+  document.getElementById("weapon2").selectedIndex = Math.floor(Math.random() * document.getElementById("weapon2").options.length);
+  document.getElementById("weapon3").selectedIndex = Math.floor(Math.random() * document.getElementById("weapon3").options.length);
+  document.getElementById("weapon4").selectedIndex = Math.floor(Math.random() * document.getElementById("weapon4").options.length);
+  document.getElementById("gamingStyle").selectedIndex = Math.floor(Math.random() * document.getElementById("gamingStyle").options.length);
+  document.getElementById("locationActivator").selectedIndex = Math.floor(Math.random() * document.getElementById("locationActivator").options.length);
+  document.getElementById("location").selectedIndex = Math.floor(Math.random() * document.getElementById("location").options.length);
+  document.getElementById("month").selectedIndex = Math.floor(Math.random() * document.getElementById("month").options.length);
+  document.getElementById("day").selectedIndex = Math.floor(Math.random() * document.getElementById("day").options.length);
+  document.getElementById("creepypastaLevel").selectedIndex = Math.floor(Math.random() * document.getElementById("creepypastaLevel").options.length);
+  document.getElementById("wordCount").value = Math.floor(Math.random() * 9900) + 100;
+  toggleShowSelect();
+  handleLocationActivator();
+  handleGamingStyle();
+  updateTimeInput();
+  generateRandomPrompt();
+}
+let customTypes = [];
+function addCustomType() {
+  const name = document.getElementById('customTypeName').value;
+  const description = document.getElementById('customTypeDesc').value;
+  if (!name || !description) {
+    alert('Please fill in both name and description!');
+    return;
+  }
+  const typeSelect = document.getElementById('type');
+  const option = document.createElement('option');
+  option.value = name.toLowerCase().replace(/\s+/g, '_');
+  option.textContent = name;
+  typeSelect.appendChild(option);
+  customTypes.push({
+    name: name,
+    value: option.value,
+    description: description
+  });
+  document.getElementById('customTypeName').value = '';
+  document.getElementById('customTypeDesc').value = '';
+  localStorage.setItem('customCreepypastaTypes', JSON.stringify(customTypes));
+  alert('Custom type added successfully!');
+}
+function toggleCustomTypeContainer() {
+  const container = document.getElementById('customTypeContainer');
+  if (container.style.display === 'none') {
+    container.style.display = 'block';
+  } else {
+    container.style.display = 'none';
+  }
+}</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+      <title>Level-Up Platformer</title>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+      <div id="title-screen" class="screen">
+        <h1>Level-Up Platformer</h1>
+        <button id="start-button">Start Game</button>
+        <button id="settings-button" class="menu-button">Settings</button>
+        <div class="instructions">
+          <p>Use arrow keys or WASD to move</p>
+          <p>Space or Up to jump</p>
+          <p>Reach the ⭐ to complete each level</p>
+          <p>Collect powerups for special abilities:</p>
+          <p>🟡 Speed Boost | 🟢 Super Jump | 🟣 Mini Size</p>
+          <p><strong>Don't worry! The first few levels will guide you through everything!</strong></p>
+        </div>
+      </div>
+      
+      <div id="settings-screen" class="screen hidden">
+        <h2>Settings</h2>
+        <div class="settings-container">
+          <div class="setting-item">
+            <label for="music-volume">Music Volume:</label>
+            <input type="range" id="music-volume" min="0" max="100" value="50">
+            <span id="music-value">50%</span>
+          </div>
+          <div class="setting-item">
+            <label for="sfx-volume">SFX Volume:</label>
+            <input type="range" id="sfx-volume" min="0" max="100" value="50">
+            <span id="sfx-value">50%</span>
+          </div>
+          <div class="setting-item">
+            <label for="mute-all">Mute All:</label>
+            <input type="checkbox" id="mute-all">
+          </div>
+        </div>
+        <button id="back-button" class="menu-button">Back to Menu</button>
+      </div>
+      
+      <div id="game-screen" class="screen hidden">
+        <div class="level-info">Level: <span id="level-number">1</span></div>
+        <div class="powerup-indicator"></div>
+        <div id="game">
+          <div id="player"></div>
+          <div class="goal"></div>
+        </div>
+        <button id="pause-button" class="menu-button">Pause</button>
+      </div>
+    
+      <script type="module" src="main.js"></script>
+    </body>
+    </html>
