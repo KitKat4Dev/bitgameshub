@@ -5,41 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidade - Bitgameshub</title>
   <style>
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Estilo do corpo */
+    /* Basic Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Arial', sans-serif;
       background: #f0f0f0;
       color: #333;
-      padding: 0 20px;
+      padding: 20px;
       line-height: 1.6;
+      position: relative;
     }
-
-    /* Container centralizado para o conteúdo */
     .container {
       max-width: 800px;
-      margin: 40px auto;
+      margin: 60px auto;
       background: white;
-      padding: 20px;
+      padding: 20px 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
-    /* Título principal */
-    h1 {
-      text-align: center;
-      color: #007bff;
-      margin-bottom: 30px;
-      font-size: 2.5rem;
-    }
-
-    /* Subtítulos das seções */
+    h1 { text-align: center; color: #007bff; margin-bottom: 30px; font-size: 2.5rem; }
     h2 {
       color: #333;
       margin-top: 20px;
@@ -47,23 +31,9 @@
       border-bottom: 2px solid #007bff;
       padding-bottom: 5px;
     }
-
-    /* Parágrafos */
-    p {
-      font-size: 1rem;
-      color: #555;
-      margin: 10px 0;
-    }
-
-    /* Listas com marcadores */
-    ul {
-      margin-left: 20px;
-      list-style-type: disc;
-      color: #555;
-    }
-
-    /* Link do botão */
-    a {
+    p { font-size: 1rem; color: #555; margin: 10px 0; }
+    ul { margin-left: 20px; list-style-type: disc; color: #555; }
+    a.button {
       color: #fff;
       text-decoration: none;
       padding: 10px 20px;
@@ -74,92 +44,186 @@
       font-size: 1rem;
       transition: transform 0.3s;
     }
-
-    a:hover {
-      transform: scale(1.1);
-    }
-
-    /* Animação suave */
-    .animated {
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Rodapé */
+    a.button:hover { transform: scale(1.1); }
     footer {
       text-align: center;
       margin-top: 40px;
       font-size: 0.9rem;
       color: #888;
     }
-
-    footer a {
-      color: #007bff;
+    footer a { color: #007bff; }
+    /* Language toggle button */
+    #langToggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 8px 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #langToggle:hover { background: #0056b3; }
+    /* Simple fade in animation */
+    .animated {
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
+  <button id="langToggle">English</button>
   <div class="container animated">
-    <h1>Política de Privacidade - Bitgameshub</h1>
-    <p>Bem-vindo ao <strong>Bitgameshub</strong>! Esta é a Política de Privacidade que explica como você pode usar o site e como seus dados são tratados.</p>
+    <h1 id="mainTitle">Política de Privacidade - Bitgameshub</h1>
+    <p id="intro">Bem-vindo ao Bitgameshub! Esta é a Política de Privacidade que explica como você pode usar o site e como seus dados são tratados.</p>
     
-    <h2>1. Informações Coletadas</h2>
-    <p>Quando você acessa o Bitgameshub, posso coletar as seguintes informações:</p>
-    <ul>
+    <h2 id="section1">1. Informações Coletadas</h2>
+    <p id="infoCollected">Quando você acessa o Bitgameshub, posso coletar as seguintes informações:</p>
+    <ul id="infoList">
       <li>Dados de navegação enquanto você interage com os jogos.</li>
     </ul>
 
-    <h2>2. Como Uso as Informações</h2>
-    <p>Uso as informações para:</p>
-    <ul>
+    <h2 id="section2">2. Como Uso as Informações</h2>
+    <p id="howUse">Uso as informações para:</p>
+    <ul id="useList">
       <li>Permitir que você jogue e acesse os jogos no site.</li>
       <li>Melhorar sua experiência no Bitgameshub.</li>
       <li>Garantir a segurança do site e da sua conta.</li>
     </ul>
 
-    <h2>3. Como Protejo Seus Dados</h2>
-    <p>Eu tomo as medidas que posso para proteger suas informações. No entanto, lembre-se que a internet não é 100% segura, e eu não posso garantir a segurança absoluta de todos os dados.</p>
+    <h2 id="section3">3. Como Protejo Seus Dados</h2>
+    <p id="protectData">Eu tomo as medidas que posso para proteger suas informações. No entanto, lembre-se que a internet não é 100% segura, e eu não posso garantir a segurança absoluta de todos os dados.</p>
 
-    <h2>4. Uso de Cookies</h2>
-    <p>Eu utilizo cookies para melhorar a sua experiência de navegação, como lembrar suas preferências e melhorar o desempenho do site.</p>
+    <h2 id="section4">4. Uso de Cookies</h2>
+    <p id="cookiesUsage">Eu utilizo cookies para melhorar a sua experiência de navegação, como lembrar suas preferências e melhorar o desempenho do site.</p>
 
-    <h2>5. Compartilhamento de Dados</h2>
-    <p>Eu não compartilho suas informações pessoais com outras pessoas ou empresas, exceto quando necessário para o funcionamento do site, como serviços de login.</p>
+    <h2 id="section5">5. Compartilhamento de Dados</h2>
+    <p id="dataShare">Eu não compartilho suas informações pessoais com outras pessoas ou empresas, exceto quando necessário para o funcionamento do site, como serviços de login.</p>
 
-    <h2>6. Mudanças na Política de Privacidade</h2>
-    <p>Eu posso atualizar esta política de tempos em tempos. Quando houver mudanças, elas serão publicadas nesta página.</p>
+    <h2 id="section6">6. Mudanças na Política de Privacidade</h2>
+    <p id="policyChanges">Eu posso atualizar esta política de tempos em tempos. Quando houver mudanças, elas serão publicadas nesta página.</p>
 
-    <h2>7. Contato</h2>
-    <p>Se você tiver alguma dúvida sobre esta política ou sobre o site, entre em contato comigo pelo e-mail: <strong>bernardodanielmo12raes123@gmail.com</strong></p>
-
-    <a href="/" class="animated">Voltar para a página inicial</a>
+    <h2 id="section7">7. Contato</h2>
+    <p id="contact">Se você tiver alguma dúvida sobre esta política ou sobre o site, entre em contato comigo pelo e-mail: <strong>bernardodanielmo12raes123@gmail.com</strong></p>
+    
+    <a href="/" class="button animated" id="backButton">Voltar para a página inicial</a>
   </div>
 
   <footer>
-    <p>&copy; 2024 Bitgameshub. Todos os direitos reservados. | <a href="https://discord.com/channels/1311067271455576186/1311070186127884350">Política de Privacidade</a></p>
+    <p id="footerText">&copy; 2024 Bitgameshub. Todos os direitos reservados. | <a href="https://discord.com/channels/1311067271455576186/1311070186127884350">Política de Privacidade</a></p>
   </footer>
 
   <script>
-    // Animação do botão quando o mouse passa sobre ele
-    document.querySelector('a').addEventListener('mouseover', function() {
-      this.style.transform = 'scale(1.1)';
+    // Translation dictionary
+    const translations = {
+      pt: {
+        mainTitle: "Política de Privacidade - Bitgameshub",
+        intro: "Bem-vindo ao Bitgameshub! Esta é a Política de Privacidade que explica como você pode usar o site e como seus dados são tratados.",
+        section1: "1. Informações Coletadas",
+        infoCollected: "Quando você acessa o Bitgameshub, posso coletar as seguintes informações:",
+        infoList: ["Dados de navegação enquanto você interage com os jogos."],
+        section2: "2. Como Uso as Informações",
+        howUse: "Uso as informações para:",
+        useList: [
+          "Permitir que você jogue e acesse os jogos no site.",
+          "Melhorar sua experiência no Bitgameshub.",
+          "Garantir a segurança do site e da sua conta."
+        ],
+        section3: "3. Como Protejo Seus Dados",
+        protectData: "Eu tomo as medidas que posso para proteger suas informações. No entanto, lembre-se que a internet não é 100% segura, e eu não posso garantir a segurança absoluta de todos os dados.",
+        section4: "4. Uso de Cookies",
+        cookiesUsage: "Eu utilizo cookies para melhorar a sua experiência de navegação, como lembrar suas preferências e melhorar o desempenho do site.",
+        section5: "5. Compartilhamento de Dados",
+        dataShare: "Eu não compartilho suas informações pessoais com outras pessoas ou empresas, exceto quando necessário para o funcionamento do site, como serviços de login.",
+        section6: "6. Mudanças na Política de Privacidade",
+        policyChanges: "Eu posso atualizar esta política de tempos em tempos. Quando houver mudanças, elas serão publicadas nesta página.",
+        section7: "7. Contato",
+        contact: "Se você tiver alguma dúvida sobre esta política ou sobre o site, entre em contato comigo pelo e-mail: bernardodanielmo12raes123@gmail.com",
+        backButton: "Voltar para a página inicial",
+        footerText: "&copy; 2024 Bitgameshub. Todos os direitos reservados. | <a href='https://discord.com/channels/1311067271455576186/1311070186127884350'>Política de Privacidade</a>"
+      },
+      en: {
+        mainTitle: "Privacy Policy - Bitgameshub",
+        intro: "Welcome to Bitgameshub! This is the Privacy Policy that explains how you can use the site and how your data is handled.",
+        section1: "1. Information Collected",
+        infoCollected: "When you access Bitgameshub, I may collect the following information:",
+        infoList: ["Browsing data while you interact with the games."],
+        section2: "2. How I Use Information",
+        howUse: "I use the information to:",
+        useList: [
+          "Allow you to play and access games on the site.",
+          "Improve your experience at Bitgameshub.",
+          "Ensure the security of the site and your account."
+        ],
+        section3: "3. How I Protect Your Data",
+        protectData: "I take measures to protect your information. However, remember that the internet is not 100% secure, and I cannot guarantee absolute security of all data.",
+        section4: "4. Use of Cookies",
+        cookiesUsage: "I use cookies to enhance your browsing experience, such as remembering your preferences and improving site performance.",
+        section5: "5. Data Sharing",
+        dataShare: "I do not share your personal information with other individuals or companies except when necessary for the functioning of the site, such as login services.",
+        section6: "6. Changes to the Privacy Policy",
+        policyChanges: "I may update this policy from time to time. When changes occur, they will be published on this page.",
+        section7: "7. Contact",
+        contact: "If you have any questions about this policy or the site, please contact me via email: bernardodanielmo12raes123@gmail.com",
+        backButton: "Back to Home Page",
+        footerText: "&copy; 2024 Bitgameshub. All rights reserved. | <a href='https://discord.com/channels/1311067271455576186/1311070186127884350'>Privacy Policy</a>"
+      }
+    };
+
+    let currentLang = 'pt';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const txt = translations[lang];
+      document.getElementById('mainTitle').innerText = txt.mainTitle;
+      document.getElementById('intro').innerText = txt.intro;
+      document.getElementById('section1').innerText = txt.section1;
+      document.getElementById('infoCollected').innerText = txt.infoCollected;
+      // Update info list
+      const infoList = document.getElementById('infoList');
+      infoList.innerHTML = '';
+      txt.infoList.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = item;
+        infoList.appendChild(li);
+      });
+      document.getElementById('section2').innerText = txt.section2;
+      document.getElementById('howUse').innerText = txt.howUse;
+      // Update use list
+      const useList = document.getElementById('useList');
+      useList.innerHTML = '';
+      txt.useList.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = item;
+        useList.appendChild(li);
+      });
+      document.getElementById('section3').innerText = txt.section3;
+      document.getElementById('protectData').innerText = txt.protectData;
+      document.getElementById('section4').innerText = txt.section4;
+      document.getElementById('cookiesUsage').innerText = txt.cookiesUsage;
+      document.getElementById('section5').innerText = txt.section5;
+      document.getElementById('dataShare').innerText = txt.dataShare;
+      document.getElementById('section6').innerText = txt.section6;
+      document.getElementById('policyChanges').innerText = txt.policyChanges;
+      document.getElementById('section7').innerText = txt.section7;
+      document.getElementById('contact').innerText = txt.contact;
+      document.getElementById('backButton').innerText = txt.backButton;
+      document.getElementById('footerText').innerHTML = txt.footerText;
+      // Update toggle button label
+      document.getElementById('langToggle').innerText = lang === 'pt' ? 'English' : 'Português';
+    }
+
+    document.getElementById('langToggle').addEventListener('click', () => {
+      setLanguage(currentLang === 'pt' ? 'en' : 'pt');
     });
 
-    document.querySelector('a').addEventListener('mouseout', function() {
-      this.style.transform = 'scale(1)';
-    });
+    // Initialize in Portuguese
+    setLanguage('pt');
   </script>
-
 </body>
 </html>
