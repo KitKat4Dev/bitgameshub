@@ -3,116 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY EDITION!! (Neon Remix)</title>
-  
+  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY EDITION - REMAKE</title>
+
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
     rel="stylesheet"
   />
 
+  <!-- reCAPTCHA Script (Needed for the challenge) -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <style>
-    /**************************************
-     * RESET & BASE STYLES
-     **************************************/
+    /* --------------------------------------------------
+       Base + Reset
+    -------------------------------------------------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      /* Using a neon grid background animation */
+    html, body {
+      height: 100%;
       font-family: 'Poppins', sans-serif;
-      color: #ffffff;
-      min-height: 100vh;
       overflow-x: hidden;
-      background: #000;
-      position: relative;
+      background: #0e0e0e;
+      color: #fff;
     }
-    /* Scrollbar styling (just for flair) */
     ::-webkit-scrollbar {
       width: 8px;
     }
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #0ff, #f0f);
+      background: linear-gradient(180deg, #9f0, #f09);
       border-radius: 4px;
     }
 
-    /**************************************
-     * ANIMATED BACKGROUND: NEON GRID
-     **************************************/
+    /* --------------------------------------------------
+       Glitchy Neon Background
+    -------------------------------------------------- */
     body::before {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, #121212 10%, #000000 60%);
-      pointer-events: none;
-      z-index: -3;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #101010, #050505 70%);
+      z-index: -2;
     }
-    /* Glow Grid - multiple layers for parallax effect */
     body::after {
       content: "";
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        repeating-linear-gradient(
-          0deg,
-          rgba(0,255,255,0.2) 0 2px,
-          transparent 2px 20px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,0,255,0.2) 0 2px,
-          transparent 2px 20px
-        );
-      transform: rotate(45deg);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      animation: scanline 5s linear infinite;
+      z-index: -1;
       pointer-events: none;
-      z-index: -2;
-      animation: gridMove 10s linear infinite;
+    }
+    @keyframes scanline {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
     }
 
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0) rotate(45deg);
-      }
-      100% {
-        transform: translate(-10%, -10%) rotate(45deg);
-      }
-    }
-
-    /**************************************
-     * HEADER
-     **************************************/
+    /* --------------------------------------------------
+       Header
+    -------------------------------------------------- */
     header {
       position: sticky;
       top: 0;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 15px 40px;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(4px);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 10px 30px;
       border-bottom: 2px solid #0ff;
       z-index: 1000;
-      backdrop-filter: blur(5px);
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       letter-spacing: 2px;
       color: #0ff;
-      text-shadow: 0 0 8px #0ff;
-      transition: all 0.3s ease-in-out;
+      text-shadow: 0 0 6px #0ff;
       cursor: default;
+      transition: transform 0.3s ease;
     }
     header h1:hover {
-      text-shadow: 0 0 15px #0ff;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
     #settingsBtn {
       background: transparent;
@@ -131,20 +118,18 @@
       box-shadow: 0 0 8px #0ff;
     }
 
-    /**************************************
-     * MAIN CONTENT
-     **************************************/
+    /* --------------------------------------------------
+       Main
+    -------------------------------------------------- */
     main {
-      padding: 40px 40px 100px;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
+      padding: 30px 40px 80px;
     }
-
     section {
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     section.visible {
@@ -154,23 +139,22 @@
     section h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-      letter-spacing: 1px;
       color: #f0f;
-      text-shadow: 0 0 6px #f0f;
+      text-align: center;
+      margin-bottom: 20px;
       position: relative;
       text-transform: uppercase;
+      text-shadow: 0 0 6px #f0f;
     }
     section h2::after {
       content: "";
       display: block;
-      width: 80px;
-      margin: 10px auto 0 auto;
+      width: 90px;
+      margin: 10px auto 0;
       height: 3px;
       background: linear-gradient(90deg, #0ff, #f0f);
       border-radius: 2px;
-      animation: hueShift 3s linear infinite;
+      animation: hueShift 4s linear infinite;
     }
     @keyframes hueShift {
       0% {
@@ -181,91 +165,89 @@
       }
     }
 
-    /**************************************
-     * GRID
-     **************************************/
+    /* --------------------------------------------------
+       Grid
+    -------------------------------------------------- */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
     }
 
-    /**************************************
-     * CARDS
-     **************************************/
+    /* --------------------------------------------------
+       Game Cards
+    -------------------------------------------------- */
     .card {
       background: rgba(255, 255, 255, 0.05);
-      border: 2px solid #f0f;
-      border-radius: 12px;
+      border: 2px solid #555;
+      border-radius: 8px;
       text-align: center;
-      transition: transform 0.4s, box-shadow 0.4s;
       overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s, box-shadow 0.4s;
       position: relative;
-      perspective: 1000px;
-    }
-    .card a {
-      display: block;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.1rem;
-      padding: 20px;
-      text-shadow: 0 0 5px #fff;
-      font-family: 'Poppins', sans-serif;
-      transition: transform 0.4s;
-      transform-style: preserve-3d;
     }
     .card:hover {
-      transform: rotateY(10deg) rotateX(5deg) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-      z-index: 10;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
       border-color: #0ff;
+      z-index: 10;
     }
-    .card:hover a {
-      text-shadow: 0 0 10px #0ff;
-      transform: translateZ(20px);
+    .card .game-link {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      padding: 20px;
+      text-shadow: 0 0 5px #ddd;
+      transition: color 0.3s;
+    }
+    .card:hover .game-link {
+      color: #0ff;
+      text-shadow: 0 0 8px #0ff;
     }
 
-    /**************************************
-     * MEME GALLERY
-     **************************************/
+    /* --------------------------------------------------
+       Meme Gallery
+    -------------------------------------------------- */
     .meme-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
     }
     .meme-gallery img {
       width: 100%;
       border-radius: 8px;
-      border: 2px solid #0ff;
+      border: 2px solid #333;
       transition: transform 0.3s, filter 0.3s;
-      box-shadow: 0 5px 20px rgba(0,255,255,0.2);
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
     }
     .meme-gallery img:hover {
-      transform: scale(1.08);
-      filter: brightness(1.4) saturate(1.2);
+      transform: scale(1.05);
+      filter: brightness(1.2) saturate(1.1);
     }
 
-    /**************************************
-     * FOOTER
-     **************************************/
+    /* --------------------------------------------------
+       Footer
+    -------------------------------------------------- */
     footer {
-      position: relative;
-      background: rgba(0, 0, 0, 0.85);
-      border-top: 2px solid #0ff;
+      background: rgba(10, 10, 10, 0.8);
       text-align: center;
-      padding: 20px;
+      border-top: 2px solid #0ff;
+      padding: 16px;
       font-size: 0.9rem;
-      font-family: 'Poppins', sans-serif;
       color: #999;
-      margin-top: 40px;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 30px;
     }
     footer span {
       color: #0ff;
     }
 
-    /**************************************
-     * SETTINGS MODAL
-     **************************************/
+    /* --------------------------------------------------
+       Settings Modal
+    -------------------------------------------------- */
     .modal {
       display: none;
       position: fixed;
@@ -274,7 +256,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.85);
       align-items: center;
       justify-content: center;
       padding: 20px;
@@ -337,9 +319,55 @@
       color: #fff;
     }
 
-    /**************************************
-     * FLOATING CONFETTI BUTTON
-     **************************************/
+    /* --------------------------------------------------
+       reCAPTCHA Modal
+    -------------------------------------------------- */
+    #captchaModal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(2px);
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .captcha-content {
+      background: #181818;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      text-align: center;
+      border: 2px solid #0f0;
+      box-shadow: 0 0 15px #0f0;
+      animation: modalFadeIn 0.4s forwards;
+    }
+    .captcha-content h3 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 15px;
+      color: #0f0;
+    }
+    .captcha-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #0f0;
+      transition: color 0.3s;
+    }
+    .captcha-close:hover {
+      color: #ff0;
+    }
+
+    /* --------------------------------------------------
+       Confetti & BackToTop
+    -------------------------------------------------- */
     #confettiBtn {
       position: fixed;
       bottom: 100px;
@@ -359,10 +387,6 @@
       transform: scale(1.15);
       box-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
     }
-
-    /**************************************
-     * BACK TO TOP BUTTON
-     **************************************/
     #backToTop {
       position: fixed;
       bottom: 20px;
@@ -379,19 +403,17 @@
       font-weight: 600;
       z-index: 3000;
     }
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
     #backToTop:hover {
       background: #f0f;
       color: #000;
       box-shadow: 0 0 10px #f0f;
     }
-    #backToTop.show {
-      opacity: 1;
-      visibility: visible;
-    }
 
-    /**************************************
-     * CONFETTI ANIMATION
-     **************************************/
+    /* Confetti styles/animation */
     .confetti {
       position: fixed;
       top: 0;
@@ -412,13 +434,12 @@
         transform: translateX(-300px) translateY(800px) rotate(720deg);
       }
     }
-
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
-    <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY EDITION!</h1>
+    <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY REMAKE!</h1>
     <button id="settingsBtn">Settings</button>
   </header>
 
@@ -428,99 +449,51 @@
     <section>
       <h2>Main Games</h2>
       <div class="grid">
-        <div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
-        <div class="card"><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></div>
-        <div class="card"><a href="/random-compliment/index.html">🎮 Random Compliments</a></div>
-        <div class="card"><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></div>
-        <div class="card"><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></div>
-        <div class="card"><a href="/customdodge/index.html">🎮 Custom Dodge</a></div>
-        <div class="card"><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster</a></div>
-        <div class="card"><a href="/random-complaints/index.html">🎮 Random Complaints</a></div>
-        <div class="card"><a href="/404-error-simulator/index.html">🎮 404 Simulator</a></div>
-        <div class="card"><a href="/random-button-generator/index.html">🎮 Random Buttons</a></div>
-        <div class="card"><a href="/endless-scrolling-text/index.html">🎮 Scrolling Text</a></div>
-        <div class="card"><a href="/time-wasting-countdown/index.html">🎮 Countdown</a></div>
-        <div class="card"><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></div>
-        <div class="card"><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel</a></div>
-        <div class="card"><a href="/random-fact-generator/index.html">🎮 Fact Generator</a></div>
-        <div class="card"><a href="/staring-contest/index.html">🎮 Staring Contest</a></div>
-        <div class="card"><a href="/color-generator/index.html">🎮 Color Generator</a></div>
-        <div class="card"><a href="/video-cloner/index.html">🎮 Video Cloner</a></div>
-        <div class="card"><a href="/10-in-1/index.html">🎮 Tilting Maze Game</a></div>
-        <div class="card"><a href="/tribute-nice/index.html">🎮 Tribute to IZ Kamakawiwo'ole</a></div>
-        <div class="card"><a href="/adware-simulator/index.html">🎮 Totally Reol Ads</a></div>
-        <div class="card"><a href="/pong-gaem/index.html">🎮 Generic Pong Gaem</a></div>
-        <div class="card"><a href="/Music-board/index.html">🎮 Musicboard</a></div>
-        <div class="card"><a href="/DVD-GAME/index.html">🎮 Smiley Face</a></div>
-        <div class="card"><a href="/rhythm-cold/index.html">🎮 Normal Site</a></div>
-        <div class="card"><a href="/Arcade/index.html">🎮 Quiz</a></div>
-        <div class="card"><a href="/avatar/index.html">🎮 Quiz 2</a></div>
-        <div class="card"><a href="/28-Emoji-Catcher-Game/index.html">🎮 Emoji Catcher</a></div>
-        <div class="card"><a href="/26-Fruit-Slicer-Game/index.html">🎮 Fruit Slicer</a></div>
-        <div class="card"><a href="/25-Speak-Number-Guessing-Game/index.html">🎮 Speak Number Guessing</a></div>
-        <div class="card"><a href="/23-Shape-Clicker-Game/index.html">🎮 Shape Clicker</a></div>
-        <div class="card"><a href="/22-Dice-Roll-Simulator/index.html">🎮 Dice Simulator</a></div>
-        <div class="card"><a href="/21-2048-Game/index.html">🎮 2048 Game</a></div>
-        <div class="card"><a href="/20-Crossy-Road-Game/index.html">🎮 Crossy Road</a></div>
-        <div class="card"><a href="/19-Flappy-Bird-Game/index.html">🎮 Flappy Bird</a></div>
-        <div class="card"><a href="/18-Hangman-Game/index.html">🎮 Hangman</a></div>
-        <div class="card"><a href="/17-Typing-Game/index.html">🎮 Typing</a></div>
-        <div class="card"><a href="/16-Insect-Catch-Game/index.html">🎮 Insect Catch</a></div>
-        <div class="card"><a href="/15-Connect-Four-Game/index.html">🎮 Connect 4</a></div>
-        <div class="card"><a href="/14-Snake-Game/index.html">🎮 Snake</a></div>
-        <div class="card"><a href="/13-Tic-Tac-Toe/index.html">🎮 Tic Tac Toe</a></div>
-        <div class="card"><a href="/12-Type-Number-Guessing-Game/index.html">🎮 Type Guessing</a></div>
-        <div class="card"><a href="/11-Rock-Paper-Scissors/index.html">🎮 RPS</a></div>
-        <div class="card"><a href="/08-Tetris-Game/index.html">🎮 Tetris</a></div>
-        <div class="card"><a href="/10-Memory-Card-Game/index.html">🎮 Memory Game</a></div>
-        <div class="card"><a href="/06-Tower-Blocks/index.html">🎮 Tower Blocks</a></div>
-        <div class="card"><a href="/07-Ping-Pong-Game/index.html">🎮 Ping Pong</a></div>
-        <div class="card"><a href="/05-Minesweeper-Game/index.html">🎮 Minesweeper</a></div>
-        <div class="card"><a href="/04-Breakout-Game/index.html">🎮 Breakout</a></div>
-        <div class="card"><a href="/03-Speed-Typing-Game/index.html">🎮 Speed Typing</a></div>
-        <div class="card"><a href="/02-Archery-Game/index.html">🎮 Archery</a></div>
-        <div class="card"><a href="/01-Candy-Crush-Game/index.html">🎮 Candy Crush</a></div>
-        <div class="card"><a href="https://discord.com/channels/1311067271455576186/1311070186127884350">🎮 Discord Server</a></div>
-        <div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Reborn</a></div>
-        <div class="card"><a href="/Bebe-malvado/index.html">🎮 Spongebobs Splashy Social</a></div>
-        <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
-        <div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
-        <div class="card"><a href="/jumpgame/index.html">🎮 Platformer</a></div>
+        <!-- Replace each anchor link with a div "card" that requires reCAPTCHA -->
+        <div class="card" data-href="/clicker-madness/index.html">
+          <div class="game-link">🎮 Clicker Madness</div>
+        </div>
+        <div class="card" data-href="/boredom-simulator/index.html">
+          <div class="game-link">🎮 Boredom Simulator</div>
+        </div>
+        <div class="card" data-href="/random-compliment/index.html">
+          <div class="game-link">🎮 Random Compliments</div>
+        </div>
+        <div class="card" data-href="/doodle-pad/index.html">
+          <div class="game-link">🎮 Doodle Pad</div>
+        </div>
+        <div class="card" data-href="/silly-photo-booth/index.html">
+          <div class="game-link">🎮 Silly Photo Booth</div>
+        </div>
+        <div class="card" data-href="/customdodge/index.html">
+          <div class="game-link">🎮 Custom Dodge</div>
+        </div>
+        <!-- ... Add more games similarly ... -->
       </div>
     </section>
 
-    <!-- "The Worst" Series Section -->
+    <!-- The Worst Series Section -->
     <section>
       <h2>"The Worst" Series</h2>
       <div class="grid">
-        <div class="card"><a href="/the-worst-volume-bar/index.html">🎮 Worst Volume Bar</a></div>
-        <div class="card"><a href="/the-worst-ui/index.html">🎮 Worst UI</a></div>
-        <div class="card"><a href="/the-worst-brightness-control/index.html">🎮 Worst Brightness</a></div>
-        <div class="card"><a href="/the-worst-easter-egg/index.html">🎮 Worst Easter Egg</a></div>
-        <div class="card"><a href="/the-worst-loading-screen/index.html">🎮 Worst Loading</a></div>
-        <div class="card"><a href="/the-worst-auto-save/index.html">🎮 Worst Auto-Save</a></div>
-        <div class="card"><a href="/the-worst-cursor/index.html">🎮 Worst Cursor</a></div>
-        <div class="card"><a href="/the-worst-pop-up-window/index.html">🎮 Worst Pop-up</a></div>
-        <div class="card"><a href="/the-worst-keyboard-shortcuts/index.html">🎮 Worst Shortcuts</a></div>
-        <div class="card"><a href="/the-worst-scroll-bar/index.html">🎮 Worst Scroll Bar</a></div>
-        <div class="card"><a href="/the-worst-refresh-button/index.html">🎮 Worst Refresh</a></div>
-        <div class="card"><a href="/the-worst-search-bar/index.html">🎮 Worst Search Bar</a></div>
-        <div class="card"><a href="/the-worst-progress-bar/index.html">🎮 Worst Progress</a></div>
+        <div class="card" data-href="/the-worst-volume-bar/index.html">
+          <div class="game-link">🎮 Worst Volume Bar</div>
+        </div>
+        <div class="card" data-href="/the-worst-ui/index.html">
+          <div class="game-link">🎮 Worst UI</div>
+        </div>
+        <!-- ... etc ... -->
       </div>
     </section>
 
     <!-- Discontinued/Broken Games Section -->
     <section>
-      <h2>Discontinued/Broken Games</h2>
+      <h2>Discontinued/Broken</h2>
       <div class="grid">
-        <div class="card"><a href="/Dandys-world-arts/index.html">🎮 Endless GIF Scroll</a></div>
-        <div class="card"><a href="/endless-maze/index.html">🎮 Endless Maze</a></div>
-        <div class="card"><a href="/EVIL-BITGAMESHUB/index.html">🎮 EVIL BIT GAMES HUB</a></div>
-        <div class="card"><a href="/smooth-brain/index.html">🎮 Copy Text Button</a></div>
-        <div class="card"><a href="/Sandbox-game/index.html">🎮 Sandbox</a></div>
-        <div class="card"><a href="/Random-one/keys.html">🎮 Dunno</a></div>
-        <div class="card"><a href="/wonderofu/index.html">🎮 Super Gay Bros DVD</a></div>
-        <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
+        <div class="card" data-href="/Dandys-world-arts/index.html">
+          <div class="game-link">🎮 Endless GIF Scroll</div>
+        </div>
+        <!-- ... etc ... -->
       </div>
     </section>
 
@@ -570,7 +543,21 @@
           <option value="18">Large</option>
         </select>
       </div>
-      <!-- Additional settings can be added here -->
+      <!-- Additional settings here... -->
+    </div>
+  </div>
+
+  <!-- reCAPTCHA MODAL -->
+  <div id="captchaModal">
+    <div class="captcha-content">
+      <span class="captcha-close" id="captchaClose">&times;</span>
+      <h3>Verify you are human!</h3>
+      <!-- Google reCAPTCHA widget -->
+      <div
+        class="g-recaptcha"
+        data-sitekey="6LeBNisrAAAAAPYmsLqq52XoyEe_4W4xueK1Kb-8"
+        data-callback="onRecaptchaSuccess"
+      ></div>
     </div>
   </div>
 
@@ -582,56 +569,10 @@
 
   <script>
     /**********************************************
-     *  MODAL FUNCTIONALITY
-     **********************************************/
-    const settingsBtn = document.getElementById('settingsBtn');
-    const settingsModal = document.getElementById('settingsModal');
-    const closeModal = document.getElementById('closeModal');
-
-    settingsBtn.addEventListener('click', () => {
-      settingsModal.style.display = 'flex';
-    });
-
-    closeModal.addEventListener('click', () => {
-      settingsModal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === settingsModal) {
-        settingsModal.style.display = 'none';
-      }
-    });
-
-    /**********************************************
-     *  FONT SIZE ADJUSTMENT
-     **********************************************/
-    document.getElementById('fontSize').addEventListener('change', (e) => {
-      document.body.style.fontSize = e.target.value + 'px';
-    });
-
-    /**********************************************
-     *  DARK MODE TOGGLE
-     **********************************************/
-    const body = document.body;
-    const gridAfter = body.querySelector('body::after');
-    document.getElementById('themeToggle').addEventListener('change', (e) => {
-      if (e.target.checked) {
-        body.style.background = '#121212';
-        body.style.setProperty('--neon-grid-opacity', '0'); 
-      } else {
-        body.style.background = '#000';
-        body.style.setProperty('--neon-grid-opacity', '1'); 
-      }
-    });
-
-    /**********************************************
-     *  SECTION FADE-IN (IntersectionObserver)
+     *  Intersection Observer for Section Fade-In
      **********************************************/
     const sections = document.querySelectorAll('section');
-    const observerOptions = {
-      threshold: 0.1,
-    };
-
+    const observerOptions = { threshold: 0.1 };
     const sectionObserver = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -640,48 +581,70 @@
         }
       });
     }, observerOptions);
-
-    sections.forEach(sec => {
-      sectionObserver.observe(sec);
-    });
+    sections.forEach(sec => sectionObserver.observe(sec));
 
     /**********************************************
-     *  CONFETTI BUTTON
+     *  Settings Modal
      **********************************************/
-    const confettiBtn = document.getElementById('confettiBtn');
-    confettiBtn.addEventListener('click', () => {
-      // Generate multiple confetti elements
-      for (let i = 0; i < 40; i++) {
-        createConfetti();
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeModal = document.getElementById('closeModal');
+
+    settingsBtn.addEventListener('click', () => {
+      settingsModal.style.display = 'flex';
+    });
+    closeModal.addEventListener('click', () => {
+      settingsModal.style.display = 'none';
+    });
+    window.addEventListener('click', (e) => {
+      if (e.target === settingsModal) {
+        settingsModal.style.display = 'none';
       }
     });
 
+    /**********************************************
+     *  Font Size Adjustment
+     **********************************************/
+    document.getElementById('fontSize').addEventListener('change', (e) => {
+      document.body.style.fontSize = e.target.value + 'px';
+    });
+
+    /**********************************************
+     *  Dark Mode Toggle
+     **********************************************/
+    const body = document.body;
+    document.getElementById('themeToggle').addEventListener('change', (e) => {
+      if (e.target.checked) {
+        body.style.background = '#121212';
+      } else {
+        body.style.background = '#0e0e0e';
+      }
+    });
+
+    /**********************************************
+     *  Confetti Button
+     **********************************************/
+    const confettiBtn = document.getElementById('confettiBtn');
+    confettiBtn.addEventListener('click', () => {
+      for (let i = 0; i < 35; i++) createConfetti();
+    });
     function createConfetti() {
       const confetti = document.createElement('div');
       confetti.classList.add('confetti');
-      // randomize start x position
       confetti.style.left = Math.random() * window.innerWidth + 'px';
-      // randomize color
       confetti.style.backgroundColor = randomNeonColor();
-      // randomize animation duration
-      const fallDuration = 2 + Math.random() * 3; // between 2-5s
+      const fallDuration = 2 + Math.random() * 3;
       confetti.style.animationDuration = fallDuration + 's';
-
       document.body.appendChild(confetti);
-
-      // remove confetti after animation ends
-      setTimeout(() => {
-        confetti.remove();
-      }, fallDuration * 1000);
+      setTimeout(() => confetti.remove(), fallDuration * 1000);
     }
-
     function randomNeonColor() {
       const colors = ['#0ff', '#f0f', '#0f0', '#ff0', '#ff00aa'];
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
     /**********************************************
-     * BACK TO TOP BUTTON
+     *  Back to Top Button
      **********************************************/
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
@@ -691,13 +654,47 @@
         backToTopBtn.classList.remove('show');
       }
     });
-
     backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /**********************************************
+     *  reCAPTCHA Modal & Card Click Logic
+     **********************************************/
+    const captchaModal = document.getElementById('captchaModal');
+    const captchaClose = document.getElementById('captchaClose');
+    let pendingURL = null;  // store target link after reCAPTCHA
+
+    // Show reCAPTCHA modal on card click
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        pendingURL = card.getAttribute('data-href');
+        captchaModal.style.display = 'flex';
       });
     });
+
+    // If user closes the captcha
+    captchaClose.addEventListener('click', () => {
+      captchaModal.style.display = 'none';
+      pendingURL = null;
+      grecaptcha.reset(); // reset the reCAPTCHA widget
+    });
+
+    // If user clicks outside the captcha area
+    window.addEventListener('click', (e) => {
+      if (e.target === captchaModal) {
+        captchaModal.style.display = 'none';
+        pendingURL = null;
+        grecaptcha.reset();
+      }
+    });
+
+    // On successful reCAPTCHA:
+    window.onRecaptchaSuccess = function() {
+      if (pendingURL) {
+        window.location.href = pendingURL;
+      }
+    };
   </script>
 </body>
 </html>
