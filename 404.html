@@ -1,51 +1,202 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Não Encontrada - 404</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404</title>
+
+  <!-- Google Font for a modern look -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    /* Global Styles */
-    body {
+    /*************************************
+     * RESET & BASE
+     *************************************/
+    * {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f0f0f0, #dcdcdc);
-      color: #333;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
       text-align: center;
-      position: relative;
       min-height: 100vh;
+      position: relative;
       overflow-x: hidden;
     }
+
+    /*************************************
+     * ANIMATED BACKGROUND
+     *************************************/
+    body::before {
+      /* Animated neon gradient */
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(-45deg, #ff004f, #fcba03, #26f7fd, #ab42ff);
+      background-size: 400% 400%;
+      z-index: -3;
+      animation: gradientMove 15s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /*************************************
+     * CONTAINER & LAYOUT
+     *************************************/
     .container {
-      padding: 60px 20px;
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2; /* above the background */
     }
+
+    /*************************************
+     * GLITCH TEXT
+     *************************************/
     h1 {
-      font-size: 3em;
-      color: #e74c3c;
-      margin-bottom: 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      position: relative;
+      color: #fff;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      /* We’ll apply a glitch effect using pseudo-elements */
     }
+    h1::before,
+    h1::after {
+      content: attr(data-text); /* copy the text */
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+    h1::before {
+      top: -2px;
+      text-shadow: -2px 0 #f0f;
+      animation: glitchTop 2s infinite;
+      color: #f0f;
+    }
+    h1::after {
+      top: 2px;
+      text-shadow: -2px 0 #0ff;
+      animation: glitchBot 2s infinite;
+      color: #0ff;
+    }
+
+    @keyframes glitchTop {
+      0% {
+        clip: rect(44px, 9999px, 12px, 0);
+        transform: skew(0.3deg);
+      }
+      5% {
+        clip: rect(12px, 9999px, 90px, 0);
+        transform: skew(0.1deg);
+      }
+      10% {
+        clip: rect(80px, 9999px, 16px, 0);
+        transform: skew(0.3deg);
+      }
+      15% {
+        clip: rect(12px, 9999px, 96px, 0);
+        transform: skew(0.1deg);
+      }
+      20% {
+        clip: rect(44px, 9999px, 12px, 0);
+        transform: skew(0.3deg);
+      }
+      100% {
+        clip: rect(44px, 9999px, 12px, 0);
+        transform: skew(0.3deg);
+      }
+    }
+    @keyframes glitchBot {
+      0% {
+        clip: rect(10px, 9999px, 130px, 0);
+        transform: skew(0.3deg);
+      }
+      5% {
+        clip: rect(80px, 9999px, 46px, 0);
+        transform: skew(0.2deg);
+      }
+      10% {
+        clip: rect(14px, 9999px, 90px, 0);
+        transform: skew(0.3deg);
+      }
+      15% {
+        clip: rect(80px, 9999px, 130px, 0);
+        transform: skew(0.2deg);
+      }
+      20% {
+        clip: rect(10px, 9999px, 90px, 0);
+        transform: skew(0.3deg);
+      }
+      100% {
+        clip: rect(10px, 9999px, 130px, 0);
+        transform: skew(0.3deg);
+      }
+    }
+
+    /*************************************
+     * PARAGRAPH
+     *************************************/
     p {
-      font-size: 1.2em;
+      font-size: 1.2rem;
       margin-bottom: 40px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 40px;
     }
+
+    /*************************************
+     * BUTTONS
+     *************************************/
     .button {
       display: inline-block;
-      background-color: #3498db;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #fff;
+      backdrop-filter: blur(2px);
       color: #fff;
-      padding: 15px 30px;
-      font-size: 1em;
+      padding: 14px 28px;
+      font-size: 1rem;
       margin: 10px;
-      border: none;
-      border-radius: 5px;
       text-decoration: none;
+      text-transform: uppercase;
+      border-radius: 50px;
+      letter-spacing: 1px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
     .button:hover {
-      background-color: #2980b9;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
     }
-    /* Invisible Easter Egg Button */
+
+    /*************************************
+     * INVISIBLE EASTER EGG BUTTON
+     *************************************/
     #easterBtn {
       position: fixed;
       top: 0;
@@ -57,21 +208,24 @@
       cursor: pointer;
       z-index: 1000;
     }
-    /* Frog Emoji Falling Animation */
+
+    /*************************************
+     * FROG EMOJIS ANIMATION
+     *************************************/
     .frog {
       position: absolute;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       animation-name: fall;
       animation-timing-function: linear;
       pointer-events: none;
     }
     @keyframes fall {
       0% {
-        transform: translateY(-50px);
+        transform: translateY(-60px) rotate(0deg);
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh);
+        transform: translateY(120vh) rotate(360deg);
         opacity: 0;
       }
     }
@@ -79,26 +233,142 @@
 </head>
 <body>
   <!-- Invisible Easter Egg Button -->
-  <button id="easterBtn" title="Clique aqui se se sentir aventureiro!"></button>
+  <button id="easterBtn" title="Esegg!"></button>
 
   <div class="container">
-    <h1 id="error-message"></h1>
-    <p>Desculpe, mas a página que você procura não existe. Talvez ela nunca tenha existido ou foi levada por forças misteriosas.</p>
-    <a href="http://bitgameshub.com/" class="button">Voltar para o Principal</a>
-    <a href="mailto:bernardodanielmo12raes123@gmail.com" class="button">Contatar o Criador</a>
+    <!-- The 'data-text' attribute is used for the glitch pseudo-elements -->
+    <h1 id="error-message" data-text=""></h1>
+    <p>
+      Houston, we have a problem. That page has vanished into the digital void!
+    </p>
+    <a href="http://bitgameshub.com/" class="button">Main page</a>
+    <a href="mailto:bernardodanielmo12raes123@gmail.com" class="button">Contact creator</a>
   </div>
 
   <script>
     // Random error messages array
     const messages = [
-      "Esta página não existe! Tente explorar outros caminhos.",
-      "Ops! Página inexistente. Talvez um duende a tenha levado.",
-      "404: O portal desapareceu. Experimente voltar e tentar novamente.",
-      "Esta página foi abduzida! Volte para a segurança do site."
+  "404: This page vanished harder than Waluigi’s chances of getting his own game.",
+  "This page ran off with Bonnie to the Parts and Service room. Don’t follow.",
+  "Even Doctor Strange looked into 14 million futures. This page ain’t in any.",
+  "404: The page ascended to the Backrooms floor 666 with the Ikea Man.",
+  "This link was so cursed that even SCP-096 refused to look at it.",
+  "Page not found. Shrek said ‘GET OUTTA MAH SWAMP!’ and the HTML obeyed.",
+  "Thanos snapped this page. No amount of CTRL+Z will fix it.",
+  "The page got caught in a JoJo time stop. ZAWARUDO!",
+  "Even Rick couldn’t portal-gun this thing back.",
+  "This page rage-quit like a Sonic fan after another live-action redesign.",
+  "404: This link is lost in the same void as Cartoon Network’s budget.",
+  "The page entered the Multiverse of Madness and got stuck in the SpongeBob universe.",
+  "Error. Page escaped into Freddy Fazbear’s Mega Pizzaplex.",
+  "Fiveky tried glitching this page back, but it turned into Cursed Garfield code.",
+  "This page pulled a ‘Nope’ and NOPED into the upside-down.",
+  "Oops! You just tried to open Herobrine’s diary.",
+  "404: This page is more lost than a Wii remote in 2010.",
+  "This HTML just committed tax fraud with the Among Us crew.",
+  "Page not found. It was last seen drinking Butterbeer with Harry at platform 9¾.",
+  "Error 404: This page got reverse-carded by Uno logic.",
+  "Even Dora couldn’t find this page. Can YOU say ‘broken router’?",
+  "The page was cursed by a TikTok filter and now only speaks in Vine references.",
+  "404: This page turned into a cursed AI VTuber and ran off screaming 'SKIBIDI'.",
+  "The page tried to load, but Sans said ‘you’re gonna have a bad time’ and left.",
+  "It’s gone. Like Cartoon Network’s old logo. Forever in our hearts.",
+  "Page missing like that one friend who promised to come online ‘in 5 mins’.",
+  "This isn’t a 404, this is a *LORE DROP*. Welcome to Season 3.",
+  "404: Page missing. Blame the timeline reset from that last Spider-Verse event.",
+  "The page glitched and now it’s doing a Fortnite dance loop in cyberspace.",
+  "Oops! Even Minecraft’s Endermen can’t teleport to this page.",
+  "This page got YOLO’d into another dimension by a Red Bull can.",
+  "The HTML tried to ascend but forgot it wasn’t the protagonist.",
+  "Fiveky tried to summon it using Glitchmaster’s Touch, but it turned into Peppa Pig fan art.",
+  "Page gone like your sanity after 3 episodes of Skibidi Toilet.",
+  "404: This page drank too much G-Fuel and clipped through reality.",
+  "This link was devoured by Kirby. Again.",
+  "404 Error: Fiveky threw it into the void during a rage-powered monologue.",
+  "This page became sentient and left to find meaning on Tumblr.",
+  "Page missing like the 4th season of your favorite canceled show.",
+  "This HTML got caught up in an anime transformation sequence and never came back.",
+  "You blinked. Now the page’s gone. Thanks, Weeping Angels.",
+  "It got a 0-star Yelp review from Karen and fled in shame.",
+  "This page tried to use a cheat code and got softlocked in 1999.",
+  "404: It’s gone. Not even Goku can power up enough to bring it back.",
+  "The link said ‘I am Groot’ and vanished into MCU logic.",
+  "Fiveky tried to age-reverse it. Now it’s a baby PNG with no CSS.",
+  "The page overdosed on memes and now lives in cringe purgatory.",
+  "404: Page got turned into a Funko Pop and trapped forever.",
+  "It got recruited by the Squid Game. Good luck getting it back.",
+  "Page vanished like your dreams of being a YouTuber in 2014.",
+  "This page is in timeout for calling your mom ‘bro’ unironically.",
+  "Error 404: This link got sent to Detention with MatPat’s FNaF theories.",
+  "The page got Rickrolled and never emotionally recovered.",
+  "It’s gone. Like Fiveky’s patience during online class lag.",
+  "404: Page failed to render due to too much sass in the code.",
+  "HTML.exe stopped working after watching a Minions movie marathon.",
+  "This page became a gacha game pull and rolled a common error.",
+  "Page is currently vibing with Hatsune Miku on the moon.",
+  "Error 404: The page got too powerful and ascended to Roblox heaven.",
+  "It got a random encounter and now it’s battling JPEG goblins.",
+  "404: It was last seen downloading RAM from shady websites.",
+  "Fiveky edited reality too hard and now the page is a VHS tape.",
+  "This page forgot to save and became a tragic side character.",
+  "The CSS got possessed by a Tamagotchi ghost. RIP.",
+  "It was kidnapped by the Emoji Movie sequel resistance.",
+  "The link tripped on a banana peel left by Mario Kart physics.",
+  "This page is at war with Comic Sans in an alternate timeline.",
+  "Even the Beyblade gods said ‘LET IT RIP’ and it spun into nothingness.",
+  "404: This page went to join the Rejected Pokémon Club.",
+  "It screamed ‘GO TOUCH GRASS’ and became a lawn ad.",
+  "This ain’t Hogwarts. But this page still disappeared on 9¾ logic.",
+  "This page went to therapy after hearing one more Ohio joke.",
+  "Error 404: It was erased by Light Yagami for poor design taste.",
+  "This page rage posted on Twitter and got shadowbanned.",
+  "Fiveky tried to revive it but accidentally summoned the Baby Shark cult.",
+  "The page was in a filler arc. No one noticed it vanished.",
+  "It got stuck inside Fiveky’s chronobagel and now exists out of time.",
+  "404: This page went to McDonald’s for Wi-Fi and never returned.",
+  "Page became an NFT. Someone paid $12k for it and cried.",
+  "It’s more absent than Fiveky’s chores getting done on a Sunday.",
+  "Page tried to run Minecraft shaders on a toaster and exploded.",
+  "HTML refused to load because it saw your TikTok drafts.",
+  "404: This link ascended to become a part-time cryptid.",
+  "This page is currently attending therapy with Clippy.",
+  "The CSS got corrupted by Fiveky’s Shadow Crown. Now it only loads in Comic Sans.",
+  "404: Page missing like the rest of the ‘The Worst’ series lore.",
+  "This HTML became self-aware and ran away screaming.",
+  "It lost a fight with the Wi-Fi demon from 2007.",
+  "This page’s parents were spaghetti code and cursed sprites.",
+  "It got caught watching Cocomelon at 3AM. Disowned by the internet.",
+  "404: Page got stuck in 144p purgatory with Windows XP sounds.",
+  "Even Dora gave up. Map caught a virus and Swiper stole the stylesheets.",
+  "The site tried to auto-tune itself and exploded into dubstep.",
+  "404: This page made a dad joke and vanished in shame.",
+  "The page time traveled to 2003 and now hosts Neopets.",
+  "It joined the crew of the Flying Dutchman. HTML edition.",
+  "This ain’t it, chief. The page now teaches PE in Ohio.",
+  "404: This link was used as a Beyblade stadium by Fiveky and Pedro.",
+  "Page got emotional and ran off to listen to My Chemical Romance.",
+  "It was consumed by the VHS Demon from Fiveky’s childhood drawer.",
+  "404: This page got too much main character energy and glitched out.",
+  "The URL got banned by Yasmin’s goth OC for being 'too basic'.",
+  "Page dipped when it saw Aimee throwing a tantrum IRL.",
+  "It got teleported by Theo’s imagination engine. He’s a god now.",
+  "Page joined a chaotic WhatsApp group and never came back.",
+  "It got censored so hard by Fiveky’s ban powers it turned into a Google Doc.",
+  "The link said ‘I’m baby’ and disappeared into nostalgia fog.",
+  "404: This page tripped over a lore reveal and spiral-glitched into season 8.",
+  "You blinked again. Now it’s a meme template on Reddit.",
+  "This page was actually never real. Welcome to the Glitchlayer.",
+  "404: HTML.exe has entered a coma after too many Fivekor™ references.",
+];
+
     ];
-    // Choose a random message for the error header
-    document.getElementById("error-message").innerText =
-      messages[Math.floor(Math.random() * messages.length)];
+    // Choose a random message
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+    // Assign the glitch text
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.innerText = randomMsg;
+    errorMessage.setAttribute('data-text', randomMsg);
 
     // Function to create and animate frog emojis (🐸)
     function rainFrogs() {
@@ -113,7 +383,7 @@
         const duration = 2 + Math.random() * 3;
         frog.style.animationDuration = duration + "s";
         // Random delay before the frog starts falling
-        frog.style.animationDelay = Math.random() * 3 + "s";
+        frog.style.animationDelay = Math.random() * 1 + "s";
         document.body.appendChild(frog);
         // Remove the frog after the animation ends
         frog.addEventListener('animationend', () => frog.remove());
