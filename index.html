@@ -26,9 +26,9 @@
     html, body {
       height: 100%;
       font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      background: #0e0e0e;
       color: #fff;
+      background: #0e0e0e; /* Fallback color */
+      overflow-x: hidden;
     }
     ::-webkit-scrollbar {
       width: 8px;
@@ -39,39 +39,91 @@
     }
 
     /* --------------------------------------------------
-       Glitchy Neon Background
+       New Neon Swirl Background Animation
     -------------------------------------------------- */
     body::before {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -2;
       width: 100vw;
       height: 100vh;
-      background: radial-gradient(circle at center, #101010, #050505 70%);
-      z-index: -2;
+      background: conic-gradient(
+        from 0deg,
+        #ff00ff,
+        #00ffff,
+        #00ff00,
+        #ffff00,
+        #ff00ff
+      );
+      background-size: 200% 200%;
+      animation: swirl 8s linear infinite;
     }
-    body::after {
-      content: "";
+    @keyframes swirl {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* We'll remove body::after from the previous code 
+       so it's a brand new look, no more scanlines. */
+
+    /* --------------------------------------------------
+       Title Screen Overlay
+    -------------------------------------------------- */
+    #titleScreen {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.03) 0px,
-        rgba(255, 255, 255, 0.03) 1px,
-        transparent 1px,
-        transparent 3px
-      );
-      animation: scanline 5s linear infinite;
-      z-index: -1;
-      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 9999; /* On top of everything */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
     }
-    @keyframes scanline {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 100%; }
+    #titleScreen h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #0ff;
+      text-shadow: 0 0 8px #0ff;
+      margin-bottom: 20px;
+    }
+    #titleScreen p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #ccc;
+      max-width: 500px;
+    }
+    #enterBtn {
+      background: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 10px 24px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    #enterBtn:hover {
+      background: #0ff;
+      color: #000;
+      box-shadow: 0 0 8px #0ff;
+    }
+
+    /* Hide main content initially (until user clicks "Enter") */
+    #mainContent {
+      display: none;
     }
 
     /* --------------------------------------------------
@@ -437,131 +489,148 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY REMAKE!</h1>
-    <button id="settingsBtn">Settings</button>
-  </header>
+  <!-- TITLE SCREEN (Hidden once user clicks Enter) -->
+  <div id="titleScreen">
+    <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY REMAKE</h1>
+    <p>
+      Enjoy the brand-new neon swirl animation and a special playlist featuring:<br>
+      <strong>The Cranberries - Zombie (Alt. Version)</strong> <br>
+      <strong>Blink 182 - Stay Together For The Kids</strong>
+    </p>
+    <button id="enterBtn">ENTER</button>
+  </div>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- Main Games Section -->
-    <section>
-<h2>Main Games</h2>
-<div class="grid">
-<div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
-<div class="card"><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></div>
-<div class="card"><a href="/random-compliment/index.html">🎮 Random Compliments</a></div>
-<div class="card"><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></div>
-<div class="card"><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></div>
-<div class="card"><a href="/customdodge/index.html">🎮 Custom Dodge</a></div>
-<div class="card"><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster</a></div>
-<div class="card"><a href="/random-complaints/index.html">🎮 Random Complaints</a></div>
-<div class="card"><a href="/404-error-simulator/index.html">🎮 404 Simulator</a></div>
-<div class="card"><a href="/random-button-generator/index.html">🎮 Random Buttons</a></div>
-<div class="card"><a href="/endless-scrolling-text/index.html">🎮 Scrolling Text</a></div>
-<div class="card"><a href="/time-wasting-countdown/index.html">🎮 Countdown</a></div>
-<div class="card"><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></div>
-<div class="card"><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel</a></div>
-<div class="card"><a href="/random-fact-generator/index.html">🎮 Fact Generator</a></div>
-<div class="card"><a href="/staring-contest/index.html">🎮 Staring Contest</a></div>
-<div class="card"><a href="/color-generator/index.html">🎮 Color Generator</a></div>
-<div class="card"><a href="/video-cloner/index.html">🎮 Video Cloner</a></div>
-<div class="card"><a href="/10-in-1/index.html">🎮 Tilting Maze Game</a></div>
-<div class="card"><a href="/tribute-nice/index.html">🎮 Tribute to IZ Kamakawiwo'ole</a></div>
-<div class="card"><a href="/adware-simulator/index.html">🎮 Totally Reol Ads</a></div>
-<div class="card"><a href="/pong-gaem/index.html">🎮 Generic Pong Gaem</a></div>
-<div class="card"><a href="/Music-board/index.html">🎮 Musicboard</a></div>
-<div class="card"><a href="/DVD-GAME/index.html">🎮 Smiley Face</a></div>
-<div class="card"><a href="/rhythm-cold/index.html">🎮 Normal Site</a></div>
-<div class="card"><a href="/Arcade/index.html">🎮 Quiz</a></div>
-<div class="card"><a href="/avatar/index.html">🎮 Quiz 2</a></div>
-<div class="card"><a href="/28-Emoji-Catcher-Game/index.html">🎮 Emoji Catcher</a></div>
-<div class="card"><a href="/26-Fruit-Slicer-Game/index.html">🎮 Fruit Slicer</a></div>
-<div class="card"><a href="/25-Speak-Number-Guessing-Game/index.html">🎮 Speak Number Guessing</a></div>
-<div class="card"><a href="/23-Shape-Clicker-Game/index.html">🎮 Shape Clicker</a></div>
-<div class="card"><a href="/22-Dice-Roll-Simulator/index.html">🎮 Dice Simulator</a></div>
-<div class="card"><a href="/21-2048-Game/index.html">🎮 2048 Game</a></div>
-<div class="card"><a href="/20-Crossy-Road-Game/index.html">🎮 Crossy Road</a></div>
-<div class="card"><a href="/19-Flappy-Bird-Game/index.html">🎮 Flappy Bird</a></div>
-<div class="card"><a href="/18-Hangman-Game/index.html">🎮 Hangman</a></div>
-<div class="card"><a href="/17-Typing-Game/index.html">🎮 Typing</a></div>
-<div class="card"><a href="/16-Insect-Catch-Game/index.html">🎮 Insect Catch</a></div>
-<div class="card"><a href="/15-Connect-Four-Game/index.html">🎮 Connect 4</a></div>
-<div class="card"><a href="/14-Snake-Game/index.html">🎮 Snake</a></div>
-<div class="card"><a href="/13-Tic-Tac-Toe/index.html">🎮 Tic Tac Toe</a></div>
-<div class="card"><a href="/12-Type-Number-Guessing-Game/index.html">🎮 Type Guessing</a></div>
-<div class="card"><a href="/11-Rock-Paper-Scissors/index.html">🎮 RPS</a></div>
-<div class="card"><a href="/08-Tetris-Game/index.html">🎮 Tetris</a></div>
-<div class="card"><a href="/10-Memory-Card-Game/index.html">🎮 Memory Game</a></div>
-<div class="card"><a href="/06-Tower-Blocks/index.html">🎮 Tower Blocks</a></div>
-<div class="card"><a href="/07-Ping-Pong-Game/index.html">🎮 Ping Pong</a></div>
-<div class="card"><a href="/05-Minesweeper-Game/index.html">🎮 Minesweeper</a></div>
-<div class="card"><a href="/04-Breakout-Game/index.html">🎮 Breakout</a></div>
-<div class="card"><a href="/03-Speed-Typing-Game/index.html">🎮 Speed Typing</a></div>
-<div class="card"><a href="/02-Archery-Game/index.html">🎮 Archery</a></div>
-<div class="card"><a href="/01-Candy-Crush-Game/index.html">🎮 Candy Crush</a></div>
-<div class="card"><a href="https://discord.com/channels/1311067271455576186/1311070186127884350">🎮 Discord Server</a></div>
-<div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Reborn</a></div>
-<div class="card"><a href="/Bebe-malvado/index.html">🎮 Spongebobs Splashy Social</a></div>
-<div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
-<div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
-<div class="card"><a href="/jumpgame/index.html">🎮 Platformer</a></div>
-<div class="card"><a href="crazynpcs.on.websim.ai">🎮 Crazy NPCs</a></div>
-</div>
-</section>
+  <!-- AUDIO (Hidden in normal UI, we handle it via JS) -->
+  <audio id="audioPlayer" style="display:none;"></audio>
 
-<!-- "The Worst" Series Section -->
-<section>
-<h2>"The Worst" Series</h2>
-<div class="grid">
-<div class="card"><a href="/the-worst-volume-bar/index.html">🎮 Worst Volume Bar</a></div>
-<div class="card"><a href="/the-worst-ui/index.html">🎮 Worst UI</a></div>
-<div class="card"><a href="/the-worst-brightness-control/index.html">🎮 Worst Brightness</a></div>
-<div class="card"><a href="/the-worst-easter-egg/index.html">🎮 Worst Easter Egg</a></div>
-<div class="card"><a href="/the-worst-loading-screen/index.html">🎮 Worst Loading</a></div>
-<div class="card"><a href="/the-worst-auto-save/index.html">🎮 Worst Auto-Save</a></div>
-<div class="card"><a href="/the-worst-cursor/index.html">🎮 Worst Cursor</a></div>
-<div class="card"><a href="/the-worst-pop-up-window/index.html">🎮 Worst Pop-up</a></div>
-<div class="card"><a href="/the-worst-keyboard-shortcuts/index.html">🎮 Worst Shortcuts</a></div>
-<div class="card"><a href="/the-worst-scroll-bar/index.html">🎮 Worst Scroll Bar</a></div>
-<div class="card"><a href="/the-worst-refresh-button/index.html">🎮 Worst Refresh</a></div>
-<div class="card"><a href="/the-worst-search-bar/index.html">🎮 Worst Search Bar</a></div>
-<div class="card"><a href="/the-worst-progress-bar/index.html">🎮 Worst Progress</a></div>
-</div>
-</section>
+  <!-- MAIN CONTENT (Initially hidden) -->
+  <div id="mainContent">
+    <!-- HEADER -->
+    <header>
+      <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY REMAKE!</h1>
+      <button id="settingsBtn">Settings</button>
+    </header>
 
-<!-- Discontinued/Broken Games Section -->
-<section>
-<h2>Discontinued/Broken Games</h2>
-<div class="grid">
-<div class="card"><a href="/Dandys-world-arts/index.html">🎮 Endless GIF Scroll</a></div>
-<div class="card"><a href="/endless-maze/index.html">🎮 Endless Maze</a></div>
-<div class="card"><a href="/EVIL-BITGAMESHUB/index.html">🎮 EVIL BIT GAMES HUB</a></div>
-<div class="card"><a href="/smooth-brain/index.html">🎮 Copy Text Button</a></div>
-<div class="card"><a href="/Sandbox-game/index.html">🎮 Sandbox</a></div>
-<div class="card"><a href="/Random-one/keys.html">🎮 Dunno</a></div>
-<div class="card"><a href="/wonderofu/index.html">🎮 Super Gay Bros DVD</a></div>
-<div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
-</div>
-</section>
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Main Games Section -->
+      <section>
+        <h2>Main Games</h2>
+        <div class="grid">
+          <div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
+          <div class="card"><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></div>
+          <div class="card"><a href="/random-compliment/index.html">🎮 Random Compliments</a></div>
+          <div class="card"><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></div>
+          <div class="card"><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></div>
+          <div class="card"><a href="/customdodge/index.html">🎮 Custom Dodge</a></div>
+          <div class="card"><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster</a></div>
+          <div class="card"><a href="/random-complaints/index.html">🎮 Random Complaints</a></div>
+          <div class="card"><a href="/404-error-simulator/index.html">🎮 404 Simulator</a></div>
+          <div class="card"><a href="/random-button-generator/index.html">🎮 Random Buttons</a></div>
+          <div class="card"><a href="/endless-scrolling-text/index.html">🎮 Scrolling Text</a></div>
+          <div class="card"><a href="/time-wasting-countdown/index.html">🎮 Countdown</a></div>
+          <div class="card"><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></div>
+          <div class="card"><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel</a></div>
+          <div class="card"><a href="/random-fact-generator/index.html">🎮 Fact Generator</a></div>
+          <div class="card"><a href="/staring-contest/index.html">🎮 Staring Contest</a></div>
+          <div class="card"><a href="/color-generator/index.html">🎮 Color Generator</a></div>
+          <div class="card"><a href="/video-cloner/index.html">🎮 Video Cloner</a></div>
+          <div class="card"><a href="/10-in-1/index.html">🎮 Tilting Maze Game</a></div>
+          <div class="card"><a href="/tribute-nice/index.html">🎮 Tribute to IZ Kamakawiwo'ole</a></div>
+          <div class="card"><a href="/adware-simulator/index.html">🎮 Totally Reol Ads</a></div>
+          <div class="card"><a href="/pong-gaem/index.html">🎮 Generic Pong Gaem</a></div>
+          <div class="card"><a href="/Music-board/index.html">🎮 Musicboard</a></div>
+          <div class="card"><a href="/DVD-GAME/index.html">🎮 Smiley Face</a></div>
+          <div class="card"><a href="/rhythm-cold/index.html">🎮 Normal Site</a></div>
+          <div class="card"><a href="/Arcade/index.html">🎮 Quiz</a></div>
+          <div class="card"><a href="/avatar/index.html">🎮 Quiz 2</a></div>
+          <div class="card"><a href="/28-Emoji-Catcher-Game/index.html">🎮 Emoji Catcher</a></div>
+          <div class="card"><a href="/26-Fruit-Slicer-Game/index.html">🎮 Fruit Slicer</a></div>
+          <div class="card"><a href="/25-Speak-Number-Guessing-Game/index.html">🎮 Speak Number Guessing</a></div>
+          <div class="card"><a href="/23-Shape-Clicker-Game/index.html">🎮 Shape Clicker</a></div>
+          <div class="card"><a href="/22-Dice-Roll-Simulator/index.html">🎮 Dice Simulator</a></div>
+          <div class="card"><a href="/21-2048-Game/index.html">🎮 2048 Game</a></div>
+          <div class="card"><a href="/20-Crossy-Road-Game/index.html">🎮 Crossy Road</a></div>
+          <div class="card"><a href="/19-Flappy-Bird-Game/index.html">🎮 Flappy Bird</a></div>
+          <div class="card"><a href="/18-Hangman-Game/index.html">🎮 Hangman</a></div>
+          <div class="card"><a href="/17-Typing-Game/index.html">🎮 Typing</a></div>
+          <div class="card"><a href="/16-Insect-Catch-Game/index.html">🎮 Insect Catch</a></div>
+          <div class="card"><a href="/15-Connect-Four-Game/index.html">🎮 Connect 4</a></div>
+          <div class="card"><a href="/14-Snake-Game/index.html">🎮 Snake</a></div>
+          <div class="card"><a href="/13-Tic-Tac-Toe/index.html">🎮 Tic Tac Toe</a></div>
+          <div class="card"><a href="/12-Type-Number-Guessing-Game/index.html">🎮 Type Guessing</a></div>
+          <div class="card"><a href="/11-Rock-Paper-Scissors/index.html">🎮 RPS</a></div>
+          <div class="card"><a href="/08-Tetris-Game/index.html">🎮 Tetris</a></div>
+          <div class="card"><a href="/10-Memory-Card-Game/index.html">🎮 Memory Game</a></div>
+          <div class="card"><a href="/06-Tower-Blocks/index.html">🎮 Tower Blocks</a></div>
+          <div class="card"><a href="/07-Ping-Pong-Game/index.html">🎮 Ping Pong</a></div>
+          <div class="card"><a href="/05-Minesweeper-Game/index.html">🎮 Minesweeper</a></div>
+          <div class="card"><a href="/04-Breakout-Game/index.html">🎮 Breakout</a></div>
+          <div class="card"><a href="/03-Speed-Typing-Game/index.html">🎮 Speed Typing</a></div>
+          <div class="card"><a href="/02-Archery-Game/index.html">🎮 Archery</a></div>
+          <div class="card"><a href="/01-Candy-Crush-Game/index.html">🎮 Candy Crush</a></div>
+          <div class="card"><a href="https://discord.com/channels/1311067271455576186/1311070186127884350">🎮 Discord Server</a></div>
+          <div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Reborn</a></div>
+          <div class="card"><a href="/Bebe-malvado/index.html">🎮 Spongebobs Splashy Social</a></div>
+          <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
+          <div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
+          <div class="card"><a href="/jumpgame/index.html">🎮 Platformer</a></div>
+          <div class="card"><a href="crazynpcs.on.websim.ai">🎮 Crazy NPCs</a></div>
+        </div>
+      </section>
 
-<!-- Meme Gallery Section -->
-<section>
-<h2>Meme Gallery</h2>
-<div class="meme-gallery">
-<img src="https://media1.tenor.com/m/qxNnKIup-ccAAAAd/green-lovers.gif" alt="Meme 1">
-<img src="https://media1.tenor.com/m/sXFNKyeTApUAAAAd/wtf-smg4.gif" alt="Meme 2">
-<img src="https://media.tenor.com/EDLBuX_GhnMAAAAM/android-chocolate.gif" alt="Meme 3">
-<img src="https://media1.tenor.com/m/Mx-HToTO5CcAAAAd/android-kitkat.gif" alt="Meme 4">
-</div>
-</section>
-</main>
+      <!-- "The Worst" Series Section -->
+      <section>
+        <h2>"The Worst" Series</h2>
+        <div class="grid">
+          <div class="card"><a href="/the-worst-volume-bar/index.html">🎮 Worst Volume Bar</a></div>
+          <div class="card"><a href="/the-worst-ui/index.html">🎮 Worst UI</a></div>
+          <div class="card"><a href="/the-worst-brightness-control/index.html">🎮 Worst Brightness</a></div>
+          <div class="card"><a href="/the-worst-easter-egg/index.html">🎮 Worst Easter Egg</a></div>
+          <div class="card"><a href="/the-worst-loading-screen/index.html">🎮 Worst Loading</a></div>
+          <div class="card"><a href="/the-worst-auto-save/index.html">🎮 Worst Auto-Save</a></div>
+          <div class="card"><a href="/the-worst-cursor/index.html">🎮 Worst Cursor</a></div>
+          <div class="card"><a href="/the-worst-pop-up-window/index.html">🎮 Worst Pop-up</a></div>
+          <div class="card"><a href="/the-worst-keyboard-shortcuts/index.html">🎮 Worst Shortcuts</a></div>
+          <div class="card"><a href="/the-worst-scroll-bar/index.html">🎮 Worst Scroll Bar</a></div>
+          <div class="card"><a href="/the-worst-refresh-button/index.html">🎮 Worst Refresh</a></div>
+          <div class="card"><a href="/the-worst-search-bar/index.html">🎮 Worst Search Bar</a></div>
+          <div class="card"><a href="/the-worst-progress-bar/index.html">🎮 Worst Progress</a></div>
+        </div>
+      </section>
 
-  <!-- FOOTER -->
-  <footer>
-    &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.
-  </footer>
+      <!-- Discontinued/Broken Games Section -->
+      <section>
+        <h2>Discontinued/Broken Games</h2>
+        <div class="grid">
+          <div class="card"><a href="/Dandys-world-arts/index.html">🎮 Endless GIF Scroll</a></div>
+          <div class="card"><a href="/endless-maze/index.html">🎮 Endless Maze</a></div>
+          <div class="card"><a href="/EVIL-BITGAMESHUB/index.html">🎮 EVIL BIT GAMES HUB</a></div>
+          <div class="card"><a href="/smooth-brain/index.html">🎮 Copy Text Button</a></div>
+          <div class="card"><a href="/Sandbox-game/index.html">🎮 Sandbox</a></div>
+          <div class="card"><a href="/Random-one/keys.html">🎮 Dunno</a></div>
+          <div class="card"><a href="/wonderofu/index.html">🎮 Super Gay Bros DVD</a></div>
+          <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
+        </div>
+      </section>
+
+      <!-- Meme Gallery Section -->
+      <section>
+        <h2>Meme Gallery</h2>
+        <div class="meme-gallery">
+          <img src="https://media1.tenor.com/m/qxNnKIup-ccAAAAd/green-lovers.gif" alt="Meme 1">
+          <img src="https://media1.tenor.com/m/sXFNKyeTApUAAAAd/wtf-smg4.gif" alt="Meme 2">
+          <img src="https://media.tenor.com/EDLBuX_GhnMAAAAM/android-chocolate.gif" alt="Meme 3">
+          <img src="https://media1.tenor.com/m/Mx-HToTO5CcAAAAd/android-kitkat.gif" alt="Meme 4">
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.
+    </footer>
+  </div> <!-- end #mainContent -->
 
   <!-- SETTINGS MODAL -->
   <div id="settingsModal" class="modal">
@@ -605,6 +674,46 @@
   <button id="backToTop">Top</button>
 
   <script>
+    /**********************************************
+     *  Title Screen & Audio
+     **********************************************/
+    const titleScreen = document.getElementById('titleScreen');
+    const enterBtn = document.getElementById('enterBtn');
+    const mainContent = document.getElementById('mainContent');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    // Playlist of songs
+    const playlist = [
+      'Sounds/The Cranberries - Zombie (Alt. Version) [95HqlWRFrAk].mp3',
+      'Sounds/Stay Together For The Kids - Blink 182 [45RYX77veK0].mp3'
+    ];
+    let currentTrackIndex = 0;
+
+    // Once user clicks "ENTER", hide title screen, show main content, start playlist
+    enterBtn.addEventListener('click', () => {
+      titleScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      playCurrentTrack();
+    });
+
+    // Load and play the current track
+    function playCurrentTrack() {
+      audioPlayer.src = playlist[currentTrackIndex];
+      audioPlayer.play().catch(err => {
+        console.warn("Autoplay might be blocked by the browser. User interaction needed.");
+      });
+    }
+
+    // When a track ends, move to next
+    audioPlayer.addEventListener('ended', () => {
+      currentTrackIndex++;
+      if (currentTrackIndex < playlist.length) {
+        playCurrentTrack();
+      } else {
+        // All songs have played, you can do something else here if you want
+      }
+    });
+
     /**********************************************
      *  Intersection Observer for Section Fade-In
      **********************************************/
@@ -704,9 +813,16 @@
 
     // Show reCAPTCHA modal on card click
     document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        pendingURL = card.getAttribute('data-href');
-        captchaModal.style.display = 'flex';
+      // IMPORTANT: Instead of using <a> in the .card directly,
+      // we need a custom approach or data-href, but for demonstration:
+      card.addEventListener('click', (e) => {
+        // If there's an <a> inside, gather its href
+        const linkEl = card.querySelector('a');
+        if (linkEl) {
+          e.preventDefault(); // Prevent immediate navigation
+          pendingURL = linkEl.getAttribute('href');
+          captchaModal.style.display = 'flex';
+        }
       });
     });
 
