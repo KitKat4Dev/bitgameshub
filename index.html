@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="description" content="BIT GAMES HUB 1 YEAR ANNIVERSARY ULTRA REMASTERED++" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY EDITION - REMAKE</title>
+  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY - ULTRA REMASTERED++</title>
 
   <!-- Google Fonts -->
   <link
@@ -16,19 +17,23 @@
 
   <style>
     /* --------------------------------------------------
-       Base + Reset
+       1) BASE + RESET
     -------------------------------------------------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
     html, body {
       height: 100%;
       font-family: 'Poppins', sans-serif;
+      background: #0e0e0e;
       color: #fff;
-      background: #0e0e0e; /* Fallback color */
       overflow-x: hidden;
+      position: relative;
+      user-select: none; /* prevents accidental selection, can remove if desired */
+      cursor: default;   /* for a more 'game-like' feel */
     }
     ::-webkit-scrollbar {
       width: 8px;
@@ -39,26 +44,48 @@
     }
 
     /* --------------------------------------------------
-       New Neon Swirl Background Animation
+       2) MULTI-LAYER BACKGROUND: PARALLAX + STARS + SWIRL + (NEW: Matrix Overlay)
     -------------------------------------------------- */
     body::before {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -2;
       width: 100vw;
       height: 100vh;
-      background: conic-gradient(
-        from 0deg,
-        #ff00ff,
-        #00ffff,
-        #00ff00,
-        #ffff00,
-        #ff00ff
-      );
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12) 2px, transparent 10px),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,0.07) 2px, transparent 10px),
+        radial-gradient(circle at 60% 30%, rgba(255,255,255,0.1) 2px, transparent 10px),
+        #000; /* base color */
+      background-size: 200px 200px, 300px 300px, 200px 200px, cover;
+      background-repeat: repeat, repeat, repeat, no-repeat;
+      z-index: -4;
+      animation: starDrift 200s linear infinite;
+    }
+    @keyframes starDrift {
+      0% {
+        background-position: 0 0, 0 0, 0 0;
+      }
+      100% {
+        background-position: 4000px 4000px, -4000px -4000px, 3500px -3500px;
+      }
+    }
+
+    /* Additional swirling gradient on top of starfield */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -3;
+      background: conic-gradient(from 0deg, #ff00ff, #00ffff, #00ff00, #ffff00, #ff00ff);
       background-size: 200% 200%;
       animation: swirl 8s linear infinite;
+      opacity: 0.4;
+      pointer-events: none;
     }
     @keyframes swirl {
       0% {
@@ -69,11 +96,100 @@
       }
     }
 
-    /* We'll remove body::after from the previous code 
-       so it's a brand new look, no more scanlines. */
+    /* (NEW) Matrix overlay effect: falling green letters */
+    .matrix-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 15px,
+        rgba(0,255,0,0.2) 15px,
+        rgba(0,255,0,0.2) 16px
+      );
+      animation: matrixFall 10s linear infinite;
+      opacity: 0.1; /* subtle */
+    }
+    @keyframes matrixFall {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 1000px;
+      }
+    }
+
+    /* SHOOTING STAR: We'll create multiple for extra sparkle! */
+    @keyframes shootStar {
+      0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+      }
+      80% {
+        transform: translate(-1500px, 700px) scale(1.5);
+      }
+      100% {
+        transform: translate(-1600px, 800px) scale(0);
+        opacity: 0;
+      }
+    }
+    .shooting-star {
+      position: fixed;
+      top: -10px;
+      left: 50%;
+      width: 2px;
+      height: 2px;
+      background: white;
+      opacity: 0.8;
+      box-shadow: 0 0 6px 2px #fff;
+      border-radius: 50%;
+      animation: shootStar 3s ease-in-out forwards;
+      z-index: -1;
+    }
+
+    /* More than one star – let's offset them slightly */
+    .shooting-star:nth-child(1) {
+      animation-delay: 2s;
+    }
+    .shooting-star:nth-child(2) {
+      animation-delay: 5s;
+    }
+    .shooting-star:nth-child(3) {
+      animation-delay: 9s;
+    }
+
+    /* Additional floating shapes effect (subtle) */
+    .float-shape {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(#ff00ff, transparent);
+      filter: blur(4px);
+      opacity: 0.15;
+      animation: floatShapes 10s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+    @keyframes floatShapes {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(50px, -50px) rotate(360deg);
+      }
+    }
+    .float-shape:nth-child(even) {
+      background: radial-gradient(#00ffff, transparent);
+      animation-duration: 12s;
+    }
 
     /* --------------------------------------------------
-       Title Screen Overlay
+       3) TITLE SCREEN (Intro overlay)
     -------------------------------------------------- */
     #titleScreen {
       position: fixed;
@@ -83,51 +199,83 @@
       height: 100vh;
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(6px);
-      z-index: 9999; /* On top of everything */
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       text-align: center;
       padding: 20px;
+      animation: fadeInScreen 1s ease forwards;
+    }
+    @keyframes fadeInScreen {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
     #titleScreen h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
+      font-size: 3.2rem;
       color: #0ff;
       text-shadow: 0 0 8px #0ff;
       margin-bottom: 20px;
+      animation: floatTitle 3s ease-in-out infinite;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    #titleScreen h1:hover {
+      transform: scale(1.1);
+    }
+    @keyframes floatTitle {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
     }
     #titleScreen p {
       font-size: 1.2rem;
       margin-bottom: 20px;
       color: #ccc;
-      max-width: 500px;
+      max-width: 600px;
+      line-height: 1.5em;
+      animation: fadeInText 2s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
     }
     #enterBtn {
       background: transparent;
       border: 2px solid #0ff;
       color: #0ff;
-      padding: 10px 24px;
+      padding: 12px 28px;
       cursor: pointer;
       border-radius: 8px;
       font-family: 'Orbitron', sans-serif;
       font-size: 1.1rem;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
     }
     #enterBtn:hover {
       background: #0ff;
       color: #000;
       box-shadow: 0 0 8px #0ff;
+      transform: scale(1.05);
     }
 
-    /* Hide main content initially (until user clicks "Enter") */
+    /* Hide main content until user enters */
     #mainContent {
       display: none;
     }
 
     /* --------------------------------------------------
-       Header
+       4) HEADER (Sticky)
     -------------------------------------------------- */
     header {
       position: sticky;
@@ -140,10 +288,15 @@
       padding: 10px 30px;
       border-bottom: 2px solid #0ff;
       z-index: 1000;
+      animation: fadeInHeader 1s ease forwards;
+    }
+    @keyframes fadeInHeader {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0);    }
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       letter-spacing: 2px;
       color: #0ff;
       text-shadow: 0 0 6px #0ff;
@@ -171,15 +324,17 @@
     }
 
     /* --------------------------------------------------
-       Main
+       5) MAIN CONTENT AREA
     -------------------------------------------------- */
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 30px 40px 80px;
     }
+
+    /* Section fade-in on scroll */
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
@@ -193,10 +348,22 @@
       font-size: 2rem;
       color: #f0f;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       position: relative;
       text-transform: uppercase;
       text-shadow: 0 0 6px #f0f;
+      animation: flickerText 3s infinite;
+    }
+    @keyframes flickerText {
+      0% {
+        text-shadow: 0 0 6px #f0f, 0 0 20px #f0f;
+      }
+      50% {
+        text-shadow: 0 0 6px #f0f;
+      }
+      100% {
+        text-shadow: 0 0 6px #f0f, 0 0 20px #f0f;
+      }
     }
     section h2::after {
       content: "";
@@ -218,17 +385,13 @@
     }
 
     /* --------------------------------------------------
-       Grid
+       6) GRID + GAME CARDS
     -------------------------------------------------- */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
     }
-
-    /* --------------------------------------------------
-       Game Cards
-    -------------------------------------------------- */
     .card {
       background: rgba(255, 255, 255, 0.05);
       border: 2px solid #555;
@@ -236,16 +399,17 @@
       text-align: center;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.4s, box-shadow 0.4s;
+      transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
       position: relative;
+      transform-style: preserve-3d;
     }
     .card:hover {
-      transform: translateY(-4px) scale(1.02);
+      transform: translateY(-4px) scale(1.02) rotateX(3deg) rotateY(-3deg);
       box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
       border-color: #0ff;
       z-index: 10;
     }
-    .card .game-link {
+    .card a {
       display: block;
       text-decoration: none;
       color: #fff;
@@ -255,13 +419,35 @@
       text-shadow: 0 0 5px #ddd;
       transition: color 0.3s;
     }
-    .card:hover .game-link {
+    .card:hover a {
       color: #0ff;
       text-shadow: 0 0 8px #0ff;
     }
+    .card:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
+      opacity: 0;
+      animation: glowSpread 1s forwards;
+    }
+    @keyframes glowSpread {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(2);
+      }
+    }
 
     /* --------------------------------------------------
-       Meme Gallery
+       7) MEME GALLERY
     -------------------------------------------------- */
     .meme-gallery {
       display: grid;
@@ -272,16 +458,17 @@
       width: 100%;
       border-radius: 8px;
       border: 2px solid #333;
-      transition: transform 0.3s, filter 0.3s;
+      transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
       box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
     }
     .meme-gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) rotate(1deg);
       filter: brightness(1.2) saturate(1.1);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
     }
 
     /* --------------------------------------------------
-       Footer
+       8) FOOTER
     -------------------------------------------------- */
     footer {
       background: rgba(10, 10, 10, 0.8);
@@ -298,7 +485,7 @@
     }
 
     /* --------------------------------------------------
-       Settings Modal
+       9) SETTINGS MODAL
     -------------------------------------------------- */
     .modal {
       display: none;
@@ -372,7 +559,7 @@
     }
 
     /* --------------------------------------------------
-       reCAPTCHA Modal
+       10) reCAPTCHA MODAL
     -------------------------------------------------- */
     #captchaModal {
       display: none;
@@ -418,11 +605,11 @@
     }
 
     /* --------------------------------------------------
-       Confetti & BackToTop
+       11) CONFETTI + BACK TO TOP BUTTON
     -------------------------------------------------- */
     #confettiBtn {
       position: fixed;
-      bottom: 100px;
+      bottom: 120px;
       right: 20px;
       background: linear-gradient(135deg, #0ff, #f0f);
       color: #000;
@@ -430,7 +617,7 @@
       padding: 15px 20px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
       z-index: 3000;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -465,7 +652,6 @@
       box-shadow: 0 0 10px #f0f;
     }
 
-    /* Confetti styles/animation */
     .confetti {
       position: fixed;
       top: 0;
@@ -486,28 +672,264 @@
         transform: translateX(-300px) translateY(800px) rotate(720deg);
       }
     }
+
+    /* --------------------------------------------------
+       12) KONAMI EASTER EGG + SECRET MESSAGE
+    -------------------------------------------------- */
+    #secretMessage {
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: 3px solid #ff0;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #ff0;
+      text-shadow: 0 0 5px #ff0;
+      display: none;
+      z-index: 4000;
+      animation: floatUp 2s ease forwards;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translate(-50%, 50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+    }
+    #secretMessage.visible {
+      display: block;
+    }
+
+    /* --------------------------------------------------
+       13) GLITCH TEXT ON DOUBLE-CLICK
+    -------------------------------------------------- */
+    .glitch-text {
+      position: fixed;
+      bottom: 40%;
+      left: 50%;
+      transform: translate(-50%, 40%);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #f0f;
+      text-shadow: 0 0 3px #f0f;
+      pointer-events: none;
+      user-select: none;
+      z-index: 5000;
+      animation: glitchFadeIn 0.3s ease-out,
+                 glitch 1.5s infinite alternate;
+      display: none;
+    }
+    @keyframes glitchFadeIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 40%) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, 40%) scale(1);
+      }
+    }
+    @keyframes glitch {
+      0% {
+        clip-path: inset(0% 0% 10% 0%);
+        transform: translate(-50%, 35%);
+      }
+      20% {
+        clip-path: inset(5% 0% 10% 0%);
+        transform: translate(-51%, 37%);
+      }
+      40% {
+        clip-path: inset(0% 0% 7% 0%);
+        transform: translate(-50%, 38%);
+      }
+      60% {
+        clip-path: inset(0% 1% 4% 2%);
+        transform: translate(-49%, 35%);
+      }
+      80% {
+        clip-path: inset(3% 0% 3% 1%);
+        transform: translate(-50%, 36%);
+      }
+      100% {
+        clip-path: inset(1% 2% 10% 0%);
+        transform: translate(-50%, 40%);
+      }
+    }
+
+    /* --------------------------------------------------
+       14) TEAM/CONTRIBUTORS SECTION
+    -------------------------------------------------- */
+    .team-container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #f0f;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 0 10px rgba(240, 0, 240, 0.2);
+      animation: scaleIn 1s ease;
+    }
+    @keyframes scaleIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .team-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: #f0f;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #f0f;
+    }
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .team-list .member {
+      font-size: 1rem;
+      color: #ccc;
+      padding: 5px 10px;
+      transition: color 0.3s, background 0.3s;
+      border-radius: 6px;
+    }
+    .team-list .member:hover {
+      color: #0ff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* --------------------------------------------------
+       15) EXTENDED EASTER EGG & ANIMATIONS
+    -------------------------------------------------- */
+    .random-cat {
+      position: fixed;
+      bottom: 10%;
+      left: 5%;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #f0f;
+      box-shadow: 0 0 10px #f0f;
+      display: none;
+      animation: catSpin 3s infinite linear;
+      z-index: 6000;
+    }
+    @keyframes catSpin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* (NEW) Random dog pic easter egg container (similar approach to random-cat) */
+    .random-dog {
+      position: fixed;
+      bottom: 10%;
+      right: 5%;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #0f0;
+      box-shadow: 0 0 10px #0f0;
+      display: none;
+      animation: dogSpin 3s infinite linear;
+      z-index: 6000;
+    }
+    @keyframes dogSpin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* (NEW) Ripple effect on body click */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+      pointer-events: none;
+      z-index: 999999; /* on top of everything */
+    }
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <!-- TITLE SCREEN (Hidden once user clicks Enter) -->
+  <!-- Additional background overlay for "Matrix" effect -->
+  <div class="matrix-overlay"></div>
+
+  <!-- Additional Floating Shapes for Visuals -->
+  <div class="float-shape" style="top: 20%; left: 20%;"></div>
+  <div class="float-shape" style="top: 50%; left: 60%;"></div>
+
+  <!-- SHOOTING STARS (multiple) -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <!-- TITLE SCREEN (Hidden once user clicks ENTER) -->
   <div id="titleScreen">
-    <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY REMAKE</h1>
+    <h1>BIT GAMES HUB - ULTRA REMASTERED++</h1>
     <p>
-      Enjoy the brand-new neon swirl animation and a special playlist featuring:<br>
-      <strong>The Cranberries - Zombie (Alt. Version)</strong> <br>
-      <strong>Blink 182 - Stay Together For The Kids</strong>
+      Welcome to an even more vibrant swirl of starfields, fresh Easter eggs, 
+      extra animations, and extended content!<br>
+      Updated playlist includes:
+      <br/><strong>The Cranberries - Zombie (Alt. Version)</strong>
+      <br/><strong>Blink 182 - Stay Together For The Kids</strong>
+      <br/><strong>More Surprises Ahead!</strong>
+      <br/><em>New: watch for hidden codes, click ripples, and random dog pics!</em>
     </p>
     <button id="enterBtn">ENTER</button>
   </div>
 
-  <!-- AUDIO (Hidden in normal UI, we handle it via JS) -->
+  <!-- HIDDEN SECRET MESSAGE (Shown when Konami Code is entered) -->
+  <div id="secretMessage">
+    <p><strong>Konami Code Activated!</strong><br>Extra Confetti + Surprise Unlocked!</p>
+  </div>
+
+  <!-- GLITCH TEXT (Double-click Easter Egg) -->
+  <div class="glitch-text" id="glitchText">GLITCH MODE ENGAGED</div>
+
+  <!-- RANDOM CAT EASTER EGG -->
+  <img class="random-cat" id="randomCat" src="" alt="Random Cat" />
+
+  <!-- RANDOM DOG EASTER EGG (new) -->
+  <img class="random-dog" id="randomDog" src="" alt="Random Dog" />
+
+  <!-- AUDIO (Hidden, handled by JS) -->
   <audio id="audioPlayer" style="display:none;"></audio>
 
   <!-- MAIN CONTENT (Initially hidden) -->
   <div id="mainContent">
     <!-- HEADER -->
     <header>
-      <h1>BIT GAMES HUB 1 YEAR ANNIVERSARY REMAKE!</h1>
+      <h1>BIT GAMES HUB - 1 YEAR ANNIVERSARY REMAKE++</h1>
       <button id="settingsBtn">Settings</button>
     </header>
 
@@ -517,6 +939,7 @@
       <section>
         <h2>Main Games</h2>
         <div class="grid">
+          <!-- Add or remove any game links as desired -->
           <div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
           <div class="card"><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></div>
           <div class="card"><a href="/random-compliment/index.html">🎮 Random Compliments</a></div>
@@ -570,7 +993,7 @@
           <div class="card"><a href="/02-Archery-Game/index.html">🎮 Archery</a></div>
           <div class="card"><a href="/01-Candy-Crush-Game/index.html">🎮 Candy Crush</a></div>
           <div class="card"><a href="https://discord.com/channels/1311067271455576186/1311070186127884350">🎮 Discord Server</a></div>
-          <div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Reborn</a></div>
+          <div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Rebornd</a></div>
           <div class="card"><a href="/Bebe-malvado/index.html">🎮 Spongebobs Splashy Social</a></div>
           <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
           <div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
@@ -623,11 +1046,26 @@
           <img src="https://media1.tenor.com/m/Mx-HToTO5CcAAAAd/android-kitkat.gif" alt="Meme 4">
         </div>
       </section>
+
+      <!-- Team / Contributors Section -->
+      <section>
+        <div class="team-container">
+          <h2 class="team-title">Our Team & Contributors</h2>
+          <div class="team-list">
+            <div class="member">- User1: Frontend Wizard</div>
+            <div class="member">- User2: Backend Overlord</div>
+            <div class="member">- User3: Easter Egg Enthusiast</div>
+            <div class="member">- NewDev: Additional Animations Guru</div>
+            <div class="member">- You, the Player: Beta Tester</div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
-      &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.
+      &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.<br>
+      <small>Version: <strong>1.2.0 ULTRA REMASTERED++</strong></small>
     </footer>
   </div> <!-- end #mainContent -->
 
@@ -646,9 +1084,10 @@
           <option value="14">Small</option>
           <option value="16" selected>Medium</option>
           <option value="18">Large</option>
+          <option value="20">Extra Large</option>
         </select>
       </div>
-      <!-- Additional settings here... -->
+      <!-- Additional settings can go here -->
     </div>
   </div>
 
@@ -674,8 +1113,8 @@
 
   <script>
     /**********************************************
-     *  Title Screen & Audio
-     **********************************************/
+     * 1) TITLE SCREEN & AUDIO
+    **********************************************/
     const titleScreen = document.getElementById('titleScreen');
     const enterBtn = document.getElementById('enterBtn');
     const mainContent = document.getElementById('mainContent');
@@ -685,37 +1124,39 @@
     const playlist = [
       'Sounds/The Cranberries - Zombie (Alt. Version) [95HqlWRFrAk].mp3',
       'Sounds/Stay Together For The Kids - Blink 182 [45RYX77veK0].mp3'
+      // Add more track paths if desired
     ];
     let currentTrackIndex = 0;
 
-    // Once user clicks "ENTER", hide title screen, show main content, start playlist
+    let enterClickCount = 0;
     enterBtn.addEventListener('click', () => {
+      enterClickCount++;
+      if (enterClickCount >= 5) {
+        alert("Wow, you REALLY want to enter! Have at it!");
+      }
       titleScreen.style.display = 'none';
       mainContent.style.display = 'block';
       playCurrentTrack();
+      console.log("%cWelcome to the ULTRA REMASTERED++ dev console experience!", "color: #0ff; font-size: 14px;");
     });
 
-    // Load and play the current track
     function playCurrentTrack() {
       audioPlayer.src = playlist[currentTrackIndex];
       audioPlayer.play().catch(err => {
-        console.warn("Autoplay might be blocked by the browser. User interaction needed.");
+        console.warn("Autoplay might be blocked by the browser:", err);
       });
     }
 
-    // When a track ends, move to next
     audioPlayer.addEventListener('ended', () => {
       currentTrackIndex++;
       if (currentTrackIndex < playlist.length) {
         playCurrentTrack();
-      } else {
-        // All songs have played, you can do something else here if you want
       }
     });
 
     /**********************************************
-     *  Intersection Observer for Section Fade-In
-     **********************************************/
+     * 2) INTERSECTION OBSERVER FOR SECTION FADE-IN
+    **********************************************/
     const sections = document.querySelectorAll('section');
     const observerOptions = { threshold: 0.1 };
     const sectionObserver = new IntersectionObserver((entries, obs) => {
@@ -729,8 +1170,8 @@
     sections.forEach(sec => sectionObserver.observe(sec));
 
     /**********************************************
-     *  Settings Modal
-     **********************************************/
+     * 3) SETTINGS MODAL
+    **********************************************/
     const settingsBtn = document.getElementById('settingsBtn');
     const settingsModal = document.getElementById('settingsModal');
     const closeModal = document.getElementById('closeModal');
@@ -748,15 +1189,15 @@
     });
 
     /**********************************************
-     *  Font Size Adjustment
-     **********************************************/
+     * 4) FONT SIZE ADJUSTMENT
+    **********************************************/
     document.getElementById('fontSize').addEventListener('change', (e) => {
       document.body.style.fontSize = e.target.value + 'px';
     });
 
     /**********************************************
-     *  Dark Mode Toggle
-     **********************************************/
+     * 5) DARK MODE TOGGLE
+    **********************************************/
     const body = document.body;
     document.getElementById('themeToggle').addEventListener('change', (e) => {
       if (e.target.checked) {
@@ -767,8 +1208,8 @@
     });
 
     /**********************************************
-     *  Confetti Button
-     **********************************************/
+     * 6) CONFETTI BUTTON
+    **********************************************/
     const confettiBtn = document.getElementById('confettiBtn');
     confettiBtn.addEventListener('click', () => {
       for (let i = 0; i < 35; i++) createConfetti();
@@ -784,13 +1225,13 @@
       setTimeout(() => confetti.remove(), fallDuration * 1000);
     }
     function randomNeonColor() {
-      const colors = ['#0ff', '#f0f', '#0f0', '#ff0', '#ff00aa'];
+      const colors = ['#0ff', '#f0f', '#0f0', '#ff0', '#ff00aa', '#00ffcc'];
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
     /**********************************************
-     *  Back to Top Button
-     **********************************************/
+     * 7) BACK TO TOP BUTTON
+    **********************************************/
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -804,35 +1245,29 @@
     });
 
     /**********************************************
-     *  reCAPTCHA Modal & Card Click Logic
-     **********************************************/
+     * 8) reCAPTCHA MODAL & CARD CLICK
+    **********************************************/
     const captchaModal = document.getElementById('captchaModal');
     const captchaClose = document.getElementById('captchaClose');
-    let pendingURL = null;  // store target link after reCAPTCHA
+    let pendingURL = null;
 
-    // Show reCAPTCHA modal on card click
     document.querySelectorAll('.card').forEach(card => {
-      // IMPORTANT: Instead of using <a> in the .card directly,
-      // we need a custom approach or data-href, but for demonstration:
       card.addEventListener('click', (e) => {
-        // If there's an <a> inside, gather its href
         const linkEl = card.querySelector('a');
         if (linkEl) {
-          e.preventDefault(); // Prevent immediate navigation
+          e.preventDefault();
           pendingURL = linkEl.getAttribute('href');
           captchaModal.style.display = 'flex';
         }
       });
     });
 
-    // If user closes the captcha
     captchaClose.addEventListener('click', () => {
       captchaModal.style.display = 'none';
       pendingURL = null;
-      grecaptcha.reset(); // reset the reCAPTCHA widget
+      grecaptcha.reset();
     });
 
-    // If user clicks outside the captcha area
     window.addEventListener('click', (e) => {
       if (e.target === captchaModal) {
         captchaModal.style.display = 'none';
@@ -841,12 +1276,207 @@
       }
     });
 
-    // On successful reCAPTCHA:
     window.onRecaptchaSuccess = function() {
       if (pendingURL) {
         window.location.href = pendingURL;
       }
     };
+
+    /**********************************************
+     * 9) KONAMI CODE EASTER EGG
+    **********************************************/
+    let konamiSequence = [];
+    const konamiCode = [
+      'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+      'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
+      'b','a'
+    ];
+    window.addEventListener('keydown', (e) => {
+      konamiSequence.push(e.key);
+      if (konamiSequence.length > konamiCode.length) {
+        konamiSequence.shift();
+      }
+      if (konamiSequence.toString() === konamiCode.toString()) {
+        activateKonamiEasterEgg();
+        konamiSequence = [];
+      }
+    });
+    function activateKonamiEasterEgg() {
+      const secretMsg = document.getElementById('secretMessage');
+      secretMsg.classList.add('visible');
+      for (let i = 0; i < 50; i++) createConfetti();
+      setTimeout(() => {
+        secretMsg.classList.remove('visible');
+        secretMsg.style.display = 'none';
+      }, 5000);
+    }
+
+    /**********************************************
+     * 10) EXTRA EASTER EGG: DOUBLE-CLICK
+     **********************************************/
+    const glitchText = document.getElementById('glitchText');
+    let glitchTimeout = null;
+    document.addEventListener('dblclick', () => {
+      glitchText.style.display = 'block';
+      if (glitchTimeout) clearTimeout(glitchTimeout);
+      glitchTimeout = setTimeout(() => {
+        glitchText.style.display = 'none';
+      }, 3000);
+      for (let i = 0; i < 15; i++) createConfetti();
+    });
+
+    /**********************************************
+     * 11) CAPS LOCK EASTER EGG
+    **********************************************/
+    window.addEventListener('keydown', (e) => {
+      if (e.getModifierState('CapsLock') && e.key !== 'CapsLock') {
+        alert("CAPS LOCK ENGAGED! YOU'RE SHOUTING NOW!");
+      }
+    });
+
+    /**********************************************
+     * 12) MILK CODE EASTER EGG
+    **********************************************/
+    let milkBuffer = [];
+    window.addEventListener('keydown', (e) => {
+      milkBuffer.push(e.key.toLowerCase());
+      if (milkBuffer.length > 4) {
+        milkBuffer.shift();
+      }
+      if (milkBuffer.join('') === 'milk') {
+        alert("You found the MILK secret! 🥛 More confetti for you!");
+        for (let i = 0; i < 40; i++) createConfetti();
+      }
+    });
+
+    /**********************************************
+     * 13) COFFEE CODE EASTER EGG
+    **********************************************/
+    let coffeeBuffer = [];
+    window.addEventListener('keydown', (e) => {
+      coffeeBuffer.push(e.key.toLowerCase());
+      if (coffeeBuffer.length > 6) {
+        coffeeBuffer.shift();
+      }
+      if (coffeeBuffer.join('') === 'coffee') {
+        alert("COFFEE TIME! Energizing with confetti and a random cat!");
+        for (let i = 0; i < 50; i++) createConfetti();
+        showRandomCat();
+      }
+    });
+
+    /**********************************************
+     * 14) RANDOM CAT EASTER EGG
+    **********************************************/
+    const randomCatEl = document.getElementById('randomCat');
+    function showRandomCat() {
+      fetch('https://api.thecatapi.com/v1/images/search')
+        .then(res => res.json())
+        .then(data => {
+          if (data[0] && data[0].url) {
+            randomCatEl.src = data[0].url;
+            randomCatEl.style.display = 'block';
+            setTimeout(() => {
+              randomCatEl.style.display = 'none';
+            }, 7000);
+          }
+        })
+        .catch(err => {
+          console.log("Cat fetch error:", err);
+          randomCatEl.src = "https://cdn2.thecatapi.com/images/MTY3ODIyMg.gif";
+          randomCatEl.style.display = 'block';
+          setTimeout(() => {
+            randomCatEl.style.display = 'none';
+          }, 7000);
+        });
+    }
+
+    /**********************************************
+     * (NEW) 15) DOG CODE EASTER EGG - "DOG"
+    **********************************************/
+    let dogBuffer = [];
+    const randomDogEl = document.getElementById('randomDog');
+    window.addEventListener('keydown', (e) => {
+      dogBuffer.push(e.key.toLowerCase());
+      if (dogBuffer.length > 3) {
+        dogBuffer.shift();
+      }
+      if (dogBuffer.join('') === 'dog') {
+        alert("DOG TIME! Woof! Enjoy a random dog picture!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomDog();
+      }
+    });
+
+    function showRandomDog() {
+      fetch('https://dog.ceo/api/breeds/image/random')
+        .then(res => res.json())
+        .then(data => {
+          if (data.message) {
+            randomDogEl.src = data.message;
+            randomDogEl.style.display = 'block';
+            setTimeout(() => {
+              randomDogEl.style.display = 'none';
+            }, 7000);
+          }
+        })
+        .catch(err => {
+          console.log("Dog fetch error:", err);
+          randomDogEl.src = "https://images.dog.ceo/breeds/husky/n02110185_10047.jpg";
+          randomDogEl.style.display = 'block';
+          setTimeout(() => {
+            randomDogEl.style.display = 'none';
+          }, 7000);
+        });
+    }
+
+    /**********************************************
+     * 16) IDLE DETECTION EASTER EGG
+    **********************************************/
+    let idleTimer;
+    let idleTime = 20 * 1000; // 20 seconds
+    function resetIdleTimer() {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        alert("Are you still there? The games are waiting!");
+      }, idleTime);
+    }
+    ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt =>
+      window.addEventListener(evt, resetIdleTimer)
+    );
+    resetIdleTimer();
+
+    /**********************************************
+     * (NEW) 17) RIPPLE EFFECT ON CLICK
+    **********************************************/
+    document.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      ripple.style.left = `${e.pageX}px`;
+      ripple.style.top = `${e.pageY}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+
+    /**********************************************
+     * (NEW) 18) TRIPLE-CLICK EASTER EGG
+     **********************************************/
+    let clickCount = 0;
+    let tripleClickTimeout;
+    document.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount === 3) {
+        alert("Triple click discovered! Surprise confetti inbound!");
+        for (let i = 0; i < 50; i++) createConfetti();
+        clickCount = 0;
+      }
+      clearTimeout(tripleClickTimeout);
+      tripleClickTimeout = setTimeout(() => {
+        clickCount = 0;
+      }, 600);
+    });
   </script>
 </body>
 </html>
