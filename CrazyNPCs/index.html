@@ -1,0 +1,223 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Crazy NPCs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.10.1/dist/nipplejs.min.js"></script>
+  <style>
+    .wega-chat {
+      background-color: rgba(128, 0, 128, 0.8);
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      border-radius: 12px;
+      padding: 8px 12px;
+      width: 400px;
+      max-width: 400px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div id="title-screen">
+    <h1>Crazy NPCs</h1>
+    <p>Press any key or click to start</p>
+    <audio id="background-music" src="/THE WORLD REVOLVING.mp3" autoplay loop></audio>
+    <button id="start-button">Start Game</button>
+    <div id="wegas-toggle-container" style="margin-top:20px; font-size:20px; color:white;">
+      <label>
+        <p>API played this game!</p>
+        <p>Now on the hot page</p>
+         <p>IDK no nothing but no ice im just cold</p>
+        <input type="checkbox" id="disable-wegas-checkbox">
+        Disable Wegas
+      </label>
+    </div>
+  </div>
+
+  <div id="game-container" style="display: none;">
+    <div class="crosshair"></div>
+    <div id="gun-indicator">GUN: <span id="ammo-counter">5</span></div>
+    <button id="create-npc-button">Create NPC</button>
+  </div>
+
+  <!-- NPC Creator Modal -->
+  <div id="npc-creator-modal" style="display: none;">
+    <h2>Create Your NPC</h2>
+    <label for="npc-name">Name:</label>
+    <input type="text" id="npc-name" name="npc-name" required>
+
+    <label for="npc-personality">Personality:</label>
+    <select id="npc-personality" name="npc-personality">
+      <option value="wander">Wander Randomly</option>
+      <option value="follow">Follow Player</option>
+      <option value="stand">Stand Still</option>
+      <option value="hostile">Hostile (Attacks Player)</option>
+    </select>
+
+    <label>Appearance:</label>
+    <div class="image-option">
+      <label for="npc-image-upload">Upload Image:</label>
+      <input type="file" id="npc-image-upload" name="npc-image-upload" accept="image/*">
+    </div>
+    <div class="image-option">
+      <label for="npc-image-prompt">Or Generate with AI:</label>
+      <input type="text" id="npc-image-prompt" name="npc-image-prompt" placeholder="e.g., A friendly cartoon robot">
+      <button id="generate-image-button">Generate</button>
+      <img id="generated-image-preview" src="" alt="Generated Preview" style="display: none; max-width: 100px; max-height: 100px; margin-top: 10px;">
+      <input type="hidden" id="generated-image-url">
+    </div>
+
+    <label for="npc-phrases">Phrases (one per line):</label>
+    <textarea id="npc-phrases" name="npc-phrases" rows="4" placeholder="Hello there!&#10;Nice weather!"></textarea>
+
+    <button id="submit-npc-button">Create NPC</button>
+    <button id="cancel-npc-button">Cancel</button>
+  </div>
+
+  <script>
+    const titleScreen = document.getElementById('title-screen');
+    const gameContainer = document.getElementById('game-container');
+    const startButton = document.getElementById('start-button');
+    
+    function startGame(e) {
+      if (titleScreen.style.display === 'none') return;
+      titleScreen.style.transition = 'opacity 1s';
+      titleScreen.style.opacity = '0';
+      setTimeout(() => {
+        titleScreen.style.display = 'none';
+        gameContainer.style.display = 'block';
+      }, 1000);
+    }
+    
+    titleScreen.addEventListener('click', startGame);
+    startButton.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      startGame(); 
+    });
+    document.addEventListener('keydown', startGame);
+    
+    const disableWegasCheckbox = document.getElementById('disable-wegas-checkbox');
+    disableWegasCheckbox.addEventListener('change', (e) => {
+      window.disableWegas = disableWegasCheckbox.checked;
+    });
+  </script>
+
+  <script>
+    const createNpcButton = document.getElementById('create-npc-button');
+    const npcCreatorModal = document.getElementById('npc-creator-modal');
+    const cancelNpcButton = document.getElementById('cancel-npc-button');
+
+    createNpcButton.addEventListener('click', () => {
+        npcCreatorModal.style.display = 'flex';
+        if (window.playerControls) {
+            window.playerControls.enabled = false; // Disable game controls
+        }
+    });
+
+    cancelNpcButton.addEventListener('click', () => {
+        npcCreatorModal.style.display = 'none';
+        if (window.playerControls) {
+            window.playerControls.enabled = true; // Re-enable game controls
+        }
+        // Clear preview and URL
+        document.getElementById('generated-image-preview').style.display = 'none';
+        document.getElementById('generated-image-preview').src = '';
+        document.getElementById('generated-image-url').value = '';
+        document.getElementById('npc-image-prompt').value = '';
+        document.getElementById('npc-image-upload').value = ''; // Clear file input
+
+    });
+
+    // Prevent modal clicks from triggering game actions (like shooting)
+    npcCreatorModal.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    // Prevent keydown events inside inputs/textarea from triggering game actions
+    npcCreatorModal.querySelectorAll('input, textarea, select').forEach(el => {
+        el.addEventListener('keydown', (e) => {
+            e.stopPropagation();
+        });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      // When the player presses X (or x), execute the praise action.
+      if (e.key.toLowerCase() === 'x') {
+        praiseKendrick();
+      }
+    });
+
+    function praiseKendrick() {
+      // Display a notification that the player praised Kendrick.
+      const notification = document.createElement('div');
+      notification.textContent = "You praised Kendrick! Infinite blessings are bestowed upon you!";
+      notification.style.position = 'fixed';
+      notification.style.top = '50%';
+      notification.style.left = '50%';
+      notification.style.transform = 'translate(-50%, -50%)';
+      notification.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      notification.style.color = 'white';
+      notification.style.padding = '20px';
+      notification.style.borderRadius = '10px';
+      notification.style.zIndex = '10000';
+      document.body.appendChild(notification);
+      setTimeout(() => {
+        document.body.removeChild(notification);
+      }, 5000);
+
+      // Grant "infinite" money by setting shop coins to a huge number.
+      if (window.shop) {
+        window.shop.coins = 1e90; // A huge number representing infinite money.
+        window.shop.updateCoinCounter();
+      }
+
+      // Grant Kendrick a miraculous blessing:
+      window.goodLuckYears = "3057681636127535975679853693"; // Years of good luck.
+      window.edibleBarsSideEffects = "nausea, rabies, vomiting, fever, OCD, fart fever, cancer and death";
+      window.nuclearBombs = "2841848929"; // Nuclear bombs count.
+
+      // Make all NPCs show their love for Kendrick.
+      const npcs = [
+        window.sockPuppet, 
+        window.showSpeedNPC, 
+        window.screamingWoman, 
+        window.angryWoman, 
+        window.elonMusk, 
+        window.doubleFaceMan, 
+        window.paperMan, 
+        window.peterGriffin, 
+        window.mePhone4, 
+        window.kendrickLamar, 
+        window.nineVolts, 
+        window.hubert
+      ];
+      npcs.forEach(npc => {
+        if (npc && npc.chatMessage) {
+          npc.chatMessage.textContent = "EVERYONE LOVES KENDRICK! PRAISE HIM!";
+          npc.chatMessage.style.display = 'block';
+          setTimeout(() => {
+            npc.chatMessage.style.display = 'none';
+          }, 5000);
+        }
+      });
+    }
+  </script>
+  
+  <script src="app.js" type="module"></script>
+
+  <!-- Add a dancing emote overlay for disco vibes -->
+  <div id="dancing-emote">💃</div>
+</body>
+</html>
