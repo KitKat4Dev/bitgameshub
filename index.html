@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="BIT GAMES HUB 1 YEAR ANNIVERSARY ULTRA REMASTERED++ (Extended & Enhanced) - MEGA HYPER ULTRA VERSION" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIT GAMES HUB - MEGA HYPER ULTRA REMASTERED++ (10x Extended)</title>
+  <meta name="description"
+        content="BIT GAMES HUB 4.0 ULTRA ULTRA MEGA REMASTERED++ (Super Extended, Enhanced & 1000x Overkill Version)" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIT GAMES HUB 4.0 - ULTRA ULTRA MEGA REMASTERED++ (1000x Overkill Edition)</title>
 
   <!-- Google Fonts -->
   <link
@@ -12,19 +13,19 @@
     rel="stylesheet"
   />
 
-  <!-- reCAPTCHA Script (Needed for the challenge) -->
+  <!-- reCAPTCHA Script -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <style>
-    /********************************************************************
-     * SUPER-ULTRA EXTENDED STYLESHEET
-     * This is an amplified version of your code, with more animations,
-     * more layers, more Easter eggs, and over-the-top expansions.
-    ********************************************************************/
+    /*************************************************************
+     *  BIT GAMES HUB 4.0
+     *  ULTRA ULTRA MEGA REMASTERED++
+     *  1000x Overkill Edition with expansions to expansions!
+     *************************************************************/
 
-    /**************************************************
+    /*************************************************
      * [0] - UNIVERSAL RESET & BASE
-    **************************************************/
+    *************************************************/
     * {
       margin: 0;
       padding: 0;
@@ -34,12 +35,13 @@
     html, body {
       height: 100%;
       font-family: 'Poppins', sans-serif;
-      background: #0d0d0d;
-      color: #fff;
+      background: #0a0a0a;
+      color: #ffffff;
       overflow-x: hidden;
       position: relative;
-      user-select: none; /* Like a game environment */
+      user-select: none;
       cursor: default;
+      font-size: 16px; /* can be dynamically changed */
     }
     a {
       text-decoration: none;
@@ -50,78 +52,61 @@
       width: 8px;
     }
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #9f0, #f09);
+      background: linear-gradient(180deg, #0ff, #f0f, #0f0);
       border-radius: 4px;
     }
 
-    /**************************************************
-     * [1] - LAYERED BACKGROUNDS: STARS, NEBULA, GALAXY
-    **************************************************/
+    /*************************************************
+     * [1] - EPIC LAYERED BACKGROUNDS (STARS, NEBULAE)
+    *************************************************/
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      /* Multiple backgrounds for star fields & nebula */
+      inset: 0;
+      /* Multiple backgrounds for star fields, nebula, galaxy swirl, etc. */
       background:
-        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12) 2px, transparent 10px),
-        radial-gradient(circle at 30% 80%, rgba(255,255,255,0.07) 2px, transparent 10px),
-        radial-gradient(circle at 60% 30%, rgba(255,255,255,0.1) 2px, transparent 10px),
-        url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=1367&q=80'),
-        #000; 
-      background-size: 200px 200px, 300px 300px, 200px 200px, cover, cover;
+        radial-gradient(circle at 20% 40%, rgba(255,255,255,0.12) 2px, transparent 10px),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.07) 2px, transparent 10px),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 2px, transparent 10px),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80'),
+        #000;
+      background-size: 300px 300px, 300px 300px, 300px 300px, cover, cover;
       background-repeat: repeat, repeat, repeat, no-repeat, no-repeat;
-      z-index: -4;
-      animation: starDrift 250s linear infinite;
+      z-index: -999;
+      animation: starDrift 400s linear infinite;
     }
     @keyframes starDrift {
-      0% {
-        background-position: 0 0, 0 0, 0 0, center, center;
-      }
-      100% {
-        background-position: 5000px 5000px, -4000px -4000px, 3500px -3500px, center, center;
-      }
+      0% {background-position: 0 0, 0 0, 0 0, center, center;}
+      100% {background-position: 7000px 7000px, -5000px -4000px, 3500px -4500px, center, center;}
     }
 
-    /* Add a swirling color overlay on top of it all */
+    /* Add swirling color overlays on top of it all */
     body::after {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -3;
+      inset: 0;
+      z-index: -998;
       background: conic-gradient(from 0deg, #ff00ff, #00ffff, #00ff00, #ffff00, #ff00ff);
       background-size: 200% 200%;
-      animation: swirl 8s linear infinite;
+      animation: swirl 12s linear infinite;
       opacity: 0.4;
       pointer-events: none;
     }
     @keyframes swirl {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    /**************************************************
-     * [1a] - ADDITIONAL GALACTIC OVERLAY
-    **************************************************/
+    /*************************************************
+     * [1a] - ADDED GALACTIC FLICKER
+    *************************************************/
     .galactic-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(at center, rgba(255,255,255,0.03), transparent 70%);
+      inset: 0;
+      background: radial-gradient(at center, rgba(255,255,255,0.05), transparent 70%);
       mix-blend-mode: screen;
       pointer-events: none;
-      z-index: -3;
+      z-index: -997;
       animation: fadeBlink 6s infinite alternate;
     }
     @keyframes fadeBlink {
@@ -130,18 +115,34 @@
       100% { opacity: 0.2; }
     }
 
-    /**************************************************
-     * [2] - MATRIX OVERLAY & EXTRA FLOATING SHAPES
-    **************************************************/
+    /*************************************************
+     * [1b] - NEW RAINBOW NEBULA LAYER
+    *************************************************/
+    .rainbow-nebula {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,0,255,0.05), transparent 70%),
+                  radial-gradient(circle at 20% 80%, rgba(0,255,255,0.05), transparent 70%),
+                  radial-gradient(circle at 80% 20%, rgba(0,255,0,0.05), transparent 70%);
+      mix-blend-mode: color-dodge;
+      z-index: -996;
+      pointer-events: none;
+      animation: swirlNebula 20s linear infinite alternate;
+    }
+    @keyframes swirlNebula {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(180deg); }
+      100% { transform: scale(1) rotate(360deg); }
+    }
+
+    /*************************************************
+     * [2] - MATRIX OVERLAY & FLOATING SHAPES
+    *************************************************/
     .matrix-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2;
+      inset: 0;
+      z-index: -995;
       pointer-events: none;
-      overflow: hidden;
       background: repeating-linear-gradient(
         to bottom,
         transparent,
@@ -149,16 +150,12 @@
         rgba(0,255,0,0.2) 15px,
         rgba(0,255,0,0.2) 16px
       );
-      animation: matrixFall 10s linear infinite;
+      animation: matrixFall 15s linear infinite;
       opacity: 0.1;
     }
     @keyframes matrixFall {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 0 1500px;
-      }
+      0% {background-position: 0 0;}
+      100% {background-position: 0 3000px;}
     }
 
     .float-shape {
@@ -169,52 +166,88 @@
       filter: blur(6px);
       opacity: 0.15;
       animation: floatShapes 10s infinite alternate ease-in-out;
-      z-index: -1;
+      z-index: -994;
     }
     @keyframes floatShapes {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      100% {
-        transform: translate(60px, -60px) rotate(360deg);
-      }
+      0% {transform: translate(0, 0) rotate(0deg);}
+      100% {transform: translate(80px, -80px) rotate(360deg);}
     }
     .float-shape:nth-child(even) {
       background: radial-gradient(#00ffff, transparent);
-      animation-duration: 12s;
+      animation-duration: 14s;
     }
-
-    /* Extra shapes for more layering & variety */
     .float-shape.mini {
       width: 60px;
       height: 60px;
       opacity: 0.25;
       animation-duration: 7s;
-      top: 70%;
-      left: 10%;
     }
     .float-shape.giant {
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
       opacity: 0.08;
       animation-duration: 16s;
-      top: 10%;
-      left: 80%;
     }
 
-    /**************************************************
-     * [3] - SHOOTING STARS
-    **************************************************/
+    /*************************************************
+     * [2a] - BONUS FLOATING SHAPES + SUPER EXPANSION
+    *************************************************/
+    .float-shape-square {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #0ff, #f0f);
+      opacity: 0.2;
+      animation: squareFloat 12s infinite alternate ease-in-out;
+      z-index: -993;
+    }
+    @keyframes squareFloat {
+      0% {
+        transform: translate(0, 100px) rotate(0deg);
+      }
+      100% {
+        transform: translate(120px, -80px) rotate(270deg);
+      }
+    }
+    .float-shape-square:nth-child(odd) {
+      background: linear-gradient(45deg, #ff0, #0f0);
+      animation-duration: 10s;
+    }
+
+    /* More floating shapes for extra mania */
+    .float-shape-triangle {
+      position: fixed;
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 60px solid #ff0;
+      opacity: 0.2;
+      animation: triangleFloat 8s infinite alternate ease-in-out;
+      z-index: -992;
+    }
+    @keyframes triangleFloat {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(-80px, 80px) rotate(360deg);
+      }
+    }
+
+    /*************************************************
+     * [3] - SHOOTING STARS (Even More)
+    *************************************************/
     @keyframes shootStar {
       0% {
         transform: translate(-50%, 0) scale(1);
         opacity: 1;
       }
       70% {
-        transform: translate(-1500px, 1000px) scale(1.5);
+        transform: translate(-1500px, 1200px) scale(1.5);
       }
       100% {
-        transform: translate(-1600px, 1200px) scale(0);
+        transform: translate(-1600px, 1500px) scale(0);
         opacity: 0;
       }
     }
@@ -229,55 +262,47 @@
       box-shadow: 0 0 6px 2px #fff;
       border-radius: 50%;
       animation: shootStar 3s ease-in-out forwards;
-      z-index: -1;
+      z-index: -991;
     }
-    .shooting-star:nth-child(1) {
-      animation-delay: 2s;
-    }
-    .shooting-star:nth-child(2) {
-      animation-delay: 5s;
-    }
-    .shooting-star:nth-child(3) {
-      animation-delay: 9s;
-    }
-    /* More shooting stars */
-    .shooting-star:nth-child(4) {
-      animation-delay: 13s;
-    }
-    .shooting-star:nth-child(5) {
-      animation-delay: 18s;
-    }
-    .shooting-star:nth-child(6) {
-      animation-delay: 23s;
-    }
+    /* Delay each star for variety */
+    .shooting-star:nth-child(1) { animation-delay: 2s; }
+    .shooting-star:nth-child(2) { animation-delay: 5s; }
+    .shooting-star:nth-child(3) { animation-delay: 9s; }
+    .shooting-star:nth-child(4) { animation-delay: 13s; }
+    .shooting-star:nth-child(5) { animation-delay: 18s; }
+    .shooting-star:nth-child(6) { animation-delay: 23s; }
+    .shooting-star:nth-child(7) { animation-delay: 27s; }
+    .shooting-star:nth-child(8) { animation-delay: 31s; }
+    .shooting-star:nth-child(9) { animation-delay: 36s; }
+    .shooting-star:nth-child(10) { animation-delay: 42s; }
+    .shooting-star:nth-child(11) { animation-delay: 46s; }
+    .shooting-star:nth-child(12) { animation-delay: 50s; }
+    .shooting-star:nth-child(13) { animation-delay: 56s; }
+    .shooting-star:nth-child(14) { animation-delay: 61s; }
+    .shooting-star:nth-child(15) { animation-delay: 66s; }
+    .shooting-star:nth-child(16) { animation-delay: 70s; }
+    /* Add as many as you wish for 'overkill' */
 
-    /**************************************************
+    /*************************************************
      * [4] - TITLE SCREEN OVERLAY
-    **************************************************/
+    *************************************************/
     #titleScreen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(6px);
-      z-index: 9999;
+      z-index: 999999;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
       padding: 20px;
       animation: fadeInScreen 1s ease forwards;
     }
     @keyframes fadeInScreen {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from {opacity: 0;}
+      to   {opacity: 1;}
     }
     #titleScreen h1 {
       font-family: 'Orbitron', sans-serif;
@@ -293,12 +318,8 @@
       transform: scale(1.1) rotateZ(2deg);
     }
     @keyframes floatTitle {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% {transform: translateY(0);}
+      50% {transform: translateY(-10px);}
     }
     #titleScreen p {
       font-size: 1.2rem;
@@ -310,9 +331,7 @@
       opacity: 0;
     }
     @keyframes fadeInText {
-      to {
-        opacity: 1;
-      }
+      to {opacity: 1;}
     }
     #enterBtn {
       background: transparent;
@@ -337,9 +356,9 @@
       display: none;
     }
 
-    /**************************************************
+    /*************************************************
      * [5] - STICKY HEADER
-    **************************************************/
+    *************************************************/
     header {
       position: sticky;
       top: 0;
@@ -359,7 +378,7 @@
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       letter-spacing: 2px;
       color: #0ff;
       text-shadow: 0 0 6px #0ff;
@@ -370,7 +389,11 @@
       transform: scale(1.03);
     }
 
-    /* Volume Container next to Settings */
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
     .volume-container {
       display: flex;
       align-items: center;
@@ -388,9 +411,7 @@
       width: 100px;
       cursor: pointer;
     }
-
-    /* Settings button in header */
-    #settingsBtn {
+    .header-btn {
       background: transparent;
       border: 2px solid #0ff;
       color: #0ff;
@@ -401,21 +422,20 @@
       font-size: 0.9rem;
       transition: background 0.3s, box-shadow 0.3s;
     }
-    #settingsBtn:hover {
+    .header-btn:hover {
       background: #0ff;
       color: #000;
       box-shadow: 0 0 8px #0ff;
     }
 
-    /**************************************************
+    /*************************************************
      * [6] - MAIN CONTENT SECTIONS
-    **************************************************/
+    *************************************************/
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 30px 40px 80px;
     }
-
     section {
       margin-bottom: 60px;
       opacity: 0;
@@ -438,20 +458,14 @@
       animation: flickerText 3s infinite;
     }
     @keyframes flickerText {
-      0% {
-        text-shadow: 0 0 6px #f0f, 0 0 20px #f0f;
-      }
-      50% {
-        text-shadow: 0 0 6px #f0f;
-      }
-      100% {
-        text-shadow: 0 0 6px #f0f, 0 0 20px #f0f;
-      }
+      0% { text-shadow: 0 0 6px #f0f, 0 0 20px #f0f; }
+      50% { text-shadow: 0 0 6px #f0f; }
+      100% { text-shadow: 0 0 6px #f0f, 0 0 20px #f0f; }
     }
     section h2::after {
       content: "";
       display: block;
-      width: 90px;
+      width: 120px;
       margin: 10px auto 0;
       height: 3px;
       background: linear-gradient(90deg, #0ff, #f0f);
@@ -459,14 +473,9 @@
       animation: hueShift 4s linear infinite;
     }
     @keyframes hueShift {
-      0% {
-        filter: hue-rotate(0deg);
-      }
-      100% {
-        filter: hue-rotate(360deg);
-      }
+      0%   { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
     }
-
     .section-description {
       text-align: center;
       font-size: 1rem;
@@ -481,9 +490,9 @@
       opacity: 1;
     }
 
-    /**************************************************
+    /*************************************************
      * [7] - GRID + CARD STYLES
-    **************************************************/
+    *************************************************/
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -501,7 +510,7 @@
       transform-style: preserve-3d;
     }
     .card:hover {
-      transform: translateY(-4px) scale(1.02) rotateX(3deg) rotateY(-3deg);
+      transform: translateY(-4px) scale(1.02) rotateX(2deg) rotateY(-2deg);
       box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
       border-color: #0ff;
       z-index: 10;
@@ -523,29 +532,20 @@
     .card:hover::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
       opacity: 0;
       animation: glowSpread 1s forwards;
     }
     @keyframes glowSpread {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(2);
-      }
+      0%   { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(2); }
     }
 
-    /**************************************************
+    /*************************************************
      * [8] - MEME GALLERY
-    **************************************************/
+    *************************************************/
     .meme-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -564,9 +564,9 @@
       box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
     }
 
-    /**************************************************
+    /*************************************************
      * [9] - FOOTER
-    **************************************************/
+    *************************************************/
     footer {
       background: rgba(10, 10, 10, 0.8);
       text-align: center;
@@ -581,21 +581,19 @@
       color: #0ff;
     }
 
-    /**************************************************
+    /*************************************************
      * [10] - SETTINGS MODAL
-    **************************************************/
+    *************************************************/
     .modal {
       display: none;
       position: fixed;
+      inset: 0;
       z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
       background: rgba(0, 0, 0, 0.85);
       align-items: center;
       justify-content: center;
       padding: 20px;
+      overflow-y: auto;
     }
     .modal-content {
       background: #111;
@@ -655,19 +653,16 @@
       color: #fff;
     }
 
-    /**************************************************
+    /*************************************************
      * [11] - reCAPTCHA MODAL
-    **************************************************/
+    *************************************************/
     #captchaModal {
       display: none;
       position: fixed;
+      inset: 0;
       z-index: 3000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(2px);
       background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(2px);
       align-items: center;
       justify-content: center;
     }
@@ -701,9 +696,9 @@
       color: #ff0;
     }
 
-    /**************************************************
+    /*************************************************
      * [12] - CONFETTI & BACK TO TOP BUTTON
-    **************************************************/
+    *************************************************/
     #confettiBtn {
       position: fixed;
       bottom: 120px;
@@ -748,7 +743,6 @@
       color: #000;
       box-shadow: 0 0 10px #f0f;
     }
-
     .confetti {
       position: fixed;
       top: 0;
@@ -770,9 +764,9 @@
       }
     }
 
-    /**************************************************
+    /*************************************************
      * [13] - KONAMI EASTER EGG & SECRET MESSAGE
-    **************************************************/
+    *************************************************/
     #secretMessage {
       position: fixed;
       top: 50px;
@@ -804,9 +798,9 @@
       display: block;
     }
 
-    /**************************************************
+    /*************************************************
      * [14] - GLITCH TEXT ON DOUBLE-CLICK
-    **************************************************/
+    *************************************************/
     .glitch-text {
       position: fixed;
       bottom: 40%;
@@ -834,35 +828,17 @@
       }
     }
     @keyframes glitch {
-      0% {
-        clip-path: inset(0% 0% 10% 0%);
-        transform: translate(-50%, 35%);
-      }
-      20% {
-        clip-path: inset(5% 0% 10% 0%);
-        transform: translate(-51%, 37%);
-      }
-      40% {
-        clip-path: inset(0% 0% 7% 0%);
-        transform: translate(-50%, 38%);
-      }
-      60% {
-        clip-path: inset(0% 1% 4% 2%);
-        transform: translate(-49%, 35%);
-      }
-      80% {
-        clip-path: inset(3% 0% 3% 1%);
-        transform: translate(-50%, 36%);
-      }
-      100% {
-        clip-path: inset(1% 2% 10% 0%);
-        transform: translate(-50%, 40%);
-      }
+      0%   {clip-path: inset(0% 0% 10% 0%); transform: translate(-50%, 35%);}
+      20%  {clip-path: inset(5% 0% 10% 0%); transform: translate(-51%, 37%);}
+      40%  {clip-path: inset(0% 0% 7% 0%);  transform: translate(-50%, 38%);}
+      60%  {clip-path: inset(0% 1% 4% 2%);  transform: translate(-49%, 35%);}
+      80%  {clip-path: inset(3% 0% 3% 1%);  transform: translate(-50%, 36%);}
+      100% {clip-path: inset(1% 2% 10% 0%); transform: translate(-50%, 40%);}
     }
 
-    /**************************************************
+    /*************************************************
      * [15] - TEAM / CONTRIBUTORS
-    **************************************************/
+    *************************************************/
     .team-container {
       text-align: center;
       background: rgba(255, 255, 255, 0.05);
@@ -908,111 +884,106 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    /**************************************************
-     * [16] - RANDOM CAT, DOG, BIRD IMAGES
-    **************************************************/
-    .random-cat {
+    /*************************************************
+     * [16] - RANDOM ANIMAL IMAGES
+    *************************************************/
+    .random-cat, .random-dog, .random-bird, .random-fox, .random-giraffe, .random-octopus {
       position: fixed;
+      border: 3px solid #ff0;
+      border-radius: 50%;
+      overflow: hidden;
+      display: none;
+      z-index: 6000;
+    }
+    .random-cat {
       bottom: 10%;
       left: 5%;
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #f0f;
       box-shadow: 0 0 10px #f0f;
-      display: none;
-      animation: catSpin 3s infinite linear;
-      z-index: 6000;
+      animation: spinCat 3s infinite linear;
+      border-color: #f0f;
     }
-    @keyframes catSpin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+    @keyframes spinCat {
+      0% {transform: rotate(0deg);}
+      100% {transform: rotate(360deg);}
     }
 
     .random-dog {
-      position: fixed;
       bottom: 10%;
       right: 5%;
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #0f0;
       box-shadow: 0 0 10px #0f0;
-      display: none;
-      animation: dogSpin 3s infinite linear;
-      z-index: 6000;
+      animation: spinDog 3s infinite linear;
+      border-color: #0f0;
     }
-    @keyframes dogSpin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+    @keyframes spinDog {
+      0% {transform: rotate(0deg);}
+      100% {transform: rotate(360deg);}
     }
 
     .random-bird {
-      position: fixed;
       top: 10%;
       left: 50%;
       transform: translateX(-50%);
       width: 80px;
       height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #ff0;
       box-shadow: 0 0 10px #ff0;
-      display: none;
-      animation: birdSpin 2s infinite linear;
-      z-index: 7000;
+      animation: spinBird 2s infinite linear;
+      border-color: #ff0;
     }
-    @keyframes birdSpin {
-      0% {
-        transform: translateX(-50%) rotate(0deg);
-      }
-      100% {
-        transform: translateX(-50%) rotate(360deg);
-      }
+    @keyframes spinBird {
+      0% {transform: translateX(-50%) rotate(0deg);}
+      100% {transform: translateX(-50%) rotate(360deg);}
     }
 
-    /**************************************************
-     * [16a] - MORE RANDOM ANIMALS (EXTENDED EASTER EGG)
-    **************************************************/
     .random-fox {
-      position: fixed;
       top: 40%;
       right: 5%;
       width: 70px;
       height: 70px;
       border-radius: 8px;
-      overflow: hidden;
-      border: 3px solid #ff8000;
       box-shadow: 0 0 10px #ff8000;
-      display: none;
-      animation: foxTilt 2.5s infinite linear;
-      z-index: 7000;
+      animation: tiltFox 2.5s infinite linear;
+      border-color: #ff8000;
     }
-    @keyframes foxTilt {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(15deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
+    @keyframes tiltFox {
+      0% {transform: rotate(0deg);}
+      50% {transform: rotate(15deg);}
+      100% {transform: rotate(0deg);}
     }
 
-    /**************************************************
-     * [17] - BLINKING SECRET TEXT
-    **************************************************/
+    .random-giraffe {
+      top: 60%;
+      right: 30%;
+      width: 80px;
+      height: 80px;
+      border-color: #ffaa00;
+      animation: giraffeDance 1.5s infinite ease-in-out;
+    }
+    @keyframes giraffeDance {
+      0%, 100% {transform: translateY(0) rotate(0deg);}
+      50% {transform: translateY(-10px) rotate(5deg);}
+    }
+
+    .random-octopus {
+      top: 20%;
+      left: 10%;
+      width: 90px;
+      height: 90px;
+      border-color: #ff00aa;
+      animation: octoPulse 2s infinite ease-in-out;
+      box-shadow: 0 0 10px #ff00aa;
+    }
+    @keyframes octoPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(10deg); }
+    }
+
+    /*************************************************
+     * [17] - SECRET BLINKING TEXT (Triggered by 'burger' code)
+    *************************************************/
     #blinkingSecret {
       position: fixed;
       top: 0;
@@ -1035,9 +1006,9 @@
       100% { opacity: 1; }
     }
 
-    /**************************************************
+    /*************************************************
      * [18] - RIPPLE EFFECT ON CLICK
-    **************************************************/
+    *************************************************/
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -1054,47 +1025,246 @@
       }
     }
 
-    /**************************************************
-     * [19] - EXTENDED EASTER EGG ZONE
-     *************************************************/
-    /* If you want to add more hidden codes, you can place styles here,
-       or new elements that appear on certain triggers. */
+    /*************************************************
+     * [19] - ADDITIONAL EASTER EGGS
+    *************************************************/
+    /* We'll handle these in JS: 'milkshake', 'coffee', 'banana', 'burger', 'dog', 'milk', 'cheese', 'pizza', 'octopus', etc. */
 
-    .random-giraffe {
-      position: fixed;
-      top: 60%;
-      right: 30%;
-      width: 80px;
-      height: 80px;
-      border: 3px solid #ffaa00;
-      border-radius: 50%;
-      overflow: hidden;
+    /*************************************************
+     * [20] - CHANGELOG (UPDATE LOG) MODAL
+    *************************************************/
+    #changelogModal {
       display: none;
-      z-index: 9999;
-      animation: giraffeDance 1.5s infinite ease-in-out;
+      position: fixed;
+      inset: 0;
+      z-index: 3500;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(3px);
+      align-items: center;
+      justify-content: center;
     }
-    @keyframes giraffeDance {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(5deg); }
+    #changelogContent {
+      background: #222;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      color: #fff;
+      position: relative;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: modalFadeIn 0.6s forwards;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 10px #0ff;
+    }
+    #changelogContent h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #0ff;
+    }
+    #changelogClose {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #0ff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    #changelogClose:hover {
+      color: #f0f;
+    }
+    .changelog-item {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
+    .changelog-item:last-child {
+      border-bottom: none;
+    }
+    .changelog-item h4 {
+      font-size: 1rem;
+      color: #0ff;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .changelog-item p {
+      font-size: 0.9rem;
+      color: #ccc;
+      line-height: 1.4em;
+    }
+
+    /*************************************************
+     * [21] - NEW FEATURED APIs (Even More!)
+    *************************************************/
+    .api-feature {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #0ff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      animation: scaleIn 1s ease;
+    }
+    .api-feature h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: #0ff;
+      margin-bottom: 12px;
+      text-shadow: 0 0 4px #0ff;
+    }
+    .api-feature p {
+      color: #ccc;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
+    .api-feature button {
+      background: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .api-feature button:hover {
+      background: #0ff;
+      color: #000;
+    }
+    #apodImage {
+      max-width: 100%;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 10px rgba(0,255,255,0.3);
+      display: none;
+    }
+    #apodTitle {
+      color: #f0f;
+      margin-top: 10px;
+      text-shadow: 0 0 3px #f0f;
+      display: none;
+    }
+    #apodExplanation {
+      margin-top: 10px;
+      color: #bbb;
+      display: none;
+    }
+    #quoteDisplay {
+      margin-top: 10px;
+      font-style: italic;
+      color: #ff0;
+      border-left: 3px solid #ff0;
+      padding-left: 10px;
+    }
+    #weatherDisplay {
+      margin-top: 10px;
+      color: #0f0;
+      border-left: 3px solid #0f0;
+      padding-left: 10px;
+    }
+
+    /*************************************************
+     * [22] - ADDITIONAL API DEMOS
+    *************************************************/
+    .api-feature .expanded-api-section {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid #999;
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    /*************************************************
+     * [23] - NEW: COMMUNITY MODS EXPANSION
+    *************************************************/
+    .mods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .mod-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #777;
+      border-radius: 6px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .mod-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
+      border-color: #fff700;
+    }
+    .mod-card img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    /*************************************************
+     * [24] - EXTRA SECTION: SPACE PIRATE GAMES
+    *************************************************/
+    .pirate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    /*************************************************
+     * [25] - RETRO NOSTALGIA 2 (Overkill)
+    *************************************************/
+    .retro-2-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .retro-2-grid .retro-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #444;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.4s;
+      padding: 10px;
+    }
+    .retro-2-grid .retro-card:hover {
+      transform: scale(1.05) rotateZ(1deg);
+      box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
     }
 
   </style>
 </head>
 
 <body>
-  <!-- Added an extra overlay for subtle cosmic flickers -->
+  <!-- Additional Overlays -->
   <div class="galactic-overlay"></div>
-
-  <!-- Matrix Overlay -->
+  <div class="rainbow-nebula"></div>
   <div class="matrix-overlay"></div>
 
-  <!-- Floating Shapes -->
+  <!-- FLOATING SHAPES -->
   <div class="float-shape" style="top: 20%; left: 20%;"></div>
   <div class="float-shape" style="top: 50%; left: 60%;"></div>
-  <div class="float-shape mini"></div>
-  <div class="float-shape giant"></div>
+  <div class="float-shape mini" style="top: 60%; left: 30%;"></div>
+  <div class="float-shape giant" style="top: 10%; left: 80%;"></div>
+  <div class="float-shape-square" style="top: 30%; right: 10%;"></div>
+  <div class="float-shape-square" style="top: 80%; left: 40%;"></div>
+  <!-- New floating triangle shapes -->
+  <div class="float-shape-triangle" style="bottom: 15%; left: 10%;"></div>
+  <div class="float-shape-triangle" style="top: 15%; right: 10%;"></div>
 
-  <!-- Shooting Stars (More than before) -->
+  <!-- A bunch of Shooting Stars for Overkill -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
@@ -1102,15 +1272,15 @@
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
 
-  <!-- TITLE SCREEN (Hidden after click ENTER) -->
+  <!-- TITLE SCREEN (Hidden after user enters) -->
   <div id="titleScreen">
-    <h1>BIT GAMES HUB - MEGA ULTRA REMASTERED++</h1>
+    <h1>BIT GAMES HUB 4.0 - ULTRA ULTRA MEGA REMASTERED++</h1>
     <p>
-      Welcome to the hyper-extended swirl of starfields and Easter eggs!<br>
-      More animations, hidden codes, ripple effects, random animals, confetti blasts,<br>
-      and brand new expansions abound!<br>
-      <strong>Ready for 10x the fun?!</strong><br>
-      <em>Keep an eye out for new hidden codes like "milkshake", "icecream", "banana", and more!</em>
+      Welcome to version <strong>4.0</strong>, the **1000x Overkill** edition!<br>
+      So many expansions, cosmic overlays, swirling confetti, new “Mega Memes,”  <br>
+      and brand-new hidden codes & expansions. We have more APIs than ever!<br>
+      Hidden codes you might try: <em>"milkshake", "coffee", "banana", "burger", "dog", "milk", "cheese", "pizza", "octopus", "capslock", "unicorn", "dragon" ...</em><br>
+      Explore the wild expansions & have fun discovering secrets!
     </p>
     <button id="enterBtn">ENTER</button>
   </div>
@@ -1132,29 +1302,33 @@
   <img class="random-bird" id="randomBird" src="" alt="Random Bird" />
   <img class="random-fox" id="randomFox" src="" alt="Random Fox" />
   <img class="random-giraffe" id="randomGiraffe" src="" alt="Random Giraffe" />
+  <img class="random-octopus" id="randomOctopus" src="" alt="Random Octopus" />
 
   <!-- HIDDEN AUDIO ELEMENT (Music) -->
   <audio id="audioPlayer" style="display:none;"></audio>
 
-  <!-- MAIN CONTENT (Initially hidden) -->
+  <!-- MAIN CONTENT -->
   <div id="mainContent">
     <!-- HEADER -->
     <header>
-      <h1>BIT GAMES HUB - 1 YEAR ANNIVERSARY (MEGA REMAKE)</h1>
-      <!-- Volume Slider -->
-      <div class="volume-container">
-        <label for="volumeSlider">Volume</label>
-        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" />
+      <h1>BIT GAMES HUB 4.0 REMASTERED</h1>
+      <div class="header-buttons">
+        <!-- Volume Slider -->
+        <div class="volume-container">
+          <label for="volumeSlider">Volume</label>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" />
+        </div>
+        <button class="header-btn" id="settingsBtn">Settings</button>
+        <button class="header-btn" id="changelogBtn">Changelog</button>
       </div>
-      <button id="settingsBtn">Settings</button>
     </header>
 
     <!-- MAIN AREA -->
     <main>
+
       <!-- SECTION 1: Main Games -->
       <section>
-        <h2>Main Games</h2>
-<h2>Main Games</h2>
+       <h2>Main Games</h2>
 <div class="grid">
 <!-- Add or remove any game links as desired -->
 <div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
@@ -1215,7 +1389,6 @@
 <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
 <div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
 <div class="card"><a href="/jumpgame/index.html">🎮 Platformer</a></div>
-<div class="card"><a href="/HTTPerror/index.html">🎮 HTTP Code Explorer</a></div>
 </div>
 </section>
 
@@ -1265,38 +1438,82 @@
 </div>
 </section>
 
-      <!-- SECTION 5: Special New Section - Retro Nostalgia -->
+
+      <!-- NEW SECTION: EXTRA APIs (Joke, NASA, QUOTES, WEATHER, Bored API, Shakespeare, Pokemon) -->
       <section>
-        <h2>Retro Nostalgia</h2>
-        <p class="section-description">Throwback to pixel art, 8-bit tunes, and old-school charm. More expansions on the horizon!</p>
-        <div class="grid">
-          <div class="card"><a href="/retro-arcade/index.html" target="_blank">🎮 Retro Arcade</a></div>
-          <div class="card"><a href="/space-invaders/index.html" target="_blank">🎮 Space Invaders Tribute</a></div>
-          <div class="card"><a href="/pixel-art-painter/index.html" target="_blank">🎮 Pixel Art Painter</a></div>
-          <div class="card"><a href="/classic-racing/index.html" target="_blank">🎮 Classic Racing</a></div>
-          <!-- Add more retro style links here -->
+        <h2>API Features</h2>
+
+        <!-- Jokes -->
+        <div class="api-feature" id="jokeFeature">
+          <h3>Random Joke Generator</h3>
+          <p>Get a random joke from an official joke API. Laugh or cringe!</p>
+          <button id="fetchJokeBtn">Fetch a Joke</button>
+          <p id="jokeDisplay" style="margin-top: 10px;"></p>
         </div>
+
+        <!-- NASA APOD -->
+        <div class="api-feature" id="nasaFeature">
+          <h3>NASA APOD (Astronomy Pic of the Day)</h3>
+          <p>Fetch NASA’s Astronomy Picture of the Day (image or video) for cosmic inspiration.</p>
+          <button id="fetchApodBtn">Get NASA APOD</button>
+          <h4 id="apodTitle"></h4>
+          <img id="apodImage" src="" alt="NASA APOD" />
+          <p id="apodExplanation"></p>
+        </div>
+
+        <!-- Random Quote -->
+        <div class="api-feature" id="quoteFeature">
+          <h3>Random Quote Generator</h3>
+          <p>Fetch a random quote from a popular quotes API.</p>
+          <button id="fetchQuoteBtn">Fetch a Quote</button>
+          <p id="quoteDisplay"></p>
+        </div>
+
+        <!-- Weather -->
+        <div class="api-feature" id="weatherFeature">
+          <h3>Weather Lookup</h3>
+          <p>Enter a city name to get the current weather data (using OpenWeatherMap!).</p>
+          <input type="text" id="weatherCityInput" placeholder="Enter city..."
+                 style="padding:5px; border-radius:6px; border:1px solid #666; background:#333; color:#fff;">
+          <button id="fetchWeatherBtn">Get Weather</button>
+          <div id="weatherDisplay"></div>
+        </div>
+
+        <!-- Bored API -->
+        <div class="api-feature expanded-api-section">
+          <h3>Bored API</h3>
+          <p>Feeling bored? Let’s fetch a random activity suggestion from the Bored API!</p>
+          <button id="fetchBoredBtn">Fetch Activity</button>
+          <p id="boredDisplay"></p>
+        </div>
+
+        <!-- Shakespeare Quote API -->
+        <div class="api-feature expanded-api-section">
+          <h3>Shakespeare Quote Generator</h3>
+          <p>Get a random Shakespeare quote (using a custom text-based or free Shakespeare API example)!</p>
+          <button id="fetchShakespeareBtn">Fetch Shakespeare Quote</button>
+          <p id="shakespeareDisplay"></p>
+        </div>
+
+        <!-- Pokemon API Example -->
+        <div class="api-feature expanded-api-section">
+          <h3>Pokemon Lookup</h3>
+          <p>Enter a Pokémon name or ID to fetch basic data from the PokéAPI!</p>
+          <input type="text" id="pokemonInput"
+                 style="padding:5px; border-radius:6px; border:1px solid #666; background:#333; color:#fff;"
+                 placeholder="e.g. pikachu" />
+          <button id="fetchPokemonBtn">Fetch Pokémon</button>
+          <div id="pokemonDisplay" style="margin-top:10px; color: #0ff;"></div>
+        </div>
+
       </section>
 
-      <!-- SECTION 6: Contributors / Team -->
-      <section>
-        <div class="team-container">
-          <h2 class="team-title">Contributors</h2>
-          <p class="section-description visible">Many thanks to everyone who made this madness possible!</p>
-          <div class="team-list">
-            <div class="member">- You, the Player: Beta Tester</div>
-            <div class="member">- Dev Mage: Created random cats/dogs code</div>
-            <div class="member">- Pixel Artist: Provided retro assets</div>
-            <div class="member">- Meme Curator: Sourced the best (worst?) GIFs</div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
-      &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.<br>
-      <small>Version: <strong>1.3.0 MEGA ULTRA REMASTERED++ (10x Extended)</strong></small>
+      &copy; <span>2025</span> Bit Games Hub 4.0. All Rights Reserved.<br>
+      <small>Version: <strong>4.0 ULTRA ULTRA MEGA REMASTERED++ (1000x Overkill)</strong></small>
     </footer>
   </div> <!-- end #mainContent -->
 
@@ -1316,6 +1533,7 @@
           <option value="16" selected>Medium</option>
           <option value="18">Large</option>
           <option value="20">Extra Large</option>
+          <option value="24">Gigantic</option>
         </select>
       </div>
       <!-- Additional settings could be added below -->
@@ -1340,27 +1558,81 @@
   <button id="confettiBtn" title="Celebrate!">✨</button>
   <button id="backToTop">Top</button>
 
-  <script>
-    /********************************************************************
-     * SUPERSIZED JAVASCRIPT
-     * Extended with more Easter eggs, more random fetch calls, etc.
-    ********************************************************************/
+  <!-- CHANGELOG MODAL -->
+  <div id="changelogModal">
+    <div id="changelogContent">
+      <span id="changelogClose">&times;</span>
+      <h3>Update Log</h3>
 
-    /****************************************************
+      <div class="changelog-item">
+        <h4>Version 4.0.0</h4>
+        <p>
+          - Retro Nostalgia 2 expansions  
+          - Bored API, Shakespeare, Pokémon API features  
+          - More cosmic overlays, rainbow nebula background layer  
+          - 5+ new hidden codes & expansions
+        </p>
+      </div>
+
+      <div class="changelog-item">
+        <h4>Version 3.0.2</h4>
+        <p>
+          - Random quote & weather API features  
+          - “Octopus” secret code  
+          - Extended Meme Gallery & “The Worst” expansions  
+          - Polished cosmic overlays, more floating shapes  
+          - More Easter egg codes
+        </p>
+      </div>
+
+      <div class="changelog-item">
+        <h4>Version 3.0</h4>
+        <p>
+          - Overkill everything with new expansions  
+          - NASA APOD, official "WORST" expansions  
+          - Title screen revamp, swirl backgrounds, confetti mania  
+          - Additional random animals (fox, giraffe)
+        </p>
+      </div>
+
+      <div class="changelog-item">
+        <h4>Version 2.0.1</h4>
+        <p>
+          - Original NASA & jokes expansions  
+          - Basic hidden codes & swirling overlays
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /*************************************************************
+     * BIT GAMES HUB 4.0
+     * ULTRA ULTRA MEGA REMASTERED++ - JAVASCRIPT
+     * Insanely expanded: new APIs, new expansions, 1000x Overkill
+    *************************************************************/
+
+    /**********************************************
      * [1] TITLE SCREEN & AUDIO
-    ****************************************************/
+    **********************************************/
     const titleScreen = document.getElementById('titleScreen');
     const enterBtn = document.getElementById('enterBtn');
     const mainContent = document.getElementById('mainContent');
     const audioPlayer = document.getElementById('audioPlayer');
 
-    // Expanded playlist of songs
+    // Extended playlist with more songs
     const playlist = [
-      'Sounds/The Cranberries - Zombie (Alt. Version) [95HqlWRFrAk].mp3',
-      'Sounds/Stay Together For The Kids - Blink 182 [45RYX77veK0].mp3',
+      'Sounds/The Cranberries - Zombie (Alt. Version).mp3',
+      'Sounds/Stay Together For The Kids - Blink 182.mp3',
       'Sounds/Never-Gonna-Give-You-Up.mp3',
-      'Sounds/Beastie-Boys-Sabotage.mp3'
-      // ... add more tracks if desired ...
+      'Sounds/Beastie-Boys-Sabotage.mp3',
+      'Sounds/Linkin-Park-In-the-End.mp3',
+      'Sounds/Europe-The-Final-Countdown.mp3',
+      'Sounds/Daft-Punk-One-More-Time.mp3',
+      'Sounds/Smash-Mouth-All-Star.mp3',
+      'Sounds/Queen-Bohemian-Rhapsody.mp3',
+      // ... add more tracks ...
     ];
     let currentTrackIndex = 0;
 
@@ -1368,18 +1640,18 @@
     enterBtn.addEventListener('click', () => {
       enterClickCount++;
       if (enterClickCount >= 5) {
-        alert("Wow, you REALLY want to enter! Let's proceed now!");
+        alert("You pressed ENTER a bunch. Enough hype, let's go!");
       }
       titleScreen.style.display = 'none';
       mainContent.style.display = 'block';
       playCurrentTrack();
-      console.log("%cWelcome to the MEGA ULTRA REMASTERED++ dev console experience!","color: #0ff; font-size:16px; text-shadow: 0 0 5px #0ff;");
+      console.log("%cWelcome to the Overkill Remastered Dev Console 4.0!","color: #0ff; font-size:16px; text-shadow: 0 0 5px #0ff;");
     });
 
     function playCurrentTrack() {
       audioPlayer.src = playlist[currentTrackIndex];
       audioPlayer.play().catch(err => {
-        console.warn("Autoplay might be blocked:", err);
+        console.warn("Autoplay blocked or error:", err);
       });
     }
 
@@ -1390,17 +1662,17 @@
       }
     });
 
-    /****************************************************
+    /**********************************************
      * [2] VOLUME SLIDER
-    ****************************************************/
+    **********************************************/
     const volumeSlider = document.getElementById('volumeSlider');
     volumeSlider.addEventListener('input', () => {
       audioPlayer.volume = volumeSlider.value;
     });
 
-    /****************************************************
+    /**********************************************
      * [3] SECTION FADE-IN OBSERVER
-    ****************************************************/
+    **********************************************/
     const sections = document.querySelectorAll('section');
     const sectionDesc = document.querySelectorAll('.section-description');
     const observerOptions = { threshold: 0.1 };
@@ -1413,12 +1685,11 @@
       });
     }, observerOptions);
     sections.forEach(sec => sectionObserver.observe(sec));
-    // For the paragraph descriptions
     sectionDesc.forEach(desc => sectionObserver.observe(desc));
 
-    /****************************************************
+    /**********************************************
      * [4] SETTINGS MODAL
-    ****************************************************/
+    **********************************************/
     const settingsBtn = document.getElementById('settingsBtn');
     const settingsModal = document.getElementById('settingsModal');
     const closeModal = document.getElementById('closeModal');
@@ -1435,31 +1706,31 @@
       }
     });
 
-    /****************************************************
+    /**********************************************
      * [5] FONT SIZE SELECT
-    ****************************************************/
+    **********************************************/
     document.getElementById('fontSize').addEventListener('change', (e) => {
       document.body.style.fontSize = e.target.value + 'px';
     });
 
-    /****************************************************
+    /**********************************************
      * [6] DARK MODE TOGGLE
-    ****************************************************/
+    **********************************************/
     const body = document.body;
     document.getElementById('themeToggle').addEventListener('change', (e) => {
       if (e.target.checked) {
         body.style.background = '#121212';
       } else {
-        body.style.background = '#0d0d0d';
+        body.style.background = '#0a0a0a';
       }
     });
 
-    /****************************************************
+    /**********************************************
      * [7] CONFETTI BUTTON
-    ****************************************************/
+    **********************************************/
     const confettiBtn = document.getElementById('confettiBtn');
     confettiBtn.addEventListener('click', () => {
-      for (let i = 0; i < 35; i++) createConfetti();
+      for (let i = 0; i < 50; i++) createConfetti();
     });
     function createConfetti() {
       const confetti = document.createElement('div');
@@ -1476,9 +1747,9 @@
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    /****************************************************
+    /**********************************************
      * [8] BACK TO TOP BUTTON
-    ****************************************************/
+    **********************************************/
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -1491,9 +1762,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /****************************************************
+    /**********************************************
      * [9] reCAPTCHA & CARD NAVIGATION
-    ****************************************************/
+    **********************************************/
     const captchaModal = document.getElementById('captchaModal');
     const captchaClose = document.getElementById('captchaClose');
     let pendingURL = null;
@@ -1525,14 +1796,13 @@
 
     window.onRecaptchaSuccess = function() {
       if (pendingURL) {
-        // Open in new tab
         window.open(pendingURL, '_blank');
       }
     };
 
-    /****************************************************
+    /**********************************************
      * [10] KONAMI CODE EASTER EGG
-    ****************************************************/
+    **********************************************/
     let konamiSequence = [];
     const konamiCode = [
       'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
@@ -1552,16 +1822,16 @@
     function activateKonamiEasterEgg() {
       const secretMsg = document.getElementById('secretMessage');
       secretMsg.classList.add('visible');
-      for (let i = 0; i < 50; i++) createConfetti();
+      for (let i = 0; i < 60; i++) createConfetti();
       setTimeout(() => {
         secretMsg.classList.remove('visible');
         secretMsg.style.display = 'none';
       }, 5000);
     }
 
-    /****************************************************
+    /**********************************************
      * [11] GLITCH TEXT (Double-Click)
-    ****************************************************/
+    **********************************************/
     const glitchText = document.getElementById('glitchText');
     let glitchTimeout = null;
     document.addEventListener('dblclick', () => {
@@ -1573,46 +1843,119 @@
       for (let i = 0; i < 15; i++) createConfetti();
     });
 
-    /****************************************************
+    /**********************************************
      * [12] CAPS LOCK EASTER EGG
-    ****************************************************/
+    **********************************************/
     window.addEventListener('keydown', (e) => {
       if (e.getModifierState('CapsLock') && e.key !== 'CapsLock') {
         alert("CAPS LOCK ENGAGED! YOU'RE SHOUTING NOW!");
       }
     });
 
-    /****************************************************
-     * [13] MILK CODE EASTER EGG
-    ****************************************************/
-    let milkBuffer = [];
+    /**********************************************
+     * [13] SECRET CODE EASTER EGGS
+     * MILK, COFFEE, DOG, BURGER, BANANA, CHEESE, PIZZA, OCTOPUS, MILKSHAKE, ETC.
+    **********************************************/
+    let codeBuffer = [];
+
     window.addEventListener('keydown', (e) => {
-      milkBuffer.push(e.key.toLowerCase());
-      if (milkBuffer.length > 4) {
-        milkBuffer.shift();
+      codeBuffer.push(e.key.toLowerCase());
+      if (codeBuffer.length > 10) {
+        codeBuffer.shift();
       }
-      if (milkBuffer.join('') === 'milk') {
-        alert("You found the MILK secret! 🥛 More confetti for you!");
+
+      let joined = codeBuffer.join('');
+
+      // MILK
+      if (joined.includes('milk')) {
+        alert("You found the MILK secret! 🥛 Confetti time!");
         for (let i = 0; i < 40; i++) createConfetti();
+        resetBuffer();
+      }
+      // COFFEE -> showRandomCat
+      if (joined.includes('coffee')) {
+        alert("COFFEE TIME! Here's confetti & a random cat!");
+        for (let i = 0; i < 50; i++) createConfetti();
+        showRandomCat();
+        resetBuffer();
+      }
+      // DOG -> showRandomDog
+      if (joined.includes('dog')) {
+        alert("DOG TIME! Woof! Enjoy a random dog picture!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomDog();
+        resetBuffer();
+      }
+      // BURGER -> blinkingSecret
+      if (joined.includes('burger')) {
+        alert("BURGER CODE ENTERED! 🍔 Secret blinking bar at the top!");
+        for (let i = 0; i < 35; i++) createConfetti();
+        toggleBurgerBlink();
+        resetBuffer();
+      }
+      // BANANA -> randomGiraffe
+      if (joined.includes('banana')) {
+        alert("BANANA CODE TRIGGERED! Summoning random giraffe... 🍌🦒");
+        for (let i = 0; i < 50; i++) createConfetti();
+        showRandomGiraffe();
+        resetBuffer();
+      }
+      // CHEESE -> confetti spree
+      if (joined.includes('cheese')) {
+        alert("CHEESE CODE TRIGGERED! 🧀 Cheddar confetti unleashed!");
+        for (let i = 0; i < 60; i++) createConfetti();
+        resetBuffer();
+      }
+      // PIZZA -> randomBird
+      if (joined.includes('pizza')) {
+        alert("PIZZA TIME! Confetti + random bird!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomBird();
+        resetBuffer();
+      }
+      // OCTOPUS -> randomOctopus
+      if (joined.includes('octopus')) {
+        alert("OCTOPUS CODE: Summoning a random octopus GIF!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomOctopus();
+        resetBuffer();
+      }
+      // MILKSHAKE -> randomFox
+      if (joined.includes('milkshake')) {
+        alert("Milkshake code triggered! Have a random fox!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomFox();
+        resetBuffer();
+      }
+      // Example for new codes: 'unicorn', 'dragon'...
+      if (joined.includes('unicorn')) {
+        alert("Unicorn code discovered! Enjoy more confetti!");
+        for (let i = 0; i < 70; i++) createConfetti();
+        resetBuffer();
+      }
+      if (joined.includes('dragon')) {
+        alert("DRAGON CODE! Prepare for a fiery confetti storm!");
+        for (let i = 0; i < 80; i++) createConfetti();
+        resetBuffer();
       }
     });
 
-    /****************************************************
-     * [14] COFFEE CODE EASTER EGG -> SHOW RANDOM CAT
-    ****************************************************/
-    let coffeeBuffer = [];
+    function resetBuffer() {
+      codeBuffer = [];
+    }
+
+    /**********************************************
+     * [14] ANIMAL FETCH FUNCTIONS
+    **********************************************/
     const randomCatEl = document.getElementById('randomCat');
-    window.addEventListener('keydown', (e) => {
-      coffeeBuffer.push(e.key.toLowerCase());
-      if (coffeeBuffer.length > 6) {
-        coffeeBuffer.shift();
-      }
-      if (coffeeBuffer.join('') === 'coffee') {
-        alert("COFFEE TIME! Here's some extra confetti and a random cat!");
-        for (let i = 0; i < 50; i++) createConfetti();
-        showRandomCat();
-      }
-    });
+    const randomDogEl = document.getElementById('randomDog');
+    const randomBirdEl = document.getElementById('randomBird');
+    const randomFoxEl = document.getElementById('randomFox');
+    const randomGiraffeEl = document.getElementById('randomGiraffe');
+    const randomOctopusEl = document.getElementById('randomOctopus');
+    const blinkingSecret = document.getElementById('blinkingSecret');
+    let burgerToggle = false;
+
     function showRandomCat() {
       fetch('https://api.thecatapi.com/v1/images/search')
         .then(res => res.json())
@@ -1627,30 +1970,8 @@
         })
         .catch(err => {
           console.log("Cat fetch error:", err);
-          randomCatEl.src = "https://cdn2.thecatapi.com/images/MTY3ODIyMg.gif";
-          randomCatEl.style.display = 'block';
-          setTimeout(() => {
-            randomCatEl.style.display = 'none';
-          }, 7000);
         });
     }
-
-    /****************************************************
-     * [15] DOG CODE EASTER EGG -> "DOG"
-    ****************************************************/
-    let dogBuffer = [];
-    const randomDogEl = document.getElementById('randomDog');
-    window.addEventListener('keydown', (e) => {
-      dogBuffer.push(e.key.toLowerCase());
-      if (dogBuffer.length > 3) {
-        dogBuffer.shift();
-      }
-      if (dogBuffer.join('') === 'dog') {
-        alert("DOG TIME! Woof! Enjoy a random dog picture!");
-        for (let i = 0; i < 40; i++) createConfetti();
-        showRandomDog();
-      }
-    });
     function showRandomDog() {
       fetch('https://dog.ceo/api/breeds/image/random')
         .then(res => res.json())
@@ -1665,78 +1986,8 @@
         })
         .catch(err => {
           console.log("Dog fetch error:", err);
-          randomDogEl.src = "https://images.dog.ceo/breeds/husky/n02110185_10047.jpg";
-          randomDogEl.style.display = 'block';
-          setTimeout(() => {
-            randomDogEl.style.display = 'none';
-          }, 7000);
         });
     }
-
-    /****************************************************
-     * [16] IDLE DETECTION (20s)
-    ****************************************************/
-    let idleTimer;
-    let idleTime = 20 * 1000; // 20 seconds
-    function resetIdleTimer() {
-      clearTimeout(idleTimer);
-      idleTimer = setTimeout(() => {
-        alert("Are you still there? The games are waiting for you!");
-      }, idleTime);
-    }
-    ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt =>
-      window.addEventListener(evt, resetIdleTimer)
-    );
-    resetIdleTimer();
-
-    /****************************************************
-     * [17] RIPPLE EFFECT ON CLICK
-    ****************************************************/
-    document.addEventListener('click', (e) => {
-      const ripple = document.createElement('div');
-      ripple.className = 'ripple';
-      ripple.style.left = `${e.pageX}px`;
-      ripple.style.top = `${e.pageY}px`;
-      document.body.appendChild(ripple);
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-    });
-
-    /****************************************************
-     * [18] TRIPLE-CLICK EASTER EGG
-    ****************************************************/
-    let clickCount = 0;
-    let tripleClickTimeout;
-    document.addEventListener('click', () => {
-      clickCount++;
-      if (clickCount === 3) {
-        alert("Triple click discovered! Surprise confetti inbound!");
-        for (let i = 0; i < 50; i++) createConfetti();
-        clickCount = 0;
-      }
-      clearTimeout(tripleClickTimeout);
-      tripleClickTimeout = setTimeout(() => {
-        clickCount = 0;
-      }, 600);
-    });
-
-    /****************************************************
-     * [19] PIZZA CODE EASTER EGG -> RANDOM BIRD
-    ****************************************************/
-    let pizzaBuffer = [];
-    const randomBirdEl = document.getElementById('randomBird');
-    window.addEventListener('keydown', (e) => {
-      pizzaBuffer.push(e.key.toLowerCase());
-      if (pizzaBuffer.length > 5) {
-        pizzaBuffer.shift();
-      }
-      if (pizzaBuffer.join('') === 'pizza') {
-        alert("PIZZA TIME! Surprise confetti + random bird!");
-        for (let i = 0; i < 40; i++) createConfetti();
-        showRandomBird();
-      }
-    });
     function showRandomBird() {
       fetch('https://random-d.uk/api/v2/random')
         .then(res => res.json())
@@ -1751,49 +2002,8 @@
         })
         .catch(err => {
           console.log("Bird fetch error:", err);
-          randomBirdEl.src = "https://random-d.uk/api/v2/images/22.jpg";
-          randomBirdEl.style.display = 'block';
-          setTimeout(() => {
-            randomBirdEl.style.display = 'none';
-          }, 7000);
         });
     }
-
-    /****************************************************
-     * [20] BURGER CODE EASTER EGG -> BLINKING TEXT
-    ****************************************************/
-    let burgerBuffer = [];
-    const blinkingSecret = document.getElementById('blinkingSecret');
-    let burgerToggle = false;
-    window.addEventListener('keydown', (e) => {
-      burgerBuffer.push(e.key.toLowerCase());
-      if (burgerBuffer.length > 6) {
-        burgerBuffer.shift();
-      }
-      if (burgerBuffer.join('') === 'burger') {
-        alert("BURGER CODE ENTERED! 🍔 Enjoy the secret blinking bar at the top!");
-        for (let i = 0; i < 35; i++) createConfetti();
-        burgerToggle = !burgerToggle;
-        blinkingSecret.style.display = burgerToggle ? 'block' : 'none';
-      }
-    });
-
-    /****************************************************
-     * [21] NEW EASTER EGGS: 'milkshake' -> randomFox
-    ****************************************************/
-    let milkshakeBuffer = [];
-    const randomFoxEl = document.getElementById('randomFox');
-    window.addEventListener('keydown', (e) => {
-      milkshakeBuffer.push(e.key.toLowerCase());
-      if (milkshakeBuffer.length > 9) {
-        milkshakeBuffer.shift();
-      }
-      if (milkshakeBuffer.join('') === 'milkshake') {
-        alert("Milkshake code triggered! Enjoy random fox vibes!");
-        for (let i = 0; i < 40; i++) createConfetti();
-        showRandomFox();
-      }
-    });
     function showRandomFox() {
       fetch('https://randomfox.ca/floof/')
         .then(res => res.json())
@@ -1808,32 +2018,9 @@
         })
         .catch(err => {
           console.log("Fox fetch error:", err);
-          randomFoxEl.src = "https://randomfox.ca/images/74.jpg";
-          randomFoxEl.style.display = 'block';
-          setTimeout(() => {
-            randomFoxEl.style.display = 'none';
-          }, 7000);
         });
     }
-
-    /****************************************************
-     * [22] 'banana' -> randomGiraffe
-    ****************************************************/
-    let bananaBuffer = [];
-    const randomGiraffeEl = document.getElementById('randomGiraffe');
-    window.addEventListener('keydown', (e) => {
-      bananaBuffer.push(e.key.toLowerCase());
-      if (bananaBuffer.length > 6) {
-        bananaBuffer.shift();
-      }
-      if (bananaBuffer.join('') === 'banana') {
-        alert("BANANA CODE TRIGGERED! Summoning a random giraffe... 🍌🦒");
-        for (let i = 0; i < 50; i++) createConfetti();
-        showRandomGiraffe();
-      }
-    });
     function showRandomGiraffe() {
-      // There's no official giraffe API, let's just show a fallback random giraffe image:
       const giraffeImages = [
         'https://cdn.pixabay.com/photo/2014/10/22/17/22/giraffe-498240_1280.jpg',
         'https://cdn.pixabay.com/photo/2013/05/16/10/08/giraffe-111720_1280.jpg',
@@ -1846,6 +2033,297 @@
         randomGiraffeEl.style.display = 'none';
       }, 7000);
     }
+    function showRandomOctopus() {
+      const octopusImages = [
+        'https://media2.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif',
+        'https://media4.giphy.com/media/LCj8WegIWXlCw/giphy.gif',
+        'https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif'
+      ];
+      const randomIndex = Math.floor(Math.random() * octopusImages.length);
+      randomOctopusEl.src = octopusImages[randomIndex];
+      randomOctopusEl.style.display = 'block';
+      setTimeout(() => {
+        randomOctopusEl.style.display = 'none';
+      }, 7000);
+    }
+    function toggleBurgerBlink() {
+      burgerToggle = !burgerToggle;
+      blinkingSecret.style.display = burgerToggle ? 'block' : 'none';
+    }
+
+    /**********************************************
+     * [15] IDLE DETECTION (20s)
+    **********************************************/
+    let idleTimer;
+    let idleTime = 20 * 1000; // 20 seconds
+    function resetIdleTimer() {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        alert("Are you still there? The games are waiting for you!");
+      }, idleTime);
+    }
+    ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt =>
+      window.addEventListener(evt, resetIdleTimer)
+    );
+    resetIdleTimer();
+
+    /**********************************************
+     * [16] RIPPLE EFFECT ON CLICK
+    **********************************************/
+    document.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      ripple.style.left = `${e.pageX}px`;
+      ripple.style.top = `${e.pageY}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+
+    /**********************************************
+     * [17] TRIPLE-CLICK EASTER EGG
+    **********************************************/
+    let clickCount = 0;
+    let tripleClickTimeout;
+    document.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount === 3) {
+        alert("Triple click discovered! Surprise confetti inbound!");
+        for (let i = 0; i < 60; i++) createConfetti();
+        clickCount = 0;
+      }
+      clearTimeout(tripleClickTimeout);
+      tripleClickTimeout = setTimeout(() => {
+        clickCount = 0;
+      }, 600);
+    });
+
+    /**********************************************
+     * [18] CHANGELOG MODAL
+    **********************************************/
+    const changelogBtn = document.getElementById('changelogBtn');
+    const changelogModal = document.getElementById('changelogModal');
+    const changelogClose = document.getElementById('changelogClose');
+    changelogBtn.addEventListener('click', () => {
+      changelogModal.style.display = 'flex';
+    });
+    changelogClose.addEventListener('click', () => {
+      changelogModal.style.display = 'none';
+    });
+    window.addEventListener('click', (e) => {
+      if (e.target === changelogModal) {
+        changelogModal.style.display = 'none';
+      }
+    });
+
+    /**********************************************
+     * [19] RANDOM JOKE API
+    **********************************************/
+    const fetchJokeBtn = document.getElementById('fetchJokeBtn');
+    const jokeDisplay = document.getElementById('jokeDisplay');
+    if (fetchJokeBtn) {
+      fetchJokeBtn.addEventListener('click', () => {
+        fetch('https://official-joke-api.appspot.com/random_joke')
+          .then(res => res.json())
+          .then(data => {
+            if (data.setup && data.punchline) {
+              jokeDisplay.innerHTML = `<strong>${data.setup}</strong><br>${data.punchline}`;
+            } else {
+              jokeDisplay.innerHTML = "Oops, no joke found. Try again later!";
+            }
+          })
+          .catch(err => {
+            jokeDisplay.innerHTML = "API Error: " + err;
+          });
+      });
+    }
+
+    /**********************************************
+     * [20] NASA APOD
+    **********************************************/
+    const fetchApodBtn = document.getElementById('fetchApodBtn');
+    const apodImage = document.getElementById('apodImage');
+    const apodTitle = document.getElementById('apodTitle');
+    const apodExplanation = document.getElementById('apodExplanation');
+
+    if (fetchApodBtn) {
+      fetchApodBtn.addEventListener('click', () => {
+        const NASA_API_KEY = 'DEMO_KEY';
+        const apodUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`;
+
+        fetch(apodUrl)
+          .then(res => res.json())
+          .then(data => {
+            if (data.url && data.media_type === 'image') {
+              apodImage.src = data.url;
+              apodImage.style.display = 'block';
+              apodTitle.style.display = 'block';
+              apodTitle.textContent = data.title || "NASA APOD";
+              apodExplanation.style.display = 'block';
+              apodExplanation.textContent = data.explanation || "No explanation available.";
+            } else if (data.media_type === 'video') {
+              apodImage.style.display = 'none';
+              apodTitle.style.display = 'block';
+              apodExplanation.style.display = 'block';
+              apodTitle.textContent = data.title || "NASA APOD (Video)";
+              apodExplanation.innerHTML = `
+                <p>${data.explanation || "No explanation available."}</p>
+                <p><a href="${data.url}" target="_blank">Watch Video</a></p>
+              `;
+            } else {
+              apodImage.style.display = 'none';
+              apodTitle.textContent = "NASA APOD not available";
+              apodExplanation.textContent = "Unknown media type or error.";
+            }
+          })
+          .catch(err => {
+            apodTitle.textContent = "NASA APOD Error";
+            apodExplanation.textContent = "Something went wrong: " + err;
+          });
+      });
+    }
+
+    /**********************************************
+     * [21] RANDOM QUOTE API
+    **********************************************/
+    const fetchQuoteBtn = document.getElementById('fetchQuoteBtn');
+    const quoteDisplayEl = document.getElementById('quoteDisplay');
+    if (fetchQuoteBtn) {
+      fetchQuoteBtn.addEventListener('click', () => {
+        fetch('https://api.quotable.io/random')
+          .then(res => res.json())
+          .then(data => {
+            if (data.content && data.author) {
+              quoteDisplayEl.innerHTML = `"${data.content}" — ${data.author}`;
+            } else {
+              quoteDisplayEl.innerHTML = "No quote found. Try again later!";
+            }
+          })
+          .catch(err => {
+            quoteDisplayEl.innerHTML = "API Error: " + err;
+          });
+      });
+    }
+
+    /**********************************************
+     * [22] WEATHER API
+    **********************************************/
+    const weatherCityInput = document.getElementById('weatherCityInput');
+    const fetchWeatherBtn = document.getElementById('fetchWeatherBtn');
+    const weatherDisplay = document.getElementById('weatherDisplay');
+    if (fetchWeatherBtn) {
+      fetchWeatherBtn.addEventListener('click', () => {
+        const city = weatherCityInput.value.trim();
+        if (!city) {
+          alert("Please enter a city name!");
+          return;
+        }
+        const API_KEY = "01ba30a923aa710e931424f82c3b3e24"; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            if (data.cod === 200) {
+              weatherDisplay.innerHTML = `
+                <strong>${data.name}, ${data.sys.country}:</strong><br>
+                Temperature: ${data.main.temp}°C<br>
+                Weather: ${data.weather[0].description}<br>
+                Humidity: ${data.main.humidity}%<br>
+                Wind Speed: ${data.wind.speed} m/s
+              `;
+            } else {
+              weatherDisplay.textContent = `Error: ${data.message}`;
+            }
+          })
+          .catch(err => {
+            weatherDisplay.textContent = "Weather API Error: " + err;
+          });
+      });
+    }
+
+    /**********************************************
+     * [23] BORED API
+    **********************************************/
+    const fetchBoredBtn = document.getElementById('fetchBoredBtn');
+    const boredDisplay = document.getElementById('boredDisplay');
+    if (fetchBoredBtn) {
+      fetchBoredBtn.addEventListener('click', () => {
+        fetch('https://www.boredapi.com/api/activity')
+          .then(res => res.json())
+          .then(data => {
+            if (data.activity) {
+              boredDisplay.innerHTML = `Activity: <strong>${data.activity}</strong><br>
+                Type: ${data.type}<br>
+                Participants: ${data.participants}`;
+            } else {
+              boredDisplay.innerHTML = "No activity found. The boredom continues...";
+            }
+          })
+          .catch(err => {
+            boredDisplay.innerHTML = "Bored API Error: " + err;
+          });
+      });
+    }
+
+    /**********************************************
+     * [24] SHAKESPEARE QUOTE (Fake/Example)
+    **********************************************/
+    const fetchShakespeareBtn = document.getElementById('fetchShakespeareBtn');
+    const shakespeareDisplay = document.getElementById('shakespeareDisplay');
+    if (fetchShakespeareBtn) {
+      fetchShakespeareBtn.addEventListener('click', () => {
+        // This is an example endpoint or a direct text array, because
+        // there's no official free Shakespeare API. We'll simulate it:
+        const quotes = [
+          "To be, or not to be, that is the question.",
+          "Some are born great, some achieve greatness, and some have greatness thrust upon them.",
+          "The course of true love never did run smooth.",
+          "If music be the food of love, play on.",
+          "We know what we are, but know not what we may be."
+        ];
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        shakespeareDisplay.textContent = quotes[randomIndex];
+      });
+    }
+
+    /**********************************************
+     * [25] POKEMON API
+    **********************************************/
+    const fetchPokemonBtn = document.getElementById('fetchPokemonBtn');
+    const pokemonInput = document.getElementById('pokemonInput');
+    const pokemonDisplay = document.getElementById('pokemonDisplay');
+
+    if (fetchPokemonBtn) {
+      fetchPokemonBtn.addEventListener('click', () => {
+        const pokeName = pokemonInput.value.trim().toLowerCase();
+        if (!pokeName) {
+          alert("Please enter a Pokémon name or ID!");
+          return;
+        }
+        const url = `https://pokeapi.co/api/v2/pokemon/${pokeName}`;
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            if (data.name) {
+              const pokemonHTML = `
+                <h4 style="margin: 0; text-transform: capitalize;">${data.name}</h4>
+                <img src="${data.sprites.front_default}" alt="${data.name}" style="margin-top: 10px;">
+                <p>Type: ${data.types.map(t => t.type.name).join(', ')}</p>
+                <p>ID: ${data.id}</p>
+              `;
+              pokemonDisplay.innerHTML = pokemonHTML;
+            } else {
+              pokemonDisplay.innerHTML = "Pokémon not found. Check spelling or try an ID.";
+            }
+          })
+          .catch(err => {
+            pokemonDisplay.textContent = "PokéAPI Error: " + err;
+          });
+      });
+    }
+
   </script>
 </body>
 </html>
