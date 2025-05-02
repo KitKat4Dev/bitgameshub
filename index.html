@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="BIT GAMES HUB 1 YEAR ANNIVERSARY ULTRA REMASTERED++ (Extended & Enhanced)" />
+  <meta name="description" content="BIT GAMES HUB 1 YEAR ANNIVERSARY ULTRA REMASTERED++ (Extended & Enhanced) - MEGA HYPER ULTRA VERSION" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY - ULTRA REMASTERED++ (Extended)</title>
+  <title>BIT GAMES HUB - MEGA HYPER ULTRA REMASTERED++ (10x Extended)</title>
 
   <!-- Google Fonts -->
   <link
@@ -16,9 +16,15 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <style>
-    /* --------------------------------------------------
-       1) BASE + RESET
-    -------------------------------------------------- */
+    /********************************************************************
+     * SUPER-ULTRA EXTENDED STYLESHEET
+     * This is an amplified version of your code, with more animations,
+     * more layers, more Easter eggs, and over-the-top expansions.
+    ********************************************************************/
+
+    /**************************************************
+     * [0] - UNIVERSAL RESET & BASE
+    **************************************************/
     * {
       margin: 0;
       padding: 0;
@@ -32,8 +38,13 @@
       color: #fff;
       overflow-x: hidden;
       position: relative;
-      user-select: none; /* prevents accidental selection, can remove if you like */
-      cursor: default;   /* for a more 'game-like' feel */
+      user-select: none; /* Like a game environment */
+      cursor: default;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
     }
     ::-webkit-scrollbar {
       width: 8px;
@@ -43,9 +54,9 @@
       border-radius: 4px;
     }
 
-    /* --------------------------------------------------
-       2) MULTI-LAYER BACKGROUND: PARALLAX + STARS + SWIRL + Matrix
-    -------------------------------------------------- */
+    /**************************************************
+     * [1] - LAYERED BACKGROUNDS: STARS, NEBULA, GALAXY
+    **************************************************/
     body::before {
       content: "";
       position: fixed;
@@ -53,26 +64,28 @@
       left: 0;
       width: 100vw;
       height: 100vh;
+      /* Multiple backgrounds for star fields & nebula */
       background:
         radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12) 2px, transparent 10px),
         radial-gradient(circle at 30% 80%, rgba(255,255,255,0.07) 2px, transparent 10px),
         radial-gradient(circle at 60% 30%, rgba(255,255,255,0.1) 2px, transparent 10px),
-        #000; /* base color */
-      background-size: 200px 200px, 300px 300px, 200px 200px, cover;
-      background-repeat: repeat, repeat, repeat, no-repeat;
+        url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=1367&q=80'),
+        #000; 
+      background-size: 200px 200px, 300px 300px, 200px 200px, cover, cover;
+      background-repeat: repeat, repeat, repeat, no-repeat, no-repeat;
       z-index: -4;
       animation: starDrift 250s linear infinite;
     }
     @keyframes starDrift {
       0% {
-        background-position: 0 0, 0 0, 0 0;
+        background-position: 0 0, 0 0, 0 0, center, center;
       }
       100% {
-        background-position: 5000px 5000px, -4000px -4000px, 3500px -3500px;
+        background-position: 5000px 5000px, -4000px -4000px, 3500px -3500px, center, center;
       }
     }
 
-    /* Additional swirling gradient on top of starfield */
+    /* Add a swirling color overlay on top of it all */
     body::after {
       content: "";
       position: fixed;
@@ -96,7 +109,30 @@
       }
     }
 
-    /* Matrix overlay effect */
+    /**************************************************
+     * [1a] - ADDITIONAL GALACTIC OVERLAY
+    **************************************************/
+    .galactic-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(at center, rgba(255,255,255,0.03), transparent 70%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: -3;
+      animation: fadeBlink 6s infinite alternate;
+    }
+    @keyframes fadeBlink {
+      0% { opacity: 0.05; }
+      50% { opacity: 0.1; }
+      100% { opacity: 0.2; }
+    }
+
+    /**************************************************
+     * [2] - MATRIX OVERLAY & EXTRA FLOATING SHAPES
+    **************************************************/
     .matrix-overlay {
       position: fixed;
       top: 0;
@@ -125,7 +161,50 @@
       }
     }
 
-    /* Shooting Stars */
+    .float-shape {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(#ff00ff, transparent);
+      filter: blur(6px);
+      opacity: 0.15;
+      animation: floatShapes 10s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+    @keyframes floatShapes {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(60px, -60px) rotate(360deg);
+      }
+    }
+    .float-shape:nth-child(even) {
+      background: radial-gradient(#00ffff, transparent);
+      animation-duration: 12s;
+    }
+
+    /* Extra shapes for more layering & variety */
+    .float-shape.mini {
+      width: 60px;
+      height: 60px;
+      opacity: 0.25;
+      animation-duration: 7s;
+      top: 70%;
+      left: 10%;
+    }
+    .float-shape.giant {
+      width: 180px;
+      height: 180px;
+      opacity: 0.08;
+      animation-duration: 16s;
+      top: 10%;
+      left: 80%;
+    }
+
+    /**************************************************
+     * [3] - SHOOTING STARS
+    **************************************************/
     @keyframes shootStar {
       0% {
         transform: translate(-50%, 0) scale(1);
@@ -161,34 +240,20 @@
     .shooting-star:nth-child(3) {
       animation-delay: 9s;
     }
-
-    /* Additional floating shapes effect */
-    .float-shape {
-      position: fixed;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(#ff00ff, transparent);
-      filter: blur(6px);
-      opacity: 0.15;
-      animation: floatShapes 10s infinite alternate ease-in-out;
-      z-index: -1;
+    /* More shooting stars */
+    .shooting-star:nth-child(4) {
+      animation-delay: 13s;
     }
-    @keyframes floatShapes {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      100% {
-        transform: translate(60px, -60px) rotate(360deg);
-      }
+    .shooting-star:nth-child(5) {
+      animation-delay: 18s;
     }
-    .float-shape:nth-child(even) {
-      background: radial-gradient(#00ffff, transparent);
-      animation-duration: 12s;
+    .shooting-star:nth-child(6) {
+      animation-delay: 23s;
     }
 
-    /* --------------------------------------------------
-       3) TITLE SCREEN (Intro overlay)
-    -------------------------------------------------- */
+    /**************************************************
+     * [4] - TITLE SCREEN OVERLAY
+    **************************************************/
     #titleScreen {
       position: fixed;
       top: 0;
@@ -272,9 +337,9 @@
       display: none;
     }
 
-    /* --------------------------------------------------
-       4) HEADER (Sticky)
-    -------------------------------------------------- */
+    /**************************************************
+     * [5] - STICKY HEADER
+    **************************************************/
     header {
       position: sticky;
       top: 0;
@@ -304,6 +369,27 @@
     header h1:hover {
       transform: scale(1.03);
     }
+
+    /* Volume Container next to Settings */
+    .volume-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 20px;
+    }
+    .volume-container label {
+      font-family: 'Orbitron', sans-serif;
+      color: #0ff;
+      font-size: 0.9rem;
+      text-shadow: 0 0 4px #0ff;
+      letter-spacing: 1px;
+    }
+    #volumeSlider {
+      width: 100px;
+      cursor: pointer;
+    }
+
+    /* Settings button in header */
     #settingsBtn {
       background: transparent;
       border: 2px solid #0ff;
@@ -321,16 +407,15 @@
       box-shadow: 0 0 8px #0ff;
     }
 
-    /* --------------------------------------------------
-       5) MAIN CONTENT AREA
-    -------------------------------------------------- */
+    /**************************************************
+     * [6] - MAIN CONTENT SECTIONS
+    **************************************************/
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 30px 40px 80px;
     }
 
-    /* Section fade-in on scroll */
     section {
       margin-bottom: 60px;
       opacity: 0;
@@ -382,9 +467,23 @@
       }
     }
 
-    /* --------------------------------------------------
-       6) GRID + GAME CARDS
-    -------------------------------------------------- */
+    .section-description {
+      text-align: center;
+      font-size: 1rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.5;
+      animation: fadeInText 1.2s ease forwards;
+      opacity: 0;
+    }
+    .section-description.visible {
+      opacity: 1;
+    }
+
+    /**************************************************
+     * [7] - GRID + CARD STYLES
+    **************************************************/
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -444,9 +543,9 @@
       }
     }
 
-    /* --------------------------------------------------
-       7) MEME GALLERY
-    -------------------------------------------------- */
+    /**************************************************
+     * [8] - MEME GALLERY
+    **************************************************/
     .meme-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -465,9 +564,9 @@
       box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
     }
 
-    /* --------------------------------------------------
-       8) FOOTER
-    -------------------------------------------------- */
+    /**************************************************
+     * [9] - FOOTER
+    **************************************************/
     footer {
       background: rgba(10, 10, 10, 0.8);
       text-align: center;
@@ -482,9 +581,9 @@
       color: #0ff;
     }
 
-    /* --------------------------------------------------
-       9) SETTINGS MODAL
-    -------------------------------------------------- */
+    /**************************************************
+     * [10] - SETTINGS MODAL
+    **************************************************/
     .modal {
       display: none;
       position: fixed;
@@ -556,9 +655,9 @@
       color: #fff;
     }
 
-    /* --------------------------------------------------
-       10) reCAPTCHA MODAL
-    -------------------------------------------------- */
+    /**************************************************
+     * [11] - reCAPTCHA MODAL
+    **************************************************/
     #captchaModal {
       display: none;
       position: fixed;
@@ -602,9 +701,9 @@
       color: #ff0;
     }
 
-    /* --------------------------------------------------
-       11) CONFETTI + BACK TO TOP BUTTON
-    -------------------------------------------------- */
+    /**************************************************
+     * [12] - CONFETTI & BACK TO TOP BUTTON
+    **************************************************/
     #confettiBtn {
       position: fixed;
       bottom: 120px;
@@ -671,9 +770,9 @@
       }
     }
 
-    /* --------------------------------------------------
-       12) KONAMI EASTER EGG + SECRET MESSAGE
-    -------------------------------------------------- */
+    /**************************************************
+     * [13] - KONAMI EASTER EGG & SECRET MESSAGE
+    **************************************************/
     #secretMessage {
       position: fixed;
       top: 50px;
@@ -705,9 +804,9 @@
       display: block;
     }
 
-    /* --------------------------------------------------
-       13) GLITCH TEXT ON DOUBLE-CLICK
-    -------------------------------------------------- */
+    /**************************************************
+     * [14] - GLITCH TEXT ON DOUBLE-CLICK
+    **************************************************/
     .glitch-text {
       position: fixed;
       bottom: 40%;
@@ -761,9 +860,9 @@
       }
     }
 
-    /* --------------------------------------------------
-       14) TEAM/CONTRIBUTORS SECTION
-    -------------------------------------------------- */
+    /**************************************************
+     * [15] - TEAM / CONTRIBUTORS
+    **************************************************/
     .team-container {
       text-align: center;
       background: rgba(255, 255, 255, 0.05);
@@ -809,9 +908,9 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    /* --------------------------------------------------
-       15) EXTENDED EASTER EGG & ANIMATIONS
-    -------------------------------------------------- */
+    /**************************************************
+     * [16] - RANDOM CAT, DOG, BIRD IMAGES
+    **************************************************/
     .random-cat {
       position: fixed;
       bottom: 10%;
@@ -858,24 +957,6 @@
       }
     }
 
-    /* Ripple effect on body click */
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(0);
-      animation: rippleEffect 0.6s linear;
-      pointer-events: none;
-      z-index: 999999;
-    }
-    @keyframes rippleEffect {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-
-    /* (NEW) SECRET BIRD PICTURE EASTER EGG */
     .random-bird {
       position: fixed;
       top: 10%;
@@ -900,7 +981,38 @@
       }
     }
 
-    /* (NEW) BLINKING SECRET TEXT (Triggered by 'burger' code) */
+    /**************************************************
+     * [16a] - MORE RANDOM ANIMALS (EXTENDED EASTER EGG)
+    **************************************************/
+    .random-fox {
+      position: fixed;
+      top: 40%;
+      right: 5%;
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 3px solid #ff8000;
+      box-shadow: 0 0 10px #ff8000;
+      display: none;
+      animation: foxTilt 2.5s infinite linear;
+      z-index: 7000;
+    }
+    @keyframes foxTilt {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(15deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    /**************************************************
+     * [17] - BLINKING SECRET TEXT
+    **************************************************/
     #blinkingSecret {
       position: fixed;
       top: 0;
@@ -922,30 +1034,83 @@
       50% { opacity: 0.2; }
       100% { opacity: 1; }
     }
+
+    /**************************************************
+     * [18] - RIPPLE EFFECT ON CLICK
+    **************************************************/
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+      pointer-events: none;
+      z-index: 999999;
+    }
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /**************************************************
+     * [19] - EXTENDED EASTER EGG ZONE
+     *************************************************/
+    /* If you want to add more hidden codes, you can place styles here,
+       or new elements that appear on certain triggers. */
+
+    .random-giraffe {
+      position: fixed;
+      top: 60%;
+      right: 30%;
+      width: 80px;
+      height: 80px;
+      border: 3px solid #ffaa00;
+      border-radius: 50%;
+      overflow: hidden;
+      display: none;
+      z-index: 9999;
+      animation: giraffeDance 1.5s infinite ease-in-out;
+    }
+    @keyframes giraffeDance {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
   </style>
 </head>
 
 <body>
-  <!-- Additional background overlay for "Matrix" effect -->
+  <!-- Added an extra overlay for subtle cosmic flickers -->
+  <div class="galactic-overlay"></div>
+
+  <!-- Matrix Overlay -->
   <div class="matrix-overlay"></div>
 
-  <!-- Additional Floating Shapes for Visuals -->
+  <!-- Floating Shapes -->
   <div class="float-shape" style="top: 20%; left: 20%;"></div>
   <div class="float-shape" style="top: 50%; left: 60%;"></div>
+  <div class="float-shape mini"></div>
+  <div class="float-shape giant"></div>
 
-  <!-- SHOOTING STARS (multiple) -->
+  <!-- Shooting Stars (More than before) -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
 
-  <!-- TITLE SCREEN (Hidden once user clicks ENTER) -->
+  <!-- TITLE SCREEN (Hidden after click ENTER) -->
   <div id="titleScreen">
-    <h1>BIT GAMES HUB - ULTRA REMASTERED++</h1>
+    <h1>BIT GAMES HUB - MEGA ULTRA REMASTERED++</h1>
     <p>
-      Welcome to an ultra-extended swirl of starfields, fresh Easter eggs, 
-      extra animations, hidden codes, and extended content!<br>
-      <strong>New Surprises Ahead!</strong><br>
-      <em>Watch for hidden codes ("milk", "coffee", "dog", "pizza", "burger"...) plus ripples, random images, and more!</em>
+      Welcome to the hyper-extended swirl of starfields and Easter eggs!<br>
+      More animations, hidden codes, ripple effects, random animals, confetti blasts,<br>
+      and brand new expansions abound!<br>
+      <strong>Ready for 10x the fun?!</strong><br>
+      <em>Keep an eye out for new hidden codes like "milkshake", "icecream", "banana", and more!</em>
     </p>
     <button id="enterBtn">ENTER</button>
   </div>
@@ -953,154 +1118,176 @@
   <!-- SECRET BLINKING TEXT (Triggered by 'burger' code) -->
   <div id="blinkingSecret">Secret "BURGER" text triggered! Munch munch... 🍔</div>
 
-  <!-- HIDDEN SECRET MESSAGE (Shown when Konami Code is entered) -->
+  <!-- KONAMI CODE SECRET MESSAGE -->
   <div id="secretMessage">
     <p><strong>Konami Code Activated!</strong><br>Extra Confetti + Surprise Unlocked!</p>
   </div>
 
-  <!-- GLITCH TEXT (Double-click Easter Egg) -->
+  <!-- GLITCH TEXT (Double-click) -->
   <div class="glitch-text" id="glitchText">GLITCH MODE ENGAGED</div>
 
-  <!-- RANDOM CAT EASTER EGG -->
+  <!-- RANDOM ANIMALS -->
   <img class="random-cat" id="randomCat" src="" alt="Random Cat" />
-
-  <!-- RANDOM DOG EASTER EGG -->
   <img class="random-dog" id="randomDog" src="" alt="Random Dog" />
-
-  <!-- RANDOM BIRD EASTER EGG -->
   <img class="random-bird" id="randomBird" src="" alt="Random Bird" />
+  <img class="random-fox" id="randomFox" src="" alt="Random Fox" />
+  <img class="random-giraffe" id="randomGiraffe" src="" alt="Random Giraffe" />
 
-  <!-- AUDIO (Hidden, handled by JS) -->
+  <!-- HIDDEN AUDIO ELEMENT (Music) -->
   <audio id="audioPlayer" style="display:none;"></audio>
 
   <!-- MAIN CONTENT (Initially hidden) -->
   <div id="mainContent">
     <!-- HEADER -->
     <header>
-      <h1>BIT GAMES HUB - 1 YEAR ANNIVERSARY REMAKE++</h1>
+      <h1>BIT GAMES HUB - 1 YEAR ANNIVERSARY (MEGA REMAKE)</h1>
+      <!-- Volume Slider -->
+      <div class="volume-container">
+        <label for="volumeSlider">Volume</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" />
+      </div>
       <button id="settingsBtn">Settings</button>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN AREA -->
     <main>
-      <!-- Main Games Section -->
+      <!-- SECTION 1: Main Games -->
       <section>
         <h2>Main Games</h2>
-        <div class="grid">
-          <!-- Add or remove any game links as desired -->
-          <div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
-          <div class="card"><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></div>
-          <div class="card"><a href="/random-compliment/index.html">🎮 Random Compliments</a></div>
-          <div class="card"><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></div>
-          <div class="card"><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></div>
-          <div class="card"><a href="/customdodge/index.html">🎮 Custom Dodge</a></div>
-          <div class="card"><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster</a></div>
-          <div class="card"><a href="/random-complaints/index.html">🎮 Random Complaints</a></div>
-          <div class="card"><a href="/404-error-simulator/index.html">🎮 404 Simulator</a></div>
-          <div class="card"><a href="/random-button-generator/index.html">🎮 Random Buttons</a></div>
-          <div class="card"><a href="/endless-scrolling-text/index.html">🎮 Scrolling Text</a></div>
-          <div class="card"><a href="/time-wasting-countdown/index.html">🎮 Countdown</a></div>
-          <div class="card"><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></div>
-          <div class="card"><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel</a></div>
-          <div class="card"><a href="/random-fact-generator/index.html">🎮 Fact Generator</a></div>
-          <div class="card"><a href="/staring-contest/index.html">🎮 Staring Contest</a></div>
-          <div class="card"><a href="/color-generator/index.html">🎮 Color Generator</a></div>
-          <div class="card"><a href="/video-cloner/index.html">🎮 Video Cloner</a></div>
-          <div class="card"><a href="/10-in-1/index.html">🎮 Tilting Maze Game</a></div>
-          <div class="card"><a href="/tribute-nice/index.html">🎮 Tribute to IZ Kamakawiwo'ole</a></div>
-          <div class="card"><a href="/adware-simulator/index.html">🎮 Totally Reol Ads</a></div>
-          <div class="card"><a href="/pong-gaem/index.html">🎮 Generic Pong Gaem</a></div>
-          <div class="card"><a href="/Music-board/index.html">🎮 Musicboard</a></div>
-          <div class="card"><a href="/DVD-GAME/index.html">🎮 Smiley Face</a></div>
-          <div class="card"><a href="/rhythm-cold/index.html">🎮 Normal Site</a></div>
-          <div class="card"><a href="/Arcade/index.html">🎮 Quiz</a></div>
-          <div class="card"><a href="/avatar/index.html">🎮 Quiz 2</a></div>
-          <div class="card"><a href="/28-Emoji-Catcher-Game/index.html">🎮 Emoji Catcher</a></div>
-          <div class="card"><a href="/26-Fruit-Slicer-Game/index.html">🎮 Fruit Slicer</a></div>
-          <div class="card"><a href="/25-Speak-Number-Guessing-Game/index.html">🎮 Speak Number Guessing</a></div>
-          <div class="card"><a href="/23-Shape-Clicker-Game/index.html">🎮 Shape Clicker</a></div>
-          <div class="card"><a href="/22-Dice-Roll-Simulator/index.html">🎮 Dice Simulator</a></div>
-          <div class="card"><a href="/21-2048-Game/index.html">🎮 2048 Game</a></div>
-          <div class="card"><a href="/20-Crossy-Road-Game/index.html">🎮 Crossy Road</a></div>
-          <div class="card"><a href="/19-Flappy-Bird-Game/index.html">🎮 Flappy Bird</a></div>
-          <div class="card"><a href="/18-Hangman-Game/index.html">🎮 Hangman</a></div>
-          <div class="card"><a href="/17-Typing-Game/index.html">🎮 Typing</a></div>
-          <div class="card"><a href="/16-Insect-Catch-Game/index.html">🎮 Insect Catch</a></div>
-          <div class="card"><a href="/15-Connect-Four-Game/index.html">🎮 Connect 4</a></div>
-          <div class="card"><a href="/14-Snake-Game/index.html">🎮 Snake</a></div>
-          <div class="card"><a href="/13-Tic-Tac-Toe/index.html">🎮 Tic Tac Toe</a></div>
-          <div class="card"><a href="/12-Type-Number-Guessing-Game/index.html">🎮 Type Guessing</a></div>
-          <div class="card"><a href="/11-Rock-Paper-Scissors/index.html">🎮 RPS</a></div>
-          <div class="card"><a href="/08-Tetris-Game/index.html">🎮 Tetris</a></div>
-          <div class="card"><a href="/10-Memory-Card-Game/index.html">🎮 Memory Game</a></div>
-          <div class="card"><a href="/06-Tower-Blocks/index.html">🎮 Tower Blocks</a></div>
-          <div class="card"><a href="/07-Ping-Pong-Game/index.html">🎮 Ping Pong</a></div>
-          <div class="card"><a href="/05-Minesweeper-Game/index.html">🎮 Minesweeper</a></div>
-          <div class="card"><a href="/04-Breakout-Game/index.html">🎮 Breakout</a></div>
-          <div class="card"><a href="/03-Speed-Typing-Game/index.html">🎮 Speed Typing</a></div>
-          <div class="card"><a href="/02-Archery-Game/index.html">🎮 Archery</a></div>
-          <div class="card"><a href="/01-Candy-Crush-Game/index.html">🎮 Candy Crush</a></div>
-          <div class="card"><a href="https://discord.com/channels/1311067271455576186/1311070186127884350">🎮 Discord Server</a></div>
-          <div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Rebornd</a></div>
-          <div class="card"><a href="/Bebe-malvado/index.html">🎮 Spongebobs Splashy Social</a></div>
-          <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
-          <div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
-          <div class="card"><a href="/jumpgame/index.html">🎮 Platformer</a></div>
-        </div>
-      </section>
+<h2>Main Games</h2>
+<div class="grid">
+<!-- Add or remove any game links as desired -->
+<div class="card"><a href="/clicker-madness/index.html">🎮 Clicker Madness</a></div>
+<div class="card"><a href="/boredom-simulator/index.html">🎮 Boredom Simulator</a></div>
+<div class="card"><a href="/random-compliment/index.html">🎮 Random Compliments</a></div>
+<div class="card"><a href="/doodle-pad/index.html">🎮 Doodle Pad</a></div>
+<div class="card"><a href="/silly-photo-booth/index.html">🎮 Silly Photo Booth</a></div>
+<div class="card"><a href="/customdodge/index.html">🎮 Custom Dodge</a></div>
+<div class="card"><a href="/unmotivational-poster/index.html">🎮 Unmotivational Poster</a></div>
+<div class="card"><a href="/random-complaints/index.html">🎮 Random Complaints</a></div>
+<div class="card"><a href="/404-error-simulator/index.html">🎮 404 Simulator</a></div>
+<div class="card"><a href="/random-button-generator/index.html">🎮 Random Buttons</a></div>
+<div class="card"><a href="/endless-scrolling-text/index.html">🎮 Scrolling Text</a></div>
+<div class="card"><a href="/time-wasting-countdown/index.html">🎮 Countdown</a></div>
+<div class="card"><a href="/virtual-pet-rock/index.html">🎮 Virtual Pet Rock</a></div>
+<div class="card"><a href="/color-wheel-of-uselessness/index.html">🎮 Color Wheel</a></div>
+<div class="card"><a href="/random-fact-generator/index.html">🎮 Fact Generator</a></div>
+<div class="card"><a href="/staring-contest/index.html">🎮 Staring Contest</a></div>
+<div class="card"><a href="/color-generator/index.html">🎮 Color Generator</a></div>
+<div class="card"><a href="/video-cloner/index.html">🎮 Video Cloner</a></div>
+<div class="card"><a href="/10-in-1/index.html">🎮 Tilting Maze Game</a></div>
+<div class="card"><a href="/tribute-nice/index.html">🎮 Tribute to IZ Kamakawiwo'ole</a></div>
+<div class="card"><a href="/adware-simulator/index.html">🎮 Totally Reol Ads</a></div>
+<div class="card"><a href="/pong-gaem/index.html">🎮 Generic Pong Gaem</a></div>
+<div class="card"><a href="/Music-board/index.html">🎮 Musicboard</a></div>
+<div class="card"><a href="/DVD-GAME/index.html">🎮 Smiley Face</a></div>
+<div class="card"><a href="/rhythm-cold/index.html">🎮 Normal Site</a></div>
+<div class="card"><a href="/Arcade/index.html">🎮 Quiz</a></div>
+<div class="card"><a href="/avatar/index.html">🎮 Quiz 2</a></div>
+<div class="card"><a href="/28-Emoji-Catcher-Game/index.html">🎮 Emoji Catcher</a></div>
+<div class="card"><a href="/26-Fruit-Slicer-Game/index.html">🎮 Fruit Slicer</a></div>
+<div class="card"><a href="/25-Speak-Number-Guessing-Game/index.html">🎮 Speak Number Guessing</a></div>
+<div class="card"><a href="/23-Shape-Clicker-Game/index.html">🎮 Shape Clicker</a></div>
+<div class="card"><a href="/22-Dice-Roll-Simulator/index.html">🎮 Dice Simulator</a></div>
+<div class="card"><a href="/21-2048-Game/index.html">🎮 2048 Game</a></div>
+<div class="card"><a href="/20-Crossy-Road-Game/index.html">🎮 Crossy Road</a></div>
+<div class="card"><a href="/19-Flappy-Bird-Game/index.html">🎮 Flappy Bird</a></div>
+<div class="card"><a href="/18-Hangman-Game/index.html">🎮 Hangman</a></div>
+<div class="card"><a href="/17-Typing-Game/index.html">🎮 Typing</a></div>
+<div class="card"><a href="/16-Insect-Catch-Game/index.html">🎮 Insect Catch</a></div>
+<div class="card"><a href="/15-Connect-Four-Game/index.html">🎮 Connect 4</a></div>
+<div class="card"><a href="/14-Snake-Game/index.html">🎮 Snake</a></div>
+<div class="card"><a href="/13-Tic-Tac-Toe/index.html">🎮 Tic Tac Toe</a></div>
+<div class="card"><a href="/12-Type-Number-Guessing-Game/index.html">🎮 Type Guessing</a></div>
+<div class="card"><a href="/11-Rock-Paper-Scissors/index.html">🎮 RPS</a></div>
+<div class="card"><a href="/08-Tetris-Game/index.html">🎮 Tetris</a></div>
+<div class="card"><a href="/10-Memory-Card-Game/index.html">🎮 Memory Game</a></div>
+<div class="card"><a href="/06-Tower-Blocks/index.html">🎮 Tower Blocks</a></div>
+<div class="card"><a href="/07-Ping-Pong-Game/index.html">🎮 Ping Pong</a></div>
+<div class="card"><a href="/05-Minesweeper-Game/index.html">🎮 Minesweeper</a></div>
+<div class="card"><a href="/04-Breakout-Game/index.html">🎮 Breakout</a></div>
+<div class="card"><a href="/03-Speed-Typing-Game/index.html">🎮 Speed Typing</a></div>
+<div class="card"><a href="/02-Archery-Game/index.html">🎮 Archery</a></div>
+<div class="card"><a href="/01-Candy-Crush-Game/index.html">🎮 Candy Crush</a></div>
+<div class="card"><a href="https://discord.com/channels/1311067271455576186/1311070186127884350">🎮 Discord Server</a></div>
+<div class="card"><a href="/chase-game/index.html">🎮 Find The Toodles Rebornd</a></div>
+<div class="card"><a href="/Bebe-malvado/index.html">🎮 Spongebobs Splashy Social</a></div>
+<div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
+<div class="card"><a href="/lifesim/index.html">🎮 Life Simulator</a></div>
+<div class="card"><a href="/jumpgame/index.html">🎮 Platformer</a></div>
+<div class="card"><a href="/HTTPerror/index.html">🎮 HTTP Code Explorer</a></div>
+</div>
+</section>
 
-      <!-- "The Worst" Series Section -->
+<!-- "The Worst" Series Section -->
+<section>
+<h2>"The Worst" Series</h2>
+<div class="grid">
+<div class="card"><a href="/the-worst-volume-bar/index.html">🎮 Worst Volume Bar</a></div>
+<div class="card"><a href="/the-worst-ui/index.html">🎮 Worst UI</a></div>
+<div class="card"><a href="/the-worst-brightness-control/index.html">🎮 Worst Brightness</a></div>
+<div class="card"><a href="/the-worst-easter-egg/index.html">🎮 Worst Easter Egg</a></div>
+<div class="card"><a href="/the-worst-loading-screen/index.html">🎮 Worst Loading</a></div>
+<div class="card"><a href="/the-worst-auto-save/index.html">🎮 Worst Auto-Save</a></div>
+<div class="card"><a href="/the-worst-cursor/index.html">🎮 Worst Cursor</a></div>
+<div class="card"><a href="/the-worst-pop-up-window/index.html">🎮 Worst Pop-up</a></div>
+<div class="card"><a href="/the-worst-keyboard-shortcuts/index.html">🎮 Worst Shortcuts</a></div>
+<div class="card"><a href="/the-worst-scroll-bar/index.html">🎮 Worst Scroll Bar</a></div>
+<div class="card"><a href="/the-worst-refresh-button/index.html">🎮 Worst Refresh</a></div>
+<div class="card"><a href="/the-worst-search-bar/index.html">🎮 Worst Search Bar</a></div>
+<div class="card"><a href="/the-worst-progress-bar/index.html">🎮 Worst Progress</a></div>
+</div>
+</section>
+
+<!-- Discontinued/Broken Games Section -->
+<section>
+<h2>Discontinued/Broken Games</h2>
+<div class="grid">
+<div class="card"><a href="/Dandys-world-arts/index.html">🎮 Endless GIF Scroll</a></div>
+<div class="card"><a href="/endless-maze/index.html">🎮 Endless Maze</a></div>
+<div class="card"><a href="/EVIL-BITGAMESHUB/index.html">🎮 EVIL BIT GAMES HUB</a></div>
+<div class="card"><a href="/smooth-brain/index.html">🎮 Copy Text Button</a></div>
+<div class="card"><a href="/Sandbox-game/index.html">🎮 Sandbox</a></div>
+<div class="card"><a href="/Random-one/keys.html">🎮 Dunno</a></div>
+<div class="card"><a href="/wonderofu/index.html">🎮 Super Gay Bros DVD</a></div>
+<div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
+</div>
+</section>
+
+<!-- Meme Gallery Section -->
+<section>
+<h2>Meme Gallery</h2>
+<div class="meme-gallery">
+<img src="https://media1.tenor.com/m/qxNnKIup-ccAAAAd/green-lovers.gif" alt="Meme 1">
+<img src="https://media1.tenor.com/m/sXFNKyeTApUAAAAd/wtf-smg4.gif" alt="Meme 2">
+<img src="https://media.tenor.com/EDLBuX_GhnMAAAAM/android-chocolate.gif" alt="Meme 3">
+<img src="https://media1.tenor.com/m/Mx-HToTO5CcAAAAd/android-kitkat.gif" alt="Meme 4">
+</div>
+</section>
+
+      <!-- SECTION 5: Special New Section - Retro Nostalgia -->
       <section>
-        <h2>"The Worst" Series</h2>
+        <h2>Retro Nostalgia</h2>
+        <p class="section-description">Throwback to pixel art, 8-bit tunes, and old-school charm. More expansions on the horizon!</p>
         <div class="grid">
-          <div class="card"><a href="/the-worst-volume-bar/index.html">🎮 Worst Volume Bar</a></div>
-          <div class="card"><a href="/the-worst-ui/index.html">🎮 Worst UI</a></div>
-          <div class="card"><a href="/the-worst-brightness-control/index.html">🎮 Worst Brightness</a></div>
-          <div class="card"><a href="/the-worst-easter-egg/index.html">🎮 Worst Easter Egg</a></div>
-          <div class="card"><a href="/the-worst-loading-screen/index.html">🎮 Worst Loading</a></div>
-          <div class="card"><a href="/the-worst-auto-save/index.html">🎮 Worst Auto-Save</a></div>
-          <div class="card"><a href="/the-worst-cursor/index.html">🎮 Worst Cursor</a></div>
-          <div class="card"><a href="/the-worst-pop-up-window/index.html">🎮 Worst Pop-up</a></div>
-          <div class="card"><a href="/the-worst-keyboard-shortcuts/index.html">🎮 Worst Shortcuts</a></div>
-          <div class="card"><a href="/the-worst-scroll-bar/index.html">🎮 Worst Scroll Bar</a></div>
-          <div class="card"><a href="/the-worst-refresh-button/index.html">🎮 Worst Refresh</a></div>
-          <div class="card"><a href="/the-worst-search-bar/index.html">🎮 Worst Search Bar</a></div>
-          <div class="card"><a href="/the-worst-progress-bar/index.html">🎮 Worst Progress</a></div>
+          <div class="card"><a href="/retro-arcade/index.html" target="_blank">🎮 Retro Arcade</a></div>
+          <div class="card"><a href="/space-invaders/index.html" target="_blank">🎮 Space Invaders Tribute</a></div>
+          <div class="card"><a href="/pixel-art-painter/index.html" target="_blank">🎮 Pixel Art Painter</a></div>
+          <div class="card"><a href="/classic-racing/index.html" target="_blank">🎮 Classic Racing</a></div>
+          <!-- Add more retro style links here -->
         </div>
       </section>
 
-      <!-- Discontinued/Broken Games Section -->
-      <section>
-        <h2>Discontinued/Broken Games</h2>
-        <div class="grid">
-          <div class="card"><a href="/Dandys-world-arts/index.html">🎮 Endless GIF Scroll</a></div>
-          <div class="card"><a href="/endless-maze/index.html">🎮 Endless Maze</a></div>
-          <div class="card"><a href="/EVIL-BITGAMESHUB/index.html">🎮 EVIL BIT GAMES HUB</a></div>
-          <div class="card"><a href="/smooth-brain/index.html">🎮 Copy Text Button</a></div>
-          <div class="card"><a href="/Sandbox-game/index.html">🎮 Sandbox</a></div>
-          <div class="card"><a href="/Random-one/keys.html">🎮 Dunno</a></div>
-          <div class="card"><a href="/wonderofu/index.html">🎮 Super Gay Bros DVD</a></div>
-          <div class="card"><a href="/Platform-Game-master/index.html">🎮 Jumping Toodles</a></div>
-        </div>
-      </section>
-
-      <!-- Meme Gallery Section -->
-      <section>
-        <h2>Meme Gallery</h2>
-        <div class="meme-gallery">
-          <img src="https://media1.tenor.com/m/qxNnKIup-ccAAAAd/green-lovers.gif" alt="Meme 1">
-          <img src="https://media1.tenor.com/m/sXFNKyeTApUAAAAd/wtf-smg4.gif" alt="Meme 2">
-          <img src="https://media.tenor.com/EDLBuX_GhnMAAAAM/android-chocolate.gif" alt="Meme 3">
-          <img src="https://media1.tenor.com/m/Mx-HToTO5CcAAAAd/android-kitkat.gif" alt="Meme 4">
-        </div>
-      </section>
-
-      <!-- Team / Contributors Section -->
+      <!-- SECTION 6: Contributors / Team -->
       <section>
         <div class="team-container">
           <h2 class="team-title">Contributors</h2>
+          <p class="section-description visible">Many thanks to everyone who made this madness possible!</p>
           <div class="team-list">
             <div class="member">- You, the Player: Beta Tester</div>
+            <div class="member">- Dev Mage: Created random cats/dogs code</div>
+            <div class="member">- Pixel Artist: Provided retro assets</div>
+            <div class="member">- Meme Curator: Sourced the best (worst?) GIFs</div>
           </div>
         </div>
       </section>
@@ -1109,7 +1296,7 @@
     <!-- FOOTER -->
     <footer>
       &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.<br>
-      <small>Version: <strong>1.3.0 ULTRA REMASTERED++ (Extended)</strong></small>
+      <small>Version: <strong>1.3.0 MEGA ULTRA REMASTERED++ (10x Extended)</strong></small>
     </footer>
   </div> <!-- end #mainContent -->
 
@@ -1131,7 +1318,7 @@
           <option value="20">Extra Large</option>
         </select>
       </div>
-      <!-- Additional settings can go here -->
+      <!-- Additional settings could be added below -->
     </div>
   </div>
 
@@ -1149,26 +1336,31 @@
     </div>
   </div>
 
-  <!-- CONFETTI BUTTON -->
+  <!-- CONFETTI & BACK TO TOP BUTTONS -->
   <button id="confettiBtn" title="Celebrate!">✨</button>
-
-  <!-- BACK TO TOP BUTTON -->
   <button id="backToTop">Top</button>
 
   <script>
-    /**********************************************
-     * 1) TITLE SCREEN & AUDIO
-    **********************************************/
+    /********************************************************************
+     * SUPERSIZED JAVASCRIPT
+     * Extended with more Easter eggs, more random fetch calls, etc.
+    ********************************************************************/
+
+    /****************************************************
+     * [1] TITLE SCREEN & AUDIO
+    ****************************************************/
     const titleScreen = document.getElementById('titleScreen');
     const enterBtn = document.getElementById('enterBtn');
     const mainContent = document.getElementById('mainContent');
     const audioPlayer = document.getElementById('audioPlayer');
 
-    // Playlist of songs
+    // Expanded playlist of songs
     const playlist = [
       'Sounds/The Cranberries - Zombie (Alt. Version) [95HqlWRFrAk].mp3',
-      'Sounds/Stay Together For The Kids - Blink 182 [45RYX77veK0].mp3'
-      // Add more track paths if desired
+      'Sounds/Stay Together For The Kids - Blink 182 [45RYX77veK0].mp3',
+      'Sounds/Never-Gonna-Give-You-Up.mp3',
+      'Sounds/Beastie-Boys-Sabotage.mp3'
+      // ... add more tracks if desired ...
     ];
     let currentTrackIndex = 0;
 
@@ -1176,18 +1368,18 @@
     enterBtn.addEventListener('click', () => {
       enterClickCount++;
       if (enterClickCount >= 5) {
-        alert("Wow, you REALLY want to enter! Alright, let's go!");
+        alert("Wow, you REALLY want to enter! Let's proceed now!");
       }
       titleScreen.style.display = 'none';
       mainContent.style.display = 'block';
       playCurrentTrack();
-      console.log("%cWelcome to the ULTRA REMASTERED++ dev console experience!","color: #0ff; font-size:16px; text-shadow: 0 0 5px #0ff;");
+      console.log("%cWelcome to the MEGA ULTRA REMASTERED++ dev console experience!","color: #0ff; font-size:16px; text-shadow: 0 0 5px #0ff;");
     });
 
     function playCurrentTrack() {
       audioPlayer.src = playlist[currentTrackIndex];
       audioPlayer.play().catch(err => {
-        console.warn("Autoplay might be blocked by the browser:", err);
+        console.warn("Autoplay might be blocked:", err);
       });
     }
 
@@ -1198,10 +1390,19 @@
       }
     });
 
-    /**********************************************
-     * 2) INTERSECTION OBSERVER FOR SECTION FADE-IN
-    **********************************************/
+    /****************************************************
+     * [2] VOLUME SLIDER
+    ****************************************************/
+    const volumeSlider = document.getElementById('volumeSlider');
+    volumeSlider.addEventListener('input', () => {
+      audioPlayer.volume = volumeSlider.value;
+    });
+
+    /****************************************************
+     * [3] SECTION FADE-IN OBSERVER
+    ****************************************************/
     const sections = document.querySelectorAll('section');
+    const sectionDesc = document.querySelectorAll('.section-description');
     const observerOptions = { threshold: 0.1 };
     const sectionObserver = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -1212,10 +1413,12 @@
       });
     }, observerOptions);
     sections.forEach(sec => sectionObserver.observe(sec));
+    // For the paragraph descriptions
+    sectionDesc.forEach(desc => sectionObserver.observe(desc));
 
-    /**********************************************
-     * 3) SETTINGS MODAL
-    **********************************************/
+    /****************************************************
+     * [4] SETTINGS MODAL
+    ****************************************************/
     const settingsBtn = document.getElementById('settingsBtn');
     const settingsModal = document.getElementById('settingsModal');
     const closeModal = document.getElementById('closeModal');
@@ -1232,16 +1435,16 @@
       }
     });
 
-    /**********************************************
-     * 4) FONT SIZE ADJUSTMENT
-    **********************************************/
+    /****************************************************
+     * [5] FONT SIZE SELECT
+    ****************************************************/
     document.getElementById('fontSize').addEventListener('change', (e) => {
       document.body.style.fontSize = e.target.value + 'px';
     });
 
-    /**********************************************
-     * 5) DARK MODE TOGGLE
-    **********************************************/
+    /****************************************************
+     * [6] DARK MODE TOGGLE
+    ****************************************************/
     const body = document.body;
     document.getElementById('themeToggle').addEventListener('change', (e) => {
       if (e.target.checked) {
@@ -1251,9 +1454,9 @@
       }
     });
 
-    /**********************************************
-     * 6) CONFETTI BUTTON
-    **********************************************/
+    /****************************************************
+     * [7] CONFETTI BUTTON
+    ****************************************************/
     const confettiBtn = document.getElementById('confettiBtn');
     confettiBtn.addEventListener('click', () => {
       for (let i = 0; i < 35; i++) createConfetti();
@@ -1273,9 +1476,9 @@
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    /**********************************************
-     * 7) BACK TO TOP BUTTON
-    **********************************************/
+    /****************************************************
+     * [8] BACK TO TOP BUTTON
+    ****************************************************/
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -1288,9 +1491,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /**********************************************
-     * 8) reCAPTCHA MODAL & CARD CLICK
-    **********************************************/
+    /****************************************************
+     * [9] reCAPTCHA & CARD NAVIGATION
+    ****************************************************/
     const captchaModal = document.getElementById('captchaModal');
     const captchaClose = document.getElementById('captchaClose');
     let pendingURL = null;
@@ -1322,13 +1525,14 @@
 
     window.onRecaptchaSuccess = function() {
       if (pendingURL) {
-        window.location.href = pendingURL;
+        // Open in new tab
+        window.open(pendingURL, '_blank');
       }
     };
 
-    /**********************************************
-     * 9) KONAMI CODE EASTER EGG
-    **********************************************/
+    /****************************************************
+     * [10] KONAMI CODE EASTER EGG
+    ****************************************************/
     let konamiSequence = [];
     const konamiCode = [
       'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
@@ -1355,9 +1559,9 @@
       }, 5000);
     }
 
-    /**********************************************
-     * 10) EXTRA EASTER EGG: DOUBLE-CLICK
-     **********************************************/
+    /****************************************************
+     * [11] GLITCH TEXT (Double-Click)
+    ****************************************************/
     const glitchText = document.getElementById('glitchText');
     let glitchTimeout = null;
     document.addEventListener('dblclick', () => {
@@ -1369,18 +1573,18 @@
       for (let i = 0; i < 15; i++) createConfetti();
     });
 
-    /**********************************************
-     * 11) CAPS LOCK EASTER EGG
-    **********************************************/
+    /****************************************************
+     * [12] CAPS LOCK EASTER EGG
+    ****************************************************/
     window.addEventListener('keydown', (e) => {
       if (e.getModifierState('CapsLock') && e.key !== 'CapsLock') {
         alert("CAPS LOCK ENGAGED! YOU'RE SHOUTING NOW!");
       }
     });
 
-    /**********************************************
-     * 12) MILK CODE EASTER EGG
-    **********************************************/
+    /****************************************************
+     * [13] MILK CODE EASTER EGG
+    ****************************************************/
     let milkBuffer = [];
     window.addEventListener('keydown', (e) => {
       milkBuffer.push(e.key.toLowerCase());
@@ -1393,9 +1597,9 @@
       }
     });
 
-    /**********************************************
-     * 13) COFFEE CODE EASTER EGG
-    **********************************************/
+    /****************************************************
+     * [14] COFFEE CODE EASTER EGG -> SHOW RANDOM CAT
+    ****************************************************/
     let coffeeBuffer = [];
     const randomCatEl = document.getElementById('randomCat');
     window.addEventListener('keydown', (e) => {
@@ -1404,12 +1608,11 @@
         coffeeBuffer.shift();
       }
       if (coffeeBuffer.join('') === 'coffee') {
-        alert("COFFEE TIME! Energizing with confetti and a random cat!");
+        alert("COFFEE TIME! Here's some extra confetti and a random cat!");
         for (let i = 0; i < 50; i++) createConfetti();
         showRandomCat();
       }
     });
-
     function showRandomCat() {
       fetch('https://api.thecatapi.com/v1/images/search')
         .then(res => res.json())
@@ -1432,9 +1635,9 @@
         });
     }
 
-    /**********************************************
-     * 14) DOG CODE EASTER EGG - "DOG"
-    **********************************************/
+    /****************************************************
+     * [15] DOG CODE EASTER EGG -> "DOG"
+    ****************************************************/
     let dogBuffer = [];
     const randomDogEl = document.getElementById('randomDog');
     window.addEventListener('keydown', (e) => {
@@ -1448,7 +1651,6 @@
         showRandomDog();
       }
     });
-
     function showRandomDog() {
       fetch('https://dog.ceo/api/breeds/image/random')
         .then(res => res.json())
@@ -1471,9 +1673,9 @@
         });
     }
 
-    /**********************************************
-     * 15) IDLE DETECTION EASTER EGG
-    **********************************************/
+    /****************************************************
+     * [16] IDLE DETECTION (20s)
+    ****************************************************/
     let idleTimer;
     let idleTime = 20 * 1000; // 20 seconds
     function resetIdleTimer() {
@@ -1487,9 +1689,9 @@
     );
     resetIdleTimer();
 
-    /**********************************************
-     * 16) RIPPLE EFFECT ON CLICK
-    **********************************************/
+    /****************************************************
+     * [17] RIPPLE EFFECT ON CLICK
+    ****************************************************/
     document.addEventListener('click', (e) => {
       const ripple = document.createElement('div');
       ripple.className = 'ripple';
@@ -1501,9 +1703,9 @@
       }, 600);
     });
 
-    /**********************************************
-     * 17) TRIPLE-CLICK EASTER EGG
-    **********************************************/
+    /****************************************************
+     * [18] TRIPLE-CLICK EASTER EGG
+    ****************************************************/
     let clickCount = 0;
     let tripleClickTimeout;
     document.addEventListener('click', () => {
@@ -1519,9 +1721,9 @@
       }, 600);
     });
 
-    /**********************************************
-     * 18) PIZZA CODE EASTER EGG -> RANDOM BIRD
-    **********************************************/
+    /****************************************************
+     * [19] PIZZA CODE EASTER EGG -> RANDOM BIRD
+    ****************************************************/
     let pizzaBuffer = [];
     const randomBirdEl = document.getElementById('randomBird');
     window.addEventListener('keydown', (e) => {
@@ -1530,12 +1732,11 @@
         pizzaBuffer.shift();
       }
       if (pizzaBuffer.join('') === 'pizza') {
-        alert("PIZZA TIME! Wait... here's a random bird, just because!");
+        alert("PIZZA TIME! Surprise confetti + random bird!");
         for (let i = 0; i < 40; i++) createConfetti();
         showRandomBird();
       }
     });
-
     function showRandomBird() {
       fetch('https://random-d.uk/api/v2/random')
         .then(res => res.json())
@@ -1558,9 +1759,9 @@
         });
     }
 
-    /**********************************************
-     * 19) BURGER CODE EASTER EGG -> BLINKING TEXT
-    **********************************************/
+    /****************************************************
+     * [20] BURGER CODE EASTER EGG -> BLINKING TEXT
+    ****************************************************/
     let burgerBuffer = [];
     const blinkingSecret = document.getElementById('blinkingSecret');
     let burgerToggle = false;
@@ -1570,12 +1771,81 @@
         burgerBuffer.shift();
       }
       if (burgerBuffer.join('') === 'burger') {
-        alert("BURGER CODE ENTERED! 🍔 Enjoy the secret blinking text bar at the top!");
+        alert("BURGER CODE ENTERED! 🍔 Enjoy the secret blinking bar at the top!");
         for (let i = 0; i < 35; i++) createConfetti();
         burgerToggle = !burgerToggle;
         blinkingSecret.style.display = burgerToggle ? 'block' : 'none';
       }
     });
+
+    /****************************************************
+     * [21] NEW EASTER EGGS: 'milkshake' -> randomFox
+    ****************************************************/
+    let milkshakeBuffer = [];
+    const randomFoxEl = document.getElementById('randomFox');
+    window.addEventListener('keydown', (e) => {
+      milkshakeBuffer.push(e.key.toLowerCase());
+      if (milkshakeBuffer.length > 9) {
+        milkshakeBuffer.shift();
+      }
+      if (milkshakeBuffer.join('') === 'milkshake') {
+        alert("Milkshake code triggered! Enjoy random fox vibes!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomFox();
+      }
+    });
+    function showRandomFox() {
+      fetch('https://randomfox.ca/floof/')
+        .then(res => res.json())
+        .then(data => {
+          if (data.image) {
+            randomFoxEl.src = data.image;
+            randomFoxEl.style.display = 'block';
+            setTimeout(() => {
+              randomFoxEl.style.display = 'none';
+            }, 7000);
+          }
+        })
+        .catch(err => {
+          console.log("Fox fetch error:", err);
+          randomFoxEl.src = "https://randomfox.ca/images/74.jpg";
+          randomFoxEl.style.display = 'block';
+          setTimeout(() => {
+            randomFoxEl.style.display = 'none';
+          }, 7000);
+        });
+    }
+
+    /****************************************************
+     * [22] 'banana' -> randomGiraffe
+    ****************************************************/
+    let bananaBuffer = [];
+    const randomGiraffeEl = document.getElementById('randomGiraffe');
+    window.addEventListener('keydown', (e) => {
+      bananaBuffer.push(e.key.toLowerCase());
+      if (bananaBuffer.length > 6) {
+        bananaBuffer.shift();
+      }
+      if (bananaBuffer.join('') === 'banana') {
+        alert("BANANA CODE TRIGGERED! Summoning a random giraffe... 🍌🦒");
+        for (let i = 0; i < 50; i++) createConfetti();
+        showRandomGiraffe();
+      }
+    });
+    function showRandomGiraffe() {
+      // There's no official giraffe API, let's just show a fallback random giraffe image:
+      const giraffeImages = [
+        'https://cdn.pixabay.com/photo/2014/10/22/17/22/giraffe-498240_1280.jpg',
+        'https://cdn.pixabay.com/photo/2013/05/16/10/08/giraffe-111720_1280.jpg',
+        'https://cdn.pixabay.com/photo/2012/08/11/00/26/giraffe-53932_1280.jpg'
+      ];
+      const randomIndex = Math.floor(Math.random() * giraffeImages.length);
+      randomGiraffeEl.src = giraffeImages[randomIndex];
+      randomGiraffeEl.style.display = 'block';
+      setTimeout(() => {
+        randomGiraffeEl.style.display = 'none';
+      }, 7000);
+    }
   </script>
 </body>
 </html>
