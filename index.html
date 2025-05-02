@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="BIT GAMES HUB 1 YEAR ANNIVERSARY ULTRA REMASTERED++" />
+  <meta name="description" content="BIT GAMES HUB 1 YEAR ANNIVERSARY ULTRA REMASTERED++ (Extended & Enhanced)" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY - ULTRA REMASTERED++</title>
+  <title>BIT GAMES HUB 1 YEAR ANNIVERSARY - ULTRA REMASTERED++ (Extended)</title>
 
   <!-- Google Fonts -->
   <link
@@ -28,11 +28,11 @@
     html, body {
       height: 100%;
       font-family: 'Poppins', sans-serif;
-      background: #0e0e0e;
+      background: #0d0d0d;
       color: #fff;
       overflow-x: hidden;
       position: relative;
-      user-select: none; /* prevents accidental selection, can remove if desired */
+      user-select: none; /* prevents accidental selection, can remove if you like */
       cursor: default;   /* for a more 'game-like' feel */
     }
     ::-webkit-scrollbar {
@@ -44,7 +44,7 @@
     }
 
     /* --------------------------------------------------
-       2) MULTI-LAYER BACKGROUND: PARALLAX + STARS + SWIRL + (NEW: Matrix Overlay)
+       2) MULTI-LAYER BACKGROUND: PARALLAX + STARS + SWIRL + Matrix
     -------------------------------------------------- */
     body::before {
       content: "";
@@ -61,14 +61,14 @@
       background-size: 200px 200px, 300px 300px, 200px 200px, cover;
       background-repeat: repeat, repeat, repeat, no-repeat;
       z-index: -4;
-      animation: starDrift 200s linear infinite;
+      animation: starDrift 250s linear infinite;
     }
     @keyframes starDrift {
       0% {
         background-position: 0 0, 0 0, 0 0;
       }
       100% {
-        background-position: 4000px 4000px, -4000px -4000px, 3500px -3500px;
+        background-position: 5000px 5000px, -4000px -4000px, 3500px -3500px;
       }
     }
 
@@ -96,7 +96,7 @@
       }
     }
 
-    /* (NEW) Matrix overlay effect: falling green letters */
+    /* Matrix overlay effect */
     .matrix-overlay {
       position: fixed;
       top: 0;
@@ -114,28 +114,28 @@
         rgba(0,255,0,0.2) 16px
       );
       animation: matrixFall 10s linear infinite;
-      opacity: 0.1; /* subtle */
+      opacity: 0.1;
     }
     @keyframes matrixFall {
       0% {
         background-position: 0 0;
       }
       100% {
-        background-position: 0 1000px;
+        background-position: 0 1500px;
       }
     }
 
-    /* SHOOTING STAR: We'll create multiple for extra sparkle! */
+    /* Shooting Stars */
     @keyframes shootStar {
       0% {
         transform: translate(-50%, 0) scale(1);
         opacity: 1;
       }
-      80% {
-        transform: translate(-1500px, 700px) scale(1.5);
+      70% {
+        transform: translate(-1500px, 1000px) scale(1.5);
       }
       100% {
-        transform: translate(-1600px, 800px) scale(0);
+        transform: translate(-1600px, 1200px) scale(0);
         opacity: 0;
       }
     }
@@ -152,8 +152,6 @@
       animation: shootStar 3s ease-in-out forwards;
       z-index: -1;
     }
-
-    /* More than one star – let's offset them slightly */
     .shooting-star:nth-child(1) {
       animation-delay: 2s;
     }
@@ -164,13 +162,13 @@
       animation-delay: 9s;
     }
 
-    /* Additional floating shapes effect (subtle) */
+    /* Additional floating shapes effect */
     .float-shape {
       position: fixed;
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       background: radial-gradient(#ff00ff, transparent);
-      filter: blur(4px);
+      filter: blur(6px);
       opacity: 0.15;
       animation: floatShapes 10s infinite alternate ease-in-out;
       z-index: -1;
@@ -180,7 +178,7 @@
         transform: translate(0, 0) rotate(0deg);
       }
       100% {
-        transform: translate(50px, -50px) rotate(360deg);
+        transform: translate(60px, -60px) rotate(360deg);
       }
     }
     .float-shape:nth-child(even) {
@@ -218,30 +216,30 @@
     }
     #titleScreen h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       color: #0ff;
-      text-shadow: 0 0 8px #0ff;
+      text-shadow: 0 0 8px #0ff, 0 0 12px #0ff;
       margin-bottom: 20px;
       animation: floatTitle 3s ease-in-out infinite;
       cursor: pointer;
       transition: transform 0.3s;
     }
     #titleScreen h1:hover {
-      transform: scale(1.1);
+      transform: scale(1.1) rotateZ(2deg);
     }
     @keyframes floatTitle {
       0%, 100% {
         transform: translateY(0px);
       }
       50% {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
       }
     }
     #titleScreen p {
       font-size: 1.2rem;
       margin-bottom: 20px;
       color: #ccc;
-      max-width: 600px;
+      max-width: 700px;
       line-height: 1.5em;
       animation: fadeInText 2s ease forwards;
       opacity: 0;
@@ -669,7 +667,7 @@
         transform: translateX(0) translateY(0) rotate(0deg);
       }
       100% {
-        transform: translateX(-300px) translateY(800px) rotate(720deg);
+        transform: translateX(-300px) translateY(900px) rotate(720deg);
       }
     }
 
@@ -691,7 +689,7 @@
       text-shadow: 0 0 5px #ff0;
       display: none;
       z-index: 4000;
-      animation: floatUp 2s ease forwards;
+      animation: floatUp 1.5s ease forwards;
     }
     @keyframes floatUp {
       0% {
@@ -837,7 +835,6 @@
       }
     }
 
-    /* (NEW) Random dog pic easter egg container (similar approach to random-cat) */
     .random-dog {
       position: fixed;
       bottom: 10%;
@@ -861,7 +858,7 @@
       }
     }
 
-    /* (NEW) Ripple effect on body click */
+    /* Ripple effect on body click */
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -869,13 +866,61 @@
       transform: scale(0);
       animation: rippleEffect 0.6s linear;
       pointer-events: none;
-      z-index: 999999; /* on top of everything */
+      z-index: 999999;
     }
     @keyframes rippleEffect {
       to {
         transform: scale(4);
         opacity: 0;
       }
+    }
+
+    /* (NEW) SECRET BIRD PICTURE EASTER EGG */
+    .random-bird {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #ff0;
+      box-shadow: 0 0 10px #ff0;
+      display: none;
+      animation: birdSpin 2s infinite linear;
+      z-index: 7000;
+    }
+    @keyframes birdSpin {
+      0% {
+        transform: translateX(-50%) rotate(0deg);
+      }
+      100% {
+        transform: translateX(-50%) rotate(360deg);
+      }
+    }
+
+    /* (NEW) BLINKING SECRET TEXT (Triggered by 'burger' code) */
+    #blinkingSecret {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: #ff8080;
+      text-align: center;
+      background: rgba(255, 0, 0, 0.05);
+      border-bottom: 2px solid #f00;
+      padding: 5px 0;
+      display: none;
+      z-index: 99999;
+      animation: blinkText 1s infinite alternate;
+    }
+    @keyframes blinkText {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
@@ -897,16 +942,16 @@
   <div id="titleScreen">
     <h1>BIT GAMES HUB - ULTRA REMASTERED++</h1>
     <p>
-      Welcome to an even more vibrant swirl of starfields, fresh Easter eggs, 
-      extra animations, and extended content!<br>
-      Updated playlist includes:
-      <br/><strong>The Cranberries - Zombie (Alt. Version)</strong>
-      <br/><strong>Blink 182 - Stay Together For The Kids</strong>
-      <br/><strong>More Surprises Ahead!</strong>
-      <br/><em>New: watch for hidden codes, click ripples, and random dog pics!</em>
+      Welcome to an ultra-extended swirl of starfields, fresh Easter eggs, 
+      extra animations, hidden codes, and extended content!<br>
+      <strong>New Surprises Ahead!</strong><br>
+      <em>Watch for hidden codes ("milk", "coffee", "dog", "pizza", "burger"...) plus ripples, random images, and more!</em>
     </p>
     <button id="enterBtn">ENTER</button>
   </div>
+
+  <!-- SECRET BLINKING TEXT (Triggered by 'burger' code) -->
+  <div id="blinkingSecret">Secret "BURGER" text triggered! Munch munch... 🍔</div>
 
   <!-- HIDDEN SECRET MESSAGE (Shown when Konami Code is entered) -->
   <div id="secretMessage">
@@ -919,8 +964,11 @@
   <!-- RANDOM CAT EASTER EGG -->
   <img class="random-cat" id="randomCat" src="" alt="Random Cat" />
 
-  <!-- RANDOM DOG EASTER EGG (new) -->
+  <!-- RANDOM DOG EASTER EGG -->
   <img class="random-dog" id="randomDog" src="" alt="Random Dog" />
+
+  <!-- RANDOM BIRD EASTER EGG -->
+  <img class="random-bird" id="randomBird" src="" alt="Random Bird" />
 
   <!-- AUDIO (Hidden, handled by JS) -->
   <audio id="audioPlayer" style="display:none;"></audio>
@@ -1065,7 +1113,7 @@
     <!-- FOOTER -->
     <footer>
       &copy; <span>2025</span> Bit Games Hub. All Rights Reserved.<br>
-      <small>Version: <strong>1.2.0 ULTRA REMASTERED++</strong></small>
+      <small>Version: <strong>1.3.0 ULTRA REMASTERED++ (Extended)</strong></small>
     </footer>
   </div> <!-- end #mainContent -->
 
@@ -1132,12 +1180,12 @@
     enterBtn.addEventListener('click', () => {
       enterClickCount++;
       if (enterClickCount >= 5) {
-        alert("Wow, you REALLY want to enter! Have at it!");
+        alert("Wow, you REALLY want to enter! Alright, let's go!");
       }
       titleScreen.style.display = 'none';
       mainContent.style.display = 'block';
       playCurrentTrack();
-      console.log("%cWelcome to the ULTRA REMASTERED++ dev console experience!", "color: #0ff; font-size: 14px;");
+      console.log("%cWelcome to the ULTRA REMASTERED++ dev console experience!","color: #0ff; font-size:16px; text-shadow: 0 0 5px #0ff;");
     });
 
     function playCurrentTrack() {
@@ -1203,7 +1251,7 @@
       if (e.target.checked) {
         body.style.background = '#121212';
       } else {
-        body.style.background = '#0e0e0e';
+        body.style.background = '#0d0d0d';
       }
     });
 
@@ -1225,7 +1273,7 @@
       setTimeout(() => confetti.remove(), fallDuration * 1000);
     }
     function randomNeonColor() {
-      const colors = ['#0ff', '#f0f', '#0f0', '#ff0', '#ff00aa', '#00ffcc'];
+      const colors = ['#0ff', '#f0f', '#0f0', '#ff0', '#ff00aa', '#00ffcc', '#ff6600'];
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
@@ -1353,6 +1401,7 @@
      * 13) COFFEE CODE EASTER EGG
     **********************************************/
     let coffeeBuffer = [];
+    const randomCatEl = document.getElementById('randomCat');
     window.addEventListener('keydown', (e) => {
       coffeeBuffer.push(e.key.toLowerCase());
       if (coffeeBuffer.length > 6) {
@@ -1365,10 +1414,6 @@
       }
     });
 
-    /**********************************************
-     * 14) RANDOM CAT EASTER EGG
-    **********************************************/
-    const randomCatEl = document.getElementById('randomCat');
     function showRandomCat() {
       fetch('https://api.thecatapi.com/v1/images/search')
         .then(res => res.json())
@@ -1392,7 +1437,7 @@
     }
 
     /**********************************************
-     * (NEW) 15) DOG CODE EASTER EGG - "DOG"
+     * 14) DOG CODE EASTER EGG - "DOG"
     **********************************************/
     let dogBuffer = [];
     const randomDogEl = document.getElementById('randomDog');
@@ -1431,14 +1476,14 @@
     }
 
     /**********************************************
-     * 16) IDLE DETECTION EASTER EGG
+     * 15) IDLE DETECTION EASTER EGG
     **********************************************/
     let idleTimer;
     let idleTime = 20 * 1000; // 20 seconds
     function resetIdleTimer() {
       clearTimeout(idleTimer);
       idleTimer = setTimeout(() => {
-        alert("Are you still there? The games are waiting!");
+        alert("Are you still there? The games are waiting for you!");
       }, idleTime);
     }
     ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt =>
@@ -1447,7 +1492,7 @@
     resetIdleTimer();
 
     /**********************************************
-     * (NEW) 17) RIPPLE EFFECT ON CLICK
+     * 16) RIPPLE EFFECT ON CLICK
     **********************************************/
     document.addEventListener('click', (e) => {
       const ripple = document.createElement('div');
@@ -1461,8 +1506,8 @@
     });
 
     /**********************************************
-     * (NEW) 18) TRIPLE-CLICK EASTER EGG
-     **********************************************/
+     * 17) TRIPLE-CLICK EASTER EGG
+    **********************************************/
     let clickCount = 0;
     let tripleClickTimeout;
     document.addEventListener('click', () => {
@@ -1476,6 +1521,64 @@
       tripleClickTimeout = setTimeout(() => {
         clickCount = 0;
       }, 600);
+    });
+
+    /**********************************************
+     * 18) PIZZA CODE EASTER EGG -> RANDOM BIRD
+    **********************************************/
+    let pizzaBuffer = [];
+    const randomBirdEl = document.getElementById('randomBird');
+    window.addEventListener('keydown', (e) => {
+      pizzaBuffer.push(e.key.toLowerCase());
+      if (pizzaBuffer.length > 5) {
+        pizzaBuffer.shift();
+      }
+      if (pizzaBuffer.join('') === 'pizza') {
+        alert("PIZZA TIME! Wait... here's a random bird, just because!");
+        for (let i = 0; i < 40; i++) createConfetti();
+        showRandomBird();
+      }
+    });
+
+    function showRandomBird() {
+      fetch('https://random-d.uk/api/v2/random')
+        .then(res => res.json())
+        .then(data => {
+          if (data.url) {
+            randomBirdEl.src = data.url;
+            randomBirdEl.style.display = 'block';
+            setTimeout(() => {
+              randomBirdEl.style.display = 'none';
+            }, 7000);
+          }
+        })
+        .catch(err => {
+          console.log("Bird fetch error:", err);
+          randomBirdEl.src = "https://random-d.uk/api/v2/images/22.jpg";
+          randomBirdEl.style.display = 'block';
+          setTimeout(() => {
+            randomBirdEl.style.display = 'none';
+          }, 7000);
+        });
+    }
+
+    /**********************************************
+     * 19) BURGER CODE EASTER EGG -> BLINKING TEXT
+    **********************************************/
+    let burgerBuffer = [];
+    const blinkingSecret = document.getElementById('blinkingSecret');
+    let burgerToggle = false;
+    window.addEventListener('keydown', (e) => {
+      burgerBuffer.push(e.key.toLowerCase());
+      if (burgerBuffer.length > 6) {
+        burgerBuffer.shift();
+      }
+      if (burgerBuffer.join('') === 'burger') {
+        alert("BURGER CODE ENTERED! 🍔 Enjoy the secret blinking text bar at the top!");
+        for (let i = 0; i < 35; i++) createConfetti();
+        burgerToggle = !burgerToggle;
+        blinkingSecret.style.display = burgerToggle ? 'block' : 'none';
+      }
     });
   </script>
 </body>
