@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Status Code Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>HTTP Status Code Explorer</h1>
+        <p>Explore all HTTP status codes from 100 to 999, including unofficial ones</p>
+    </header>
+    
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by code or name...">
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-class="all">All</button>
+            <button class="filter-btn" data-class="1xx">1xx (Informational)</button>
+            <button class="filter-btn" data-class="2xx">2xx (Success)</button>
+            <button class="filter-btn" data-class="3xx">3xx (Redirection)</button>
+            <button class="filter-btn" data-class="4xx">4xx (Client Error)</button>
+            <button class="filter-btn" data-class="5xx">5xx (Server Error)</button>
+            <button class="filter-btn" data-class="unofficial">Unofficial</button>
+            <button class="filter-btn" data-class="visible">Visible Errors</button>
+        </div>
+        
+        <div id="statusCodes" class="status-codes-grid"></div>
+    </main>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 HTTP Status Code Explorer</p>
+    </footer>
+    
+    <script src="status-codes.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
